@@ -12,8 +12,9 @@
  * @package         Wp_Simple_Google_Sheets_Fetcher
  */
 
-include_once dirname( __FILE__ ) . '/templates/base.php';
 include_once dirname( __FILE__ ) . '/vendor/autoload.php';
+include_once dirname( __FILE__ ) . '/templates/base.php';
+include_once dirname( __FILE__ ) . '/blocks/parser.php';
 
 class WPSimpleGoogleSheetsFetcher {
 
