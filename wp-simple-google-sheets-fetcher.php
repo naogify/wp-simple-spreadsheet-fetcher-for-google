@@ -16,3 +16,38 @@
 
 //## Prerequisites
 //1. Get API KEY from here -> https://developers.google.com/sheets/api/quickstart/php?hl=ja
+
+include_once dirname( __FILE__ ) . '/templates/base.php';
+require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+
+if ( isset( $_POST['api_key'] ) ) {
+	setApiKey( $_POST['api_key'] );
+	echo renderSetApikey();
+}
+
+if ( ! getApiKey() ) {
+	echo renderApiKeyNotSet();
+}
+
+//<ul >
+//  <li ><a href = "simple-query.php" > A query using simple API access </a ></li >
+//</ul >
+
+
+function renderSetApikey() {
+	return '<span class="warn">API Key set!</span >';
+}
+
+function renderApiKeyNotSet() {
+
+	$html = '<div class="api-key" >';
+	$html .= '<strong > You have not entered your API key </strong >';
+	$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] ) . '" method="POST" >';
+	$html .= 'API Key:<input type="text" name="api_key" placeholder="API-Key" required />';
+	$html .= '<input type="submit" value="Set API-Key" />';
+	$html .= '</form >';
+	$html .= '<em> This can be found in the <a href="http://developers.google.com/console" target="_blank"> Google API Console </em >';
+	$html .= '</div>';
+
+	return $html;
+}

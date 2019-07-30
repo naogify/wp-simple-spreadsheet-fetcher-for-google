@@ -1,4 +1,11 @@
 {
+    "name": "naoppy/wp-simple-google-sheets-fetcher",
+    "authors": [
+        {
+            "name": "naoki",
+            "email": "n.globe.us@gmail.com"
+        }
+    ],
     "require": {
         "google/apiclient": "^2.0"
     }
