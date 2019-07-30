@@ -21,7 +21,7 @@ class WPSimpleGoogleSheetsFetcher {
 
 		if ( isset( $_POST['api_key'] ) ) {
 			setApiKey( $_POST['api_key'] );
-			echo $this->renderSetApikey();
+			echo $this->renderSetApiKey();
 		}
 
 		if ( ! getApiKey() ) {
@@ -29,7 +29,7 @@ class WPSimpleGoogleSheetsFetcher {
 		}
 	}
 
-	function renderSetApikey() {
+	function renderSetApiKey() {
 		return '<span class="warn">API Key set!</span >';
 	}
 
