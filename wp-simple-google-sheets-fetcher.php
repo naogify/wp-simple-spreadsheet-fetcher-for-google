@@ -12,27 +12,24 @@
  * @package         Wp_Simple_Google_Sheets_Fetcher
  */
 
-// Your code starts here.
-
-//## Prerequisites
-//1. Get API KEY from here -> https://developers.google.com/sheets/api/quickstart/php?hl=ja
-
 include_once dirname( __FILE__ ) . '/templates/base.php';
-require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+include_once dirname( __FILE__ ) . '/vendor/autoload.php';
 
-if ( isset( $_POST['api_key'] ) ) {
-	setApiKey( $_POST['api_key'] );
-	echo renderSetApikey();
-}
+function init(){
 
-if ( ! getApiKey() ) {
-	echo renderApiKeyNotSet();
-}
+	if ( isset( $_POST['api_key'] ) ) {
+		setApiKey( $_POST['api_key'] );
+		echo renderSetApikey();
+	}
+
+	if ( ! getApiKey() ) {
+		echo renderApiKeyNotSet();
+	}
 
 //<ul >
 //  <li ><a href = "simple-query.php" > A query using simple API access </a ></li >
 //</ul >
-
+}
 
 function renderSetApikey() {
 	return '<span class="warn">API Key set!</span >';
@@ -51,3 +48,5 @@ function renderApiKeyNotSet() {
 
 	return $html;
 }
+
+init();
