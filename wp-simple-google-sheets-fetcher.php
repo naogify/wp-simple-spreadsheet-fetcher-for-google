@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     Wp Simple Google Sheets Fetcher
+ * Plugin Name:     WP Simple Google Sheets Fetcher
  * Plugin URI:      PLUGIN SITE HERE
  * Description:     Simple plugin to fetch data from google spreadsheet.
  * Author:          Naoki Ohashi
