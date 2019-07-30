@@ -15,38 +15,37 @@
 include_once dirname( __FILE__ ) . '/templates/base.php';
 include_once dirname( __FILE__ ) . '/vendor/autoload.php';
 
-function init(){
+class WPSimpleGoogleSheetsFetcher {
 
-	if ( isset( $_POST['api_key'] ) ) {
-		setApiKey( $_POST['api_key'] );
-		echo renderSetApikey();
+	function __construct() {
+
+		if ( isset( $_POST['api_key'] ) ) {
+			setApiKey( $_POST['api_key'] );
+			echo $this->renderSetApikey();
+		}
+
+		if ( ! getApiKey() ) {
+			echo $this->renderApiKeyNotSet();
+		}
 	}
 
-	if ( ! getApiKey() ) {
-		echo renderApiKeyNotSet();
+	function renderSetApikey() {
+		return '<span class="warn">API Key set!</span >';
 	}
 
-//<ul >
-//  <li ><a href = "simple-query.php" > A query using simple API access </a ></li >
-//</ul >
+	function renderApiKeyNotSet() {
+
+		$html = '<div class="api-key" >';
+		$html .= '<strong > You have not entered your API key </strong >';
+		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] ) . '" method="POST" >';
+		$html .= 'API Key:<input type="text" name="api_key" placeholder="API-Key" required />';
+		$html .= '<input type="submit" value="Set API-Key" />';
+		$html .= '</form >';
+		$html .= '<em> This can be found in the <a href="http://developers.google.com/console" target="_blank"> Google API Console </em >';
+		$html .= '</div>';
+
+		return $html;
+	}
 }
 
-function renderSetApikey() {
-	return '<span class="warn">API Key set!</span >';
-}
-
-function renderApiKeyNotSet() {
-
-	$html = '<div class="api-key" >';
-	$html .= '<strong > You have not entered your API key </strong >';
-	$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] ) . '" method="POST" >';
-	$html .= 'API Key:<input type="text" name="api_key" placeholder="API-Key" required />';
-	$html .= '<input type="submit" value="Set API-Key" />';
-	$html .= '</form >';
-	$html .= '<em> This can be found in the <a href="http://developers.google.com/console" target="_blank"> Google API Console </em >';
-	$html .= '</div>';
-
-	return $html;
-}
-
-init();
+$WPSimpleGoogleSheetsFetcher = new WPSimpleGoogleSheetsFetcher();
