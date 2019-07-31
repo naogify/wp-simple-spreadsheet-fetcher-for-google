@@ -14,6 +14,7 @@
 	 * @see https://github.com/WordPress/gutenberg/tree/master/i18n#api
 	 */
 	var __ = wp.i18n.__;
+	var ServerSideRender = wp.components;
 
 	/**
 	 * Every block starts by registering a new block type definition.
