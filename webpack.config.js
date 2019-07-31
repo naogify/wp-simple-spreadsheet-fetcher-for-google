@@ -1,9 +1,9 @@
 module.exports = {
     mode: 'production',
     devtool: 'source-map',
-    entry: "./src/bundle.js",
+    entry: "./blocks/src/**/*.js",
     output: {
-        filename: "./inc/vk-blocks/build/block-build.js"
+        filename: "./blocks/build/build.js"
     },
     module: {
         rules: [
