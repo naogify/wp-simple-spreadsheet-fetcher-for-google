@@ -29,10 +29,20 @@ class WPSimpleGoogleSheetsFetcher {
 		if ( ! getApiKey() ) {
 			echo $this->renderApiKeyNotSet();
 		}
+
+		if ( isset( $_POST['spread_sheetId'] ) ) {
+			setSpreadSheetId( $_POST['spread_sheetId'] );
+			echo $this->renderSetApiKey();
+		}
+
+		if ( ! getSpreadSheetId() ) {
+			echo $this->renderApiKeyNotSet();
+		}
+
 	}
 
 	function renderSetApiKey() {
-		return '<span class="warn">API Key set!</span >';
+		return '<span class="warn">API Key and SpreadSheetId set!</span >';
 	}
 
 	function renderApiKeyNotSet() {
@@ -41,7 +51,8 @@ class WPSimpleGoogleSheetsFetcher {
 		$html .= '<strong > You have not entered your API key </strong >';
 		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] ) . '" method="POST" >';
 		$html .= 'API Key:<input type="text" name="api_key" placeholder="API-Key" required />';
-		$html .= '<input type="submit" value="Set API-Key" />';
+		$html .= 'SpreadSheetId:<input type="text" name="spread_sheetId" placeholder="Spread-SheetId" required />';
+		$html .= '<input type="submit" value="Set Configuration Info" />';
 		$html .= '</form >';
 		$html .= '<em> This can be found in the <a href="http://developers.google.com/console" target="_blank"> Google API Console </em >';
 		$html .= '</div>';

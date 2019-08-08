@@ -31,9 +31,13 @@ $client->setApplicationName( "Client_Library_Examples" );
 // Warn if the API key isn't set.
 if ( ! $apiKey = getApiKey() ) {
 	echo missingApiKeyWarning();
-
 	return;
 }
+if ( ! $spreadSheetId = getSpreadSheetId() ) {
+	echo missingApiKeyWarning();
+	return;
+}
+
 $client->setDeveloperKey( $apiKey );
 $service = new Google_Service_Sheets( $client );
 
@@ -47,11 +51,11 @@ $service = new Google_Service_Sheets( $client );
  * parameters.
  ************************************************/
 
-$spreadsheetId = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
-$range         = 'Class Data!A2:E';
-$response      = $service->spreadsheets_values->get($spreadsheetId, $range);
-$values        = $response->getValues();
-$data          = '';
+//$spreadSheetId = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
+$range    = 'Class Data!A2:E';
+$response = $service->spreadsheets_values->get( $spreadSheetId, $range );
+$values   = $response->getValues();
+$data     = '';
 if ( empty( $values ) ) {
 	$data .= "No data found.\n";
 } else {
