@@ -32,11 +32,11 @@ function get_selected_value( $range ) {
 
 	// Warn if the API key isn't set.
 	if ( ! $apiKey = getApiKey() ) {
-//		echo missingApiKeyWarning();
+
 		return __( 'API-KEY is not set.', 'wp-simple-google-sheets-fetcher' );
 	}
 	if ( ! $spreadSheetId = getSpreadSheetId() ) {
-//		echo missingApiKeyWarning();
+
 		return __( 'SpreadSheetId is not set.', 'wp-simple-google-sheets-fetcher' );
 	}
 	if ( ! $range ) {
@@ -64,14 +64,14 @@ function get_selected_value( $range ) {
 	if ( empty( $values ) ) {
 		$data .= "No data found.\n";
 	} else {
-		$data .= "Name, Major:\n";
+
 		foreach ( $values as $row ) {
+			$data .= $row[0];
 			// Print columns A and E, which correspond to indices 0 and 4.
-			$data .= $row[0] . "," . $row[4] . "\n";
+//			$data .= $row[0] . "," . $row[4] . "\n";
 		}
 	}
 
 	return $data;
-//	update_option( 'wp-simple-google-sheets-fetcher-value', $data );
 }
 ?>

@@ -14,20 +14,9 @@
 	 * @see https://github.com/WordPress/gutenberg/tree/master/i18n#api
 	 */
 	let __ = wp.i18n.__;
-
 	let ServerSideRender = wp.components.ServerSideRender;
-
-	var AlignmentToolbar = wp.editor.AlignmentToolbar;
 	let InspectorControls = wp.editor.InspectorControls;
 	let TextControl = wp.components.TextControl;
-	let PanelBody = wp.components.PanelBody;
-
-	// <PanelBody title={ __( 'High Contrast', 'jsforwpblocks' ) } >
-	// 	<PanelRow>
-	// 		//Row Contents
-	// 	</PanelRow>
-	// </PanelBody>
-
 
 	/**
 	 * Every block starts by registering a new block type definition.
