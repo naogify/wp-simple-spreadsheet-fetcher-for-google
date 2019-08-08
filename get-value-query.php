@@ -28,7 +28,7 @@ function get_selected_value( $range ) {
 	 * using the anonymous quota.
 	 ************************************************/
 	$client = new Google_Client();
-	$client->setApplicationName( "Client_Library_Examples" );
+	$client->setApplicationName( "CoolChoice2019 Application" );
 
 	// Warn if the API key isn't set.
 	if ( ! $apiKey = getApiKey() ) {
@@ -56,10 +56,9 @@ function get_selected_value( $range ) {
 	 * parameters.
 	 ************************************************/
 
-	//$spreadSheetId = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
-//	$range    = 'Class Data!A2:E';
 	$response = $service->spreadsheets_values->get( $spreadSheetId, $range );
 	$values   = $response->getValues();
+
 	$data     = '';
 	if ( empty( $values ) ) {
 		$data .= "No data found.\n";
