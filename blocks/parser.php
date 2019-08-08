@@ -28,6 +28,7 @@ function parser_block_init() {
 			'wp-blocks',
 			'wp-i18n',
 			'wp-element',
+			'wp-components',
 		),
 		filemtime( "$dir/$index_js" )
 	);
@@ -49,9 +50,22 @@ function parser_block_init() {
 	);
 
 	register_block_type( 'wp-simple-google-sheets-fetcher/parser', array(
-		'editor_script' => 'parser-block-editor',
-		'editor_style'  => 'parser-block-editor',
-		'style'         => 'parser-block',
+		'editor_script'   => 'parser-block-editor',
+		'editor_style'    => 'parser-block-editor',
+		'style'           => 'parser-block',
+		'attributes'      => [
+//			'style'      => [
+//				'type'    => 'string',
+//				'default' => '',
+//			],
+//			'renderHtml' => [
+//				'type'    => 'string',
+//				'default' => '',
+//			],
+		],
+		'render_callback' => function ( $attributes ) {
+			return get_option( 'wp-simple-google-sheets-fetcher-value' );
+		},
 	) );
 }
 add_action( 'init', 'parser_block_init' );

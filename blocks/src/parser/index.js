@@ -3,18 +3,19 @@
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://github.com/WordPress/gutenberg/tree/master/blocks#api
 	 */
-	var registerBlockType = wp.blocks.registerBlockType;
+	let registerBlockType = wp.blocks.registerBlockType;
 	/**
 	 * Returns a new element of given type. Element is an abstraction layer atop React.
 	 * @see https://github.com/WordPress/gutenberg/tree/master/element#element
 	 */
-	var el = wp.element.createElement;
+	let el = wp.element.createElement;
 	/**
 	 * Retrieves the translation of text.
 	 * @see https://github.com/WordPress/gutenberg/tree/master/i18n#api
 	 */
-	var __ = wp.i18n.__;
-	var ServerSideRender = wp.components;
+	let __ = wp.i18n.__;
+
+	let ServerSideRender = wp.components.ServerSideRender;
 
 	/**
 	 * Every block starts by registering a new block type definition.
@@ -50,11 +51,10 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function( props ) {
-			return el(
-				'p',
-				{ className: props.className },
-				__( 'Hello from the editor!', 'wp-simple-google-sheets-fetcher' )
-			);
+			return el(ServerSideRender, {
+				block: 'wp-simple-google-sheets-fetcher/parser',
+				attributes: props.attributes
+			});
 		},
 
 		/**
@@ -64,13 +64,9 @@
 		 *
 		 * @return {Element}       Element to render.
 		 */
-		save: function() {
-			return el(
-				'p',
-				{},
-				__( 'Hello from the saved content!', 'wp-simple-google-sheets-fetcher' )
-			);
-		}
+		save: function () {
+			return null;
+		},
 	} );
 } )(
 	window.wp

@@ -15,6 +15,7 @@
 include_once dirname( __FILE__ ) . '/vendor/autoload.php';
 include_once dirname( __FILE__ ) . '/templates/base.php';
 include_once dirname( __FILE__ ) . '/blocks/parser.php';
+include_once dirname( __FILE__ ) . '/get-value-query.php';
 
 class WPSimpleGoogleSheetsFetcher {
 

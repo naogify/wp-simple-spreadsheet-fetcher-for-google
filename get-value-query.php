@@ -48,18 +48,18 @@ $service = new Google_Service_Sheets( $client );
  ************************************************/
 
 $spreadsheetId = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
-$range = 'Class Data!A2:E';
-$response = $service->spreadsheets_values->get($spreadsheetId, $range);
-$values = $response->getValues();
-
-//
-//if (empty($values)) {
-//	print "No data found.\n";
-//} else {
-//	print "Name, Major:\n";
-//	foreach ($values as $row) {
-//		// Print columns A and E, which correspond to indices 0 and 4.
-//		printf("%s, %s\n", $row[0], $row[4]);
-//	}
-//}
+$range         = 'Class Data!A2:E';
+$response      = $service->spreadsheets_values->get($spreadsheetId, $range);
+$values        = $response->getValues();
+$data          = '';
+if ( empty( $values ) ) {
+	$data .= "No data found.\n";
+} else {
+	$data .= "Name, Major:\n";
+	foreach ( $values as $row ) {
+		// Print columns A and E, which correspond to indices 0 and 4.
+		$data .= $row[0] . "," . $row[4] . "\n";
+	}
+}
+update_option( 'wp-simple-google-sheets-fetcher-value', $data );
 ?>
