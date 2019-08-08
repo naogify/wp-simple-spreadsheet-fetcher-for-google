@@ -12,6 +12,7 @@
  *
  * @see https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type/#enqueuing-block-scripts
  */
+include_once dirname( dirname( __FILE__ ) ) . '/get-value-query.php';
 function parser_block_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
@@ -29,6 +30,7 @@ function parser_block_init() {
 			'wp-i18n',
 			'wp-element',
 			'wp-components',
+			'wp-editor',
 		),
 		filemtime( "$dir/$index_js" )
 	);
@@ -54,17 +56,13 @@ function parser_block_init() {
 		'editor_style'    => 'parser-block-editor',
 		'style'           => 'parser-block',
 		'attributes'      => [
-//			'style'      => [
-//				'type'    => 'string',
-//				'default' => '',
-//			],
-//			'renderHtml' => [
-//				'type'    => 'string',
-//				'default' => '',
-//			],
+			'range' => [
+				'type'    => 'string',
+				'default' => '',
+			]
 		],
 		'render_callback' => function ( $attributes ) {
-			return get_option( 'wp-simple-google-sheets-fetcher-value' );
+			return get_selected_value( $attributes['range'] );
 		},
 	) );
 }

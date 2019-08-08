@@ -19,51 +19,59 @@ include_once __DIR__ . '/vendor/autoload.php';
 include_once "templates/base.php";
 
 
-/************************************************
- * We create the client and set the simple API
- * access key. If you comment out the call to
- * setDeveloperKey, the request may still succeed
- * using the anonymous quota.
- ************************************************/
-$client = new Google_Client();
-$client->setApplicationName( "Client_Library_Examples" );
+function get_selected_value( $range ) {
 
-// Warn if the API key isn't set.
-if ( ! $apiKey = getApiKey() ) {
-	echo missingApiKeyWarning();
-	return;
-}
-if ( ! $spreadSheetId = getSpreadSheetId() ) {
-	echo missingApiKeyWarning();
-	return;
-}
+	/************************************************
+	 * We create the client and set the simple API
+	 * access key. If you comment out the call to
+	 * setDeveloperKey, the request may still succeed
+	 * using the anonymous quota.
+	 ************************************************/
+	$client = new Google_Client();
+	$client->setApplicationName( "Client_Library_Examples" );
 
-$client->setDeveloperKey( $apiKey );
-$service = new Google_Service_Sheets( $client );
-
-/************************************************
- * We make a call to our service, which will
- * normally map to the structure of the API.
- * In this case $service is Books API, the
- * resource is volumes, and the method is
- * listVolumes. We pass it a required parameters
- * (the query), and an array of named optional
- * parameters.
- ************************************************/
-
-//$spreadSheetId = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
-$range    = 'Class Data!A2:E';
-$response = $service->spreadsheets_values->get( $spreadSheetId, $range );
-$values   = $response->getValues();
-$data     = '';
-if ( empty( $values ) ) {
-	$data .= "No data found.\n";
-} else {
-	$data .= "Name, Major:\n";
-	foreach ( $values as $row ) {
-		// Print columns A and E, which correspond to indices 0 and 4.
-		$data .= $row[0] . "," . $row[4] . "\n";
+	// Warn if the API key isn't set.
+	if ( ! $apiKey = getApiKey() ) {
+//		echo missingApiKeyWarning();
+		return __( 'API-KEY is not set.', 'wp-simple-google-sheets-fetcher' );
 	}
+	if ( ! $spreadSheetId = getSpreadSheetId() ) {
+//		echo missingApiKeyWarning();
+		return __( 'SpreadSheetId is not set.', 'wp-simple-google-sheets-fetcher' );
+	}
+	if ( ! $range ) {
+		return __( 'Range is not set.', 'wp-simple-google-sheets-fetcher' );
+	}
+
+	$client->setDeveloperKey( $apiKey );
+	$service = new Google_Service_Sheets( $client );
+
+	/************************************************
+	 * We make a call to our service, which will
+	 * normally map to the structure of the API.
+	 * In this case $service is Books API, the
+	 * resource is volumes, and the method is
+	 * listVolumes. We pass it a required parameters
+	 * (the query), and an array of named optional
+	 * parameters.
+	 ************************************************/
+
+	//$spreadSheetId = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
+//	$range    = 'Class Data!A2:E';
+	$response = $service->spreadsheets_values->get( $spreadSheetId, $range );
+	$values   = $response->getValues();
+	$data     = '';
+	if ( empty( $values ) ) {
+		$data .= "No data found.\n";
+	} else {
+		$data .= "Name, Major:\n";
+		foreach ( $values as $row ) {
+			// Print columns A and E, which correspond to indices 0 and 4.
+			$data .= $row[0] . "," . $row[4] . "\n";
+		}
+	}
+
+	return $data;
+//	update_option( 'wp-simple-google-sheets-fetcher-value', $data );
 }
-update_option( 'wp-simple-google-sheets-fetcher-value', $data );
 ?>

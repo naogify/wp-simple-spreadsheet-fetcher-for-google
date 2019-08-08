@@ -17,6 +17,18 @@
 
 	let ServerSideRender = wp.components.ServerSideRender;
 
+	var AlignmentToolbar = wp.editor.AlignmentToolbar;
+	let InspectorControls = wp.editor.InspectorControls;
+	let TextControl = wp.components.TextControl;
+	let PanelBody = wp.components.PanelBody;
+
+	// <PanelBody title={ __( 'High Contrast', 'jsforwpblocks' ) } >
+	// 	<PanelRow>
+	// 		//Row Contents
+	// 	</PanelRow>
+	// </PanelBody>
+
+
 	/**
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
@@ -42,6 +54,13 @@
 			html: false,
 		},
 
+		attributes: {
+			range: {
+				type: 'string',
+				default: '',
+			}
+		},
+
 		/**
 		 * The edit function describes the structure of your block in the context of the editor.
 		 * This represents what the editor will render when the block is used.
@@ -51,10 +70,31 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function( props ) {
-			return el(ServerSideRender, {
+
+			let range = props.attributes.range;
+
+			function onChangeRange(newRange) {
+				props.setAttributes({range: newRange === undefined ? 'none' : newRange});
+			}
+
+			return [
+				el(
+					InspectorControls,
+					{key: 'inspector'},
+					el(
+						TextControl,
+						{
+							label: __("Please Select Range in A1 notation. Example : Sheets1!A2:E.", 'wp-simple-google-sheets-fetcher'),
+							value: range,
+							onChange: onChangeRange,
+						}
+					)
+				),
+				el(ServerSideRender, {
 				block: 'wp-simple-google-sheets-fetcher/parser',
 				attributes: props.attributes
-			});
+				}),
+			];
 		},
 
 		/**
