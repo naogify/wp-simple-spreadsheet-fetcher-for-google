@@ -156,7 +156,7 @@ function getApiKey()
 {
   $file = __DIR__ . '/.apiKey';
   if (file_exists($file)) {
-    return file_get_contents($file);
+	  return str_replace( PHP_EOL, '', file_get_contents( $file ) );
   }
 }
 
