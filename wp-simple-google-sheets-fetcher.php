@@ -20,6 +20,43 @@ include_once dirname( __FILE__ ) . '/get-value-query.php';
 class WPSimpleGoogleSheetsFetcher {
 
 	function __construct() {
+	}
+
+	public function init() {
+		add_action( 'admin_menu', array( $this, 'addSubMenu' ) );
+	}
+
+	function renderSetApiKey() {
+		return '<span class="warn">API Key and SpreadSheetId set!</span >';
+	}
+
+	function renderApiKeyNotSet() {
+
+		$html = '<div class="api-key" >';
+		$html .= '<strong > You have not entered your API key </strong >';
+		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] ) . '" method="POST" >';
+		$html .= 'API Key:<input type="text" name="api_key" placeholder="API-Key" required />';
+		$html .= 'SpreadSheetId:<input type="text" name="spread_sheetId" placeholder="Spread-SheetId" required />';
+		$html .= '<input type="submit" value="Set Configuration Info" />';
+		$html .= '</form >';
+		$html .= '<em> This can be found in the <a href="http://developers.google.com/console" target="_blank"> Google API Console</a></em >';
+		$html .= '</div>';
+
+		return $html;
+	}
+
+	public function addSubMenu() {
+		$custom_page = add_submenu_page(
+			'/plugins.php',
+			__( 'WP Simple Google Sheets Fetcher', 'wp-simple-google-sheets-fetcher' ),
+			__( 'WP Simple Google Sheets Fetcher', 'wp-simple-google-sheets-fetcher' ),
+			'edit_others_posts',
+			'wsgsf_settings',
+			array($this,'renderSettings')
+		);
+	}
+
+	public function renderSettings() {
 
 		if ( isset( $_POST['api_key'] ) ) {
 			setApiKey( $_POST['api_key'] );
@@ -38,27 +75,9 @@ class WPSimpleGoogleSheetsFetcher {
 		if ( ! getSpreadSheetId() ) {
 			echo $this->renderApiKeyNotSet();
 		}
-
 	}
 
-	function renderSetApiKey() {
-		return '<span class="warn">API Key and SpreadSheetId set!</span >';
-	}
-
-	function renderApiKeyNotSet() {
-
-		$html = '<div class="api-key" >';
-		$html .= '<strong > You have not entered your API key </strong >';
-		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] ) . '" method="POST" >';
-		$html .= 'API Key:<input type="text" name="api_key" placeholder="API-Key" required />';
-		$html .= 'SpreadSheetId:<input type="text" name="spread_sheetId" placeholder="Spread-SheetId" required />';
-		$html .= '<input type="submit" value="Set Configuration Info" />';
-		$html .= '</form >';
-		$html .= '<em> This can be found in the <a href="http://developers.google.com/console" target="_blank"> Google API Console </em >';
-		$html .= '</div>';
-
-		return $html;
-	}
 }
 
 $WPSimpleGoogleSheetsFetcher = new WPSimpleGoogleSheetsFetcher();
+$WPSimpleGoogleSheetsFetcher->init();
