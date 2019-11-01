@@ -63,18 +63,15 @@ class WPSimpleGoogleSheetsFetcher {
 			echo $this->renderSetApiKey();
 		}
 
-		if ( ! getApiKey() ) {
-			echo $this->renderApiKeyNotSet();
-		}
-
 		if ( isset( $_POST['spread_sheetId'] ) ) {
 			setSpreadSheetId( $_POST['spread_sheetId'] );
 			echo $this->renderSetApiKey();
 		}
 
-		if ( ! getSpreadSheetId() ) {
+		if ( ! getApiKey() || ! getSpreadSheetId() ) {
 			echo $this->renderApiKeyNotSet();
 		}
+
 	}
 
 }
