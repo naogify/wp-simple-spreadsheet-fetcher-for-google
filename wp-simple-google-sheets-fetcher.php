@@ -19,25 +19,31 @@ include_once dirname( __FILE__ ) . '/blocks/get-value-query.php';
 
 class WPSimpleGoogleSheetsFetcher {
 
-	function __construct() {
+	public function __construct() {
 	}
 
 	public function init() {
 		add_action( 'admin_menu', array( $this, 'addSubMenu' ) );
 	}
 
-	function renderSetApiKey() {
-		return '<span class="warn">' . __( "API Key and SpreadSheetId set!", 'wp-simple-google-sheets-fetcher' ) . '</span >';
+	public function renderSetApiKey() {
+		$message = '<span class="success" style="color:#28a745; font-size:1.2rem">' . __( "API Key and SpreadSheetId set!", 'wp-simple-google-sheets-fetcher' ) . '</span >';
+
+		return $this->renderSettingsPage( $message );
 	}
 
-	function renderApiKeyNotSet() {
+	public function renderApiKeyNotSet() {
+		$message = '<strong class="warn" style="color:#dc3545; font-size:1.2rem">' . __( " You have not entered your API key", 'wp-simple-google-sheets-fetcher' ) . '</strong >';
+		return $this->renderSettingsPage( $message );
+	}
 
+	public function renderSettingsPage( $message ) {
 		$html = '<div class="api-key" >';
-		$html .= '<h2>' . __( "== Setting API key and SpreadSheetId ==", 'wp-simple-google-sheets-fetcher' ) . '</h2>';
-		$html .= '<strong >' . __( " You have not entered your API key", 'wp-simple-google-sheets-fetcher' ) . '</strong >';
+		$html .= '<h2>' . __( "Setting API key and SpreadSheetId", 'wp-simple-google-sheets-fetcher' ) . '</h2>';
+		$html .= $message;
 		$html .= '<br>';
 		$html .= '<br>';
-		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"] ) . '" method="POST" >';
+		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] . '?' . $_SERVER["QUERY_STRING"] ) . '" method="POST" >';
 		$html .= __( "API Key:", 'wp-simple-google-sheets-fetcher' ) . '<input type="text" name="api_key" placeholder="API-Key" required />';
 		$html .= '<br>';
 		$html .= __( "SpreadSheetId:", 'wp-simple-google-sheets-fetcher' ) . '<input type="text" name="spread_sheetId" placeholder="Spread-SheetId" required />';
@@ -47,7 +53,7 @@ class WPSimpleGoogleSheetsFetcher {
 		$html .= '</form >';
 		$html .= '<br>';
 		$html .= '<em>' . __( "This can be found in the", 'wp-simple-google-sheets-fetcher' ) . '<a href="http://developers.google.com/console" target="_blank">' . __( "Google API Console", 'wp-simple-google-sheets-fetcher' ) . '</a></em >';
-		$html .= '<h2>' . __( "== How to use ==", 'wp-simple-google-sheets-fetcher' ) . '</h2>';
+		$html .= '<h2>' . __( "How to use", 'wp-simple-google-sheets-fetcher' ) . '</h2>';
 		$html .= '<ul>';
 		$html .= '<li>' . __( "1. Create the api key . For more detail . Please refer to ", 'wp-simple-google-sheets-fetcher' ) . '<a href="https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the" target="_blank">' . __( "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the", 'wp-simple-google-sheets-fetcher' ) . '</a></li>';
 		$html .= '<li>' . __( "2. Turn on Get shareable link . For more detail . Please refer to ", 'wp-simple-google-sheets-fetcher' ) . '<a href="https://support.google.com/drive/answer/2494822#link_sharing" target="_blank">' . __( "https://support.google.com/drive/answer/2494822#link_sharing", 'wp-simple-google-sheets-fetcher' ) . '</a></li>';
@@ -59,7 +65,6 @@ class WPSimpleGoogleSheetsFetcher {
 		$html .= '</div>';
 		return $html;
 	}
-
 	public function addSubMenu() {
 		$custom_page = add_submenu_page(
 			'/plugins.php',
@@ -76,14 +81,13 @@ class WPSimpleGoogleSheetsFetcher {
 		if ( isset( $_POST['api_key'] ) && isset( $_POST['spread_sheetId'] ) ) {
 			setApiKey( $_POST['api_key'] );
 			setSpreadSheetId( $_POST['spread_sheetId'] );
-
-			echo $this->renderSetApiKey();
 		}
 
 		if ( ! getApiKey() || ! getSpreadSheetId() ) {
 			echo $this->renderApiKeyNotSet();
+		}else{
+			echo $this->renderSetApiKey();
 		}
-
 	}
 
 }
