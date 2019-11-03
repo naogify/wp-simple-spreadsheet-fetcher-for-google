@@ -27,20 +27,20 @@ class WPSimpleGoogleSheetsFetcher {
 	}
 
 	function renderSetApiKey() {
-		return '<span class="warn">API Key and SpreadSheetId set!</span >';
+		return '<span class="warn">' . __( "API Key and SpreadSheetId set!", 'wp-simple-google-sheets-fetcher' ) . '</span >';
 	}
 
 	function renderApiKeyNotSet() {
 
 		$html = '<div class="api-key" >';
-		$html .= '<strong > You have not entered your API key </strong >';
+		$html .= '<strong >' . __( " You have not entered your API key", 'wp-simple-google-sheets-fetcher' ) . '</strong >';
 		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"] ) . '" method="POST" >';
-		$html .= 'API Key:<input type="text" name="api_key" placeholder="API-Key" required />';
+		$html .= __( "API Key:", 'wp-simple-google-sheets-fetcher' ) . '<input type="text" name="api_key" placeholder="API-Key" required />';
 		$html .= '<br>';
-		$html .= 'SpreadSheetId:<input type="text" name="spread_sheetId" placeholder="Spread-SheetId" required />';
+		$html .= __( "SpreadSheetId:", 'wp-simple-google-sheets-fetcher' ) . '<input type="text" name="spread_sheetId" placeholder="Spread-SheetId" required />';
 		$html .= '<input type="submit" value="Set Configuration Info" />';
 		$html .= '</form >';
-		$html .= '<em> This can be found in the <a href="http://developers.google.com/console" target="_blank"> Google API Console</a></em >';
+		$html .= '<em>' . __( "This can be found in the", 'wp-simple-google-sheets-fetcher' ) . '<a href="http://developers.google.com/console" target="_blank">' . __( "Google API Console", 'wp-simple-google-sheets-fetcher' ) . '</a></em >';
 		$html .= '</div>';
 
 		return $html;
