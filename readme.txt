@@ -11,9 +11,9 @@ This is the simple plugin to fetch data from google sheets.
 
 == How to use ==
 
-1. Create the api key. Fore more detail. Please refer to [https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the](https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the).
-2. Turn on Get shareable link. Fore more detail. Please refer to [https://support.google.com/drive/answer/2494822#link_sharing](https://support.google.com/drive/answer/2494822#link_sharing)
-3. Get Spreadsheet ID. Fore more detail. Please refer to [https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id](https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id)
+1. Create the api key. For more detail. Please refer to [https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the](https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the).
+2. Turn on Get shareable link. For more detail. Please refer to [https://support.google.com/drive/answer/2494822#link_sharing](https://support.google.com/drive/answer/2494822#link_sharing)
+3. Get Spreadsheet ID. For more detail. Please refer to [https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id](https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id)
 4. Move to the settings page from side menu that Plugins > WP Simple Google Sheets Fetcher.
 6. Enter your api key and sheetsID in form.
 7. Choose "Display Google Sheets Data" block, use side panel to indicate the range to fetch data.
