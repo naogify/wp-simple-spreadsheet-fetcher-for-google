@@ -9,8 +9,15 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 This is the simple plugin to fetch data from google sheets.
 
-== Description ==
-
+== How to use ==
+1. Login your Google Account in your browser.
+2. Click → https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the
+3. Click [Enable the Google Sheets API] button.
+4. Click [Create API key] button and get your api key.
+5. Move to the settings page from side menu that Plugins > WP Simple Google Sheets Fetcher.
+6. Enter your api key and sheetsID in form.
+7. In the new post, use side panel to indicate the range to fetch data.
+8. It will display the data in your post.
 
 == Installation ==
 
