@@ -36,6 +36,7 @@ class WPSimpleGoogleSheetsFetcher {
 		$html .= '<strong > You have not entered your API key </strong >';
 		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"] ) . '" method="POST" >';
 		$html .= 'API Key:<input type="text" name="api_key" placeholder="API-Key" required />';
+		$html .= '<br>';
 		$html .= 'SpreadSheetId:<input type="text" name="spread_sheetId" placeholder="Spread-SheetId" required />';
 		$html .= '<input type="submit" value="Set Configuration Info" />';
 		$html .= '</form >';
