@@ -62,21 +62,22 @@ function get_selected_value( $range ) {
 
 	$data = '';
 	if ( empty( $values ) ) {
-		$data .= "No data found.\n";
+		$data .= __( 'No data found.', 'wp-simple-google-sheets-fetcher' );
 	} else {
 
 		foreach ( $values as $row ) {
 			$data .= '<tr>';
 			for ( $i = 0; $i < count( $row ); $i ++ ) {
-				$data .= '<td>' . $row[ $i ] . '</td>';
+				$data .= '<td>' . esc_html( $row[ $i ] ) . '</td>';
 			}
 			$data .= '</tr>';
 		}
 	}
-
+	$div_h   = '<div class="wp-simple-google-sheets-fetcher">';
+	$div_f   = '</div>';
 	$table_h = '<table>';
 	$table_f = '</table>';
 
-	return $table_h . $data . $table_f;
+	return $div_h . $table_h . $data . $table_f . $div_f;
 }
 ?>

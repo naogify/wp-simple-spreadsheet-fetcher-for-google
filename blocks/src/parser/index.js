@@ -27,7 +27,7 @@
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'Parser block', 'wp-simple-google-sheets-fetcher' ),
+		title: __( 'Display Google Sheets Data', 'wp-simple-google-sheets-fetcher' ),
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.

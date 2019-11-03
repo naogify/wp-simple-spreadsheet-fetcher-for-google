@@ -3,9 +3,30 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-
-.wp-block-wp-simple-google-sheets-fetcher-parser {
-	background-color: #000;
-	color: #fff;
-	padding: 2px;
+.wp-simple-google-sheets-fetcher table {
+	margin: 0 0 1rem;
+	border-collapse: collapse;
+	width: 100%;
+	display: table;
+	border-spacing: 2px;
+	border-color: grey;
+}
+.wp-simple-google-sheets-fetcher tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+.wp-simple-google-sheets-fetcher tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+.wp-simple-google-sheets-fetcher table td, .wp-simple-google-sheets-fetcher table th {
+	padding: 0.5em;
+	border: 1px solid #767676;
+	word-break: break-all;
+}
+.wp-simple-google-sheets-fetcher td {
+	display: table-cell;
+	vertical-align: inherit;
 }
