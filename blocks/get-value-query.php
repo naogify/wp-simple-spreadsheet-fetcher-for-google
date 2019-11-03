@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-include_once __DIR__ . '/vendor/autoload.php';
-include_once "templates/base.php";
+include_once dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
+include_once dirname( dirname( __FILE__ ) ) . '/templates/base.php';
 
 
 function get_selected_value( $range ) {
@@ -28,7 +28,6 @@ function get_selected_value( $range ) {
 	 * using the anonymous quota.
 	 ************************************************/
 	$client = new Google_Client();
-	$client->setApplicationName( "CoolChoice2019 Application" );
 
 	// Warn if the API key isn't set.
 	if ( ! $apiKey = getApiKey() ) {
@@ -46,6 +45,7 @@ function get_selected_value( $range ) {
 	$client->setDeveloperKey( $apiKey );
 	$service = new Google_Service_Sheets( $client );
 
+
 	/************************************************
 	 * We make a call to our service, which will
 	 * normally map to the structure of the API.
@@ -57,20 +57,26 @@ function get_selected_value( $range ) {
 	 ************************************************/
 
 	$response = $service->spreadsheets_values->get( $spreadSheetId, $range );
+
 	$values   = $response->getValues();
 
-	$data     = '';
+	$data = '';
 	if ( empty( $values ) ) {
 		$data .= "No data found.\n";
 	} else {
 
 		foreach ( $values as $row ) {
-			$data .= $row[0];
-			// Print columns A and E, which correspond to indices 0 and 4.
-//			$data .= $row[0] . "," . $row[4] . "\n";
+			$data .= '<tr>';
+			for ( $i = 0; $i < count( $row ); $i ++ ) {
+				$data .= '<td>' . $row[ $i ] . '</td>';
+			}
+			$data .= '</tr>';
 		}
 	}
 
-	return $data;
+	$table_h = '<table>';
+	$table_f = '</table>';
+
+	return $table_h . $data . $table_f;
 }
 ?>

@@ -12,7 +12,7 @@
  *
  * @see https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type/#enqueuing-block-scripts
  */
-include_once dirname( dirname( __FILE__ ) ) . '/get-value-query.php';
+include_once dirname( __FILE__ ) . '/get-value-query.php';
 function parser_block_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
@@ -62,6 +62,7 @@ function parser_block_init() {
 			]
 		],
 		'render_callback' => function ( $attributes ) {
+
 			return get_selected_value( $attributes['range'] );
 		},
 	) );

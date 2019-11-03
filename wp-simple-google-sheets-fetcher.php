@@ -15,7 +15,7 @@
 include_once dirname( __FILE__ ) . '/vendor/autoload.php';
 include_once dirname( __FILE__ ) . '/templates/base.php';
 include_once dirname( __FILE__ ) . '/blocks/parser.php';
-include_once dirname( __FILE__ ) . '/get-value-query.php';
+include_once dirname( __FILE__ ) . '/blocks/get-value-query.php';
 
 class WPSimpleGoogleSheetsFetcher {
 
@@ -34,7 +34,7 @@ class WPSimpleGoogleSheetsFetcher {
 
 		$html = '<div class="api-key" >';
 		$html .= '<strong > You have not entered your API key </strong >';
-		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] ) . '" method="POST" >';
+		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"] ) . '" method="POST" >';
 		$html .= 'API Key:<input type="text" name="api_key" placeholder="API-Key" required />';
 		$html .= 'SpreadSheetId:<input type="text" name="spread_sheetId" placeholder="Spread-SheetId" required />';
 		$html .= '<input type="submit" value="Set Configuration Info" />';
@@ -58,13 +58,10 @@ class WPSimpleGoogleSheetsFetcher {
 
 	public function renderSettings() {
 
-		if ( isset( $_POST['api_key'] ) ) {
+		if ( isset( $_POST['api_key'] ) && isset( $_POST['spread_sheetId'] ) ) {
 			setApiKey( $_POST['api_key'] );
-			echo $this->renderSetApiKey();
-		}
-
-		if ( isset( $_POST['spread_sheetId'] ) ) {
 			setSpreadSheetId( $_POST['spread_sheetId'] );
+
 			echo $this->renderSetApiKey();
 		}
 
