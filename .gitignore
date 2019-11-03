@@ -10,4 +10,5 @@ node_modules/
 credentials.json
 token.json
 .apiKey
+.spreadSheetId
 vendor/
