@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     WP Simple Google Sheets Fetcher
- * Plugin URI:      PLUGIN SITE HERE
+ * Plugin URI:      https://github.com/naogify/wp-simple-google-sheets-fetcher
  * Description:     Simple plugin to fetch data from google spreadsheet.
  * Author:          Naoki Ohashi
  * Author URI:      https://naoki-is-me
