@@ -3,7 +3,7 @@
  * Functions to register client-side assets (scripts and stylesheets) for the
  * Gutenberg block.
  *
- * @package wp-simple-google-sheets-fetcher
+ * @package wp-s2fg
  */
 
 /**
@@ -51,7 +51,7 @@ function parser_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	register_block_type( 'wp-simple-google-sheets-fetcher/parser', array(
+	register_block_type( 'wp-s2fg/parser', array(
 		'editor_script'   => 'parser-block-editor',
 		'editor_style'    => 'parser-block-editor',
 		'style'           => 'parser-block',
