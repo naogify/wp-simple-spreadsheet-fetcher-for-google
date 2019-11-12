@@ -1,4 +1,4 @@
-=== WP Simple Google Sheets Fetcher ===
+=== WP Simple Spreadsheet Fetcher for Google ===
 Contributors: naoki0h
 Tags: fetcher, api
 Requires at least: 5.0
@@ -16,7 +16,7 @@ This is the simple plugin to fetch data from google sheets.
 3. Get Spreadsheet ID. For more detail. Please refer to [https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id](https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id)
 4. Move to the settings page from side menu that Plugins > WP Simple Google Sheets Fetcher.
 6. Enter your api key and sheetsID in form.
-7. Choose "Display Google Sheets Data" block, use side panel to indicate the range to fetch data.
+7. Choose "Display Google Sheets Data" block at Widgets category, use side panel to indicate the range to fetch data.
 8. It will display the data in your post.
 
 == Installation ==

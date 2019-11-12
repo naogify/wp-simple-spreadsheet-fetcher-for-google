@@ -32,14 +32,14 @@ function get_selected_value( $range ) {
 	// Warn if the API key isn't set.
 	if ( ! $apiKey = getApiKey() ) {
 
-		return __( 'API-KEY is not set.', 'wp-simple-google-sheets-fetcher' );
+		return __( 'API-KEY is not set.', 'wp-s2fg' );
 	}
 	if ( ! $spreadSheetId = getSpreadSheetId() ) {
 
-		return __( 'SpreadSheetId is not set.', 'wp-simple-google-sheets-fetcher' );
+		return __( 'SpreadSheetId is not set.', 'wp-s2fg' );
 	}
 	if ( ! $range ) {
-		return __( 'Range is not set.', 'wp-simple-google-sheets-fetcher' );
+		return __( 'Range is not set.', 'wp-s2fg' );
 	}
 
 	$client->setDeveloperKey( $apiKey );
@@ -62,7 +62,7 @@ function get_selected_value( $range ) {
 
 	$data = '';
 	if ( empty( $values ) ) {
-		$data .= __( 'No data found.', 'wp-simple-google-sheets-fetcher' );
+		$data .= __( 'No data found.', 'wp-s2fg' );
 	} else {
 
 		foreach ( $values as $row ) {
@@ -73,7 +73,7 @@ function get_selected_value( $range ) {
 			$data .= '</tr>';
 		}
 	}
-	$div_h   = '<div class="wp-simple-google-sheets-fetcher">';
+	$div_h   = '<div class="wp-s2fg">';
 	$div_f   = '</div>';
 	$table_h = '<table>';
 	$table_f = '</table>';
