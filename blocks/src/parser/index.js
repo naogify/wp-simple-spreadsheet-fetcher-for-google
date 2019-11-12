@@ -22,12 +22,12 @@
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
 	 */
-	registerBlockType( 'wp-simple-google-sheets-fetcher/parser', {
+	registerBlockType( 'wp-s2fg/parser', {
 		/**
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'Display Google Sheets Data', 'wp-simple-google-sheets-fetcher' ),
+		title: __( 'Display Google Sheets Data', 'wp-s2fg' ),
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
@@ -73,14 +73,14 @@
 					el(
 						TextControl,
 						{
-							label: __("Please Select Range in A1 notation. Example : Sheets1!A2:E.", 'wp-simple-google-sheets-fetcher'),
+							label: __("Please Select Range in A1 notation. Example : Sheets1!A2:E.", 'wp-s2fg'),
 							value: range,
 							onChange: onChangeRange,
 						}
 					)
 				),
 				el(ServerSideRender, {
-				block: 'wp-simple-google-sheets-fetcher/parser',
+				block: 'wp-s2fg/parser',
 				attributes: props.attributes
 				}),
 			];
