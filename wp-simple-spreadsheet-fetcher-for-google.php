@@ -78,8 +78,8 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 	public function renderSettings() {
 
 		if ( isset( $_POST['api_key'] ) && isset( $_POST['spread_sheetId'] ) ) {
-			setApiKey( $_POST['api_key'] );
-			setSpreadSheetId( $_POST['spread_sheetId'] );
+			setApiKey( sanitize_text_field($_POST['api_key']) );
+			setSpreadSheetId( sanitize_text_field($_POST['spread_sheetId']) );
 		}
 
 		if ( ! getApiKey() || ! getSpreadSheetId() ) {
