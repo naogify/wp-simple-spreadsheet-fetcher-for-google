@@ -1,26 +1,24 @@
 <?php
-function getApiKey()
+function wp2s2fg_get_api_key()
 {
-  $file = __DIR__ . '/.apiKey';
-  if (file_exists($file)) {
-	  return str_replace( PHP_EOL, '', file_get_contents( $file ) );
-  }
-}
-
-function getSpreadSheetId() {
-	$file = __DIR__ . '/.spreadSheetId';
-	if ( file_exists( $file ) ) {
-		return str_replace( PHP_EOL, '', file_get_contents( $file ) );
+	$api_key = esc_html(get_option( 'wp2s2fg-api-key' ));
+	if ( $api_key ) {
+		return $api_key;
 	}
 }
 
-function setApiKey($apiKey)
-{
-  $file = __DIR__ . '/.apiKey';
-  file_put_contents($file, $apiKey);
+function wp2s2fg_get_spread_sheet_id() {
+	$spread_sheet_id = esc_html(get_option( 'wp2s2fg-spread-sheet-id' ));
+	if ( $spread_sheet_id ) {
+		return $spread_sheet_id;
+	}
 }
 
-function setSpreadSheetId( $spreadSheetId ) {
-	$file = __DIR__ . '/.spreadSheetId';
-	file_put_contents( $file, $spreadSheetId );
+function wp2s2fg_set_api_key($api_key)
+{
+	update_option( 'wp2s2fg-api-key', sanitize_text_field( $api_key ) );
+}
+
+function wp2s2fg_set_spread_sheet_id( $spread_sheet_id ) {
+	update_option( 'wp2s2fg-spread-sheet-id', sanitize_text_field( $spread_sheet_id ) );
 }
