@@ -23,11 +23,11 @@ function wp2s2fg_get_selected_value( $range ) {
 
 	$client = new Google_Client();
 
-	if ( ! $api_key = wp2s2fg_get_api_key() ) {
+	if ( ! $api_key = sanitize_text_field(wp2s2fg_get_api_key()) ) {
 
 		return __( 'API-KEY is not set.', 'wp2s2fg' );
 	}
-	if ( ! $spread_sheet_id = wp2s2fg_get_spread_sheet_id() ) {
+	if ( ! $spread_sheet_id = sanitize_text_field(wp2s2fg_get_spread_sheet_id()) ) {
 
 		return __( 'SpreadSheetId is not set.', 'wp2s2fg' );
 	}
@@ -37,9 +37,7 @@ function wp2s2fg_get_selected_value( $range ) {
 
 	$client->setDeveloperKey( $api_key );
 	$service = new Google_Service_Sheets( $client );
-
 	$response = $service->spreadsheets_values->get( $spread_sheet_id, $range );
-
 	$values   = $response->getValues();
 
 	$data = '';

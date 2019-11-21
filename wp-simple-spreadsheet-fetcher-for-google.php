@@ -56,7 +56,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] . '?' . $_SERVER["QUERY_STRING"] ) . '" method="POST" >';
 		$html .= __( "API Key : ", 'wp2s2fg' ) . '<input type="text" name="api_key" placeholder="API-Key" value="' . esc_html( $api_key ) . '" required />';
 		$html .= '<br>';
-		$html .= __( "SpreadSheetId : ", 'wp2s2fg' ) . '<input type="text" name="spread_sheetId" placeholder="Spread-SheetId" value="' . esc_html( $spread_sheet_id ) . '"required />';
+		$html .= __( "SpreadSheetId : ", 'wp2s2fg' ) . '<input type="text" name="spread_sheet_id" placeholder="Spread-SheetId" value="' . esc_html( $spread_sheet_id ) . '"required />';
 		$html .= '<br>';
 		$html .= '<br>';
 		$html .= '<input type="submit" value="Set Configuration Info" />';
@@ -88,9 +88,9 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 
 	public function render_settings() {
 
-		if ( isset( $_POST['api_key'] ) && isset( $_POST['spread_sheetId'] ) ) {
+		if ( isset( $_POST['api_key'] ) && isset( $_POST['spread_sheet_id'] ) ) {
 			wp2s2fg_set_api_key( sanitize_text_field( $_POST['api_key'] ) );
-			wp2s2fg_set_spread_sheet_id( sanitize_text_field( $_POST['spread_sheetId'] ) );
+			wp2s2fg_set_spread_sheet_id( sanitize_text_field( $_POST['spread_sheet_id'] ) );
 		}
 
 		if ( ! wp2s2fg_get_api_key() || ! wp2s2fg_get_spread_sheet_id() ) {
