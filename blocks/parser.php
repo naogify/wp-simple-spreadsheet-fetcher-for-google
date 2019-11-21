@@ -50,6 +50,7 @@ function wp2s2fg_parser_block_init() {
 		],
 		'render_callback' => function ( $attributes ) {
 
+
 			return wp2s2fg_get_selected_value( $attributes['range'] );
 		},
 	) );
