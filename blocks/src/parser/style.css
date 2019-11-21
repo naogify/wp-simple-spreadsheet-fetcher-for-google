@@ -3,7 +3,7 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-s2fg table {
+.wp2s2fg table {
 	margin: 0 0 1rem;
 	border-collapse: collapse;
 	width: 100%;
@@ -11,22 +11,22 @@
 	border-spacing: 2px;
 	border-color: grey;
 }
-.wp-s2fg tbody {
+.wp2s2fg tbody {
 	display: table-row-group;
 	vertical-align: middle;
 	border-color: inherit;
 }
-.wp-s2fg tr {
+.wp2s2fg tr {
 	display: table-row;
 	vertical-align: inherit;
 	border-color: inherit;
 }
-.wp-s2fg table td, .wp-s2fg table th {
+.wp2s2fg table td, .wp2s2fg table th {
 	padding: 0.5em;
 	border: 1px solid #767676;
 	word-break: break-all;
 }
-.wp-s2fg td {
+.wp2s2fg td {
 	display: table-cell;
 	vertical-align: inherit;
 }

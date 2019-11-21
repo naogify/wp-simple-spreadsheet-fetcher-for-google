@@ -1,20 +1,7 @@
 <?php
-/**
- * Functions to register client-side assets (scripts and stylesheets) for the
- * Gutenberg block.
- *
- * @package wp-s2fg
- */
-
-/**
- * Registers all block assets so that they can be enqueued through Gutenberg in
- * the corresponding context.
- *
- * @see https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type/#enqueuing-block-scripts
- */
 include_once dirname( __FILE__ ) . '/get-value-query.php';
-function parser_block_init() {
-	// Skip block registration if Gutenberg is not enabled/merged.
+function wp2s2fg_parser_block_init() {
+
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
@@ -51,7 +38,7 @@ function parser_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	register_block_type( 'wp-s2fg/parser', array(
+	register_block_type( 'wp2s2fg/parser', array(
 		'editor_script'   => 'parser-block-editor',
 		'editor_style'    => 'parser-block-editor',
 		'style'           => 'parser-block',
@@ -63,8 +50,9 @@ function parser_block_init() {
 		],
 		'render_callback' => function ( $attributes ) {
 
-			return get_selected_value( $attributes['range'] );
+
+			return wp2s2fg_get_selected_value( $attributes['range'] );
 		},
 	) );
 }
-add_action( 'init', 'parser_block_init' );
+add_action( 'init', 'wp2s2fg_parser_block_init' );
