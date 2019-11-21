@@ -19,50 +19,32 @@ include_once dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
 include_once dirname( dirname( __FILE__ ) ) . '/templates/base.php';
 
 
-function get_selected_value( $range ) {
+function wp2s2fg_get_selected_value( $range ) {
 
-	/************************************************
-	 * We create the client and set the simple API
-	 * access key. If you comment out the call to
-	 * setDeveloperKey, the request may still succeed
-	 * using the anonymous quota.
-	 ************************************************/
 	$client = new Google_Client();
 
-	// Warn if the API key isn't set.
-	if ( ! $apiKey = getApiKey() ) {
+	if ( ! $api_key = wp2s2fg_get_api_key() ) {
 
-		return __( 'API-KEY is not set.', 'wp-s2fg' );
+		return __( 'API-KEY is not set.', 'wp2s2fg' );
 	}
-	if ( ! $spreadSheetId = getSpreadSheetId() ) {
+	if ( ! $spread_sheet_id = wp2s2fg_get_spread_sheet_id() ) {
 
-		return __( 'SpreadSheetId is not set.', 'wp-s2fg' );
+		return __( 'SpreadSheetId is not set.', 'wp2s2fg' );
 	}
 	if ( ! $range ) {
-		return __( 'Range is not set.', 'wp-s2fg' );
+		return __( 'Range is not set.', 'wp2s2fg' );
 	}
 
-	$client->setDeveloperKey( $apiKey );
+	$client->setDeveloperKey( $api_key );
 	$service = new Google_Service_Sheets( $client );
 
-
-	/************************************************
-	 * We make a call to our service, which will
-	 * normally map to the structure of the API.
-	 * In this case $service is Books API, the
-	 * resource is volumes, and the method is
-	 * listVolumes. We pass it a required parameters
-	 * (the query), and an array of named optional
-	 * parameters.
-	 ************************************************/
-
-	$response = $service->spreadsheets_values->get( $spreadSheetId, $range );
+	$response = $service->spreadsheets_values->get( $spread_sheet_id, $range );
 
 	$values   = $response->getValues();
 
 	$data = '';
 	if ( empty( $values ) ) {
-		$data .= __( 'No data found.', 'wp-s2fg' );
+		$data .= __( 'No data found.', 'wp2s2fg' );
 	} else {
 
 		foreach ( $values as $row ) {
@@ -73,7 +55,7 @@ function get_selected_value( $range ) {
 			$data .= '</tr>';
 		}
 	}
-	$div_h   = '<div class="wp-s2fg">';
+	$div_h   = '<div class="wp2s2fg">';
 	$div_f   = '</div>';
 	$table_h = '<table>';
 	$table_f = '</table>';

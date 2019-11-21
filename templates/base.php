@@ -1,24 +1,24 @@
 <?php
-function getApiKey()
+function wp2s2fg_get_api_key()
 {
-	$apiKey = esc_html(get_option( 'wp-s2fg-api-key' ));
-	if ( $apiKey ) {
-		return $apiKey;
+	$api_key = esc_html(get_option( 'wp-s2fg-api-key' ));
+	if ( $api_key ) {
+		return $api_key;
 	}
 }
 
-function getSpreadSheetId() {
-	$spreadSheetId = esc_html(get_option( 'wp-s2fg-spread-sheet-id' ));
-	if ( $spreadSheetId ) {
-		return $spreadSheetId;
+function wp2s2fg_get_spread_sheet_id() {
+	$spread_sheet_id = esc_html(get_option( 'wp-s2fg-spread-sheet-id' ));
+	if ( $spread_sheet_id ) {
+		return $spread_sheet_id;
 	}
 }
 
-function setApiKey($apiKey)
+function wp2s2fg_set_api_key($api_key)
 {
-	update_option( 'wp-s2fg-api-key', sanitize_text_field( $apiKey ) );
+	update_option( 'wp-s2fg-api-key', sanitize_text_field( $api_key ) );
 }
 
-function setSpreadSheetId( $spreadSheetId ) {
-	update_option( 'wp-s2fg-spread-sheet-id', sanitize_text_field( $spreadSheetId ) );
+function wp2s2fg_set_spread_sheet_id( $spread_sheet_id ) {
+	update_option( 'wp-s2fg-spread-sheet-id', sanitize_text_field( $spread_sheet_id ) );
 }
