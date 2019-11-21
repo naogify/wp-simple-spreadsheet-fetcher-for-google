@@ -3,7 +3,7 @@ Contributors: naoki0h
 Tags: fetcher, api
 Requires at least: 5.0
 Tested up to: 5.2.4
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,6 +32,9 @@ This is the simple plugin to fetch data from google sheets.
 4. Enter the range to fetch data.
 
 == Changelog ==
+
+= 0.2.0 =
+Fix to register wordpress.org.
 
 = 0.1.0 =
 First commit.

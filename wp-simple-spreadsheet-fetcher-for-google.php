@@ -7,7 +7,7 @@
  * Author URI:      https://naoki-is-me
  * Text Domain:     wp2s2fg
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         0.2.0
  *
  * @package         Wp_Simple_Spreadsheet_Fetcher_for_Google
  */
