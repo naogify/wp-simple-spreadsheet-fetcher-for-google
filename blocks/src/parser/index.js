@@ -1,6 +1,6 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const {PanelBody, ServerSideRender, TextControl} = wp.components;
+const {SelectControl,PanelBody, ServerSideRender, TextControl} = wp.components;
 const {Fragment} = wp.element;
 const {InnerBlocks,RichText, InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 
@@ -29,16 +29,35 @@ registerBlockType('wp2s2fg/parser', {
 			source: 'html',
 			selector: 'p.wp2s2fg_parser_number_after',
 		},
+		layout: {
+			type: 'string',
+			default: 'event-registration-advance',
+		},
 	},
 
 	edit(props) {
 		const {setAttributes, className} = props;
-		const {price, after, caption} = props.attributes;
+		const {layout, price, after, caption} = props.attributes;
 		const ALLOWED_BLOCKS = ['wp2s2fg/parser-item'];
 		const TEMPLATE = [ALLOWED_BLOCKS];
 
 		return (
 			<Fragment>
+				<InspectorControls>
+					<SelectControl
+						label={__('Display Google Sheets Data', 'wp2s2fg')}
+						value={layout}
+						options={[
+							{label: __('Minimum', 'wp2s2fg'), value: 'minimum'},
+							{label: __('Event Registration Simple', 'wp2s2fg'), value: 'event-registration-simple'},
+							{label: __('Event Registration Advance', 'wp2s2fg'), value: 'event-registration-advance'},
+						]}
+						onChange={(value) => {
+							setAttributes({layout: value})
+						}}
+					>
+					</SelectControl>
+				</InspectorControls>
 				<div className={`${className} wp2s2fg_parser_container`}>
 					<div className={`wp2s2fg_parser_description`}>
 						<RichText
@@ -73,7 +92,7 @@ registerBlockType('wp2s2fg/parser', {
 	},
 
 	save(props) {
-		const {price, after, caption} = props.attributes;
+		const {layout, price, after, caption} = props.attributes;
 
 		return (
 			<div className={`wp2s2fg_parser_container`}>
