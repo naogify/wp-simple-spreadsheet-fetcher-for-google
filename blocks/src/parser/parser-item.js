@@ -5,7 +5,7 @@ const {Fragment} = wp.element;
 const {RichText, InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 
 registerBlockType('wp2s2fg/parser-item', {
-    title: __('Display Google Sheets Data2fdsafsda', 'wp2s2fg'),
+    title: __('Display Google Sheets Data Item', 'wp2s2fg'),
     parent: ['wp2s2fg/parser'],
     icon: 'smiley',
     category: 'widgets',

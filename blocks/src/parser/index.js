@@ -9,7 +9,7 @@ registerBlockType('wp2s2fg/parser', {
 	icon: 'smiley',
 	category: 'widgets',
 	supports: {
-		className: true,
+		className:true,
 		html: false,
 	},
 	attributes: {
@@ -19,22 +19,21 @@ registerBlockType('wp2s2fg/parser', {
 		},
 		caption: {
 			source: 'html',
-			selector: 'p',
+			selector: 'h4.wp2s2fg_parser_caption',
 		},
 		price: {
 			source: 'html',
-			selector: 'p',
+			selector: 'p.wp2s2fg_parser_price',
 		},
 		after: {
 			source: 'html',
-			selector: 'p',
+			selector: 'p.wp2s2fg_parser_number_after',
 		},
 	},
 
 	edit(props) {
 		const {setAttributes, className} = props;
 		const {price, after, caption} = props.attributes;
-
 		const ALLOWED_BLOCKS = ['wp2s2fg/parser-item'];
 		const TEMPLATE = [ALLOWED_BLOCKS];
 
@@ -43,7 +42,7 @@ registerBlockType('wp2s2fg/parser', {
 				<div className={`${className} wp2s2fg_parser_container`}>
 					<div className={`wp2s2fg_parser_description`}>
 						<RichText
-							tagName="p"
+							tagName="h4"
 							className={'wp2s2fg_parser_caption'}
 							onChange={(value) => setAttributes({caption: value})}
 							value={caption}
@@ -69,7 +68,6 @@ registerBlockType('wp2s2fg/parser', {
 					</div>
 				</div>
 			</Fragment>
-
 		);
 	},
 
@@ -78,10 +76,10 @@ registerBlockType('wp2s2fg/parser', {
 		const {price, after, caption} = props.attributes;
 
 		return (
-			<div className={`${className} wp2s2fg_parser_container`}>
+			<div className={`wp2s2fg_parser_container`}>
 				<div className={`wp2s2fg_parser_description`}>
 					<RichText.Content
-						tagName="p"
+						tagName="h4"
 						className={'wp2s2fg_parser_caption'}
 						value={caption}
 					/>
