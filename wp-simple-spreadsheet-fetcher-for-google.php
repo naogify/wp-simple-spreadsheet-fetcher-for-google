@@ -102,12 +102,6 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 			echo $this->render_set_api_key();
 		}
 	}
-
-	public function deactivation() {
-		wp2s2fg_delete_api_key();
-		wp2s2fg_delete_spread_sheet_id();
-	}
-
 }
 
 $WPSimpleSpreadsheetFetcherForGoogle = new WPSimpleSpreadsheetFetcherForGoogle();
