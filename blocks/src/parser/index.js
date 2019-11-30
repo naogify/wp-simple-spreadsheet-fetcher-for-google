@@ -73,7 +73,6 @@ registerBlockType('wp2s2fg/parser', {
 	},
 
 	save(props) {
-		const {className} = props;
 		const {price, after, caption} = props.attributes;
 
 		return (

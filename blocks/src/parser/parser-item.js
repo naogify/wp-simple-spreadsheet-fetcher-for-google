@@ -43,7 +43,7 @@ registerBlockType('wp2s2fg/parser-item', {
                 <InspectorControls>
                     <PanelBody title={__('Fetch Data Setting', 'wp2s2fg')}>
                         <TextControl
-                            label={__("Please Select Range in A1 notation. Example : Sheets1!A2:E", 'wp2s2fg')}
+                            label={__("Please Select Range in A1 notation. Example : Sheets1!A2", 'wp2s2fg')}
                             value={range}
                             onChange={(newRange) => setAttributes({range: newRange === undefined ? 'none' : newRange})}
                             initialOpen={true}
