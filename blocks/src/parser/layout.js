@@ -1,10 +1,6 @@
 import React from 'react';
-
 const {__} = wp.i18n;
-const {registerBlockType} = wp.blocks;
-const {SelectControl, PanelBody, ServerSideRender, TextControl} = wp.components;
-const {Fragment} = wp.element;
-const {InnerBlocks, RichText, InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
+const {InnerBlocks, RichText} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 
 export class EventRegistrationLayoutAdvance extends React.Component {
 
@@ -74,6 +70,71 @@ export class EventRegistrationLayoutAdvance extends React.Component {
                         />
                     </div>
                 </div>
+            );
+        }
+    }
+}
+
+export class EventRegistrationSimple extends React.Component {
+
+    render() {
+        const {setAttributes, className, attributes} = this.props.props;
+        const {caption} = attributes;
+        const for_ = this.props.for_;
+        const ALLOWED_BLOCKS = ['wp2s2fg/parser-item'];
+        const TEMPLATE = [ALLOWED_BLOCKS];
+
+        if(for_ === 'edit') {
+            return (
+                <div className={`${className} wp2s2fg_parser_container`}>
+                    <div className={`wp2s2fg_parser_description`}>
+                        <RichText
+                            tagName="h4"
+                            className={'wp2s2fg_parser_caption'}
+                            onChange={(value) => setAttributes({caption: value})}
+                            value={caption}
+                            placeholder={__('General Participant', 'wp2s2fg')}
+                        />
+                    </div>
+                    <div className={`wp2s2fg_parser_number_container`}>
+                        <InnerBlocks template={TEMPLATE} allowedBlocks={ALLOWED_BLOCKS} templateLock={'all'}/>
+                    </div>
+                </div>
+            );
+        }else if(for_ === 'save'){
+
+            return (
+                <div className={`${className} wp2s2fg_parser_container`}>
+                    <div className={`wp2s2fg_parser_description`}>
+                        <RichText.Content
+                            tagName="h4"
+                            className={'wp2s2fg_parser_caption'}
+                            value={caption}
+                        />
+                    </div>
+                    <div className={`wp2s2fg_parser_number_container`}>
+                        <InnerBlocks.Content/>
+                    </div>
+                </div>
+            );
+        }
+    }
+}
+
+export class Minimum extends React.Component {
+    render() {
+        const for_ = this.props.for_;
+        const ALLOWED_BLOCKS = ['wp2s2fg/parser-item'];
+        const TEMPLATE = [ALLOWED_BLOCKS];
+
+        if(for_ === 'edit') {
+            return (
+                <InnerBlocks template={TEMPLATE} allowedBlocks={ALLOWED_BLOCKS} templateLock={'all'}/>
+            );
+        }else if(for_ === 'save'){
+
+            return (
+                <InnerBlocks.Content/>
             );
         }
     }

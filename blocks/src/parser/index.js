@@ -3,7 +3,7 @@ const {registerBlockType} = wp.blocks;
 const {SelectControl,PanelBody} = wp.components;
 const {Fragment} = wp.element;
 const {InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
-import {EventRegistrationLayoutAdvance} from "./layout";
+import {EventRegistrationLayoutAdvance, EventRegistrationSimple, Minimum} from "./layout";
 
 registerBlockType('wp2s2fg/parser', {
 	title: __('Display Google Sheets Data', 'wp2s2fg'),
@@ -48,9 +48,9 @@ registerBlockType('wp2s2fg/parser', {
 							label={__('Select Layout', 'wp2s2fg')}
 							value={layout}
 							options={[
-								{label: __('Minimum', 'wp2s2fg'), value: 'minimum'},
-								{label: __('Event Registration Simple', 'wp2s2fg'), value: 'event-registration-simple'},
 								{label: __('Event Registration Advance', 'wp2s2fg'), value: 'event-registration-advance'},
+								{label: __('Event Registration Simple', 'wp2s2fg'), value: 'event-registration-simple'},
+								{label: __('Minimum', 'wp2s2fg'), value: 'minimum'},
 							]}
 							onChange={(value) => {
 								setAttributes({layout: value})
@@ -59,19 +59,39 @@ registerBlockType('wp2s2fg/parser', {
 						</SelectControl>
 					</PanelBody>
 				</InspectorControls>
-				<EventRegistrationLayoutAdvance
+				{layout === 'event-registration-advance' && <EventRegistrationLayoutAdvance
 					props={props}
 					for_={'edit'}
-				/>
+				/>}
+				{layout === 'event-registration-simple' && <EventRegistrationSimple
+					props={props}
+					for_={'edit'}
+				/>}
+				{layout === 'minimum' && <Minimum
+					props={props}
+					for_={'edit'}
+				/>}
 			</Fragment>
 		);
 	},
 
 	save(props) {
+		const {layout} = props.attributes;
 		return (
-			<EventRegistrationLayoutAdvance
-				props={props}
-				for_={'save'}
-			/>);
+			<Fragment>
+				{layout === 'event-registration-advance' && <EventRegistrationLayoutAdvance
+					props={props}
+					for_={'save'}
+				/>}
+				{layout === 'event-registration-simple' && <EventRegistrationSimple
+					props={props}
+					for_={'save'}
+				/>}
+				{layout === 'minimum' && <Minimum
+					props={props}
+					for_={'save'}
+				/>}
+			</Fragment>
+		);
 	}
 });
