@@ -34,7 +34,7 @@ This is the simple plugin to fetch data from Google Sheets.
 == Changelog ==
 
 = 0.2.3 =
-Fix to description and add style.
+Fix the description, and add event register layout.
 
 = 0.2.0 =
 Fix to register wordpress.org.
