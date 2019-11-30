@@ -13,17 +13,6 @@ registerBlockType('wp2s2fg/parser-item', {
         className: true,
         html: false,
     },
-    styles: [
-        {
-            name: 'wp2s2fg-default',
-            label: __('Default', 'wp2s2fg'),
-            isDefault: true
-        },
-        {
-            name: 'wp2s2fg-border',
-            label: __('Border', 'wp2s2fg'),
-        }
-    ],
     attributes: {
         className: {
             type: 'string',
@@ -43,7 +32,7 @@ registerBlockType('wp2s2fg/parser-item', {
                 <InspectorControls>
                     <PanelBody title={__('Fetch Data Setting', 'wp2s2fg')}>
                         <TextControl
-                            label={__("Please Select Range in A1 notation. Example : Sheets1!A2", 'wp2s2fg')}
+                            label={__(`Please set the cell in A1 notation. Example : Sheets1!A1`, 'wp2s2fg')}
                             value={range}
                             onChange={(newRange) => setAttributes({range: newRange === undefined ? 'none' : newRange})}
                             initialOpen={true}

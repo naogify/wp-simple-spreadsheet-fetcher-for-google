@@ -33,7 +33,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 		return __( 'SpreadSheetId is not set.', 'wp2s2fg' );
 	}
 	if ( ! $range ) {
-		return __( 'Range is not set.', 'wp2s2fg' );
+		return __( 'Cell is not set.', 'wp2s2fg' );
 	}
 
 	$client->setDeveloperKey( $api_key );

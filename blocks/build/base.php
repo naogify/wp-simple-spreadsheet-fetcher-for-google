@@ -22,3 +22,11 @@ function wp2s2fg_set_api_key($api_key)
 function wp2s2fg_set_spread_sheet_id( $spread_sheet_id ) {
 	update_option( 'wp2s2fg-spread-sheet-id', sanitize_text_field( $spread_sheet_id ) );
 }
+
+function wp2s2fg_delete_api_key() {
+	delete_option( 'wp2s2fg-api-key' );
+}
+
+function wp2s2fg_delete_spread_sheet_id() {
+	delete_option( 'wp2s2fg-spread-sheet-id' );
+}

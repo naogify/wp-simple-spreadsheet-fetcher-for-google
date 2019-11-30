@@ -26,6 +26,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 
 	public function init() {
 		add_action( 'admin_menu', array( $this, 'add_sub_menu' ) );
+		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 	}
 
 	public function render_set_api_key() {
@@ -71,7 +72,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= '<li>' . __( "2. Turn on Get shareable link . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://support.google.com/drive/answer/2494822#link_sharing" target="_blank">' . __( "https://support.google.com/drive/answer/2494822#link_sharing", 'wp2s2fg' ) . '</a></li>';
 		$html .= '<li>' . __( "3. Get Spreadsheet ID . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id" target="_blank">' . __( "https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id", 'wp2s2fg' ) . '</a></li>';
 		$html .= '<li>' . __( "4. Save your API key and Spreadsheet ID from the form above.", 'wp2s2fg' ) . '</li>';
-		$html .= '<li>' . __( "5. Choose \"Display Google Sheets Data\" block at Widgets category , use side panel to indicate the range to fetch data.", 'wp2s2fg' ) . '</li>';
+		$html .= '<li>' . __( "5. Choose \"Display Google Sheets Data\" block at Widgets category , use side panel to indicate the cell to fetch data.", 'wp2s2fg' ) . '</li>';
 		$html .= '</ul>';
 		$html .= '</div>';
 		return $html;
@@ -100,6 +101,11 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		}else{
 			echo $this->render_set_api_key();
 		}
+	}
+
+	public function deactivation() {
+		wp2s2fg_delete_api_key();
+		wp2s2fg_delete_spread_sheet_id();
 	}
 
 }
