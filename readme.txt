@@ -3,7 +3,7 @@ Contributors: naoki0h
 Tags: fetcher, api, Google Sheets
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 0.2.2
+Stable tag: 0.2.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,6 +32,9 @@ This is the simple plugin to fetch data from Google Sheets.
 4. Enter the cell to fetch data.
 
 == Changelog ==
+
+= 0.2.4 =
+Just fix text.
 
 = 0.2.3 =
 Fix the description, and add event register layout.
