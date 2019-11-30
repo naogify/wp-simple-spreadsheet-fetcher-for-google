@@ -1,4 +1,4 @@
 @import 'style.css';
-.wp2s2fg_parser_number p.rich-text.is-selected{
+.wp2s2fg_parser_number_container p.rich-text.is-selected{
     min-width: 55px;
 }

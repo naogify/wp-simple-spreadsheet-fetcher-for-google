@@ -56,14 +56,15 @@ registerBlockType('wp2s2fg/parser', {
 							placeholder={__('Free', 'wp2s2fg')}
 						/>
 					</div>
-					<div className={`wp2s2fg_parser_number`}>
+					<div className={`wp2s2fg_parser_number_container`}>
 						<InnerBlocks template={TEMPLATE} allowedBlocks={ALLOWED_BLOCKS} templateLock={'all'}/>
+						<span className={'wp2s2fg_parser_number_line'}>/</span>
 						<RichText
 							tagName="p"
 							className={'wp2s2fg_parser_number_after'}
 							onChange={(value) => setAttributes({after: value})}
 							value={after}
-							placeholder={__(' / 100', 'wp2s2fg')}
+							placeholder={__('100', 'wp2s2fg')}
 						/>
 					</div>
 				</div>
@@ -89,8 +90,9 @@ registerBlockType('wp2s2fg/parser', {
 						value={price}
 					/>
 				</div>
-				<div className={`wp2s2fg_parser_number`}>
+				<div className={`wp2s2fg_parser_number_container`}>
 					<InnerBlocks.Content/>
+					<span className={'wp2s2fg_parser_number_line'}>/</span>
 					<RichText.Content
 						tagName="p"
 						className={'wp2s2fg_parser_number_after'}
