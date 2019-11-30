@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-include_once dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
-include_once dirname( dirname( __FILE__ ) ) . '/templates/base.php';
+include_once dirname( dirname( dirname( __FILE__ ) ) ) . '/vendor/autoload.php';
+include_once dirname( __FILE__ ) . '/base.php';
 
 
 function wp2s2fg_get_selected_value( $range ) {

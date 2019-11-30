@@ -97,6 +97,20 @@
 			return null;
 		},
 	} );
+
+
+	wp.blocks.registerBlockStyle('wp2s2fg/parser',
+		[
+			{
+				name: 'wp2s2fg-default',
+				label: __('Default', 'vk-blocks'),
+				isDefault:true
+			},
+			{
+				name: 'wp2s2fg-border',
+				label: __('Border', 'vk-blocks'),
+			}
+		]);
 } )(
 	window.wp
 );
