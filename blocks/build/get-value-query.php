@@ -15,12 +15,13 @@
  * limitations under the License.
  */
 
-include_once dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
-include_once dirname( dirname( __FILE__ ) ) . '/templates/base.php';
+include_once dirname( dirname( dirname( __FILE__ ) ) ) . '/vendor/autoload.php';
+include_once dirname( __FILE__ ) . '/base.php';
 
 
-function wp2s2fg_get_selected_value( $range ) {
+function wp2s2fg_get_selected_value( $attributes ) {
 
+	$range     = $attributes['range'];
 	$client = new Google_Client();
 
 	if ( ! $api_key = sanitize_text_field(wp2s2fg_get_api_key()) ) {
@@ -32,7 +33,7 @@ function wp2s2fg_get_selected_value( $range ) {
 		return __( 'SpreadSheetId is not set.', 'wp2s2fg' );
 	}
 	if ( ! $range ) {
-		return __( 'Range is not set.', 'wp2s2fg' );
+		return __( 'Cell is not set.', 'wp2s2fg' );
 	}
 
 	$client->setDeveloperKey( $api_key );
@@ -44,20 +45,9 @@ function wp2s2fg_get_selected_value( $range ) {
 	if ( empty( $values ) ) {
 		$data .= __( 'No data found.', 'wp2s2fg' );
 	} else {
-
-		foreach ( $values as $row ) {
-			$data .= '<tr>';
-			for ( $i = 0; $i < count( $row ); $i ++ ) {
-				$data .= '<td>' . esc_html( $row[ $i ] ) . '</td>';
-			}
-			$data .= '</tr>';
-		}
+		$data = '<p class="wp2s2fg_parser_number">' . esc_html( $values[0][0] ) . '</p>';
 	}
-	$div_h   = '<div class="wp2s2fg">';
-	$div_f   = '</div>';
-	$table_h = '<table>';
-	$table_f = '</table>';
 
-	return $div_h . $table_h . $data . $table_f . $div_f;
+	return $data;
 }
 ?>
