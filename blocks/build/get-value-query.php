@@ -19,7 +19,10 @@ include_once dirname( dirname( dirname( __FILE__ ) ) ) . '/vendor/autoload.php';
 include_once dirname( __FILE__ ) . '/base.php';
 
 
-function wp2s2fg_get_selected_value( $range ) {
+function wp2s2fg_get_selected_value( $attributes ) {
+
+	$range     = $attributes['range'];
+	$className = $attributes['className'];
 
 	$client = new Google_Client();
 
@@ -53,8 +56,9 @@ function wp2s2fg_get_selected_value( $range ) {
 			$data .= '</tr>';
 		}
 	}
-	$div_h   = '<div class="wp2s2fg">';
-	$div_f   = '</div>';
+
+	$div_h     = '<div class="wp2s2fg ' . esc_attr( $className ) . '">';
+	$div_f     = '</div>';
 	$table_h = '<table>';
 	$table_f = '</table>';
 

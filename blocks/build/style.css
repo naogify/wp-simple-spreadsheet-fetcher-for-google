@@ -4,12 +4,13 @@
  * Replace them with your own styles or remove the file completely.
  */
 .wp2s2fg table {
-	margin: 0 0 1rem;
+	margin: 0;
 	border-collapse: collapse;
 	width: 100%;
 	display: table;
 	border-spacing: 2px;
 	border-color: grey;
+	text-align: center;
 }
 .wp2s2fg tbody {
 	display: table-row-group;
@@ -21,12 +22,29 @@
 	vertical-align: inherit;
 	border-color: inherit;
 }
-.wp2s2fg table td, .wp2s2fg table th {
+.wp2s2fg.is-style-wp2s2fg-border table td, .wp2s2fg.is-style-wp2s2fg-border table th {
 	padding: 0.5em;
 	border: 1px solid #767676;
 	word-break: break-all;
 }
+
 .wp2s2fg td {
 	display: table-cell;
 	vertical-align: inherit;
+}
+
+.wp2s2fg td, .wp2s2fg th{
+	border: none;
+	padding: 0;
+}
+
+.wp2s2fg_parser_container{
+	display: flex;
+	justify-content: space-around;
+}
+
+.wp2s2fg_parser_number{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
