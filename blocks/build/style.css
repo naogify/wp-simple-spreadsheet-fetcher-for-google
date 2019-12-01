@@ -38,28 +38,28 @@
 	padding: 0;
 }
 
-.wp2s2fg_parser_container{
+.wp2s2fg_fetcher-advanced_container{
 	display: flex;
 	justify-content: space-between;
 	border: 3px solid #e5e5e5;
 	padding: 1rem 2rem;
 }
 
-.wp2s2fg_parser_caption{
+.wp2s2fg_fetcher-advanced_caption{
 	margin-bottom: 0.5rem;
 }
 
-.wp2s2fg_parser_description{
+.wp2s2fg_fetcher-advanced_description{
 	max-width: 65%;
 	padding-right: 2rem;
 }
 
-.wp2s2fg_parser_price{
+.wp2s2fg_fetcher-advanced_price{
 	font-size: 0.8rem;
 	color: #767676;
 }
 
-.wp2s2fg_parser_number_container{
+.wp2s2fg_fetcher-advanced_number_container{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -70,7 +70,7 @@
 }
 
 @media (max-width: 768px) {
-	.wp2s2fg_parser_container{
+	.wp2s2fg_fetcher-advanced_container{
 		display: flex;
 		flex-direction: column;
 	}

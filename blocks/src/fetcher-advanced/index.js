@@ -5,8 +5,8 @@ const {Fragment} = wp.element;
 const {InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 import {EventRegistrationAdvance, EventRegistrationSimple, Minimum} from "./layout";
 
-registerBlockType('wp2s2fg/parser', {
-	title: __('Display Google Sheets Data', 'wp2s2fg'),
+registerBlockType('wp2s2fg/fetcher-advanced', {
+	title: __('Fetcher Advanced', 'wp2s2fg'),
 	icon: 'smiley',
 	category: 'wp2s2fg-blocks-cat',
 	supports: {
@@ -20,15 +20,15 @@ registerBlockType('wp2s2fg/parser', {
 		},
 		caption: {
 			source: 'html',
-			selector: 'h4.wp2s2fg_parser_caption',
+			selector: 'h4.wp2s2fg_fetcher-advanced_caption',
 		},
 		price: {
 			source: 'html',
-			selector: 'p.wp2s2fg_parser_price',
+			selector: 'p.wp2s2fg_fetcher-advanced_price',
 		},
 		after: {
 			source: 'html',
-			selector: 'p.wp2s2fg_parser_number_after',
+			selector: 'p.wp2s2fg_fetcher-advanced_number_after',
 		},
 		layout: {
 			type: 'string',

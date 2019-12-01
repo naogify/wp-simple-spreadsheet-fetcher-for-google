@@ -1,19 +1,19 @@
 <?php
 include_once dirname( __FILE__ ) . '/get-value-query.php';
-function wp2s2fg_parser_block_init() {
+function wp2s2fg_fetcher_block_init() {
 
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 	$dir      = dirname( __FILE__ );
 	$index_js = 'index.js';
-	$parser_item_js = 'parser-item.js';
+	$fetcher_item_js = 'fetcher-item.js';
 
 	$asset_file = include( $dir . '/index.asset.php' );
-	$asset_file_item = include( $dir . '/parser-item.asset.php' );
+	$asset_file_item = include( $dir . '/fetcher-item.asset.php' );
 
 	wp_register_script(
-		'parser-block-editor',
+		'fetcher-block-editor',
 		plugins_url( $index_js, __FILE__ ),
 		$asset_file['dependencies'],
 		$asset_file['version'],
@@ -21,16 +21,16 @@ function wp2s2fg_parser_block_init() {
 	);
 
 	wp_register_script(
-		'parser-item-block-editor',
-		plugins_url( $parser_item_js, __FILE__ ),
+		'fetcher-item-block-editor',
+		plugins_url( $fetcher_item_js, __FILE__ ),
 		$asset_file_item['dependencies'],
 		$asset_file_item['version'],
-		filemtime( "$dir/$parser_item_js" )
+		filemtime( "$dir/$fetcher_item_js" )
 	);
 
 	$editor_css = 'editor.css';
 	wp_register_style(
-		'parser-block-editor',
+		'fetcher-block-editor',
 		plugins_url( $editor_css, __FILE__ ),
 		array(),
 		filemtime( "$dir/$editor_css" )
@@ -38,21 +38,21 @@ function wp2s2fg_parser_block_init() {
 
 	$style_css = 'style.css';
 	wp_register_style(
-		'parser-block',
+		'fetcher-block',
 		plugins_url( $style_css, __FILE__ ),
 		array(),
 		filemtime( "$dir/$style_css" )
 	);
-	register_block_type( 'wp2s2fg/parser', array(
-		'editor_script' => 'parser-block-editor',
-		'editor_style'  => 'parser-block-editor',
-		'style'         => 'parser-block'
+	register_block_type( 'wp2s2fg/fetcher', array(
+		'editor_script' => 'fetcher-block-editor',
+		'editor_style'  => 'fetcher-block-editor',
+		'style'         => 'fetcher-block'
 	) );
 
-	register_block_type( 'wp2s2fg/parser-item', array(
-		'editor_script'   => 'parser-item-block-editor',
-		'editor_style'    => 'parser-block-editor',
-		'style'           => 'parser-block',
+	register_block_type( 'wp2s2fg/fetcher-item', array(
+		'editor_script'   => 'fetcher-item-block-editor',
+		'editor_style'    => 'fetcher-block-editor',
+		'style'           => 'fetcher-block',
 		'attributes'      => [
 			'className' => [
 				'type'    => 'string',
@@ -68,7 +68,7 @@ function wp2s2fg_parser_block_init() {
 		},
 	) );
 }
-add_action( 'init', 'wp2s2fg_parser_block_init' );
+add_action( 'init', 'wp2s2fg_fetcher_block_init' );
 
 if ( ! function_exists( 'wp2s2fg_categories' ) ) {
 	function wp2s2fg_categories( $categories ) {

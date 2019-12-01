@@ -45,7 +45,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	if ( empty( $values ) ) {
 		$data .= __( 'No data found.', 'wp2s2fg' );
 	} else {
-		$data = '<p class="wp2s2fg_parser_number">' . esc_html( $values[0][0] ) . '</p>';
+		$data = '<p class="wp2s2fg_fetcher-advanced_number">' . esc_html( $values[0][0] ) . '</p>';
 	}
 
 	return $data;
