@@ -1,8 +1,9 @@
 import React from 'react';
+
 const {__} = wp.i18n;
 const {InnerBlocks, RichText} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 
-export class EventRegistrationLayoutAdvance extends React.Component {
+export class EventRegistrationAdvance extends React.Component {
 
     render() {
         const {setAttributes, className, attributes} = this.props.props;
@@ -14,7 +15,7 @@ export class EventRegistrationLayoutAdvance extends React.Component {
         if(for_ === 'edit') {
 
             return (
-                <div className={`${className} wp2s2fg_parser_container`}>
+                <div className={`${className} wp2s2fg_parser_container wp2s2fg_parser_event-advance`}>
                     <div className={`wp2s2fg_parser_description`}>
                         <RichText
                             tagName="h4"
@@ -47,7 +48,7 @@ export class EventRegistrationLayoutAdvance extends React.Component {
         }else if(for_ === 'save'){
 
             return (
-                <div className={`${className} wp2s2fg_parser_container`}>
+                <div className={`${className} wp2s2fg_parser_container wp2s2fg_parser_event-advance`}>
                     <div className={`wp2s2fg_parser_description`}>
                         <RichText.Content
                             tagName="h4"
@@ -86,7 +87,7 @@ export class EventRegistrationSimple extends React.Component {
 
         if(for_ === 'edit') {
             return (
-                <div className={`${className} wp2s2fg_parser_container`}>
+                <div className={`${className} wp2s2fg_parser_container wp2s2fg_parser_event-simple`}>
                     <div className={`wp2s2fg_parser_description`}>
                         <RichText
                             tagName="h4"
@@ -104,7 +105,7 @@ export class EventRegistrationSimple extends React.Component {
         }else if(for_ === 'save'){
 
             return (
-                <div className={`${className} wp2s2fg_parser_container`}>
+                <div className={`${className} wp2s2fg_parser_container wp2s2fg_parser_event-simple`}>
                     <div className={`wp2s2fg_parser_description`}>
                         <RichText.Content
                             tagName="h4"
@@ -123,18 +124,22 @@ export class EventRegistrationSimple extends React.Component {
 
 export class Minimum extends React.Component {
     render() {
+        const {className} = this.props.props;
         const for_ = this.props.for_;
         const ALLOWED_BLOCKS = ['wp2s2fg/parser-item'];
         const TEMPLATE = [ALLOWED_BLOCKS];
 
         if(for_ === 'edit') {
             return (
-                <InnerBlocks template={TEMPLATE} allowedBlocks={ALLOWED_BLOCKS} templateLock={'all'}/>
+                <div className={`${className} wp2s2fg_parser_container wp2s2fg_parser_minimum`}>
+                    <InnerBlocks template={TEMPLATE} allowedBlocks={ALLOWED_BLOCKS} templateLock={'all'}/>
+                </div>
             );
         }else if(for_ === 'save'){
-
             return (
-                <InnerBlocks.Content/>
+                <div className={`${className} wp2s2fg_parser_container wp2s2fg_parser_minimum`}>
+                    <InnerBlocks.Content/>
+                </div>
             );
         }
     }

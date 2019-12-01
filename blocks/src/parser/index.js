@@ -3,7 +3,7 @@ const {registerBlockType} = wp.blocks;
 const {SelectControl,PanelBody} = wp.components;
 const {Fragment} = wp.element;
 const {InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
-import {EventRegistrationLayoutAdvance, EventRegistrationSimple, Minimum} from "./layout";
+import {EventRegistrationAdvance, EventRegistrationSimple, Minimum} from "./layout";
 
 registerBlockType('wp2s2fg/parser', {
 	title: __('Display Google Sheets Data', 'wp2s2fg'),
@@ -59,7 +59,7 @@ registerBlockType('wp2s2fg/parser', {
 						</SelectControl>
 					</PanelBody>
 				</InspectorControls>
-				{layout === 'event-registration-advance' && <EventRegistrationLayoutAdvance
+				{layout === 'event-registration-advance' && <EventRegistrationAdvance
 					props={props}
 					for_={'edit'}
 				/>}
@@ -79,7 +79,7 @@ registerBlockType('wp2s2fg/parser', {
 		const {layout} = props.attributes;
 		return (
 			<Fragment>
-				{layout === 'event-registration-advance' && <EventRegistrationLayoutAdvance
+				{layout === 'event-registration-advance' && <EventRegistrationAdvance
 					props={props}
 					for_={'save'}
 				/>}
