@@ -26,6 +26,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 
 	public function init() {
 		add_action( 'admin_menu', array( $this, 'add_sub_menu' ) );
+		add_action( 'admin_enqueue_scripts', array($this,'add_admin_scripts') );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 	}
 
@@ -56,11 +57,9 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= $message;
 		$html .= '<br>';
 		$html .= '<br>';
-		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] . '?' . $_SERVER["QUERY_STRING"] ) . '" method="POST" >';
-		$html .= __( "API Key : ", 'wp2s2fg' ) . '<input type="text" name="api_key" placeholder="API-Key" value="' . esc_html( $api_key ) . '" required />';
-		$html .= '<br>';
-		$html .= __( "Spreadsheet ID : ", 'wp2s2fg' ) . '<input type="text" name="spread_sheet_id" placeholder="Spread-SheetId" value="' . esc_html( $spread_sheet_id ) . '"required />';
-		$html .= '<br>';
+		$html .= '<form id="wp2s2fg_api_spreadsheetId_form" action="' . htmlspecialchars( $_SERVER["PHP_SELF"] . '?' . $_SERVER["QUERY_STRING"] ) . '" method="POST" >';
+		$html .= '<div class="wp2s2fg_api_spreadsheetId_form_label">' . __( "API Key : ", 'wp2s2fg' ) .'</div><input type="text" name="api_key" placeholder="API-Key" value="' . esc_html( $api_key ) . '" required />';
+		$html .= '<div class="wp2s2fg_api_spreadsheetId_form_label">' . __( "Spreadsheet ID : ", 'wp2s2fg' ) .'</div><input type="text" name="spread_sheet_id" placeholder="Spread-SheetId" value="' . esc_html( $spread_sheet_id ) . '"required />';
 		$html .= '<br>';
 		$html .= '<input type="submit" value="Set Configuration Info" />';
 		$html .= '</form >';
@@ -100,6 +99,13 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 			echo $this->render_api_key_not_set();
 		}else{
 			echo $this->render_set_api_key();
+		}
+	}
+
+	public function add_admin_scripts($hook_suffix) {
+
+		if ( 'plugins_page_wsgsf_settings' === $hook_suffix ) {
+			wp_enqueue_style( 'admin_style',  plugins_url( '/css/admin.css',__FILE__ )  );
 		}
 	}
 }
