@@ -12,6 +12,17 @@ registerBlockType('wp2s2fg/fetcher', {
         className: true,
         html: false,
     },
+    styles: [
+        {
+            name: 'wp2s2fg-fetcher-default',
+            label: __('Default', 'wp2s2fg'),
+            isDefault: true
+        },
+        {
+            name: 'wp2s2fg-fetcher-border',
+            label: __('Border', 'wp2s2fg'),
+        }
+    ],
     attributes: {
         className: {
             type: 'string',
