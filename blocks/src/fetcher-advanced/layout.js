@@ -9,7 +9,7 @@ export class EventRegistrationAdvance extends React.Component {
         const {setAttributes, className, attributes} = this.props.props;
         const {price, after, caption} = attributes;
         const for_ = this.props.for_;
-        const ALLOWED_BLOCKS = ['wp2s2fg/fetcher-advanced-item'];
+        const ALLOWED_BLOCKS = ['wp2s2fg/fetcher-item'];
         const TEMPLATE = [ALLOWED_BLOCKS];
 
         if(for_ === 'edit') {
@@ -82,7 +82,7 @@ export class EventRegistrationSimple extends React.Component {
         const {setAttributes, className, attributes} = this.props.props;
         const {caption} = attributes;
         const for_ = this.props.for_;
-        const ALLOWED_BLOCKS = ['wp2s2fg/fetcher-advanced-item'];
+        const ALLOWED_BLOCKS = ['wp2s2fg/fetcher-item'];
         const TEMPLATE = [ALLOWED_BLOCKS];
 
         if(for_ === 'edit') {
@@ -126,7 +126,7 @@ export class Minimum extends React.Component {
     render() {
         const {className} = this.props.props;
         const for_ = this.props.for_;
-        const ALLOWED_BLOCKS = ['wp2s2fg/fetcher-advanced-item'];
+        const ALLOWED_BLOCKS = ['wp2s2fg/fetcher-item'];
         const TEMPLATE = [ALLOWED_BLOCKS];
 
         if(for_ === 'edit') {
