@@ -8,7 +8,7 @@ registerBlockType('wp2s2fg/parser-item', {
     title: __('Display Google Sheets Data Item', 'wp2s2fg'),
     parent: ['wp2s2fg/parser'],
     icon: 'smiley',
-    category: 'widgets',
+    category: 'wp2s2fg-blocks-cat',
     supports: {
         className: true,
         html: false,

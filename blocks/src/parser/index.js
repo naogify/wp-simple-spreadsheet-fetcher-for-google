@@ -8,7 +8,7 @@ import {EventRegistrationAdvance, EventRegistrationSimple, Minimum} from "./layo
 registerBlockType('wp2s2fg/parser', {
 	title: __('Display Google Sheets Data', 'wp2s2fg'),
 	icon: 'smiley',
-	category: 'widgets',
+	category: 'wp2s2fg-blocks-cat',
 	supports: {
 		className:true,
 		html: false,

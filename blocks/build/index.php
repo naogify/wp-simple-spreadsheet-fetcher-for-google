@@ -69,3 +69,19 @@ function wp2s2fg_parser_block_init() {
 	) );
 }
 add_action( 'init', 'wp2s2fg_parser_block_init' );
+
+if ( ! function_exists( 'wp2s2fg_categories' ) ) {
+	function wp2s2fg_categories( $categories ) {
+		return array_merge(
+			$categories,
+			array(
+				array(
+					'slug'  => 'wp2s2fg-blocks-cat',
+					'title' => __( 'WP Simple Spreadsheet Fetcher for Google', 'wp2s2fg' ),
+					'icon'  => 'smiley',
+				)
+			)
+		);
+	}
+	add_filter( 'block_categories', 'wp2s2fg_categories', 10, 2 );
+}
