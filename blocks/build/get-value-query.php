@@ -21,6 +21,7 @@ include_once dirname( __FILE__ ) . '/base.php';
 
 function wp2s2fg_get_selected_value( $attributes ) {
 
+	$block     = $attributes['block'];
 	$range     = $attributes['range'];
 	$client = new Google_Client();
 
@@ -45,9 +46,27 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	if ( empty( $values ) ) {
 		$data .= __( 'No data found.', 'wp2s2fg' );
 	} else {
-		$data = '<p class="wp2s2fg_fetcher-advanced_number">' . esc_html( $values[0][0] ) . '</p>';
-	}
 
+		if($block === 'wp2s2fg/fetcher') {
+
+			foreach ( $values as $row ) {
+				$data .= '<tr>';
+				for ( $i = 0; $i < count( $row ); $i ++ ) {
+					$data .= '<td>' . esc_html( $row[ $i ] ) . '</td>';
+				}
+				$data .= '</tr>';
+			}
+			$div_h   = '<div class="wp2s2fg_fetcher_table">';
+			$div_f   = '</div>';
+			$table_h = '<table>';
+			$table_f = '</table>';
+
+			$data =  $div_h . $table_h . $data . $table_f . $div_f;
+
+		}elseif($block === 'wp2s2fg/fetcher-item'){
+			$data = '<p class="wp2s2fg_fetcher-advanced_number">' . esc_html( $values[0][0] ) . '</p>';
+		}
+	}
 	return $data;
 }
 ?>

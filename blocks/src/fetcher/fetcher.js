@@ -4,9 +4,8 @@ const {TextControl, PanelBody, ServerSideRender} = wp.components;
 const {Fragment} = wp.element;
 const {RichText, InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 
-registerBlockType('wp2s2fg/fetcher-item', {
-    title: __('Fetcher Item', 'wp2s2fg'),
-    parent: [['wp2s2fg/fetcher'],['wp2s2fg/fetcher-advanced']],
+registerBlockType('wp2s2fg/fetcher', {
+    title: __('Fetcher', 'wp2s2fg'),
     icon: 'smiley',
     category: 'wp2s2fg-blocks-cat',
     supports: {
@@ -25,7 +24,8 @@ registerBlockType('wp2s2fg/fetcher-item', {
     },
 
     edit(props) {
-        const {range, attributes, setAttributes} = props;
+        const {setAttributes, attributes} = props;
+        const {range} = attributes;
 
         return (
             <Fragment>
@@ -40,13 +40,14 @@ registerBlockType('wp2s2fg/fetcher-item', {
                     </PanelBody>
                 </InspectorControls>
                 <ServerSideRender
-                    block='wp2s2fg/fetcher-item'
+                    block='wp2s2fg/fetcher'
                     attributes={attributes}
                 />
             </Fragment>
         );
     },
+
     save() {
         return null;
-    },
+    }
 });
