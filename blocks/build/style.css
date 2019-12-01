@@ -3,7 +3,9 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp2s2fg table {
+
+/*Fetcher Block*/
+.wp2s2fg_fetcher_table_container table {
 	margin: 0;
 	border-collapse: collapse;
 	width: 100%;
@@ -12,32 +14,34 @@
 	border-color: grey;
 	text-align: center;
 }
-.wp2s2fg tbody {
+.wp2s2fg_fetcher_table_container tbody {
 	display: table-row-group;
 	vertical-align: middle;
 	border-color: inherit;
 }
-.wp2s2fg tr {
+.wp2s2fg_fetcher_table_container tr {
 	display: table-row;
 	vertical-align: inherit;
 	border-color: inherit;
 }
-.wp2s2fg.is-style-wp2s2fg-border table td, .wp2s2fg.is-style-wp2s2fg-border table th {
+
+.wp2s2fg_fetcher_table_container td {
+	display: table-cell;
+	vertical-align: inherit;
+}
+
+.wp2s2fg_fetcher_table_container td, .wp2s2fg_fetcher_table_container th{
+	/*border: none;*/
+	padding: 0;
+}
+
+.wp2s2fg_fetcher_table_container.is-style-wp2s2fg-border td, .wp2s2fg_fetcher_table_container.is-style-wp2s2fg-border th {
 	padding: 0.5em;
 	border: 1px solid #767676;
 	word-break: break-all;
 }
 
-.wp2s2fg td {
-	display: table-cell;
-	vertical-align: inherit;
-}
-
-.wp2s2fg td, .wp2s2fg th{
-	border: none;
-	padding: 0;
-}
-
+/*Fetcher Block Advanced*/
 .wp2s2fg_fetcher-advanced_container{
 	display: flex;
 	justify-content: space-between;

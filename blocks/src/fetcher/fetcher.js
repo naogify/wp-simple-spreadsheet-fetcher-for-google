@@ -43,7 +43,7 @@ registerBlockType('wp2s2fg/fetcher', {
                 <InspectorControls>
                     <PanelBody title={__('Fetch Data Setting', 'wp2s2fg')}>
                         <TextControl
-                            label={__(`Please set the cell in A1 notation. Example : Sheets1!A1`, 'wp2s2fg')}
+                            label={__(`Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E`, 'wp2s2fg')}
                             value={range}
                             onChange={(newRange) => setAttributes({range: newRange === undefined ? 'none' : newRange})}
                             initialOpen={true}

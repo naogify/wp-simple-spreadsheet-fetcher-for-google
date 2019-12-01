@@ -23,6 +23,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 	$block     = $attributes['block'];
 	$range     = $attributes['range'];
+	$className    = $attributes['className'];
 	$client = new Google_Client();
 
 	if ( ! $api_key = sanitize_text_field(wp2s2fg_get_api_key()) ) {
@@ -56,9 +57,9 @@ function wp2s2fg_get_selected_value( $attributes ) {
 				}
 				$data .= '</tr>';
 			}
-			$div_h   = '<div class="wp2s2fg_fetcher_table">';
-			$div_f   = '</div>';
-			$table_h = '<table>';
+			$div_h   = '<div class="wp2s2fg_fetcher_table_container ' . esc_attr($className) .'">';
+			$div_f = '</div>';
+			$table_h = '<table class="wp2s2fg_fetcher_table">';
 			$table_f = '</table>';
 
 			$data =  $div_h . $table_h . $data . $table_f . $div_f;
