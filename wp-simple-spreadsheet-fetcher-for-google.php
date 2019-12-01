@@ -108,6 +108,11 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 			wp_enqueue_style( 'admin_style',  plugins_url( '/css/admin.css',__FILE__ )  );
 		}
 	}
+
+	public function deactivation() {
+		wp2s2fg_delete_api_key();
+		wp2s2fg_delete_spread_sheet_id();
+	}
 }
 
 $WPSimpleSpreadsheetFetcherForGoogle = new WPSimpleSpreadsheetFetcherForGoogle();
