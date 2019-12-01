@@ -32,7 +32,7 @@ registerBlockType('wp2s2fg/fetcher-advanced', {
 		},
 		layout: {
 			type: 'string',
-			default: 'event-registration-advance',
+			default: 'event-registration-simple',
 		},
 	},
 
@@ -48,9 +48,8 @@ registerBlockType('wp2s2fg/fetcher-advanced', {
 							label={__('Select Layout', 'wp2s2fg')}
 							value={layout}
 							options={[
-								{label: __('Event Registration Advance', 'wp2s2fg'), value: 'event-registration-advance'},
 								{label: __('Event Registration Simple', 'wp2s2fg'), value: 'event-registration-simple'},
-								{label: __('Minimum', 'wp2s2fg'), value: 'minimum'},
+								{label: __('Event Registration Advanced', 'wp2s2fg'), value: 'event-registration-advanced'},
 							]}
 							onChange={(value) => {
 								setAttributes({layout: value})
@@ -59,15 +58,11 @@ registerBlockType('wp2s2fg/fetcher-advanced', {
 						</SelectControl>
 					</PanelBody>
 				</InspectorControls>
-				{layout === 'event-registration-advance' && <EventRegistrationAdvance
-					props={props}
-					for_={'edit'}
-				/>}
 				{layout === 'event-registration-simple' && <EventRegistrationSimple
 					props={props}
 					for_={'edit'}
 				/>}
-				{layout === 'minimum' && <Minimum
+				{layout === 'event-registration-advanced' && <EventRegistrationAdvance
 					props={props}
 					for_={'edit'}
 				/>}
@@ -79,15 +74,11 @@ registerBlockType('wp2s2fg/fetcher-advanced', {
 		const {layout} = props.attributes;
 		return (
 			<Fragment>
-				{layout === 'event-registration-advance' && <EventRegistrationAdvance
-					props={props}
-					for_={'save'}
-				/>}
 				{layout === 'event-registration-simple' && <EventRegistrationSimple
 					props={props}
 					for_={'save'}
 				/>}
-				{layout === 'minimum' && <Minimum
+				{layout === 'event-registration-advanced' && <EventRegistrationAdvance
 					props={props}
 					for_={'save'}
 				/>}
