@@ -8,10 +8,12 @@ function wp2s2fg_fetcher_block_init() {
 	$dir      = dirname( __FILE__ );
 	$fetcher_js = 'fetcher.js';
 	$fetcher_adv_js = 'fetcher-advanced.js';
+	$fetcher_adv_lay_js = 'layout.js';
 	$fetcher_itm_js = 'fetcher-item.js';
 
 	$asset_file = include( $dir . '/fetcher.asset.php' );
 	$asset_file_adv = include( $dir . '/fetcher-advanced.asset.php' );
+	$asset_file_adv_lay = include( $dir . '/layout.asset.php' );
 	$asset_file_itm = include( $dir . '/fetcher-item.asset.php' );
 
 	wp_register_script(
@@ -28,6 +30,14 @@ function wp2s2fg_fetcher_block_init() {
 		$asset_file_adv['dependencies'],
 		$asset_file_adv['version'],
 		filemtime( "$dir/$fetcher_adv_js" )
+	);
+
+	wp_register_script(
+		'wp2s2fg-fetcher-adv-lay',
+		plugins_url( $fetcher_adv_lay_js, __FILE__ ),
+		$asset_file_adv['dependencies'],
+		$asset_file_adv['version'],
+		filemtime( "$dir/$asset_file_adv_lay" )
 	);
 
 	wp_register_script(
