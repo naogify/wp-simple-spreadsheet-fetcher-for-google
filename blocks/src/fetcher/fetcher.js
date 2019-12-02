@@ -19,8 +19,12 @@ registerBlockType('wp2s2fg/fetcher', {
             isDefault: true
         },
         {
-            name: 'wp2s2fg-fetcher-border',
-            label: __('Border', 'wp2s2fg'),
+            name: 'wp2s2fg-fetcher-line',
+            label: __('Line', 'wp2s2fg'),
+        },
+        {
+            name: 'wp2s2fg-fetcher-none',
+            label: __('None', 'wp2s2fg'),
         }
     ],
     attributes: {
