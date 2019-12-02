@@ -3,7 +3,7 @@ Contributors: naoki0h
 Tags: fetcher, api, Google Sheets
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 0.2.4
+Stable tag: 0.2.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,12 +12,12 @@ This is the simple plugin to fetch data from Google Sheets.
 == How to use ==
 
 1. Create the api key. For more detail. Please refer to [https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the](https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the).
-2. Turn on Get shareable link. For more detail. Please refer to [https://support.google.com/drive/answer/2494822#link_sharing](https://support.google.com/drive/answer/2494822#link_sharing)
-3. Get Spreadsheet ID. For more detail. Please refer to [https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id](https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id)
-4. Move to the settings page from side menu that Plugins > WP Simple Google Sheets Fetcher.
-6. Enter your API key and Spreadsheet ID in form.
-7. Choose "Display Google Sheets Data" block at the Widgets category, use side panel to indicate the cell to fetch data.
-8. It will display the data in your post or page.
+2. Get Spreadsheet ID. For more detail. Please refer to [https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id](https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id)
+3. Move to the settings page from side menu that Plugins > WP Simple Google Sheets Fetcher.
+4. Enter your API key and Spreadsheet ID in form.
+5. Turn on Get shareable link. For more detail. Please refer to [https://support.google.com/drive/answer/2494822#link_sharing](https://support.google.com/drive/answer/2494822#link_sharing)
+6. Choose "Display Google Sheets Data" block at the "WP Simple Spreadsheet Fetcher for Google" category, use side panel to indicate the cell to fetch data.
+7. It will display the data in your post or page.
 
 == Installation ==
 
@@ -32,6 +32,10 @@ This is the simple plugin to fetch data from Google Sheets.
 4. Enter the cell to fetch data.
 
 == Changelog ==
+
+= 0.2.5 =
+- Delete parser block, add fetcher and fetcher advanced blocks.
+- Fix some.
 
 = 0.2.4 =
 Just fix text.
