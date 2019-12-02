@@ -30,22 +30,44 @@
 	vertical-align: inherit;
 }
 
-.wp2s2fg_fetcher_table_container td, .wp2s2fg_fetcher_table_container th{
-	/*border: none;*/
-	padding: 0;
+.wp2s2fg_fetcher_table_container table td, .wp2s2fg_fetcher_table_container table th{
+	padding: 0.5em;
+	word-break: break-all;
 }
 
-.wp2s2fg_fetcher_table_container.is-style-wp2s2fg-border td, .wp2s2fg_fetcher_table_container.is-style-wp2s2fg-border th {
-	padding: 0.5em;
-	border: 1px solid #767676;
-	word-break: break-all;
+.is-style-wp2s2fg-fetcher-default table td, .is-style-wp2s2fg-fetcher-default table th {
+	border: 1px solid #ccc;
+}
+
+.is-style-wp2s2fg-fetcher-line table.wp2s2fg_fetcher_table {
+	border: none;
+}
+
+.is-style-wp2s2fg-fetcher-line table tr{
+	border:none;
+}
+
+.is-style-wp2s2fg-fetcher-line table.wp2s2fg_fetcher_table td, .is-style-wp2s2fg-fetcher-line table.wp2s2fg_fetcher_table th{
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #ccc;
+}
+
+.is-style-wp2s2fg-fetcher-line table.wp2s2fg_fetcher_table tbody tr:last-child{
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #ccc;
+}
+
+.is-style-wp2s2fg-fetcher-none table tr, .is-style-wp2s2fg-fetcher-none table td, .is-style-wp2s2fg-fetcher-none table th{
+	border: none;
 }
 
 /*Fetcher Block Advanced*/
 .wp2s2fg_fetcher-advanced_container{
 	display: flex;
 	justify-content: space-between;
-	border: 3px solid #e5e5e5;
+	border: 3px solid #ccc;
 	padding: 1rem 2rem;
 }
 
