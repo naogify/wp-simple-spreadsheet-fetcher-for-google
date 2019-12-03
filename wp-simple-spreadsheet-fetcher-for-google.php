@@ -12,12 +12,12 @@
  * @package         Wp_Simple_Spreadsheet_Fetcher_for_Google
  */
 
-define( "INC_DIR", '/blocks/inc' );
+define( "BUILD_DIR", '/blocks/build' );
 
 include_once dirname( __FILE__ ) . '/vendor/autoload.php';
-include_once dirname( __FILE__ ) . INC_DIR . '/base.php';
-include_once dirname( __FILE__ ) . INC_DIR . '/index.php';
-include_once dirname( __FILE__ ) . INC_DIR . '/get-value-query.php';
+include_once dirname( __FILE__ ) . BUILD_DIR . '/base.php';
+include_once dirname( __FILE__ ) . BUILD_DIR . '/index.php';
+include_once dirname( __FILE__ ) . BUILD_DIR . '/get-value-query.php';
 
 class WPSimpleSpreadsheetFetcherForGoogle {
 
