@@ -5,11 +5,12 @@ function wp2s2fg_fetcher_block_init() {
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
-	$dir      = dirname( __FILE__ );
-	$fetcher_js = 'fetcher.js';
-	$fetcher_adv_js = 'fetcher-advanced.js';
+	$dir                = dirname( dirname( __FILE__ ) ) . '/build';
+	$dir_inc            = dirname( dirname( __FILE__ ) ) . '/inc';
+	$fetcher_js         = 'fetcher.js';
+	$fetcher_adv_js     = 'fetcher-advanced.js';
 	$fetcher_adv_lay_js = 'layout.js';
-	$fetcher_itm_js = 'fetcher-item.js';
+	$fetcher_itm_js     = 'fetcher-item.js';
 
 	$asset_file = include( $dir . '/fetcher.asset.php' );
 	$asset_file_adv = include( $dir . '/fetcher-advanced.asset.php' );
@@ -35,9 +36,9 @@ function wp2s2fg_fetcher_block_init() {
 	wp_register_script(
 		'wp2s2fg-fetcher-adv-lay',
 		plugins_url( $fetcher_adv_lay_js, __FILE__ ),
-		$asset_file_adv['dependencies'],
-		$asset_file_adv['version'],
-		filemtime( "$dir/$asset_file_adv_lay" )
+		$asset_file_adv_lay['dependencies'],
+		$asset_file_adv_lay['version'],
+		filemtime( "$dir/$fetcher_adv_lay_js" )
 	);
 
 	wp_register_script(
@@ -53,7 +54,7 @@ function wp2s2fg_fetcher_block_init() {
 		'wp2s2fg-fetcher-style-editor',
 		plugins_url( $editor_css, __FILE__ ),
 		array(),
-		filemtime( "$dir/$editor_css" )
+		filemtime( "$dir_inc/$editor_css" )
 	);
 
 	$style_css = 'style.css';
@@ -61,7 +62,7 @@ function wp2s2fg_fetcher_block_init() {
 		'wp2s2fg-fetcher-style',
 		plugins_url( $style_css, __FILE__ ),
 		array(),
-		filemtime( "$dir/$style_css" )
+		filemtime( "$dir_inc/$style_css" )
 	);
 
 	register_block_type( 'wp2s2fg/fetcher', array(
