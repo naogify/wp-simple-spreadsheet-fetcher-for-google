@@ -7,7 +7,7 @@
  * Author URI:      https://naoki-is-me
  * Text Domain:     wp2s2fg
  * Domain Path:     /languages
- * Version:         0.2.4
+ * Version:         0.2.5
  *
  * @package         Wp_Simple_Spreadsheet_Fetcher_for_Google
  */
@@ -26,6 +26,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 
 	public function init() {
 		add_action( 'admin_menu', array( $this, 'add_sub_menu' ) );
+		add_action( 'admin_enqueue_scripts', array($this,'add_admin_scripts') );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 	}
 
@@ -56,11 +57,9 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= $message;
 		$html .= '<br>';
 		$html .= '<br>';
-		$html .= '<form action="' . htmlspecialchars( $_SERVER["PHP_SELF"] . '?' . $_SERVER["QUERY_STRING"] ) . '" method="POST" >';
-		$html .= __( "API Key : ", 'wp2s2fg' ) . '<input type="text" name="api_key" placeholder="API-Key" value="' . esc_html( $api_key ) . '" required />';
-		$html .= '<br>';
-		$html .= __( "Spreadsheet ID : ", 'wp2s2fg' ) . '<input type="text" name="spread_sheet_id" placeholder="Spread-SheetId" value="' . esc_html( $spread_sheet_id ) . '"required />';
-		$html .= '<br>';
+		$html .= '<form id="wp2s2fg_api_spreadsheetId_form" action="' . htmlspecialchars( $_SERVER["PHP_SELF"] . '?' . $_SERVER["QUERY_STRING"] ) . '" method="POST" >';
+		$html .= '<div class="wp2s2fg_api_spreadsheetId_form_label">' . __( "API Key : ", 'wp2s2fg' ) .'</div><input type="text" name="api_key" placeholder="API-Key" value="' . esc_html( $api_key ) . '" required />';
+		$html .= '<div class="wp2s2fg_api_spreadsheetId_form_label">' . __( "Spreadsheet ID : ", 'wp2s2fg' ) .'</div><input type="text" name="spread_sheet_id" placeholder="Spread-SheetId" value="' . esc_html( $spread_sheet_id ) . '"required />';
 		$html .= '<br>';
 		$html .= '<input type="submit" value="Set Configuration Info" />';
 		$html .= '</form >';
@@ -69,10 +68,10 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= '<h2>' . __( "How to use", 'wp2s2fg' ) . '</h2>';
 		$html .= '<ul>';
 		$html .= '<li>' . __( "1. Create the API key . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the" target="_blank">' . __( "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the", 'wp2s2fg' ) . '</a></li>';
-		$html .= '<li>' . __( "2. Turn on Get shareable link . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://support.google.com/drive/answer/2494822#link_sharing" target="_blank">' . __( "https://support.google.com/drive/answer/2494822#link_sharing", 'wp2s2fg' ) . '</a></li>';
-		$html .= '<li>' . __( "3. Get Spreadsheet ID . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id" target="_blank">' . __( "https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id", 'wp2s2fg' ) . '</a></li>';
-		$html .= '<li>' . __( "4. Save your API key and Spreadsheet ID from the form above.", 'wp2s2fg' ) . '</li>';
-		$html .= '<li>' . __( "5. Choose \"Display Google Sheets Data\" block at Widgets category , use side panel to indicate the cell to fetch data.", 'wp2s2fg' ) . '</li>';
+		$html .= '<li>' . __( "2. Get Spreadsheet ID . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id" target="_blank">' . __( "https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id", 'wp2s2fg' ) . '</a></li>';
+		$html .= '<li>' . __( "3. Save your API key and Spreadsheet ID from the form above.", 'wp2s2fg' ) . '</li>';
+		$html .= '<li>' . __( "4. Turn on Get shareable link . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://support.google.com/drive/answer/2494822#link_sharing" target="_blank">' . __( "https://support.google.com/drive/answer/2494822#link_sharing", 'wp2s2fg' ) . '</a></li>';
+		$html .= '<li>' . __( "5. Choose \"Display Google Sheets Data\" block at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data.", 'wp2s2fg' ) . '</li>';
 		$html .= '</ul>';
 		$html .= '</div>';
 		return $html;
@@ -101,6 +100,18 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		}else{
 			echo $this->render_set_api_key();
 		}
+	}
+
+	public function add_admin_scripts($hook_suffix) {
+
+		if ( 'plugins_page_wsgsf_settings' === $hook_suffix ) {
+			wp_enqueue_style( 'admin_style',  plugins_url( '/css/admin.css',__FILE__ )  );
+		}
+	}
+
+	public function deactivation() {
+		wp2s2fg_delete_api_key();
+		wp2s2fg_delete_spread_sheet_id();
 	}
 }
 

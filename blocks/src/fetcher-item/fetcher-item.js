@@ -4,11 +4,11 @@ const {TextControl, PanelBody, ServerSideRender} = wp.components;
 const {Fragment} = wp.element;
 const {RichText, InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 
-registerBlockType('wp2s2fg/parser-item', {
-    title: __('Display Google Sheets Data Item', 'wp2s2fg'),
-    parent: ['wp2s2fg/parser'],
+registerBlockType('wp2s2fg/fetcher-item', {
+    title: __('Fetcher Item', 'wp2s2fg'),
+    parent: [['wp2s2fg/fetcher'],['wp2s2fg/fetcher-advanced']],
     icon: 'smiley',
-    category: 'widgets',
+    category: 'wp2s2fg-blocks-cat',
     supports: {
         className: true,
         html: false,
@@ -40,7 +40,7 @@ registerBlockType('wp2s2fg/parser-item', {
                     </PanelBody>
                 </InspectorControls>
                 <ServerSideRender
-                    block='wp2s2fg/parser-item'
+                    block='wp2s2fg/fetcher-item'
                     attributes={attributes}
                 />
             </Fragment>

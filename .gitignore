@@ -12,6 +12,4 @@ token.json
 .apiKey
 .spreadSheetId
 vendor/
-blocks/build/index.js
-blocks/build/index.js.map
-blocks/build/index.asset.php
+blocks/build/*.*
