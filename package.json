@@ -5,6 +5,7 @@
   "main": "blocks/build/index.js",
   "scripts": {
     "start": "npm install && composer install && wp-scripts start blocks/src/**/*.js --output-path=blocks/build",
+    "watch": "wp-scripts start blocks/src/**/*.js --output-path=blocks/build",
     "build": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
