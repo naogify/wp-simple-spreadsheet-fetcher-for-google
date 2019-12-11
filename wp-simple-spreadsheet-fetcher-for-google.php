@@ -7,7 +7,7 @@
  * Author URI:      https://naoki-is-me
  * Text Domain:     wp2s2fg
  * Domain Path:     /languages
- * Version:         0.2.5
+ * Version:         0.2.7
  *
  * @package         Wp_Simple_Spreadsheet_Fetcher_for_Google
  */
@@ -71,7 +71,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= '<li>' . __( "2. Get Spreadsheet ID . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id" target="_blank">' . __( "https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id", 'wp2s2fg' ) . '</a></li>';
 		$html .= '<li>' . __( "3. Save your API key and Spreadsheet ID from the form above.", 'wp2s2fg' ) . '</li>';
 		$html .= '<li>' . __( "4. Turn on Get shareable link . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://support.google.com/drive/answer/2494822#link_sharing" target="_blank">' . __( "https://support.google.com/drive/answer/2494822#link_sharing", 'wp2s2fg' ) . '</a></li>';
-		$html .= '<li>' . __( "5. Choose \"Display Google Sheets Data\" block at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data.", 'wp2s2fg' ) . '</li>';
+		$html .= '<li>' . __( "5. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data.", 'wp2s2fg' ) . '</li>';
 		$html .= '</ul>';
 		$html .= '</div>';
 		return $html;
