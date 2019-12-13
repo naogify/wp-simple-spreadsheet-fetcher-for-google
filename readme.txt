@@ -31,9 +31,6 @@ If you have anything to tell me, please post it on the plugin's support forum or
 == Screenshots ==
 
 1. Fetch and display data from Google Sheets.
-2. Save API key at the settings page.
-3. Choose "Fetcher" Block to display data.
-4. Enter the cell to fetch data.
 
 == Changelog ==
 
