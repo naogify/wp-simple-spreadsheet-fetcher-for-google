@@ -13,3 +13,4 @@ token.json
 .spreadSheetId
 vendor/
 blocks/build/*.asset.php
+blocks/build/*.js
