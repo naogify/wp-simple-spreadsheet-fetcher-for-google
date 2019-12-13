@@ -32,14 +32,16 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 	if ( ! $api_key = sanitize_text_field(wp2s2fg_get_api_key()) ) {
 
-		return __( 'API-KEY is not set.', 'wp2s2fg' );
+		$url = admin_url( 'admin.php?page=wsgsf_settings' );
+		$url = '<a href="' . esc_url( $url ) . '">' . __( 'settings.' ) . '</a>';
+		return __( 'API-KEY is not set Please set it at the ', 'wp2s2fg' ) . $url;
 	}
 
 	if(!$sheetId){
 		if ( ! $sheetId_deprecated = sanitize_text_field(wp2s2fg_get_spread_sheet_id()) ) {
-			return __( 'Sheet ID is not set.', 'wp2s2fg' );
+			return __( 'Sheet ID is not set. Please set it from the sidebar.', 'wp2s2fg' );
 		}else{
-			return __( 'SheetURL is not set.', 'wp2s2fg' );
+			return __( 'SheetURL is not set. Please set it from the sidebar.', 'wp2s2fg' );
 		}
 	}else{
 		$sheetId = preg_replace('/https\:\/\/docs\.google\.com\/spreadsheets\/d\//', '', esc_url($sheetId));

@@ -70,6 +70,8 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= '<li>' . __( "3. Turn on Get shareable link . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://support.google.com/drive/answer/2494822#link_sharing" target="_blank">' . __( "https://support.google.com/drive/answer/2494822#link_sharing", 'wp2s2fg' ) . '</a></li>';
 		$html .= '<li>' . __( "4. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data.", 'wp2s2fg' ) . '</li>';
 		$html .= '</ul>';
+		$html .= '<h2>' . __( "Tutorial Video", 'wp2s2fg' ) . '</h2>';
+		$html .= '<iframe width="560" height="315" src="https://www.youtube.com/embed/A86v_nA4JD8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 		$html .= '</div>';
 		return $html;
 	}

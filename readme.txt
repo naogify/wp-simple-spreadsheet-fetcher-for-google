@@ -18,6 +18,8 @@ This is the simple plugin to fetch data from Google Sheets and display it on you
 5. Choose "Fetcher" block at the "WP Simple Spreadsheet Fetcher for Google" category, use side panel to indicate the cell to fetch data.
 6. It will display the data in your post or page.
 
+[youtube https://youtu.be/A86v_nA4JD8]
+
 == Installation ==
 
 1. Download the zip, extract it and upload the extracted folder to your-wp-directory/wp-content/plugins/
