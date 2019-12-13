@@ -32,6 +32,19 @@ registerBlockType('wp2s2fg/fetcher', {
             type: 'string',
             default: '',
         },
+        sheetId: {
+            type: 'string',
+            default: '',
+        },
+        sheetName: {
+            type: 'string',
+            default: '',
+        },
+        sheetRange: {
+            type: 'string',
+            default: '',
+        },
+        //This attributes is deprecated since v0.2.8.
         range: {
             type: 'string',
             default: '',
@@ -39,19 +52,46 @@ registerBlockType('wp2s2fg/fetcher', {
     },
 
     edit(props) {
-        const {setAttributes, attributes} = props;
-        const {range} = attributes;
+        const {attributes, setAttributes} = props;
+        const {range, sheetId, sheetName, sheetRange} = attributes;
+
+        let renderSettings = () => {
+            if (!range) {
+                return <Fragment>
+                    <TextControl
+                        label={__(`Sheet URL`, 'wp2s2fg')}
+                        value={sheetId}
+                        onChange={(newUrl) => setAttributes({sheetId: newUrl === undefined ? 'none' : newUrl})}
+                        initialOpen={true}
+                    />
+                    <TextControl
+                        label={__(`Sheet Name`, 'wp2s2fg')}
+                        value={sheetName}
+                        onChange={(newName) => setAttributes({sheetName: newName === undefined ? 'none' : newName})}
+                        initialOpen={true}
+                    />
+                    <TextControl
+                        label={__(`Range`, 'wp2s2fg')}
+                        value={sheetRange}
+                        onChange={(newRange) => setAttributes({sheetRange: newRange === undefined ? 'none' : newRange})}
+                        initialOpen={true}
+                    />
+                </Fragment>;
+            } else {
+                return <TextControl
+                    label={__(`Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E`, 'wp2s2fg')}
+                    value={range}
+                    onChange={(newRange) => setAttributes({range: newRange === undefined ? 'none' : newRange})}
+                    initialOpen={true}
+                />
+            }
+        };
 
         return (
             <Fragment>
                 <InspectorControls>
-                    <PanelBody title={__('Fetch Data Setting', 'wp2s2fg')}>
-                        <TextControl
-                            label={__(`Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E`, 'wp2s2fg')}
-                            value={range}
-                            onChange={(newRange) => setAttributes({range: newRange === undefined ? 'none' : newRange})}
-                            initialOpen={true}
-                        />
+                    <PanelBody title={__('Fetch Data Setting', 'wp2s2fg')} initialOpen={true}>
+                        {renderSettings()}
                     </PanelBody>
                 </InspectorControls>
                 <ServerSideRender
