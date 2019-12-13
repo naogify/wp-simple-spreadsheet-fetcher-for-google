@@ -2,12 +2,12 @@
 /**
  * Plugin Name:     WP Simple Spreadsheet Fetcher for Google
  * Plugin URI:      https://github.com/naogify/wp-simple-google-sheets-fetcher
- * Description:     Simple plugin to fetch data from google spreadsheet.
+ * Description:     This is the simple plugin to fetch data from Google Sheets and display it on your website. Please go to "Plugins" > "WP-Simple-Spreadsheet-Fetcher-for-Google" for initial setting.
  * Author:          Naoki Ohashi
  * Author URI:      https://naoki-is-me
  * Text Domain:     wp2s2fg
  * Domain Path:     /languages
- * Version:         0.2.7
+ * Version:         0.2.8
  *
  * @package         Wp_Simple_Spreadsheet_Fetcher_for_Google
  */
@@ -28,6 +28,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		add_action( 'admin_menu', array( $this, 'add_sub_menu' ) );
 		add_action( 'admin_enqueue_scripts', array($this,'add_admin_scripts') );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_settings' ) );
 	}
 
 	public function render_set_api_key() {
@@ -102,6 +103,13 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		if ( 'plugins_page_wsgsf_settings' === $hook_suffix ) {
 			wp_enqueue_style( 'admin_style',  plugins_url( '/css/admin.css',__FILE__ )  );
 		}
+	}
+
+	public function add_settings( $links ) {
+		$url = admin_url( 'admin.php?page=wsgsf_settings' );
+		$url = '<a href="' . esc_url( $url ) . '">' . __( 'Settings' ) . '</a>';
+		array_unshift( $links, $url );
+		return $links;
 	}
 
 	public function deactivation() {
