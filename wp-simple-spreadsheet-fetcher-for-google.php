@@ -31,7 +31,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 	}
 
 	public function render_set_api_key() {
-		$message = '<span class="success" style="color:#28a745; font-size:1.2rem">' . __( "API Key and SpreadSheetId set!", 'wp2s2fg' ) . '</span >';
+		$message = '<span class="success" style="color:#28a745; font-size:1.2rem">' . __( "API Key set!", 'wp2s2fg' ) . '</span >';
 
 		return $this->render_settings_page( $message );
 	}
@@ -44,22 +44,19 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 
 	public function render_settings_page( $message ) {
 
-		if ( wp2s2fg_get_api_key() && wp2s2fg_get_spread_sheet_id() ) {
+		if ( wp2s2fg_get_api_key() ) {
 			$api_key         = wp2s2fg_get_api_key();
-			$spread_sheet_id = wp2s2fg_get_spread_sheet_id();
 		} else {
 			$api_key         = '';
-			$spread_sheet_id = '';
 		}
 
 		$html = '<div class="api-key" >';
-		$html .= '<h2>' . __( "Setting API key and SpreadSheetId", 'wp2s2fg' ) . '</h2>';
+		$html .= '<h2>' . __( "Setting API key", 'wp2s2fg' ) . '</h2>';
 		$html .= $message;
 		$html .= '<br>';
 		$html .= '<br>';
 		$html .= '<form id="wp2s2fg_api_spreadsheetId_form" action="' . htmlspecialchars( $_SERVER["PHP_SELF"] . '?' . $_SERVER["QUERY_STRING"] ) . '" method="POST" >';
 		$html .= '<div class="wp2s2fg_api_spreadsheetId_form_label">' . __( "API Key : ", 'wp2s2fg' ) .'</div><input type="text" name="api_key" placeholder="API-Key" value="' . esc_html( $api_key ) . '" required />';
-		$html .= '<div class="wp2s2fg_api_spreadsheetId_form_label">' . __( "Spreadsheet ID : ", 'wp2s2fg' ) .'</div><input type="text" name="spread_sheet_id" placeholder="Spread-SheetId" value="' . esc_html( $spread_sheet_id ) . '"required />';
 		$html .= '<br>';
 		$html .= '<input type="submit" value="Set Configuration Info" />';
 		$html .= '</form >';
@@ -68,10 +65,9 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= '<h2>' . __( "How to use", 'wp2s2fg' ) . '</h2>';
 		$html .= '<ul>';
 		$html .= '<li>' . __( "1. Create the API key . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the" target="_blank">' . __( "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the", 'wp2s2fg' ) . '</a></li>';
-		$html .= '<li>' . __( "2. Get Spreadsheet ID . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id" target="_blank">' . __( "https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id", 'wp2s2fg' ) . '</a></li>';
-		$html .= '<li>' . __( "3. Save your API key and Spreadsheet ID from the form above.", 'wp2s2fg' ) . '</li>';
-		$html .= '<li>' . __( "4. Turn on Get shareable link . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://support.google.com/drive/answer/2494822#link_sharing" target="_blank">' . __( "https://support.google.com/drive/answer/2494822#link_sharing", 'wp2s2fg' ) . '</a></li>';
-		$html .= '<li>' . __( "5. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data.", 'wp2s2fg' ) . '</li>';
+		$html .= '<li>' . __( "2. Save your API key from the form above.", 'wp2s2fg' ) . '</li>';
+		$html .= '<li>' . __( "3. Turn on Get shareable link . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://support.google.com/drive/answer/2494822#link_sharing" target="_blank">' . __( "https://support.google.com/drive/answer/2494822#link_sharing", 'wp2s2fg' ) . '</a></li>';
+		$html .= '<li>' . __( "4. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data.", 'wp2s2fg' ) . '</li>';
 		$html .= '</ul>';
 		$html .= '</div>';
 		return $html;
@@ -90,12 +86,11 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 
 	public function render_settings() {
 
-		if ( isset( $_POST['api_key'] ) && isset( $_POST['spread_sheet_id'] ) ) {
+		if ( isset( $_POST['api_key'] )) {
 			wp2s2fg_set_api_key( sanitize_text_field( $_POST['api_key'] ) );
-			wp2s2fg_set_spread_sheet_id( sanitize_text_field( $_POST['spread_sheet_id'] ) );
 		}
 
-		if ( ! wp2s2fg_get_api_key() || ! wp2s2fg_get_spread_sheet_id() ) {
+		if ( ! wp2s2fg_get_api_key()) {
 			echo $this->render_api_key_not_set();
 		}else{
 			echo $this->render_set_api_key();
