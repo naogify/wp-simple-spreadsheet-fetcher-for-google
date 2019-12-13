@@ -67,3 +67,5 @@ First commit.
 
 = 0.1.0 =
 First commit.
+
+We maintain backward compatibility at this plugin.
