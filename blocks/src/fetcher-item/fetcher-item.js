@@ -12,6 +12,7 @@ registerBlockType('wp2s2fg/fetcher-item', {
     supports: {
         className: true,
         html: false,
+        inserter:false
     },
     attributes: {
         className: {
