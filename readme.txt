@@ -20,6 +20,9 @@ This is the simple plugin to fetch data from Google Sheets and display it on you
 
 [youtube https://youtu.be/A86v_nA4JD8]
 
+== Contact ==
+If you have anything to tell me, please post it on the plugin's support forum or reply or message me on twitter @naogify.
+
 == Installation ==
 
 1. Download the zip, extract it and upload the extracted folder to your-wp-directory/wp-content/plugins/
