@@ -3,7 +3,7 @@ Contributors: naoki0h
 Tags: fetcher, api, Google Sheets
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 0.2.8
+Stable tag: 0.2.7
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -37,7 +37,7 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
-= 0.2.8 =
+= 0.3.0 =
 - Fix user interface
 - Enable to set sheet id from each fetcher block.
 
@@ -67,3 +67,5 @@ First commit.
 
 = 0.1.0 =
 First commit.
+
+We maintain backward compatibility at this plugin.
