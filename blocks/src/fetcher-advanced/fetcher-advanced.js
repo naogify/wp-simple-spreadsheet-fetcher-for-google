@@ -12,7 +12,6 @@ registerBlockType('wp2s2fg/fetcher-advanced', {
 	supports: {
 		className:true,
 		html: false,
-		inserter:false
 	},
 	attributes: {
 		className: {
