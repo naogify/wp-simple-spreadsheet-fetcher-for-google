@@ -62,7 +62,6 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= '<input type="submit" value="Set Configuration Info" />';
 		$html .= '</form >';
 		$html .= '<br>';
-		$html .= '<em>' . __( "If you have created the API key before, this can be found in the ", 'wp2s2fg' ) . '<a href="http://developers.google.com/console" target="_blank">' . __( "Google API Console", 'wp2s2fg' ) . '</a></em >';
 		$html .= '<h2>' . __( "How to use", 'wp2s2fg' ) . '</h2>';
 		$html .= '<ul>';
 		$html .= '<li>' . __( "1. Create the API key . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the" target="_blank">' . __( "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the", 'wp2s2fg' ) . '</a></li>';
