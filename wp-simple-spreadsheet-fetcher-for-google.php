@@ -53,7 +53,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 
 		$html = '<div class="api-key" >';
 		$html .= '<h2>' . __( "Setting API key", 'wp2s2fg' ) . '</h2>';
-		$html .= esc_html($message);
+		$html .= $message;
 		$html .= '<br>';
 		$html .= '<br>';
 		$html .= '<form id="wp2s2fg_api_spreadsheetId_form" action="' . htmlspecialchars( $_SERVER["PHP_SELF"] . '?' . $_SERVER["QUERY_STRING"] ) . '" method="POST" >';
