@@ -34,6 +34,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.3.1 =
+- Fix user interface
+
 = 0.3.0 =
 - Fix user interface
 - Enable to set sheet id from each fetcher block.
