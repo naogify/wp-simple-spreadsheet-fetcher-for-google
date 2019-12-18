@@ -36,3 +36,5 @@ node_modules
 *.tar.gz
 *.zip
 blocks/src
+.github
+.wordpress-org
