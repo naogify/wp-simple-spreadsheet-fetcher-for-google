@@ -28,8 +28,11 @@ README.md
 wp-cli.local.yml
 yarn.lock
 tests
-vendor
+vendor/google/apiclient-services/src/Google/Service/*
+!vendor/google/apiclient-services/src/Google/Service/Sheets
+!vendor/google/apiclient-services/src/Google/Service/Sheets.php
 node_modules
 *.sql
 *.tar.gz
 *.zip
+blocks/src
