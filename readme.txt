@@ -3,7 +3,7 @@ Contributors: naoki0h
 Tags: fetcher, api, Google Sheets
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,8 +34,11 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.3.2 =
+- Fix user interface.
+
 = 0.3.1 =
-- Fix user interface
+- Fix user interface.
 
 = 0.3.0 =
 - Fix user interface
