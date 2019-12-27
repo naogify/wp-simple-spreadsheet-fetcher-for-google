@@ -25,10 +25,15 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 	}
 
 	public function init() {
+		add_action( 'plugins_loaded', array($this,'load_text_domain') );
 		add_action( 'admin_menu', array( $this, 'add_sub_menu' ) );
 		add_action( 'admin_enqueue_scripts', array($this,'add_admin_scripts') );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_settings' ) );
+	}
+
+	public function load_text_domain() {
+		load_plugin_textdomain( 'wp2s2fg' );
 	}
 
 	public function render_set_api_key() {
