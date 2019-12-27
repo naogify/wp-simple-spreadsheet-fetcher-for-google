@@ -6,7 +6,7 @@ const {InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.bloc
 import {EventRegistrationAdvance, EventRegistrationSimple, Minimum} from "./layout";
 
 registerBlockType('wp2s2fg/fetcher-advanced', {
-	title: __('Fetcher Advanced', 'wp2s2fg'),
+	title: __('Fetcher Advanced', 'wp-simple-spreadsheet-fetcher-for-google'),
 	icon: 'smiley',
 	category: 'wp2s2fg-blocks-cat',
 	supports: {
@@ -45,11 +45,11 @@ registerBlockType('wp2s2fg/fetcher-advanced', {
 				<InspectorControls>
 					<PanelBody>
 						<SelectControl
-							label={__('Select Layout', 'wp2s2fg')}
+							label={__('Select Layout', 'wp-simple-spreadsheet-fetcher-for-google')}
 							value={layout}
 							options={[
-								{label: __('Event Registration Simple', 'wp2s2fg'), value: 'event-registration-simple'},
-								{label: __('Event Registration Advanced', 'wp2s2fg'), value: 'event-registration-advanced'},
+								{label: __('Event Registration Simple', 'wp-simple-spreadsheet-fetcher-for-google'), value: 'event-registration-simple'},
+								{label: __('Event Registration Advanced', 'wp-simple-spreadsheet-fetcher-for-google'), value: 'event-registration-advanced'},
 							]}
 							onChange={(value) => {
 								setAttributes({layout: value})

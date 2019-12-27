@@ -5,7 +5,7 @@ const {Fragment} = wp.element;
 const {RichText, InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 
 registerBlockType('wp2s2fg/fetcher', {
-    title: __('Fetcher', 'wp2s2fg'),
+    title: __('Fetcher', 'wp-simple-spreadsheet-fetcher-for-google'),
     icon: 'smiley',
     category: 'wp2s2fg-blocks-cat',
     supports: {
@@ -15,16 +15,16 @@ registerBlockType('wp2s2fg/fetcher', {
     styles: [
         {
             name: 'wp2s2fg-fetcher-default',
-            label: __('Default', 'wp2s2fg'),
+            label: __('Default', 'wp-simple-spreadsheet-fetcher-for-google'),
             isDefault: true
         },
         {
             name: 'wp2s2fg-fetcher-line',
-            label: __('Line', 'wp2s2fg'),
+            label: __('Line', 'wp-simple-spreadsheet-fetcher-for-google'),
         },
         {
             name: 'wp2s2fg-fetcher-none',
-            label: __('None', 'wp2s2fg'),
+            label: __('None', 'wp-simple-spreadsheet-fetcher-for-google'),
         }
     ],
     attributes: {
@@ -59,19 +59,19 @@ registerBlockType('wp2s2fg/fetcher', {
             if (!range) {
                 return <Fragment>
                     <TextControl
-                        label={__(`Sheet URL`, 'wp2s2fg')}
+                        label={__(`Sheet URL`, 'wp-simple-spreadsheet-fetcher-for-google')}
                         value={sheetId}
                         onChange={(newUrl) => setAttributes({sheetId: newUrl === undefined ? 'none' : newUrl})}
                         initialOpen={true}
                     />
                     <TextControl
-                        label={__(`Sheet Name`, 'wp2s2fg')}
+                        label={__(`Sheet Name`, 'wp-simple-spreadsheet-fetcher-for-google')}
                         value={sheetName}
                         onChange={(newName) => setAttributes({sheetName: newName === undefined ? 'none' : newName})}
                         initialOpen={true}
                     />
                     <TextControl
-                        label={__(`Range`, 'wp2s2fg')}
+                        label={__(`Range`, 'wp-simple-spreadsheet-fetcher-for-google')}
                         value={sheetRange}
                         onChange={(newRange) => setAttributes({sheetRange: newRange === undefined ? 'none' : newRange})}
                         initialOpen={true}
@@ -79,7 +79,7 @@ registerBlockType('wp2s2fg/fetcher', {
                 </Fragment>;
             } else {
                 return <TextControl
-                    label={__(`Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E`, 'wp2s2fg')}
+                    label={__(`Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E`, 'wp-simple-spreadsheet-fetcher-for-google')}
                     value={range}
                     onChange={(newRange) => setAttributes({range: newRange === undefined ? 'none' : newRange})}
                     initialOpen={true}
@@ -90,7 +90,7 @@ registerBlockType('wp2s2fg/fetcher', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <PanelBody title={__('Fetch Data Setting', 'wp2s2fg')} initialOpen={true}>
+                    <PanelBody title={__('Fetch Data Setting', 'wp-simple-spreadsheet-fetcher-for-google')} initialOpen={true}>
                         {renderSettings()}
                     </PanelBody>
                 </InspectorControls>

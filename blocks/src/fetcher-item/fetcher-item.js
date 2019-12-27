@@ -5,7 +5,7 @@ const {Fragment} = wp.element;
 const {RichText, InspectorControls} = wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 
 registerBlockType('wp2s2fg/fetcher-item', {
-    title: __('Fetcher Item', 'wp2s2fg'),
+    title: __('Fetcher Item', 'wp-simple-spreadsheet-fetcher-for-google'),
     parent: [['wp2s2fg/fetcher'], ['wp2s2fg/fetcher-advanced']],
     icon: 'smiley',
     category: 'wp2s2fg-blocks-cat',
@@ -46,19 +46,19 @@ registerBlockType('wp2s2fg/fetcher-item', {
             if (!range) {
                 return <Fragment>
                     <TextControl
-                        label={__(`Sheet URL`, 'wp2s2fg')}
+                        label={__(`Sheet URL`, 'wp-simple-spreadsheet-fetcher-for-google')}
                         value={sheetId}
                         onChange={(newUrl) => setAttributes({sheetId: newUrl === undefined ? 'none' : newUrl})}
                         initialOpen={true}
                     />
                     <TextControl
-                        label={__(`Sheet Name`, 'wp2s2fg')}
+                        label={__(`Sheet Name`, 'wp-simple-spreadsheet-fetcher-for-google')}
                         value={sheetName}
                         onChange={(newName) => setAttributes({sheetName: newName === undefined ? 'none' : newName})}
                         initialOpen={true}
                     />
                     <TextControl
-                        label={__(`Range`, 'wp2s2fg')}
+                        label={__(`Range`, 'wp-simple-spreadsheet-fetcher-for-google')}
                         value={sheetRange}
                         onChange={(newRange) => setAttributes({sheetRange: newRange === undefined ? 'none' : newRange})}
                         initialOpen={true}
@@ -66,7 +66,7 @@ registerBlockType('wp2s2fg/fetcher-item', {
                 </Fragment>;
             } else {
                 return <TextControl
-                    label={__(`Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E`, 'wp2s2fg')}
+                    label={__(`Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E`, 'wp-simple-spreadsheet-fetcher-for-google')}
                     value={range}
                     onChange={(newRange) => setAttributes({range: newRange === undefined ? 'none' : newRange})}
                     initialOpen={true}
@@ -77,7 +77,7 @@ registerBlockType('wp2s2fg/fetcher-item', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <PanelBody title={__('Fetch Data Setting', 'wp2s2fg')} initialOpen={true}>
+                    <PanelBody title={__('Fetch Data Setting', 'wp-simple-spreadsheet-fetcher-for-google')} initialOpen={true}>
                         {renderSettings()}
                     </PanelBody>
                 </InspectorControls>

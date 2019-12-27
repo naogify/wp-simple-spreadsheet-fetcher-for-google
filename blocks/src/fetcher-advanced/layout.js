@@ -20,14 +20,14 @@ export class EventRegistrationAdvance extends React.Component {
                             className={'wp2s2fg_fetcher-advanced_caption'}
                             onChange={(value) => setAttributes({caption: value})}
                             value={caption}
-                            placeholder={__('General Participant', 'wp2s2fg')}
+                            placeholder={__('General Participant', 'wp-simple-spreadsheet-fetcher-for-google')}
                         />
                         <RichText
                             tagName="p"
                             className={'wp2s2fg_fetcher-advanced_price'}
                             onChange={(value) => setAttributes({price: value})}
                             value={price}
-                            placeholder={__('Free', 'wp2s2fg')}
+                            placeholder={__('Free', 'wp-simple-spreadsheet-fetcher-for-google')}
                         />
                     </div>
                     <div className={`wp2s2fg_fetcher-advanced_number_container`}>
@@ -38,7 +38,7 @@ export class EventRegistrationAdvance extends React.Component {
                             className={'wp2s2fg_fetcher-advanced_number_after'}
                             onChange={(value) => setAttributes({after: value})}
                             value={after}
-                            placeholder={__('100', 'wp2s2fg')}
+                            placeholder={__('100', 'wp-simple-spreadsheet-fetcher-for-google')}
                         />
                     </div>
                 </div>
@@ -92,7 +92,7 @@ export class EventRegistrationSimple extends React.Component {
                             className={'wp2s2fg_fetcher-advanced_caption'}
                             onChange={(value) => setAttributes({caption: value})}
                             value={caption}
-                            placeholder={__('General Participant', 'wp2s2fg')}
+                            placeholder={__('General Participant', 'wp-simple-spreadsheet-fetcher-for-google')}
                         />
                     </div>
                     <div className={`wp2s2fg_fetcher-advanced_number_container`}>
