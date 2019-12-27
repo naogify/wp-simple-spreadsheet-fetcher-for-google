@@ -39,7 +39,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 	if(!$sheetId){
 		if ( ! $sheetId_deprecated = sanitize_text_field(wp2s2fg_get_spread_sheet_id()) ) {
-			return __( 'Sheet ID is not set. Please set it from the sidebar.', 'wp2s2fg' );
+			return __( 'Sheet URL is not set. Please set it from the sidebar.', 'wp2s2fg' );
 		}
 	}else{
 		$sheetId = preg_replace('/https\:\/\/docs\.google\.com\/spreadsheets\/d\//', '', esc_url($sheetId));
