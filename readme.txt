@@ -3,7 +3,7 @@ Contributors: naoki0h
 Tags: fetcher, api, Google Sheets
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 0.3.2
+Stable tag: 0.3.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,6 +33,8 @@ If you have anything to tell me, please post it on the plugin's support forum or
 1. Fetch and display data from Google Sheets.
 
 == Changelog ==
+= 0.3.3 =
+- Fix text and i18n.
 
 = 0.3.2 =
 - Fix user interface.
