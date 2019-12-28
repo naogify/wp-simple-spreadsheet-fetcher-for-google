@@ -34,14 +34,12 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 		$url = admin_url( 'admin.php?page=wsgsf_settings' );
 		$url = '<a href="' . esc_url( $url ) . '">' . __( 'settings.' ) . '</a>';
-		return __( 'API-KEY is not set Please set it at the ', 'wp2s2fg' ) . $url;
+		return __( 'API-KEY is not set Please set it at the ', 'wp-simple-spreadsheet-fetcher-for-google' ) . $url;
 	}
 
 	if(!$sheetId){
 		if ( ! $sheetId_deprecated = sanitize_text_field(wp2s2fg_get_spread_sheet_id()) ) {
-			return __( 'Sheet ID is not set. Please set it from the sidebar.', 'wp2s2fg' );
-		}else{
-			return __( 'SheetURL is not set. Please set it from the sidebar.', 'wp2s2fg' );
+			return __( 'Sheet URL is not set. Please set it from the sidebar.', 'wp-simple-spreadsheet-fetcher-for-google' );
 		}
 	}else{
 		$sheetId = preg_replace('/https\:\/\/docs\.google\.com\/spreadsheets\/d\//', '', esc_url($sheetId));
@@ -50,15 +48,15 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 	if(!$sheetName && !$sheetRange) {
 		if ( ! $range ) {
-			return __( 'Fetch data setting is not set. Please set it from the sidebar.', 'wp2s2fg' );
+			return __( 'Fetch data setting is not set. Please set it from the sidebar.', 'wp-simple-spreadsheet-fetcher-for-google' );
 		}
 	}else{
 
 		if(!$sheetName){
-			return __( 'Sheet Name is not set. Please set it from the sidebar. Example : Sheet1', 'wp2s2fg' );
+			return __( 'Sheet Name is not set. Please set it from the sidebar. Example : Sheet1', 'wp-simple-spreadsheet-fetcher-for-google' );
 
 		}else if(!$sheetRange){
-			return __( 'Range is not set. Please set it from the sidebar. Example : A1:A5', 'wp2s2fg' );
+			return __( 'Range is not set. Please set it from the sidebar. Example : A1:A5', 'wp-simple-spreadsheet-fetcher-for-google' );
 
 		}
 		$range = esc_html($sheetName) . '!' . esc_html($sheetRange);
@@ -71,7 +69,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 	$data = '';
 	if ( empty( $values ) ) {
-		$data .= __( 'No data found.', 'wp2s2fg' );
+		$data .= __( 'No data found.', 'wp-simple-spreadsheet-fetcher-for-google' );
 	} else {
 
 		if($block === 'wp2s2fg/fetcher') {
