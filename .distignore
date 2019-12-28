@@ -37,4 +37,5 @@ node_modules
 *.zip
 blocks/src
 .github
+.github/workflows
 .wordpress-org
