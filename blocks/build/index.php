@@ -143,7 +143,7 @@ if ( ! function_exists( 'wp2s2fg_categories' ) ) {
 			array(
 				array(
 					'slug'  => 'wp2s2fg-blocks-cat',
-					'title' => __( 'WP Simple Spreadsheet Fetcher for Google', 'wp2s2fg' ),
+					'title' => __( 'WP Simple Spreadsheet Fetcher for Google', 'wp-simple-spreadsheet-fetcher-for-google' ),
 					'icon'  => 'smiley',
 				)
 			)
