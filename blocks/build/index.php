@@ -48,6 +48,13 @@ function wp2s2fg_fetcher_block_init() {
 		filemtime( "$dir/$fetcher_itm_js" )
 	);
 
+	if ( function_exists( 'wp_set_script_translations' ) ) {
+		wp_set_script_translations( 'wp2s2fg-fetcher', 'wp-simple-spreadsheet-fetcher-for-google' );
+		wp_set_script_translations( 'wp2s2fg-fetcher-adv', 'wp-simple-spreadsheet-fetcher-for-google' );
+		wp_set_script_translations( 'wp2s2fg-fetcher-adv-lay', 'wp-simple-spreadsheet-fetcher-for-google' );
+		wp_set_script_translations( 'wp2s2fg-fetcher-item', 'wp-simple-spreadsheet-fetcher-for-google' );
+	}
+
 	$editor_css = 'editor.css';
 	wp_register_style(
 		'wp2s2fg-fetcher-style-editor',
@@ -143,7 +150,7 @@ if ( ! function_exists( 'wp2s2fg_categories' ) ) {
 			array(
 				array(
 					'slug'  => 'wp2s2fg-blocks-cat',
-					'title' => __( 'WP Simple Spreadsheet Fetcher for Google', 'wp2s2fg' ),
+					'title' => __( 'WP Simple Spreadsheet Fetcher for Google', 'wp-simple-spreadsheet-fetcher-for-google' ),
 					'icon'  => 'smiley',
 				)
 			)
