@@ -5,7 +5,7 @@
  * Description:     This is the simple plugin to fetch data from Google Sheets and display it on your website. Please go to "Plugins" > "WP-Simple-Spreadsheet-Fetcher-for-Google" for initial setting.
  * Author:          Naoki Ohashi
  * Author URI:      https://naoki-is-me
- * Text Domain:     wp2s2fg
+ * Text Domain:     wp-simple-spreadsheet-fetcher-for-google
  * Domain Path:     /languages
  * Version:         0.3.3
  *
@@ -33,17 +33,17 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 	}
 
 	public function load_text_domain() {
-		load_plugin_textdomain( 'wp2s2fg' );
+		load_plugin_textdomain( 'wp-simple-spreadsheet-fetcher-for-google' );
 	}
 
 	public function render_set_api_key() {
-		$message = '<span class="success" style="color:#28a745; font-size:1.2rem">' . __( "API Key set!", 'wp2s2fg' ) . '</span >';
+		$message = '<span class="success" style="color:#28a745; font-size:1.2rem">' . __( "API Key set!", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</span >';
 
 		return $this->render_settings_page( $message );
 	}
 
 	public function render_api_key_not_set() {
-		$message = '<strong class="warn" style="color:#dc3545; font-size:1.2rem">' . __( " You have not entered your API key", 'wp2s2fg' ) . '</strong >';
+		$message = '<strong class="warn" style="color:#dc3545; font-size:1.2rem">' . __( " You have not entered your API key", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</strong >';
 
 		return $this->render_settings_page( $message );
 	}
@@ -57,24 +57,24 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		}
 
 		$html = '<div class="api-key" >';
-		$html .= '<h2>' . __( "Setting API key", 'wp2s2fg' ) . '</h2>';
+		$html .= '<h2>' . __( "Setting API key", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</h2>';
 		$html .= $message;
 		$html .= '<br>';
 		$html .= '<br>';
 		$html .= '<form id="wp2s2fg_api_spreadsheetId_form" action="' . htmlspecialchars( $_SERVER["PHP_SELF"] . '?' . $_SERVER["QUERY_STRING"] ) . '" method="POST" >';
-		$html .= '<div class="wp2s2fg_api_spreadsheetId_form_label">' . __( "API Key : ", 'wp2s2fg' ) .'</div><input type="text" name="api_key" placeholder="API-Key" value="' . esc_html( $api_key ) . '" required />';
+		$html .= '<div class="wp2s2fg_api_spreadsheetId_form_label">' . __( "API Key : ", 'wp-simple-spreadsheet-fetcher-for-google' ) .'</div><input type="text" name="api_key" placeholder="API-Key" value="' . esc_html( $api_key ) . '" required />';
 		$html .= '<br>';
 		$html .= '<input type="submit" value="Set Configuration Info" />';
 		$html .= '</form >';
 		$html .= '<br>';
-		$html .= '<h2>' . __( "How to use", 'wp2s2fg' ) . '</h2>';
+		$html .= '<h2>' . __( "How to use", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</h2>';
 		$html .= '<ul>';
-		$html .= '<li>' . __( "1. Create the API key . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the" target="_blank">' . __( "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the", 'wp2s2fg' ) . '</a></li>';
-		$html .= '<li>' . __( "2. Save your API key from the form above.", 'wp2s2fg' ) . '</li>';
-		$html .= '<li>' . __( "3. Turn on Get shareable link . For more detail . Please refer to ", 'wp2s2fg' ) . '<a href="https://support.google.com/drive/answer/2494822#link_sharing" target="_blank">' . __( "https://support.google.com/drive/answer/2494822#link_sharing", 'wp2s2fg' ) . '</a></li>';
-		$html .= '<li>' . __( "4. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data.", 'wp2s2fg' ) . '</li>';
+		$html .= '<li>' . __( "1. Create the API key . For more detail . Please refer to ", 'wp-simple-spreadsheet-fetcher-for-google' ) . '<a href="https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the" target="_blank">' . __( "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</a></li>';
+		$html .= '<li>' . __( "2. Save your API key from the form above.", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</li>';
+		$html .= '<li>' . __( "3. Turn on Get shareable link . For more detail . Please refer to ", 'wp-simple-spreadsheet-fetcher-for-google' ) . '<a href="https://support.google.com/drive/answer/2494822#link_sharing" target="_blank">' . __( "https://support.google.com/drive/answer/2494822#link_sharing", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</a></li>';
+		$html .= '<li>' . __( "4. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data.", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</li>';
 		$html .= '</ul>';
-		$html .= '<h2>' . __( "Tutorial Video", 'wp2s2fg' ) . '</h2>';
+		$html .= '<h2>' . __( "Tutorial Video", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</h2>';
 		$html .= '<iframe width="560" height="315" src="https://www.youtube.com/embed/A86v_nA4JD8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 		$html .= '</div>';
 		return $html;
@@ -83,8 +83,8 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 	public function add_sub_menu() {
 		$custom_page = add_submenu_page(
 			'/plugins.php',
-			__( 'WP Simple Spreadsheet Fetcher for Google', 'wp2s2fg' ),
-			__( 'WP Simple Spreadsheet Fetcher for Google', 'wp2s2fg' ),
+			__( 'WP Simple Spreadsheet Fetcher for Google', 'wp-simple-spreadsheet-fetcher-for-google' ),
+			__( 'WP Simple Spreadsheet Fetcher for Google', 'wp-simple-spreadsheet-fetcher-for-google' ),
 			'edit_others_posts',
 			'wsgsf_settings',
 			array( $this, 'render_settings' )
