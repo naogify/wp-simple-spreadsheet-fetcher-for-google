@@ -1,30 +1,40 @@
-#, fuzzy
+# Copyright (C) 2019 Naoki Ohashi
+# This file is distributed under the same license as the WP Simple Spreadsheet Fetcher for Google plugin.
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: WP Simple Spreadsheet Fetcher for Google\n"
-"POT-Creation-Date: 2019-12-28 23:26+0900\n"
-"PO-Revision-Date: 2019-12-28 23:25+0900\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Project-Id-Version: WP Simple Spreadsheet Fetcher for Google 0.3.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-simple-spreadsheet-fetcher-for-google\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: wp-simple-spreadsheet-fetcher-for-google.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.min.js\n"
-"X-Poedit-SearchPathExcluded-1: vendor\n"
-"X-Poedit-SearchPathExcluded-2: node_modules\n"
+"POT-Creation-Date: 2019-12-29T22:30:33+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.1.0\n"
+"X-Domain: wp-simple-spreadsheet-fetcher-for-google\n"
 
-#: blocks/build/get-value-query.php:36
-msgid "settings."
+#. Plugin Name of the plugin
+#: blocks/build/index.php:153
+#: wp-simple-spreadsheet-fetcher-for-google.php:86
+#: wp-simple-spreadsheet-fetcher-for-google.php:87
+msgid "WP Simple Spreadsheet Fetcher for Google"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/naogify/wp-simple-google-sheets-fetcher"
+msgstr ""
+
+#. Description of the plugin
+msgid "This is the simple plugin to fetch data from Google Sheets and display it on your website. Please go to \"Plugins\" > \"WP-Simple-Spreadsheet-Fetcher-for-Google\" for initial setting."
+msgstr ""
+
+#. Author of the plugin
+msgid "Naoki Ohashi"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://naoki-is-me"
 msgstr ""
 
 #: blocks/build/get-value-query.php:37
@@ -49,71 +59,6 @@ msgstr ""
 
 #: blocks/build/get-value-query.php:72
 msgid "No data found."
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-#: blocks/build/index.php:153 wp-simple-spreadsheet-fetcher-for-google.php:86
-#: wp-simple-spreadsheet-fetcher-for-google.php:87
-msgid "WP Simple Spreadsheet Fetcher for Google"
-msgstr ""
-
-#: blocks/src/fetcher-advanced/fetcher-advanced.js:14
-msgid "Fetcher Advanced"
-msgstr ""
-
-#: blocks/src/fetcher-advanced/fetcher-advanced.js:54
-msgid "Select Layout"
-msgstr ""
-
-#: blocks/src/fetcher-advanced/fetcher-advanced.js:61
-msgid "Event Registration Simple"
-msgstr ""
-
-#: blocks/src/fetcher-advanced/fetcher-advanced.js:68
-msgid "Event Registration Advanced"
-msgstr ""
-
-#: blocks/src/fetcher-item/fetcher-item.js:9
-msgid "Fetcher Item"
-msgstr ""
-
-#: blocks/src/fetcher-item/fetcher-item.js:52 blocks/src/fetcher/fetcher.js:65
-msgid "Sheet URL"
-msgstr ""
-
-#: blocks/src/fetcher-item/fetcher-item.js:66 blocks/src/fetcher/fetcher.js:79
-msgid "Sheet Name"
-msgstr ""
-
-#: blocks/src/fetcher-item/fetcher-item.js:80 blocks/src/fetcher/fetcher.js:93
-msgid "Range"
-msgstr ""
-
-#: blocks/src/fetcher-item/fetcher-item.js:100
-#: blocks/src/fetcher/fetcher.js:113
-msgid ""
-"Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E"
-msgstr ""
-
-#: blocks/src/fetcher-item/fetcher-item.js:121
-#: blocks/src/fetcher/fetcher.js:134
-msgid "Fetch Data Setting"
-msgstr ""
-
-#: blocks/src/fetcher/fetcher.js:9
-msgid "Fetcher"
-msgstr ""
-
-#: blocks/src/fetcher/fetcher.js:19
-msgid "Default"
-msgstr ""
-
-#: blocks/src/fetcher/fetcher.js:24
-msgid "Line"
-msgstr ""
-
-#: blocks/src/fetcher/fetcher.js:28
-msgid "None"
 msgstr ""
 
 #: wp-simple-spreadsheet-fetcher-for-google.php:40
@@ -141,8 +86,7 @@ msgid "1. Create the API key . For more detail . Please refer to "
 msgstr ""
 
 #: wp-simple-spreadsheet-fetcher-for-google.php:72
-msgid ""
-"https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the"
+msgid "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the"
 msgstr ""
 
 #: wp-simple-spreadsheet-fetcher-for-google.php:73
@@ -158,34 +102,79 @@ msgid "https://support.google.com/drive/answer/2494822#link_sharing"
 msgstr ""
 
 #: wp-simple-spreadsheet-fetcher-for-google.php:75
-msgid ""
-"4. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , "
-"use side panel to indicate the cell to fetch data."
+msgid "4. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data."
 msgstr ""
 
 #: wp-simple-spreadsheet-fetcher-for-google.php:77
 msgid "Tutorial Video"
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:116
-msgid "Settings"
+#: blocks/src/fetcher/fetcher.js:9
+msgid "Fetcher"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
-msgid "https://github.com/naogify/wp-simple-google-sheets-fetcher"
+#: blocks/src/fetcher/fetcher.js:19
+msgid "Default"
 msgstr ""
 
-#. Description of the plugin/theme
-msgid ""
-"This is the simple plugin to fetch data from Google Sheets and display it on "
-"your website. Please go to \"Plugins\" > \"WP-Simple-Spreadsheet-Fetcher-for-"
-"Google\" for initial setting."
+#: blocks/src/fetcher/fetcher.js:24
+msgid "Line"
 msgstr ""
 
-#. Author of the plugin/theme
-msgid "Naoki Ohashi"
+#: blocks/src/fetcher/fetcher.js:28
+msgid "None"
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "https://naoki-is-me"
+#: blocks/src/fetcher/fetcher.js:64
+msgid "Sheet URL"
+msgstr ""
+
+#: blocks/src/fetcher/fetcher.js:78
+msgid "Sheet Name"
+msgstr ""
+
+#: blocks/src/fetcher/fetcher.js:92
+msgid "Range"
+msgstr ""
+
+#: blocks/src/fetcher/fetcher.js:112
+msgid "Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E"
+msgstr ""
+
+#: blocks/src/fetcher/fetcher.js:133
+#: blocks/src/fetcher-item/fetcher-item.js:120
+msgid "Fetch Data Setting"
+msgstr ""
+
+#: blocks/src/fetcher-advanced/layout.js:26
+#: blocks/src/fetcher-advanced/layout.js:127
+msgid "General Participant"
+msgstr ""
+
+#: blocks/src/fetcher-advanced/layout.js:36
+msgid "Free"
+msgstr ""
+
+#: blocks/src/fetcher-advanced/layout.js:60
+msgid "100"
+msgstr ""
+
+#: blocks/src/fetcher-advanced/fetcher-advanced.js:14
+msgid "Fetcher Advanced"
+msgstr ""
+
+#: blocks/src/fetcher-advanced/fetcher-advanced.js:53
+msgid "Select Layout"
+msgstr ""
+
+#: blocks/src/fetcher-advanced/fetcher-advanced.js:60
+msgid "Event Registration Simple"
+msgstr ""
+
+#: blocks/src/fetcher-advanced/fetcher-advanced.js:67
+msgid "Event Registration Advanced"
+msgstr ""
+
+#: blocks/src/fetcher-item/fetcher-item.js:9
+msgid "Fetcher Item"
 msgstr ""
