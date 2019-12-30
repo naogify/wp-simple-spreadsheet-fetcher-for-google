@@ -77,7 +77,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= '<li>' . __( "4. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data.", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</li>';
 		$html .= '</ul>';
 		$html .= '<h2>' . __( "Tutorial Video", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</h2>';
-		$html .= '<iframe width="560" height="315" src="https://www.youtube.com/embed/A86v_nA4JD8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+		$html .= '<iframe width="560" height="315" src="https://www.youtube.com/embed/VYMFFMyRK3I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 		$html .= '</div>';
 		return $html;
 	}
