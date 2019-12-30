@@ -33,6 +33,10 @@ If you have anything to tell me, please post it on the plugin's support forum or
 1. Fetch and display data from Google Sheets.
 
 == Changelog ==
+
+= 0.3.4 =
+- Fix text and i18n.
+
 = 0.3.3 =
 - Fix text and i18n.
 

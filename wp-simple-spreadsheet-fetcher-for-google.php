@@ -7,12 +7,14 @@
  * Author URI:      https://naoki-is-me
  * Text Domain:     wp-simple-spreadsheet-fetcher-for-google
  * Domain Path:     /languages
- * Version:         0.3.3
+ * Version:         0.3.4
  *
  * @package         Wp_Simple_Spreadsheet_Fetcher_for_Google
  */
 
 define( "BUILD_DIR", '/blocks/build' );
+define( "PLUGIN_DIR", plugin_dir_path(  __FILE__  ));
+
 
 include_once dirname( __FILE__ ) . '/vendor/autoload.php';
 include_once dirname( __FILE__ ) . BUILD_DIR . '/base.php';
