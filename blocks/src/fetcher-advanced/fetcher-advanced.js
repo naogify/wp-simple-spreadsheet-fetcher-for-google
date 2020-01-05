@@ -4,11 +4,8 @@ const { SelectControl, PanelBody } = wp.components;
 const { Fragment } = wp.element;
 const { InspectorControls } =
 	wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
-import {
-	EventRegistrationAdvance,
-	EventRegistrationSimple,
-	Minimum
-} from "./layout";
+import { EventRegistrationAdvance, EventRegistrationSimple } from "./layout";
+import { DeprecatedEventRegistrationAdvance } from "./layout-dep";
 
 registerBlockType("wp2s2fg/fetcher-advanced", {
 	title: __("Fetcher Advanced", "wp-simple-spreadsheet-fetcher-for-google"),
@@ -99,5 +96,51 @@ registerBlockType("wp2s2fg/fetcher-advanced", {
 				)}
 			</Fragment>
 		);
-	}
+	},
+
+	deprecated: [
+		{
+			attributes: {
+				className: {
+					type: "string",
+					default: ""
+				},
+				caption: {
+					source: "html",
+					selector: "h4.wp2s2fg_fetcher-advanced_caption"
+				},
+				price: {
+					source: "html",
+					selector: "p.wp2s2fg_fetcher-advanced_price"
+				},
+				after: {
+					source: "html",
+					selector: "p.wp2s2fg_fetcher-advanced_number_after"
+				},
+				layout: {
+					type: "string",
+					default: "event-registration-simple"
+				}
+			},
+			save(props) {
+				const { layout } = props.attributes;
+				return (
+					<Fragment>
+						{layout === "event-registration-simple" && (
+							<EventRegistrationSimple
+								props={props}
+								for_={"save"}
+							/>
+						)}
+						{layout === "event-registration-advanced" && (
+							<DeprecatedEventRegistrationAdvance
+								props={props}
+								for_={"save"}
+							/>
+						)}
+					</Fragment>
+				);
+			}
+		}
+	]
 });
