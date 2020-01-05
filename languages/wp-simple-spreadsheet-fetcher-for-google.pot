@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-01-05T14:15:04+00:00\n"
+"POT-Creation-Date: 2020-01-05T14:41:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: wp-simple-spreadsheet-fetcher-for-google\n"
@@ -130,10 +130,12 @@ msgid "None"
 msgstr ""
 
 #: blocks/src/fetcher/fetcher.js:64
+#: blocks/src/fetcher-item/fetcher-item.js:51
 msgid "Sheet URL"
 msgstr ""
 
 #: blocks/src/fetcher/fetcher.js:78
+#: blocks/src/fetcher-item/fetcher-item.js:65
 msgid "Sheet Name"
 msgstr ""
 
@@ -181,4 +183,12 @@ msgstr ""
 
 #: blocks/src/fetcher-item/fetcher-item.js:9
 msgid "Fetcher Item"
+msgstr ""
+
+#: blocks/src/fetcher-item/fetcher-item.js:79
+msgid "Cell"
+msgstr ""
+
+#: blocks/src/fetcher-item/fetcher-item.js:99
+msgid "Please set the cell to fetch data in A1 notation. Example : Sheets1!A1"
 msgstr ""

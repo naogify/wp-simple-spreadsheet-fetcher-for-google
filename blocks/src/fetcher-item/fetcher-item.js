@@ -49,7 +49,7 @@ registerBlockType("wp2s2fg/fetcher-item", {
 					<Fragment>
 						<TextControl
 							label={__(
-								`Sheet URL`,
+								"Sheet URL",
 								"wp-simple-spreadsheet-fetcher-for-google"
 							)}
 							value={sheetId}
@@ -63,7 +63,7 @@ registerBlockType("wp2s2fg/fetcher-item", {
 						/>
 						<TextControl
 							label={__(
-								`Sheet Name`,
+								"Sheet Name",
 								"wp-simple-spreadsheet-fetcher-for-google"
 							)}
 							value={sheetName}
@@ -77,7 +77,7 @@ registerBlockType("wp2s2fg/fetcher-item", {
 						/>
 						<TextControl
 							label={__(
-								`Cell`,
+								"Cell",
 								"wp-simple-spreadsheet-fetcher-for-google"
 							)}
 							value={sheetRange}
@@ -97,7 +97,7 @@ registerBlockType("wp2s2fg/fetcher-item", {
 				return (
 					<TextControl
 						label={__(
-							`Please set the cell to fetch data in A1 notation. Example : Sheets1!A1`,
+							"Please set the cell to fetch data in A1 notation. Example : Sheets1!A1",
 							"wp-simple-spreadsheet-fetcher-for-google"
 						)}
 						value={range}

@@ -6,8 +6,8 @@ msgstr ""
 "Development (trunk)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-simple-"
 "spreadsheet-fetcher-for-google\n"
-"POT-Creation-Date: 2020-01-05T14:15:04+00:00\n"
-"PO-Revision-Date: 2020-01-05 23:18+0900\n"
+"POT-Creation-Date: 2020-01-05T14:41:10+00:00\n"
+"PO-Revision-Date: 2020-01-05 23:42+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -148,24 +148,24 @@ msgstr "ライン"
 msgid "None"
 msgstr "無し"
 
-#: blocks/src/fetcher/fetcher.js:64
+#: blocks/src/fetcher/fetcher.js:64 blocks/src/fetcher-item/fetcher-item.js:51
 msgid "Sheet URL"
 msgstr "シート URL"
 
-#: blocks/src/fetcher/fetcher.js:78
+#: blocks/src/fetcher/fetcher.js:78 blocks/src/fetcher-item/fetcher-item.js:65
 msgid "Sheet Name"
 msgstr "シート名"
 
 #: blocks/src/fetcher/fetcher.js:92
 msgid "Cell or Range"
-msgstr ""
+msgstr "セルか範囲"
 
 #: blocks/src/fetcher/fetcher.js:112
 msgid ""
 "Please set the cell or range to fetch data in A1 notation. Example : Sheets1!"
 "A1:E"
 msgstr ""
-"A1 表記でデータをフェッチするセルか範囲を設定してください。例 : シート1!A1:E"
+"データを取得するセルか範囲をA1 表記で設定してください。例 : シート1!A1:E"
 
 #: blocks/src/fetcher/fetcher.js:133
 #: blocks/src/fetcher-item/fetcher-item.js:120
@@ -204,6 +204,14 @@ msgstr "イベント登録（高度）"
 #: blocks/src/fetcher-item/fetcher-item.js:9
 msgid "Fetcher Item"
 msgstr "フェーッチャーアイテム"
+
+#: blocks/src/fetcher-item/fetcher-item.js:79
+msgid "Cell"
+msgstr "セル"
+
+#: blocks/src/fetcher-item/fetcher-item.js:99
+msgid "Please set the cell to fetch data in A1 notation. Example : Sheets1!A1"
+msgstr "データを取得するセルをA1 表記で設定してください。例 : シート1!A1"
 
 #~ msgid "Range"
 #~ msgstr "範囲"
