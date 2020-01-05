@@ -67,6 +67,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 		$html .= '<div class="wp2s2fg_api_spreadsheetId_form_label">' . __( "API Key : ", 'wp-simple-spreadsheet-fetcher-for-google' ) .'</div><input type="text" name="api_key" placeholder="API-Key" value="' . esc_html( $api_key ) . '" required />';
 		$html .= '<br>';
 		$html .= '<input type="submit" value="Set Configuration Info" />';
+		$html .= wp_nonce_field( wp_create_nonce( __FILE__ ), 'wp-simple-spreadsheet-fetcher-for-google-nonce' );
 		$html .= '</form >';
 		$html .= '<br>';
 		$html .= '<h2>' . __( "How to use", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</h2>';
@@ -95,7 +96,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 
 	public function render_settings() {
 
-		if ( isset( $_POST['api_key'] )) {
+		if ( ! empty( $_POST['api_key'] ) && check_admin_referer( wp_create_nonce( __FILE__ ), 'wp-simple-spreadsheet-fetcher-for-google-nonce' ) ) {
 			wp2s2fg_set_api_key( sanitize_text_field( $_POST['api_key'] ) );
 		}
 
