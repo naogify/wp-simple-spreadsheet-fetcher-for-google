@@ -29,7 +29,7 @@ export class EventRegistrationAdvance extends React.Component {
 							)}
 						/>
 						<RichText
-							tagName="p"
+							tagName="span"
 							className={"wp2s2fg_fetcher-advanced_price"}
 							onChange={value => setAttributes({ price: value })}
 							value={price}
@@ -53,7 +53,7 @@ export class EventRegistrationAdvance extends React.Component {
 							/
 						</span>
 						<RichText
-							tagName="p"
+							tagName="span"
 							className={"wp2s2fg_fetcher-advanced_number_after"}
 							onChange={value => setAttributes({ after: value })}
 							value={after}
@@ -77,7 +77,7 @@ export class EventRegistrationAdvance extends React.Component {
 							value={caption}
 						/>
 						<RichText.Content
-							tagName="p"
+							tagName="span"
 							className={"wp2s2fg_fetcher-advanced_price"}
 							value={price}
 						/>
@@ -92,7 +92,7 @@ export class EventRegistrationAdvance extends React.Component {
 							/
 						</span>
 						<RichText.Content
-							tagName="p"
+							tagName="span"
 							className={"wp2s2fg_fetcher-advanced_number_after"}
 							value={after}
 						/>

@@ -29,11 +29,11 @@ registerBlockType("wp2s2fg/fetcher-advanced", {
 		},
 		price: {
 			source: "html",
-			selector: "p.wp2s2fg_fetcher-advanced_price"
+			selector: "span.wp2s2fg_fetcher-advanced_price"
 		},
 		after: {
 			source: "html",
-			selector: "p.wp2s2fg_fetcher-advanced_number_after"
+			selector: "span.wp2s2fg_fetcher-advanced_number_after"
 		},
 		layout: {
 			type: "string",
