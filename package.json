@@ -8,6 +8,7 @@
     "watch": "wp-scripts start blocks/src/**/*.js --output-path=blocks/build",
     "build": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build",
     "translate": "po2json languages/wp-simple-spreadsheet-fetcher-for-google-ja.po languages/wp-simple-spreadsheet-fetcher-for-google-ja-wp2s2fg-fetcher.json -f jed",
+    "make-pot": "wp i18n make-pot . languages/wp-simple-spreadsheet-fetcher-for-google.pot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
