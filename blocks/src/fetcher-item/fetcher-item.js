@@ -77,7 +77,7 @@ registerBlockType("wp2s2fg/fetcher-item", {
 						/>
 						<TextControl
 							label={__(
-								`Range`,
+								`Cell`,
 								"wp-simple-spreadsheet-fetcher-for-google"
 							)}
 							value={sheetRange}
