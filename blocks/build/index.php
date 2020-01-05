@@ -49,10 +49,10 @@ function wp2s2fg_fetcher_block_init() {
 	);
 
 	if ( function_exists( 'wp_set_script_translations' ) ) {
-		wp_set_script_translations( 'wp2s2fg-fetcher', 'wp-simple-spreadsheet-fetcher-for-google', PLUGIN_DIR.'/languages' );
-		wp_set_script_translations( 'wp2s2fg-fetcher-adv', 'wp-simple-spreadsheet-fetcher-for-google', PLUGIN_DIR.'/languages' );
-		wp_set_script_translations( 'wp2s2fg-fetcher-adv-lay', 'wp-simple-spreadsheet-fetcher-for-google', PLUGIN_DIR.'/languages' );
-		wp_set_script_translations( 'wp2s2fg-fetcher-item', 'wp-simple-spreadsheet-fetcher-for-google', PLUGIN_DIR.'/languages' );
+		wp_set_script_translations( 'wp2s2fg-fetcher', 'wp-simple-spreadsheet-fetcher-for-google' );
+		wp_set_script_translations( 'wp2s2fg-fetcher-adv', 'wp-simple-spreadsheet-fetcher-for-google' );
+		wp_set_script_translations( 'wp2s2fg-fetcher-adv-lay', 'wp-simple-spreadsheet-fetcher-for-google' );
+		wp_set_script_translations( 'wp2s2fg-fetcher-item', 'wp-simple-spreadsheet-fetcher-for-google' );
 	}
 
 	$editor_css = 'editor.css';
