@@ -45,7 +45,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 	}
 
 	public function render_api_key_not_set() {
-		$message = '<strong class="warn" style="color:#dc3545; font-size:1.2rem">' . __( " You have not entered your API key", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</strong >';
+		$message = '<strong class="warn" style="color:#dc3545; font-size:1.2rem">' . __( "You have not entered your API key", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</strong >';
 
 		return $this->render_settings_page( $message );
 	}

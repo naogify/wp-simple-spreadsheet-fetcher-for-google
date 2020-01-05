@@ -56,8 +56,14 @@ function wp2s2fg_get_selected_value( $attributes ) {
 			return __( 'Sheet Name is not set. Please set it from the sidebar. Example : Sheet1', 'wp-simple-spreadsheet-fetcher-for-google' );
 
 		}else if(!$sheetRange){
-			return __( 'Range is not set. Please set it from the sidebar. Example : A1:A5', 'wp-simple-spreadsheet-fetcher-for-google' );
 
+			if($block === 'wp2s2fg/fetcher'){
+				return __( 'Cell or Range is not set. Please set it from the sidebar. Example : A1:A5', 'wp-simple-spreadsheet-fetcher-for-google' );
+
+			}elseif($block === 'wp2s2fg/fetcher-item'){
+				return __( 'Cell is not set. Please set it from the sidebar. Example : A1', 'wp-simple-spreadsheet-fetcher-for-google' );
+				
+			}
 		}
 		$range = esc_html($sheetName) . '!' . esc_html($sheetRange);
 	}
