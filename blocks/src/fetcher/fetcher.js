@@ -90,7 +90,7 @@ registerBlockType("wp2s2fg/fetcher", {
 						/>
 						<TextControl
 							label={__(
-								"Range",
+								"Cell or Range",
 								"wp-simple-spreadsheet-fetcher-for-google"
 							)}
 							value={sheetRange}
@@ -110,7 +110,7 @@ registerBlockType("wp2s2fg/fetcher", {
 				return (
 					<TextControl
 						label={__(
-							"Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E",
+							"Please set the cell or range to fetch data in A1 notation. Example : Sheets1!A1:E",
 							"wp-simple-spreadsheet-fetcher-for-google"
 						)}
 						value={range}

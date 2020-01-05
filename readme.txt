@@ -3,7 +3,7 @@ Contributors: naoki0h
 Tags: fetcher, api, Google Sheets
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 0.3.3
+Stable tag: 0.3.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,7 +18,7 @@ This is the simple plugin to fetch data from Google Sheets and display it on you
 5. Choose "Fetcher" block at the "WP Simple Spreadsheet Fetcher for Google" category, use side panel to indicate the cell to fetch data.
 6. It will display the data in your post or page.
 
-[youtube https://youtu.be/A86v_nA4JD8]
+[youtube https://youtu.be/VYMFFMyRK3I]
 
 == Contact ==
 If you have anything to tell me, please post it on the plugin's support forum or reply or message me on twitter @naogify.
@@ -33,6 +33,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 1. Fetch and display data from Google Sheets.
 
 == Changelog ==
+
+= 0.3.6 =
+- Add japanese translation for text in javascript.
 
 = 0.3.4 =
 - Fix text and i18n.
