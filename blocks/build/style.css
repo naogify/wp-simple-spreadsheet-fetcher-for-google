@@ -98,6 +98,10 @@
 	min-width: 183px;
 }
 
+.wp2s2fg_fetcher-advanced_number_container p {
+	margin: 0;
+}
+
 .wp2s2fg_fetcher-advanced_number {
 	margin: 0;
 }
