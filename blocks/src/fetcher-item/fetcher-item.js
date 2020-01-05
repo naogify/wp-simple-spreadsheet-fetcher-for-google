@@ -97,7 +97,7 @@ registerBlockType("wp2s2fg/fetcher-item", {
 				return (
 					<TextControl
 						label={__(
-							`Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E`,
+							`Please set the cell to fetch data in A1 notation. Example : Sheets1!A1`,
 							"wp-simple-spreadsheet-fetcher-for-google"
 						)}
 						value={range}
