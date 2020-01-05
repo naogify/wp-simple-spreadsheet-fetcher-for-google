@@ -1,23 +1,23 @@
-# Copyright (C) 2019 Naoki Ohashi
+# Copyright (C) 2020 Naoki Ohashi
 # This file is distributed under the same license as the WP Simple Spreadsheet Fetcher for Google plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Simple Spreadsheet Fetcher for Google 0.3.4\n"
+"Project-Id-Version: WP Simple Spreadsheet Fetcher for Google 0.3.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-simple-spreadsheet-fetcher-for-google\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-12-29T22:30:33+00:00\n"
+"POT-Creation-Date: 2020-01-05T14:41:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: wp-simple-spreadsheet-fetcher-for-google\n"
 
 #. Plugin Name of the plugin
 #: blocks/build/index.php:153
-#: wp-simple-spreadsheet-fetcher-for-google.php:86
-#: wp-simple-spreadsheet-fetcher-for-google.php:87
+#: wp-simple-spreadsheet-fetcher-for-google.php:88
+#: wp-simple-spreadsheet-fetcher-for-google.php:89
 msgid "WP Simple Spreadsheet Fetcher for Google"
 msgstr ""
 
@@ -53,59 +53,63 @@ msgstr ""
 msgid "Sheet Name is not set. Please set it from the sidebar. Example : Sheet1"
 msgstr ""
 
-#: blocks/build/get-value-query.php:59
-msgid "Range is not set. Please set it from the sidebar. Example : A1:A5"
+#: blocks/build/get-value-query.php:61
+msgid "Cell or Range is not set. Please set it from the sidebar. Example : A1:A5"
 msgstr ""
 
-#: blocks/build/get-value-query.php:72
+#: blocks/build/get-value-query.php:64
+msgid "Cell is not set. Please set it from the sidebar. Example : A1"
+msgstr ""
+
+#: blocks/build/get-value-query.php:78
 msgid "No data found."
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:40
+#: wp-simple-spreadsheet-fetcher-for-google.php:42
 msgid "API Key set!"
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:46
-msgid " You have not entered your API key"
+#: wp-simple-spreadsheet-fetcher-for-google.php:48
+msgid "You have not entered your API key"
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:60
+#: wp-simple-spreadsheet-fetcher-for-google.php:62
 msgid "Setting API key"
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:65
+#: wp-simple-spreadsheet-fetcher-for-google.php:67
 msgid "API Key : "
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:70
+#: wp-simple-spreadsheet-fetcher-for-google.php:72
 msgid "How to use"
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:72
+#: wp-simple-spreadsheet-fetcher-for-google.php:74
 msgid "1. Create the API key . For more detail . Please refer to "
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:72
+#: wp-simple-spreadsheet-fetcher-for-google.php:74
 msgid "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the"
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:73
+#: wp-simple-spreadsheet-fetcher-for-google.php:75
 msgid "2. Save your API key from the form above."
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:74
+#: wp-simple-spreadsheet-fetcher-for-google.php:76
 msgid "3. Turn on Get shareable link . For more detail . Please refer to "
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:74
+#: wp-simple-spreadsheet-fetcher-for-google.php:76
 msgid "https://support.google.com/drive/answer/2494822#link_sharing"
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:75
+#: wp-simple-spreadsheet-fetcher-for-google.php:77
 msgid "4. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data."
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:77
+#: wp-simple-spreadsheet-fetcher-for-google.php:79
 msgid "Tutorial Video"
 msgstr ""
 
@@ -126,19 +130,21 @@ msgid "None"
 msgstr ""
 
 #: blocks/src/fetcher/fetcher.js:64
+#: blocks/src/fetcher-item/fetcher-item.js:51
 msgid "Sheet URL"
 msgstr ""
 
 #: blocks/src/fetcher/fetcher.js:78
+#: blocks/src/fetcher-item/fetcher-item.js:65
 msgid "Sheet Name"
 msgstr ""
 
 #: blocks/src/fetcher/fetcher.js:92
-msgid "Range"
+msgid "Cell or Range"
 msgstr ""
 
 #: blocks/src/fetcher/fetcher.js:112
-msgid "Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E"
+msgid "Please set the cell or range to fetch data in A1 notation. Example : Sheets1!A1:E"
 msgstr ""
 
 #: blocks/src/fetcher/fetcher.js:133
@@ -177,4 +183,12 @@ msgstr ""
 
 #: blocks/src/fetcher-item/fetcher-item.js:9
 msgid "Fetcher Item"
+msgstr ""
+
+#: blocks/src/fetcher-item/fetcher-item.js:79
+msgid "Cell"
+msgstr ""
+
+#: blocks/src/fetcher-item/fetcher-item.js:99
+msgid "Please set the cell to fetch data in A1 notation. Example : Sheets1!A1"
 msgstr ""

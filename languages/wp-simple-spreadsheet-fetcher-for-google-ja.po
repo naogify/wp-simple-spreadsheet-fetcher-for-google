@@ -6,8 +6,8 @@ msgstr ""
 "Development (trunk)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-simple-"
 "spreadsheet-fetcher-for-google\n"
-"POT-Creation-Date: 2019-12-29T22:30:33+00:00\n"
-"PO-Revision-Date: 2019-12-30 09:09+0900\n"
+"POT-Creation-Date: 2020-01-05T14:41:10+00:00\n"
+"PO-Revision-Date: 2020-01-05 23:42+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Generator: Poedit 2.2.4\n"
 
 #. Plugin Name of the plugin
-#: blocks/build/index.php:153 wp-simple-spreadsheet-fetcher-for-google.php:86
-#: wp-simple-spreadsheet-fetcher-for-google.php:87
+#: blocks/build/index.php:153 wp-simple-spreadsheet-fetcher-for-google.php:88
+#: wp-simple-spreadsheet-fetcher-for-google.php:89
 msgid "WP Simple Spreadsheet Fetcher for Google"
 msgstr "WP Simple Spreadsheet Fetcher for Google"
 
@@ -62,58 +62,65 @@ msgid "Sheet Name is not set. Please set it from the sidebar. Example : Sheet1"
 msgstr ""
 "シート名が設定されていません。サイドバーから設定してください。例: シート1"
 
-#: blocks/build/get-value-query.php:59
-msgid "Range is not set. Please set it from the sidebar. Example : A1:A5"
-msgstr "範囲が設定されていません。サイドバーから設定してください。例: A1: A5"
+#: blocks/build/get-value-query.php:61
+msgid ""
+"Cell or Range is not set. Please set it from the sidebar. Example : A1:A5"
+msgstr ""
+"セルもしくは、範囲が設定されていません。サイドバーから設定してください。例: "
+"A1: A5"
 
-#: blocks/build/get-value-query.php:72
+#: blocks/build/get-value-query.php:64
+msgid "Cell is not set. Please set it from the sidebar. Example : A1"
+msgstr "セルが設定されていません。サイドバーから設定してください。例: A1: A5"
+
+#: blocks/build/get-value-query.php:78
 msgid "No data found."
 msgstr "データが見つかりませんでした。"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:40
+#: wp-simple-spreadsheet-fetcher-for-google.php:42
 msgid "API Key set!"
-msgstr "API キーがセットされました。"
+msgstr "API キーがセットされました!"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:46
-msgid " You have not entered your API key"
+#: wp-simple-spreadsheet-fetcher-for-google.php:48
+msgid "You have not entered your API key"
 msgstr "API キーが入力されていません。"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:60
+#: wp-simple-spreadsheet-fetcher-for-google.php:62
 msgid "Setting API key"
 msgstr "API キー設定"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:65
+#: wp-simple-spreadsheet-fetcher-for-google.php:67
 msgid "API Key : "
 msgstr "API キー:"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:70
+#: wp-simple-spreadsheet-fetcher-for-google.php:72
 msgid "How to use"
 msgstr "使い方"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:72
+#: wp-simple-spreadsheet-fetcher-for-google.php:74
 msgid "1. Create the API key . For more detail . Please refer to "
 msgstr "1. API キーを作成します。詳細については以下を参照してください。"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:72
+#: wp-simple-spreadsheet-fetcher-for-google.php:74
 msgid ""
 "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the"
 msgstr ""
 "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:73
+#: wp-simple-spreadsheet-fetcher-for-google.php:75
 msgid "2. Save your API key from the form above."
 msgstr "2. 上記のフォームから API キーを保存します。"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:74
+#: wp-simple-spreadsheet-fetcher-for-google.php:76
 msgid "3. Turn on Get shareable link . For more detail . Please refer to "
 msgstr ""
 "3. 「共有可能なリンク」を有効にします。詳細については以下を参照してください。"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:74
+#: wp-simple-spreadsheet-fetcher-for-google.php:76
 msgid "https://support.google.com/drive/answer/2494822#link_sharing"
 msgstr "https://support.google.com/drive/answer/2494822#link_sharing"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:75
+#: wp-simple-spreadsheet-fetcher-for-google.php:77
 msgid ""
 "4. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , "
 "use side panel to indicate the cell to fetch data."
@@ -121,7 +128,7 @@ msgstr ""
 "4.「WP Simple Spreadsheet Fetcher for Google」カテゴリでブロックを選択し、サ"
 "イドパネルを使用してデータを取得するセルを指定します。"
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:77
+#: wp-simple-spreadsheet-fetcher-for-google.php:79
 msgid "Tutorial Video"
 msgstr "チュートリアルビデオ"
 
@@ -141,22 +148,24 @@ msgstr "ライン"
 msgid "None"
 msgstr "無し"
 
-#: blocks/src/fetcher/fetcher.js:64
+#: blocks/src/fetcher/fetcher.js:64 blocks/src/fetcher-item/fetcher-item.js:51
 msgid "Sheet URL"
 msgstr "シート URL"
 
-#: blocks/src/fetcher/fetcher.js:78
+#: blocks/src/fetcher/fetcher.js:78 blocks/src/fetcher-item/fetcher-item.js:65
 msgid "Sheet Name"
 msgstr "シート名"
 
 #: blocks/src/fetcher/fetcher.js:92
-msgid "Range"
-msgstr "範囲"
+msgid "Cell or Range"
+msgstr "セルか範囲"
 
 #: blocks/src/fetcher/fetcher.js:112
 msgid ""
-"Please set the range to fetch data in A1 notation. Example : Sheets1!A1:E"
-msgstr "A1 表記でデータをフェッチする範囲を設定してください。例 : シート1!A1:E"
+"Please set the cell or range to fetch data in A1 notation. Example : Sheets1!"
+"A1:E"
+msgstr ""
+"データを取得するセルか範囲をA1 表記で設定してください。例 : シート1!A1:E"
 
 #: blocks/src/fetcher/fetcher.js:133
 #: blocks/src/fetcher-item/fetcher-item.js:120
@@ -195,6 +204,17 @@ msgstr "イベント登録（高度）"
 #: blocks/src/fetcher-item/fetcher-item.js:9
 msgid "Fetcher Item"
 msgstr "フェーッチャーアイテム"
+
+#: blocks/src/fetcher-item/fetcher-item.js:79
+msgid "Cell"
+msgstr "セル"
+
+#: blocks/src/fetcher-item/fetcher-item.js:99
+msgid "Please set the cell to fetch data in A1 notation. Example : Sheets1!A1"
+msgstr "データを取得するセルをA1 表記で設定してください。例 : シート1!A1"
+
+#~ msgid "Range"
+#~ msgstr "範囲"
 
 #~ msgid "settings."
 #~ msgstr "設定"

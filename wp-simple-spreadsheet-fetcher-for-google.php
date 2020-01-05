@@ -7,7 +7,7 @@
  * Author URI:      https://naoki-is-me
  * Text Domain:     wp-simple-spreadsheet-fetcher-for-google
  * Domain Path:     /languages
- * Version:         0.3.6
+ * Version:         0.3.7
  *
  * @package         Wp_Simple_Spreadsheet_Fetcher_for_Google
  */
@@ -45,7 +45,7 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 	}
 
 	public function render_api_key_not_set() {
-		$message = '<strong class="warn" style="color:#dc3545; font-size:1.2rem">' . __( " You have not entered your API key", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</strong >';
+		$message = '<strong class="warn" style="color:#dc3545; font-size:1.2rem">' . __( "You have not entered your API key", 'wp-simple-spreadsheet-fetcher-for-google' ) . '</strong >';
 
 		return $this->render_settings_page( $message );
 	}
