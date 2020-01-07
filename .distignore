@@ -35,7 +35,6 @@ node_modules
 *.sql
 *.tar.gz
 *.zip
-blocks/src
 .github
 .github/workflows
 .wordpress-org

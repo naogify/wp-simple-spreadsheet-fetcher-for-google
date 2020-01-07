@@ -2,22 +2,22 @@
 # This file is distributed under the same license as the WP Simple Spreadsheet Fetcher for Google plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Simple Spreadsheet Fetcher for Google 0.3.6\n"
+"Project-Id-Version: WP Simple Spreadsheet Fetcher for Google 0.3.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-simple-spreadsheet-fetcher-for-google\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-01-05T14:41:10+00:00\n"
+"POT-Creation-Date: 2020-01-05T17:15:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: wp-simple-spreadsheet-fetcher-for-google\n"
 
 #. Plugin Name of the plugin
 #: blocks/build/index.php:153
-#: wp-simple-spreadsheet-fetcher-for-google.php:88
 #: wp-simple-spreadsheet-fetcher-for-google.php:89
+#: wp-simple-spreadsheet-fetcher-for-google.php:90
 msgid "WP Simple Spreadsheet Fetcher for Google"
 msgstr ""
 
@@ -81,35 +81,35 @@ msgstr ""
 msgid "API Key : "
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:72
+#: wp-simple-spreadsheet-fetcher-for-google.php:73
 msgid "How to use"
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:74
+#: wp-simple-spreadsheet-fetcher-for-google.php:75
 msgid "1. Create the API key . For more detail . Please refer to "
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:74
+#: wp-simple-spreadsheet-fetcher-for-google.php:75
 msgid "https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the"
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:75
+#: wp-simple-spreadsheet-fetcher-for-google.php:76
 msgid "2. Save your API key from the form above."
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:76
+#: wp-simple-spreadsheet-fetcher-for-google.php:77
 msgid "3. Turn on Get shareable link . For more detail . Please refer to "
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:76
+#: wp-simple-spreadsheet-fetcher-for-google.php:77
 msgid "https://support.google.com/drive/answer/2494822#link_sharing"
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:77
+#: wp-simple-spreadsheet-fetcher-for-google.php:78
 msgid "4. Choose blocks at \"WP Simple Spreadsheet Fetcher for Google\" category , use side panel to indicate the cell to fetch data."
 msgstr ""
 
-#: wp-simple-spreadsheet-fetcher-for-google.php:79
+#: wp-simple-spreadsheet-fetcher-for-google.php:80
 msgid "Tutorial Video"
 msgstr ""
 
@@ -154,30 +154,33 @@ msgstr ""
 
 #: blocks/src/fetcher-advanced/layout.js:26
 #: blocks/src/fetcher-advanced/layout.js:127
+#: blocks/src/fetcher-advanced/layout-dep.js:26
 msgid "General Participant"
 msgstr ""
 
 #: blocks/src/fetcher-advanced/layout.js:36
+#: blocks/src/fetcher-advanced/layout-dep.js:36
 msgid "Free"
 msgstr ""
 
 #: blocks/src/fetcher-advanced/layout.js:60
+#: blocks/src/fetcher-advanced/layout-dep.js:60
 msgid "100"
 msgstr ""
 
-#: blocks/src/fetcher-advanced/fetcher-advanced.js:14
+#: blocks/src/fetcher-advanced/fetcher-advanced.js:11
 msgid "Fetcher Advanced"
 msgstr ""
 
-#: blocks/src/fetcher-advanced/fetcher-advanced.js:53
+#: blocks/src/fetcher-advanced/fetcher-advanced.js:50
 msgid "Select Layout"
 msgstr ""
 
-#: blocks/src/fetcher-advanced/fetcher-advanced.js:60
+#: blocks/src/fetcher-advanced/fetcher-advanced.js:57
 msgid "Event Registration Simple"
 msgstr ""
 
-#: blocks/src/fetcher-advanced/fetcher-advanced.js:67
+#: blocks/src/fetcher-advanced/fetcher-advanced.js:64
 msgid "Event Registration Advanced"
 msgstr ""
 
