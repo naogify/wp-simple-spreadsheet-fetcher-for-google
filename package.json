@@ -1,6 +1,6 @@
 {
   "name": "wp-simple-google-sheets-fetcher",
-  "version": "1.0.0",
+  "version": "0.4.0",
   "description": "wp-simple-google-sheets-fetcher",
   "main": "blocks/build/index.js",
   "scripts": {
@@ -16,7 +16,19 @@
   "license": "GPL-3.0 or later",
   "devDependencies": {
     "@wordpress/scripts": "6.0.0",
-    "po2json": "^1.0.0-alpha"
+    "po2json": "^1.0.0-alpha",
+    "release-it": "^12.4.3"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "release-it": {
+    "hooks": {
+      "before:bump": "bash ./bin/create-release.sh ${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    }
+  }
 }
