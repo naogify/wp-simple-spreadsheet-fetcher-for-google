@@ -38,7 +38,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 - Fix version.
 
 = 0.3.7 =
-- Fix text message in fecher advanced block and fix css.
+- Fix text message in fecher advanced block
+- Fix css.
+- Fix CSRF.
 
 = 0.3.6 =
 - Add japanese translation for text in javascript.
