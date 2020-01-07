@@ -34,6 +34,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.3.9 =
+- Fix version.
+
 = 0.3.7 =
 - Fix text message in fecher advanced block and fix css.
 
