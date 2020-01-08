@@ -19,7 +19,7 @@ jobs:
       - name: Change version number
         run: |
           pwd
-          ls
+          ls -l
           ./bin/create-release.sh ${{ env.RELEASE_VERSION }}
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@master
