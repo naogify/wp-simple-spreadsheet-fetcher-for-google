@@ -1,6 +1,6 @@
 {
   "name": "wp-simple-google-sheets-fetcher",
-  "version": "0.4.5",
+  "version": "0.4.8",
   "description": "wp-simple-google-sheets-fetcher",
   "main": "blocks/build/index.js",
   "scripts": {
