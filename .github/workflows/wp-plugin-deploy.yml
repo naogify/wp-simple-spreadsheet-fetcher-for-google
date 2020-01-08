@@ -18,7 +18,7 @@ jobs:
         run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
       - name: Change version number
         run: |
-          ./bin/create-release.sh ${{ env.RELEASE_VERSION }}
+          ../bin/create-release.sh ${{ env.RELEASE_VERSION }}
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@master
         env:
