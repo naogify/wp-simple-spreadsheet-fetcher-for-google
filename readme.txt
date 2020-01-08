@@ -34,6 +34,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.4.9 =
+- Fix version.
+
 = 0.4.8 =
 - Fix version.
 

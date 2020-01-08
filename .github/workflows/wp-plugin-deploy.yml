@@ -9,18 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      # - name: Build
-      #   run: |
-      #     npm install
-      #     composer install
-      #     npm run build
-      - name: Set env
+      - name: Build
+        run: |
+          npm install
+          composer install
+          npm run build
+      - name: Set version number
         run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
       - name: Change version number
         run: |
-          pwd
-          ls -l
-          whoami
           ./bin/create-release.sh ${{ env.RELEASE_VERSION }}
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@master
