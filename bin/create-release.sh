@@ -15,6 +15,4 @@ fi
 
 sed -i '' -e "s/^ \* Version: .*/ * Version: ${version}/g" wp-simple-spreadsheet-fetcher-for-google.php;
 sed -i '' -e "s/^ \* @version .*/ * @version ${version}/g" wp-simple-spreadsheet-fetcher-for-google.php;
-sed -i '' -e "s/^ \"version\": .*/ * \"version\": \"${version}\"/g" package.json;
-
-© 2020 GitHub, Inc.
+sed -i '' -e "s/\"version\"\: \".....\"/\"version\"\: \"${version}\"/g" package.json;
