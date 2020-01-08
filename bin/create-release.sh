@@ -14,6 +14,7 @@ if [ ! `echo $version | grep -e 'alpha' -e 'beta' -e 'RC' -e 'rc'` ] ; then
 fi
 
 whoami
+ls -l
 
 sed -i '' -e "s/^ \* Version: .*/ * Version: ${version}/g" wp-simple-spreadsheet-fetcher-for-google.php;
 sed -i '' -e "s/^ \* @version .*/ * @version ${version}/g" wp-simple-spreadsheet-fetcher-for-google.php;
