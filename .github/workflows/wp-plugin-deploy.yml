@@ -20,6 +20,8 @@ jobs:
         run: |
           echo $RELEASE_VERSION
           ls
+          cd ./bin/
+          ls
       #     ./bin/create-release.sh $RELEASE_VERSION
       # - name: WordPress Plugin Deploy
       #   uses: 10up/action-wordpress-plugin-deploy@master
