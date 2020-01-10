@@ -19,8 +19,9 @@ jobs:
       - name: Change version number
         run: ./bin/create-release.sh ${{ env.RELEASE_VERSION }}
       - name: test
-        env: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run : |
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           git config --global user.name "naogify"
           git config --global user.email "n.globe.us@gmail.com"
           git remote set-url origin https://naogify:${GITHUB_TOKEN}@github.com/wp-simple-spreadsheet-fetcher-for-google.git
