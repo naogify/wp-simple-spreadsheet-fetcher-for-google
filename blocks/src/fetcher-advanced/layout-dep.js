@@ -1,6 +1,5 @@
-const { __ } = wp.i18n;
-const { InnerBlocks, RichText } =
-	wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
+import { __ } from "@wordpress/i18n";
+import { InnerBlocks, RichText } from "@wordpress/block-editor";
 
 export class DeprecatedEventRegistrationAdvance extends React.Component {
 	render() {

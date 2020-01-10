@@ -1,9 +1,8 @@
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
-const { SelectControl, PanelBody } = wp.components;
-const { Fragment } = wp.element;
-const { InspectorControls } =
-	wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
+import { __ } from "@wordpress/i18n";
+import { registerBlockType } from "@wordpress/blocks";
+import { SelectControl, PanelBody } from "@wordpress/components";
+import { Fragment } from "@wordpress/element";
+import { InspectorControls } from "@wordpress/block-editor";
 import { EventRegistrationAdvance, EventRegistrationSimple } from "./layout";
 import { DeprecatedEventRegistrationAdvance } from "./layout-dep";
 

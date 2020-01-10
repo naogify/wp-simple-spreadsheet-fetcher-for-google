@@ -15,5 +15,10 @@
   "devDependencies": {
     "@wordpress/scripts": "6.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@wordpress/block-editor": "^3.4.0",
+    "@wordpress/blocks": "^6.9.0",
+    "@wordpress/element": "^2.10.0",
+    "@wordpress/i18n": "^3.7.0"
+  }
 }

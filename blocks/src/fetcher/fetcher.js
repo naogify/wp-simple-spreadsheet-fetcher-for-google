@@ -1,9 +1,12 @@
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
-const { TextControl, PanelBody, ServerSideRender } = wp.components;
-const { Fragment } = wp.element;
-const { RichText, InspectorControls } =
-	wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
+import { __ } from "@wordpress/i18n";
+import { registerBlockType } from "@wordpress/blocks";
+import {
+	TextControl,
+	PanelBody,
+	ServerSideRender
+} from "@wordpress/components";
+import { Fragment } from "@wordpress/element";
+import { InspectorControls } from "@wordpress/block-editor";
 
 registerBlockType("wp2s2fg/fetcher", {
 	title: __("Fetcher", "wp-simple-spreadsheet-fetcher-for-google"),
