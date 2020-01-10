@@ -3,7 +3,7 @@
 **Tags:** fetcher, api, Google Sheets  
 **Requires at least:** 5.0  
 **Tested up to:** 5.3  
-**Stable tag:** 0.5.1  
+**Stable tag:** 0.5.2  
 **License:** GPLv3 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
