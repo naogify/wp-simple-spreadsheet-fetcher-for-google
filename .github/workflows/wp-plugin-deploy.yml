@@ -24,7 +24,7 @@ jobs:
         run: |
           git config --global user.name "naogify"
           git config --global user.email "n.globe.us@gmail.com"
-          git remote set-url origin https://naogify:${GITHUB_TOKEN}@github.com/wp-simple-spreadsheet-fetcher-for-google.git
+          git remote set-url origin https://naogify:${GITHUB_TOKEN}@github.com/naogify/wp-simple-spreadsheet-fetcher-for-google.git
           git checkout -b master
           git add .
           git commit -m"Update Version"
