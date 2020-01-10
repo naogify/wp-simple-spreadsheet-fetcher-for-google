@@ -34,6 +34,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.5.1 =
+- Fix to load translation file for text in javascript.
+
 = 0.4.9 =
 - Fix version.
 
