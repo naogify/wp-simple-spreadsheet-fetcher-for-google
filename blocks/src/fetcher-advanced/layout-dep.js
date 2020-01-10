@@ -1,7 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
+import { Component } from '@wordpress/element';
 
-export class DeprecatedEventRegistrationAdvance extends React.Component {
+export class DeprecatedEventRegistrationAdvance extends Component {
 	render() {
 		const { setAttributes, className, attributes } = this.props.props;
 		const { price, after, caption } = attributes;

@@ -1,7 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
+import { Component } from '@wordpress/element';
 
-export class EventRegistrationAdvance extends React.Component {
+export class EventRegistrationAdvance extends Component {
 	render() {
 		const { setAttributes, className, attributes } = this.props.props;
 		const { price, after, caption } = attributes;
@@ -102,7 +103,7 @@ export class EventRegistrationAdvance extends React.Component {
 	}
 }
 
-export class EventRegistrationSimple extends React.Component {
+export class EventRegistrationSimple extends Component {
 	render() {
 		const { setAttributes, className, attributes } = this.props.props;
 		const { caption } = attributes;
@@ -163,7 +164,7 @@ export class EventRegistrationSimple extends React.Component {
 	}
 }
 
-export class Minimum extends React.Component {
+export class Minimum extends Component {
 	render() {
 		const { className } = this.props.props;
 		const for_ = this.props.for_;
