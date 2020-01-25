@@ -84,20 +84,5 @@ const renderSettings = props => {
 		);
 	}
 };
-{
-	/* <PanelBody
-					title={__(
-						"Fetch Data Setting",
-						"wp-simple-spreadsheet-fetcher-for-google"
-					)}
-					initialOpen={true}
-				> */
-}
-{
-	/* {renderSettings()} */
-}
-{
-	/* </PanelBody> */
-}
 
 export default compose(withTabbedInspector())(edit);
