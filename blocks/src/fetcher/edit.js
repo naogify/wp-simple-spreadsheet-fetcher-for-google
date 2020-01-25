@@ -12,8 +12,9 @@ const renderSettings = props => {
 	const { attributes, setAttributes } = props;
 	const { range, sheetId, sheetName, sheetRange } = attributes;
 
+	let settings;
 	if (!range) {
-		return (
+		settings = (
 			<Fragment>
 				<TextControl
 					label={__(
@@ -58,7 +59,7 @@ const renderSettings = props => {
 			</Fragment>
 		);
 	} else {
-		return (
+		settings = (
 			<TextControl
 				label={__(
 					"Please set the cell or range to fetch data in A1 notation. Example : Sheets1!A1:E",
@@ -74,12 +75,27 @@ const renderSettings = props => {
 			/>
 		);
 	}
+
+	return (
+		<PanelBody
+			title={__(
+				"Fetch Data Setting",
+				"wp-simple-spreadsheet-fetcher-for-google"
+			)}
+			initialOpen={true}
+		>
+			{settings}
+		</PanelBody>
+	);
 };
 
 addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.layout.before",
 	"wp2s2fg/fetcher",
-	props => {
+	(output, props) => {
+		const { setAttributes } = props;
+		const { design = "basic" } = props.attributes;
+
 		return renderSettings(props);
 	}
 );
