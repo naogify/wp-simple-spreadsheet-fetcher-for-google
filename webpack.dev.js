@@ -1,7 +1,7 @@
 const merge = require("webpack-merge"); // webpack-merge
-const defaultConfig = require("@wordpress/scripts/config/webpack.config"); // 汎用設定をインポート
+const common = require("./webpack.common"); // 汎用設定をインポート
 
-module.exports = merge(defaultConfig, {
+module.exports = merge(common, {
 	mode: "development",
 	devtool: "source-map"
 });

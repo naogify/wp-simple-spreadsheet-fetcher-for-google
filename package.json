@@ -7,7 +7,7 @@
     "start": "npm install && composer install && wp-scripts start blocks/src/**/*.js --output-path=blocks/build",
     "watch": "wp-scripts start blocks/src/**/*.js --output-path=blocks/build",
     "build": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build",
-    "build-dev": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build --config webpack.dev.js",
+    "build-dev": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build",
     "translate": "po2json languages/wp-simple-spreadsheet-fetcher-for-google-ja.po languages/wp-simple-spreadsheet-fetcher-for-google-ja-wp2s2fg-fetcher.json -f jed",
     "make-pot": "wp i18n make-pot . languages/wp-simple-spreadsheet-fetcher-for-google.pot",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,10 +18,11 @@
   "devDependencies": {
     "@wordpress/scripts": "6.0.0",
     "po2json": "^1.0.0-alpha",
-    "release-it": "^12.4.3",
-    "webpack-merge": "^4.2.2"
+    "release-it": "^12.4.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@wordpress/components": "^9.0.0"
+  },
   "release-it": {
     "hooks": {
       "before:bump": "bash ./bin/create-release.sh ${version}"
