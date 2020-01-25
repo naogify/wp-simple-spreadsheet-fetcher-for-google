@@ -6,16 +6,7 @@ const { RichText, InspectorControls } =
 	wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 import withTabbedInspector from "../../../higher-order/with-tabbed-inspector";
 import { compose } from "@wordpress/compose";
-
-const edit = props => {
-	const { attributes } = props;
-	return (
-		<Fragment>
-			<div>body</div>
-			{/* <ServerSideRender block="wp2s2fg/fetcher" attributes={attributes} /> */}
-		</Fragment>
-	);
-};
+import { addFilter, applyFilters } from "@wordpress/hooks";
 
 const renderSettings = props => {
 	const { attributes, setAttributes } = props;
@@ -83,6 +74,23 @@ const renderSettings = props => {
 			/>
 		);
 	}
+};
+
+addFilter(
+	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.layout.before",
+	"wp2s2fg/fetcher",
+	props => {
+		return renderSettings(props);
+	}
+);
+
+const edit = props => {
+	const { attributes } = props;
+	return (
+		<Fragment>
+			<ServerSideRender block="wp2s2fg/fetcher" attributes={attributes} />
+		</Fragment>
+	);
 };
 
 export default compose(withTabbedInspector())(edit);
