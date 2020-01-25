@@ -18,7 +18,8 @@
   "devDependencies": {
     "@wordpress/scripts": "6.0.0",
     "po2json": "^1.0.0-alpha",
-    "release-it": "^12.4.3"
+    "release-it": "^12.4.3",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {},
   "release-it": {
