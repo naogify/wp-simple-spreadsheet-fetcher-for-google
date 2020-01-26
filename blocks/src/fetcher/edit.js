@@ -92,11 +92,71 @@ const renderSettings = props => {
 addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.layout.before",
 	"wp2s2fg/fetcher",
+	props => {
+		return renderSettings(props);
+	}
+);
+
+addFilter(
+	"wp-simple-spreadsheet-fetcher-for-google.fetcher..edit.inspector.style.before",
+	"wp2s2fg/fetcher",
 	(output, props) => {
 		const { setAttributes } = props;
-		const { design = "basic" } = props.attributes;
+		const {
+			color = "",
+			hrMarginTop = "",
+			hrMarginBottom = "",
+			height = "",
+			width = ""
+		} = props.attributes;
 
-		return renderSettings(props);
+		return (
+			<Fragment>
+				{output}
+				<PanelBody title={__("General", i18n)}>
+					<ColorPaletteControl
+						value={color}
+						onChange={color => setAttributes({ color })}
+						label={__("Color", i18n)}
+					/>
+					<FourRangeControl
+						label={__("Vertical Margin", i18n)}
+						top={hrMarginTop}
+						bottom={hrMarginBottom}
+						max={100}
+						onChange={({ top, bottom }) =>
+							setAttributes({
+								hrMarginTop: top,
+								hrMarginBottom: bottom
+							})
+						}
+						enableLeft={false}
+						enableRight={false}
+						className="ugb--help-tip-divider-margin"
+					/>
+					<AdvancedRangeControl
+						label={__("Height", i18n) + " / " + __("Size", i18n)}
+						min={1}
+						max={100}
+						allowReset={true}
+						value={height}
+						onChange={height => setAttributes({ height })}
+					/>
+					<AdvancedRangeControl
+						label={__("Width", i18n) + " (%)"}
+						min={1}
+						max={100}
+						allowReset={true}
+						value={width}
+						onChange={width => setAttributes({ width })}
+					/>
+					<ContentAlignControl
+						setAttributes={setAttributes}
+						blockAttributes={props.attributes}
+					/>
+				</PanelBody>
+			</Fragment>
+		);
 	}
 );
 
