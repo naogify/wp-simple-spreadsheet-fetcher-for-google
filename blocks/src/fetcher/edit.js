@@ -126,7 +126,12 @@ addFilter(
 							"wp-simple-spreadsheet-fetcher-for-google"
 						)}
 					</div>
-					<Counter {...{ initialCount: 13, test: "hello" }} />
+					<Counter
+						{...{
+							initialFixedBackground: false,
+							label: "Table Width Align"
+						}}
+					/>
 				</PanelBody>
 				<PanelBody
 					title={__(

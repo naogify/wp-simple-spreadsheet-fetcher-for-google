@@ -20,39 +20,21 @@ import { withState } from "@wordpress/compose";
 // 	/>
 // ));
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-function Counter({ initialCount, test }) {
+function Counter({ initialFixedBackground, label }) {
 	// Count state.
-	const [count, setCount] = useState(initialCount);
+	const [hasFixedBackground, setHasFixedBackground] = useState(
+		initialFixedBackground
+	);
 
-	console.log(test);
-
-	// Update count every second.
-	useEffect(() => {
-		const updateCount = () => setCount(count => count + 1);
-
-		const intervalID = window.setInterval(updateCount, 1000);
-
-		return () => {
-			window.clearInterval(intervalID);
-		};
-	}, []);
-
-	return <p>{count} seconds, and counting!</p>;
+	return (
+		<ToggleControl
+			label={__(`${label}`, "wp-simple-spreadsheet-fetcher-for-google")}
+			help={hasFixedBackground ? "Has fixed width." : "No fixed width."}
+			checked={hasFixedBackground}
+			onChange={() => setHasFixedBackground(!hasFixedBackground)}
+		/>
+	);
 }
-
 export default Counter;
-
-// export default props => (
-// 	<ToggleControl
-// 		label={__(`${props.label}`, "wp-simple-spreadsheet-fetcher-for-google")}
-// 		// help={hasFixedBackground ? "Has fixed width." : "No fixed width."}
-// 		checked={hasFixedBackground}
-// 		onChange={() =>
-// 			setState(state => ({
-// 				hasFixedBackground: !state.hasFixedBackground
-// 			}))
-// 		}
-// 	/>
-// );
