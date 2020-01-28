@@ -1,12 +1,13 @@
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
 const { TextControl, PanelBody, ServerSideRender } = wp.components;
 const { Fragment } = wp.element;
 const { RichText, InspectorControls } =
 	wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
+import { compose, withState, setState } from "@wordpress/compose";
+import { addFilter } from "@wordpress/hooks";
 import withTabbedInspector from "../../../higher-order/with-tabbed-inspector";
-import { compose } from "@wordpress/compose";
-import { addFilter, applyFilters } from "@wordpress/hooks";
+import Counter from "../../../components/toggle-control";
+// import "../../../components/popover-control";
 
 const renderSettings = props => {
 	const { attributes, setAttributes } = props;
@@ -92,15 +93,16 @@ const renderSettings = props => {
 addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.layout.before",
 	"wp2s2fg/fetcher",
-	props => {
+	//NOTE:emptyはフックの引数の仕様上、第一引数を設定する必要がある。なので仮として渡している。
+	(empty, props) => {
 		return renderSettings(props);
 	}
 );
 
 addFilter(
-	"wp-simple-spreadsheet-fetcher-for-google.fetcher..edit.inspector.style.before",
+	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.style.before",
 	"wp2s2fg/fetcher",
-	(output, props) => {
+	(empty, props) => {
 		const { setAttributes } = props;
 		const {
 			color = "",
@@ -112,49 +114,38 @@ addFilter(
 
 		return (
 			<Fragment>
-				{output}
-				<PanelBody title={__("General", i18n)}>
-					<ColorPaletteControl
-						value={color}
-						onChange={color => setAttributes({ color })}
-						label={__("Color", i18n)}
-					/>
-					<FourRangeControl
-						label={__("Vertical Margin", i18n)}
-						top={hrMarginTop}
-						bottom={hrMarginBottom}
-						max={100}
-						onChange={({ top, bottom }) =>
-							setAttributes({
-								hrMarginTop: top,
-								hrMarginBottom: bottom
-							})
-						}
-						enableLeft={false}
-						enableRight={false}
-						className="ugb--help-tip-divider-margin"
-					/>
-					<AdvancedRangeControl
-						label={__("Height", i18n) + " / " + __("Size", i18n)}
-						min={1}
-						max={100}
-						allowReset={true}
-						value={height}
-						onChange={height => setAttributes({ height })}
-					/>
-					<AdvancedRangeControl
-						label={__("Width", i18n) + " (%)"}
-						min={1}
-						max={100}
-						allowReset={true}
-						value={width}
-						onChange={width => setAttributes({ width })}
-					/>
-					<ContentAlignControl
-						setAttributes={setAttributes}
-						blockAttributes={props.attributes}
-					/>
+				<PanelBody
+					title={__(
+						"General",
+						"wp-simple-spreadsheet-fetcher-for-google"
+					)}
+				>
+					<div>
+						{__(
+							"Fixed Table Width",
+							"wp-simple-spreadsheet-fetcher-for-google"
+						)}
+					</div>
+					<Counter {...{ initialCount: 13, test: "hello" }} />
 				</PanelBody>
+				<PanelBody
+					title={__(
+						"Table Header",
+						"wp-simple-spreadsheet-fetcher-for-google"
+					)}
+				></PanelBody>
+				<PanelBody
+					title={__(
+						"Table Body",
+						"wp-simple-spreadsheet-fetcher-for-google"
+					)}
+				></PanelBody>
+				<PanelBody
+					title={__(
+						"Table Footer",
+						"wp-simple-spreadsheet-fetcher-for-google"
+					)}
+				></PanelBody>
 			</Fragment>
 		);
 	}

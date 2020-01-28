@@ -50,6 +50,7 @@ const withTabbedInspector = () =>
 												<Fragment>
 													{applyFilters(
 														`wp-simple-spreadsheet-fetcher-for-google.${blockName}.edit.inspector.layout.before`,
+														//NOTE:nullはフックの引数の仕様上、第一引数を設定する必要がある。なので仮として渡している。
 														null,
 														this.props
 													)}
