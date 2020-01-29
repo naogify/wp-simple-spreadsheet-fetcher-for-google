@@ -1,22 +1,19 @@
-/**
- * External dependencies
- */
-import {
-	AdvancedRangeControl,
-	ButtonIconPopoverControl,
-	FontFamilyControl,
-	FontSizeControl,
-	WhenResponsiveScreen
-} from "~stackable/components";
-
-/**
- * WordPress dependencies
- */
+import { AdvancedToggleControl } from "../advanced-toggle-control";
 import { __ } from "@wordpress/i18n";
-import { Fragment } from "@wordpress/element";
-import { i18n } from "stackable";
-import { SelectControl } from "@wordpress/components";
 
 export const TableWidthFixControl = props => {
-	return <Fragment></Fragment>;
+	props.initialFixedBackground = props.attributes.hasFixedBackground;
+	props.label = __(
+		"Fixed width table cells",
+		"wp-simple-spreadsheet-fetcher-for-google"
+	);
+	props.helpYes = __(
+		"Has fixed width.",
+		"wp-simple-spreadsheet-fetcher-for-google"
+	);
+	props.helpNo = __(
+		"No fixed width.",
+		"wp-simple-spreadsheet-fetcher-for-google"
+	);
+	return <AdvancedToggleControl {...props} />;
 };

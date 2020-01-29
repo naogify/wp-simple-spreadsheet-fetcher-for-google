@@ -95,6 +95,10 @@ function wp2s2fg_fetcher_block_init() {
 			'range'     => [
 				'type'    => 'string',
 				'default' => '',
+			],
+			'hasFixedBackground'=> [
+				'type'    => 'boolean',
+				'default' => false
 			]
 		],
 		'render_callback' => function ( $attributes ) {

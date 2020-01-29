@@ -50,6 +50,10 @@ registerBlockType("wp2s2fg/fetcher", {
 		range: {
 			type: "string",
 			default: ""
+		},
+		hasFixedBackground: {
+			type: "boolean",
+			default: false
 		}
 	},
 	edit,

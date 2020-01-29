@@ -6,8 +6,7 @@ const { RichText, InspectorControls } =
 import { compose, withState, setState } from "@wordpress/compose";
 import { addFilter } from "@wordpress/hooks";
 import withTabbedInspector from "../../../higher-order/with-tabbed-inspector";
-import Counter from "../../../components/toggle-control";
-// import "../../../components/popover-control";
+import { TableWidthFixControl } from "../../../components/table-width-fix-control";
 
 const renderSettings = props => {
 	const { attributes, setAttributes } = props;
@@ -103,15 +102,6 @@ addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.style.before",
 	"wp2s2fg/fetcher",
 	(empty, props) => {
-		const { setAttributes } = props;
-		const {
-			color = "",
-			hrMarginTop = "",
-			hrMarginBottom = "",
-			height = "",
-			width = ""
-		} = props.attributes;
-
 		return (
 			<Fragment>
 				<PanelBody
@@ -126,12 +116,7 @@ addFilter(
 							"wp-simple-spreadsheet-fetcher-for-google"
 						)}
 					</div>
-					<Counter
-						{...{
-							initialFixedBackground: false,
-							label: "Table Width Align"
-						}}
-					/>
+					<TableWidthFixControl {...props} />
 				</PanelBody>
 				<PanelBody
 					title={__(
