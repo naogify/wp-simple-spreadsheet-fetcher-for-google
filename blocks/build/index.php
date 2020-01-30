@@ -99,6 +99,14 @@ function wp2s2fg_fetcher_block_init() {
 			'hasFixedBackground'=> [
 				'type'    => 'boolean',
 				'default' => false
+			],
+			'columns'     => [
+				'type'    => 'number',
+				'default' => 5,
+			],
+			'isVisible'=> [
+				'type'    => 'boolean',
+				'default' => false
 			]
 		],
 		'render_callback' => function ( $attributes ) {

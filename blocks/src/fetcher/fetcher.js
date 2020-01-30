@@ -54,6 +54,14 @@ registerBlockType("wp2s2fg/fetcher", {
 		hasFixedBackground: {
 			type: "boolean",
 			default: false
+		},
+		columns: {
+			type: "number",
+			default: 5
+		},
+		isVisible: {
+			type: "boolean",
+			default: false
 		}
 	},
 	edit,

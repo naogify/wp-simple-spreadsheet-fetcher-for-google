@@ -7,7 +7,8 @@ import { compose, withState, setState } from "@wordpress/compose";
 import { addFilter } from "@wordpress/hooks";
 import withTabbedInspector from "../../../higher-order/with-tabbed-inspector";
 import { TableWidthFixControl } from "../../../components/table-width-fix-control";
-import { MyPopover } from "../../../components/popover-control";
+import { AdvancedPopOverControl } from "../../../components/advanced-popover-control";
+import { AdvancedRangeControl } from "../../../components/advanced-range-control";
 
 const renderSettings = props => {
 	const { attributes, setAttributes } = props;
@@ -103,6 +104,11 @@ addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.style.before",
 	"wp2s2fg/fetcher",
 	(empty, props) => {
+		//Set popover Label
+		props.popoverLabel = __(
+			"Typography",
+			"wp-simple-spreadsheet-fetcher-for-google"
+		);
 		return (
 			<Fragment>
 				<PanelBody
@@ -125,7 +131,7 @@ addFilter(
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 				>
-					<MyPopover />
+					<AdvancedPopOverControl {...props} />
 				</PanelBody>
 				<PanelBody
 					title={__(
