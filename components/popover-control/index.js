@@ -1,15 +1,27 @@
-import { render } from "@wordpress/element";
-import { Popover } from "@wordpress/components";
-import { FonSizeControl } from "../font-size-control";
+import { Button, Popover } from "@wordpress/components";
+import { withState } from "@wordpress/compose";
 
-// export default () => {
-const app = document.getElementById("app");
-
-render(
-	<div>
-		<FonSizeControl />
-		<Popover.Slot />
-	</div>,
-	app
-);
-// };
+export const MyPopover = withState({
+	isVisible: false
+})(({ isVisible, setState }) => {
+	const toggleVisible = () => {
+		setState(state => ({ isVisible: !state.isVisible }));
+	};
+	return (
+		<Button isSecondary onClick={toggleVisible}>
+			Toggle Popover!
+			{isVisible && (
+				<Popover>
+					Popover is toggled!Popover is toggled!Popover is
+					toggled!Popover is toggled!Popover is toggled!Popover is
+					toggled!Popover is toggled!Popover is toggled!Popover is
+					toggled!Popover is toggled!Popover is toggled!Popover is
+					toggled!Popover is toggled!Popover is toggled!Popover is
+					toggled!Popover is toggled!Popover is toggled!Popover is
+					toggled!Popover is toggled!Popover is toggled!Popover is
+					toggled!Popover is toggled!Popover is toggled!
+				</Popover>
+			)}
+		</Button>
+	);
+});

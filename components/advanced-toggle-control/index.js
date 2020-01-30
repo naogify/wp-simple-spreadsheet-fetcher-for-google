@@ -1,5 +1,5 @@
 const { ToggleControl } = wp.components;
-import React, { useState } from "react";
+const { useState } = wp.element;
 
 export const AdvancedToggleControl = props => {
 	const {

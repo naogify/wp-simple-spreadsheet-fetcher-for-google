@@ -7,6 +7,7 @@ import { compose, withState, setState } from "@wordpress/compose";
 import { addFilter } from "@wordpress/hooks";
 import withTabbedInspector from "../../../higher-order/with-tabbed-inspector";
 import { TableWidthFixControl } from "../../../components/table-width-fix-control";
+import { MyPopover } from "../../../components/popover-control";
 
 const renderSettings = props => {
 	const { attributes, setAttributes } = props;
@@ -123,7 +124,9 @@ addFilter(
 						"Table Header",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
-				></PanelBody>
+				>
+					<MyPopover />
+				</PanelBody>
 				<PanelBody
 					title={__(
 						"Table Body",
