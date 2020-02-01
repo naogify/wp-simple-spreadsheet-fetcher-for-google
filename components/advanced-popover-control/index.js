@@ -1,26 +1,25 @@
 import { Button, Popover } from "@wordpress/components";
-import { withState } from "@wordpress/compose";
-const { Fragment, useCallback } = wp.element;
-import { AdvancedRangeControl } from "../advanced-range-control";
+const { Fragment, useState } = wp.element;
 
 export const AdvancedPopOverControl = props => {
-	const { setAttributes, attributes, popoverLabel } = props;
-	const { isVisible } = attributes;
-	const toggleVisible = useCallback(() => {
-		setAttributes({
-			isVisible: !isVisible
-		});
-	}, [isVisible]);
+	const { label, schemaName, initial, render, setAttributes } = props;
+	const [visible, setVisible] = useState(initial);
+
+	const onValueChange = (key, value) => {
+		setAttributes({ [key]: !value });
+	};
+
+	const toggleVisible = () => {
+		setVisible(!visible);
+		onValueChange.bind(null, schemaName, visible)();
+	};
 	return (
 		<Fragment>
 			<Button isSecondary onClick={toggleVisible}>
-				{popoverLabel}
+				{label}
 			</Button>
-			{isVisible && (
-				<Popover onFocusOutside={toggleVisible}>
-					<h3>Size</h3>
-					<AdvancedRangeControl {...props} />
-				</Popover>
+			{visible && (
+				<Popover onFocusOutside={toggleVisible}>{render}</Popover>
 			)}
 		</Fragment>
 	);

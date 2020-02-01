@@ -100,9 +100,17 @@ function wp2s2fg_fetcher_block_init() {
 				'type'    => 'boolean',
 				'default' => false
 			],
-			'columns'     => [
+			'fontSize'     => [
 				'type'    => 'number',
 				'default' => 5,
+			],
+			'lineHeight'     => [
+				'type'    => 'number',
+				'default' => 1,
+			],
+			'letterSpace'     => [
+				'type'    => 'number',
+				'default' => 1,
 			],
 			'isVisible'=> [
 				'type'    => 'boolean',

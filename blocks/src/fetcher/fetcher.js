@@ -55,9 +55,17 @@ registerBlockType("wp2s2fg/fetcher", {
 			type: "boolean",
 			default: false
 		},
-		columns: {
+		fontSize: {
 			type: "number",
 			default: 5
+		},
+		lineHeight: {
+			type: "number",
+			default: 1
+		},
+		letterSpace: {
+			type: "number",
+			default: 1
 		},
 		isVisible: {
 			type: "boolean",
