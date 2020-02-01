@@ -70,6 +70,10 @@ registerBlockType("wp2s2fg/fetcher", {
 		isVisible: {
 			type: "boolean",
 			default: false
+		},
+		fontWeight: {
+			type: "string",
+			default: "a"
 		}
 	},
 	edit,

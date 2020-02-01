@@ -115,6 +115,10 @@ function wp2s2fg_fetcher_block_init() {
 			'isVisible'=> [
 				'type'    => 'boolean',
 				'default' => false
+			],
+			'fontWeight'=> [
+				'type'    => 'string',
+				'default' => "a"
 			]
 		],
 		'render_callback' => function ( $attributes ) {
