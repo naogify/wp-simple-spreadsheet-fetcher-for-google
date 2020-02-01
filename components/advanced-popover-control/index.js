@@ -16,7 +16,7 @@ export const AdvancedPopOverControl = props => {
 	return (
 		<Fragment>
 			<Button isSecondary onClick={toggleVisible}>
-				{label}
+				<h3>{label}</h3>
 			</Button>
 			{visible && (
 				<Popover onFocusOutside={toggleVisible}>{render}</Popover>

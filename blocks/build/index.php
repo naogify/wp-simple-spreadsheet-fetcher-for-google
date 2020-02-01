@@ -123,6 +123,13 @@ function wp2s2fg_fetcher_block_init() {
 			'fontWeight'=> [
 				'type'    => 'string',
 				'default' => "normal"
+			],
+			'bgColor'=> [
+				'type'    => 'string',
+			],
+			'align'=> [
+				'type'    => 'string',
+				'default' => "left"
 			]
 		],
 		'render_callback' => function ( $attributes ) {

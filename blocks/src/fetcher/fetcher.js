@@ -78,6 +78,13 @@ registerBlockType("wp2s2fg/fetcher", {
 		fontWeight: {
 			type: "string",
 			default: "normal"
+		},
+		bgColor: {
+			type: "string"
+		},
+		align: {
+			type: "string",
+			default: "left"
 		}
 	},
 	edit,

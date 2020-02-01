@@ -1,5 +1,5 @@
 const { __ } = wp.i18n;
-const { TextControl, PanelBody, ServerSideRender } = wp.components;
+const { TextControl, PanelBody, ServerSideRender, BaseControl } = wp.components;
 const { Fragment } = wp.element;
 const { RichText, InspectorControls } =
 	wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
@@ -8,6 +8,8 @@ import { addFilter } from "@wordpress/hooks";
 import withTabbedInspector from "../../../higher-order/with-tabbed-inspector";
 import { TableWidthFixControl } from "../../../components/table-width-fix-control";
 import { TypographyControl } from "../../../components/typography-control";
+import { AdvancedColorPalleteControl } from "../../../components/advanced-color-pallete-control";
+import { AdvancedAlignControl } from "../../../components/advanced-align-control";
 
 const renderSettings = props => {
 	const { attributes, setAttributes } = props;
@@ -125,6 +127,35 @@ addFilter(
 					)}
 				>
 					<TypographyControl {...props} />
+					<BaseControl
+						label={__(
+							"Background Color",
+							"wp-simple-spreadsheet-fetcher-for-google"
+						)}
+					>
+						<AdvancedColorPalleteControl
+							schemaName={"bgColor"}
+							{...props}
+						/>
+					</BaseControl>
+					<BaseControl
+						label={__(
+							"Border",
+							"wp-simple-spreadsheet-fetcher-for-google"
+						)}
+					></BaseControl>
+					<BaseControl
+						label={__(
+							"Align",
+							"wp-simple-spreadsheet-fetcher-for-google"
+						)}
+					>
+						<AdvancedAlignControl
+							schemaName={"align"}
+							initial={props.attributes.align}
+							{...props}
+						/>
+					</BaseControl>
 				</PanelBody>
 				<PanelBody
 					title={__(
