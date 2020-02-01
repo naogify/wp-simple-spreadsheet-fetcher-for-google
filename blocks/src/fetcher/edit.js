@@ -76,7 +76,6 @@ const renderSettings = props => {
 			/>
 		);
 	}
-
 	return (
 		<PanelBody
 			title={__(

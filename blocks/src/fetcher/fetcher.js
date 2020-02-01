@@ -59,6 +59,10 @@ registerBlockType("wp2s2fg/fetcher", {
 			type: "number",
 			default: 5
 		},
+		fontUnit: {
+			type: "string",
+			default: "px"
+		},
 		lineHeight: {
 			type: "number",
 			default: 1
@@ -73,7 +77,7 @@ registerBlockType("wp2s2fg/fetcher", {
 		},
 		fontWeight: {
 			type: "string",
-			default: "a"
+			default: "normal"
 		}
 	},
 	edit,

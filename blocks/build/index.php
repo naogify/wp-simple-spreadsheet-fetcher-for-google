@@ -104,6 +104,10 @@ function wp2s2fg_fetcher_block_init() {
 				'type'    => 'number',
 				'default' => 5,
 			],
+			'fontUnit'     => [
+				'type'    => 'string',
+				'default' => "px",
+			],
 			'lineHeight'     => [
 				'type'    => 'number',
 				'default' => 1,
@@ -118,7 +122,7 @@ function wp2s2fg_fetcher_block_init() {
 			],
 			'fontWeight'=> [
 				'type'    => 'string',
-				'default' => "a"
+				'default' => "normal"
 			]
 		],
 		'render_callback' => function ( $attributes ) {

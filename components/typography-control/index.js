@@ -1,6 +1,8 @@
 import { AdvancedRangeControl } from "../advanced-range-control";
 import { AdvancedPopOverControl } from "../advanced-popover-control";
 import { AdvancedSelectControl } from "../advanced-select-control";
+import { AdvancedButtonGruopControl } from "../advanced-button-group-control";
+
 import { fontWeights } from "../font-weight";
 
 const { __ } = wp.i18n;
@@ -9,6 +11,11 @@ const { Fragment } = wp.element;
 export const TypographyControl = props => {
 	const render = (
 		<Fragment>
+			<AdvancedButtonGruopControl
+				schemaName={"fontUnit"}
+				initial={props.attributes.fontUnit}
+				{...props}
+			/>
 			<AdvancedRangeControl
 				label={__("Size", "wp-simple-spreadsheet-fetcher-for-google")}
 				schemaName={"fontSize"}
