@@ -11,6 +11,7 @@ import { TypographyControl } from "../../../components/typography-control";
 import { AdvancedColorPalleteControl } from "../../../components/advanced-color-pallete-control";
 import { AdvancedAlignControl } from "../../../components/advanced-align-control";
 import { renderSettings } from "../../../components/fetcher-control";
+import { BorderControl } from "../../../components/border-control";
 
 addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.layout.before",
@@ -59,12 +60,9 @@ addFilter(
 							{...props}
 						/>
 					</BaseControl>
-					<BaseControl
-						label={__(
-							"Border",
-							"wp-simple-spreadsheet-fetcher-for-google"
-						)}
-					></BaseControl>
+					<BaseControl>
+						<BorderControl {...props} />
+					</BaseControl>
 					<BaseControl
 						label={__(
 							"Align",

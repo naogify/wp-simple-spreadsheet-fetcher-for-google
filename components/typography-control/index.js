@@ -14,6 +14,7 @@ export const TypographyControl = props => {
 			<AdvancedButtonGruopControl
 				schemaName={"fontUnit"}
 				initial={props.attributes.fontUnit}
+				data={["px", "em", "rem"]}
 				{...props}
 			/>
 			<AdvancedRangeControl

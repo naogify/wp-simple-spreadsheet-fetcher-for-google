@@ -130,6 +130,25 @@ function wp2s2fg_fetcher_block_init() {
 			'align'=> [
 				'type'    => 'string',
 				'default' => "left"
+			],	
+			'borderStyle'=> [
+				'type'    => 'string',
+				'default' => "solid"
+			],
+			'borderColor'=> [
+				'type'    => 'string',
+			],
+			'borderWidth'=> [
+				'type'    => 'number',
+				'default' => 1
+			],
+			'borderUnit'=> [
+				'type'    => 'string',
+				'default' => "px"
+			],
+			'borderPosition'=> [
+				'type'    => 'string',
+				'default' => "full"
 			]
 		],
 		'render_callback' => function ( $attributes ) {

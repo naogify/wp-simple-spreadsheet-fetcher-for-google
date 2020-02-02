@@ -85,6 +85,25 @@ registerBlockType("wp2s2fg/fetcher", {
 		align: {
 			type: "string",
 			default: "left"
+		},
+		borderStyle: {
+			type: "string",
+			default: "solid"
+		},
+		borderColor: {
+			type: "string"
+		},
+		borderWidth: {
+			type: "number",
+			default: 1
+		},
+		borderUnit: {
+			type: "string",
+			default: "px"
+		},
+		borderPosition: {
+			type: "string",
+			default: "full"
 		}
 	},
 	edit,
