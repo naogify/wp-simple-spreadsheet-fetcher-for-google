@@ -6,14 +6,12 @@ export const AdvancedButtonGruopControl = props => {
 	const { schemaName, data, setAttributes, attributes, initial } = props;
 	const [value, setValue] = useState(initial);
 
-	console.log(attributes);
-	console.log(attributes[schemaName]);
 	const saveValue = (key, value) => {
 		setAttributes({ [key]: value });
 	};
 
 	const onClick = event => {
-		setValue(value);
+		setValue(event.target.value);
 		saveValue.bind(null, schemaName, event.target.value)();
 	};
 
@@ -21,7 +19,7 @@ export const AdvancedButtonGruopControl = props => {
 		return (
 			<Button
 				onClick={onClick}
-				value={attributes[schemaName]}
+				value={label}
 				className={value === label ? "is_active" : ""}
 			>
 				{__(`${label}`, "wp-simple-spreadsheet-fetcher-for-google")}
