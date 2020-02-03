@@ -80,12 +80,37 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 		if($block === 'wp2s2fg/fetcher') {
 
+			$lastIndex = count($values) -1;
 			foreach ( $values as $row ) {
-				$data .= '<tr>';
+
+				$data_h = '<td>';
+				$data_f = '</td>';
+				$data_container_h = '';
+				$data_container_f = '';
+
+				if(count($values) >= 3){
+				if($values[0] === $row){
+					$data_container_h = '<thead>';
+					$data_container_f = '</thead>';
+					$data_h = '<th>';
+					$data_f = '</th>';
+				}else if($values[$lastIndex] === $row){
+					$data_container_h = '<tfoot>';
+					$data_container_f = '</tfoot>';
+				}else if($values[1] === $row){
+					$data_container_h = '<tbody>';
+					$data_container_f = '';
+				}else if($values[$lastIndex -1] === $row){
+					$data_container_h = '';
+					$data_container_f = '</tbody>';
+				}}
+
+				$data .= $data_container_h .'<tr>';
 				for ( $i = 0; $i < count( $row ); $i ++ ) {
-					$data .= '<td>' . esc_html( $row[ $i ] ) . '</td>';
+					$data .= $data_h . esc_html( $row[ $i ] ) . $data_f;
 				}
-				$data .= '</tr>';
+				$data .= $data_container_f . '</tr>';
+
 			}
 			$div_h   = '<div class="wp2s2fg_fetcher_table_container ' . esc_attr($className) .'">';
 			$div_f = '</div>';
