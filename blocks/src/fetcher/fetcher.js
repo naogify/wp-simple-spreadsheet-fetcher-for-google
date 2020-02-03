@@ -80,7 +80,8 @@ registerBlockType("wp2s2fg/fetcher", {
 			default: "normal"
 		},
 		thBgColor: {
-			type: "string"
+			type: "string",
+			default: "#fff"
 		},
 		thAlign: {
 			type: "string",
@@ -91,7 +92,8 @@ registerBlockType("wp2s2fg/fetcher", {
 			default: "solid"
 		},
 		thBorderColor: {
-			type: "string"
+			type: "string",
+			default: "#ccc"
 		},
 		thBorderWidth: {
 			type: "number",

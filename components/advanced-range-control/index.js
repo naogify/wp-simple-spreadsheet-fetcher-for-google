@@ -18,8 +18,8 @@ export const AdvancedRangeControl = props => {
 				setColumns(columns);
 				onValueChange.bind(null, schemaName, columns)();
 			}}
-			min={2}
-			max={10}
+			min={1}
+			max={100}
 			allowReset={true}
 		/>
 	);

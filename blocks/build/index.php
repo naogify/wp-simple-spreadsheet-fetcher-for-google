@@ -126,6 +126,7 @@ function wp2s2fg_fetcher_block_init() {
 			],
 			'thBgColor'=> [
 				'type'    => 'string',
+				'default' => "#fff"
 			],
 			'thAlign'=> [
 				'type'    => 'string',
@@ -137,6 +138,7 @@ function wp2s2fg_fetcher_block_init() {
 			],
 			'thBorderColor'=> [
 				'type'    => 'string',
+				'default' => "#ccc"
 			],
 			'thBorderWidth'=> [
 				'type'    => 'number',

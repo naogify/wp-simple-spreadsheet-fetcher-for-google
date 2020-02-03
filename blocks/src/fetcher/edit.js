@@ -41,6 +41,9 @@ addFilter(
 						)}
 					</div>
 					<TableWidthFixControl {...props} />
+					<BaseControl>
+						<BorderControl {...props} />
+					</BaseControl>
 				</PanelBody>
 				<PanelBody
 					title={__(
@@ -59,9 +62,6 @@ addFilter(
 							schemaName={"thBgColor"}
 							{...props}
 						/>
-					</BaseControl>
-					<BaseControl>
-						<BorderControl {...props} />
 					</BaseControl>
 					<BaseControl
 						label={__(

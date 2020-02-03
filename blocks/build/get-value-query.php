@@ -86,6 +86,43 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	$thBorderWidth     = $attributes['thBorderWidth'];
 	$thBorderUnit     = $attributes['thBorderUnit'];
 	$thBorderLayout     = $attributes['thBorderLayout'];
+
+	$th_style = array(
+		'fontSize'=> $thFontSize,
+		'fontUnit'=> $thFontUnit,
+		'lineHeight'=>$thLineHeight,
+		'letterSpace'=>$thLetterSpace,
+		'fontWeight'=>$thFontWeight,
+		'bgColor'=>$thBgColor,
+		'align'=>$thAlign,
+		'borderStyle'=>$thBorderStyle,
+		'borderColor'=>$thBorderColor,
+		'brderWidth'=>$thBorderWidth,
+		'borderUnit'=>$thBorderUnit,
+		'borderLayout'=>$thBorderLayout,
+	);
+
+	function create_inline_table_style($style){
+		$semiColon = "; ";
+		$align = isset($style["align"]) ? "text-align:".esc_html($style["align"]) . $semiColon : "";
+		$border = isset($style["borderStyle"]) && isset($style["borderColor"])&& isset($style["brderWidth"]) && isset($style["borderUnit"]) ? "border:" . esc_html($style["brderWidth"]) . esc_html($style["borderUnit"]) . " " . esc_html($style["borderStyle"]) . " " . $style["borderColor"] . $semiColon  : "";
+		return '"' . $align . $border . '"';
+	}
+
+	function create_inline_font_style($style){
+		$semiColon = "; ";
+		$fontSize = is_numeric($style["fontSize"]) && isset($style["fontUnit"])  ? "font-size:". $style["fontSize"] . esc_html($style["fontUnit"]) . $semiColon : "";
+		$lineHeight = is_numeric($style["lineHeight"]) ? "line-height:". $style["lineHeight"] . $semiColon : "";
+		$letterSpace = is_numeric($style["letterSpace"]) ? "letter-spacing:".$style["letterSpace"] . $semiColon : "";
+		$fontWeight = isset($style["fontWeight"]) ? "font-weight:".esc_html($style["fontWeight"]) . $semiColon : "";
+		return '"' . $fontSize .$lineHeight. $letterSpace . $fontWeight . '"';
+	}
+
+	function create_inline_th_bg_color($style){
+		$semiColon = "; ";
+		return isset($style["bgColor"]) ? "background-color:".esc_html($style["bgColor"]) . $semiColon : "";
+	}
+
 	
 	$data = '';
 	if ( empty( $values ) ) {
@@ -97,16 +134,16 @@ function wp2s2fg_get_selected_value( $attributes ) {
 			$lastIndex = count($values) -1;
 			foreach ( $values as $row ) {
 
-				$data_h = '<td>';
+				$data_h = '<td style=' . create_inline_table_style($th_style) . '>';
 				$data_f = '</td>';
 				$data_container_h = '';
 				$data_container_f = '';
 
 				if(count($values) >= 3){
 				if($values[0] === $row){
-					$data_container_h = '<thead>';
+					$data_container_h = '<thead style=' . create_inline_th_bg_color($th_style) .'>';
 					$data_container_f = '</thead>';
-					$data_h = '<th>';
+					$data_h = '<th style=' . create_inline_font_style($th_style) . create_inline_table_style($th_style) .'>';
 					$data_f = '</th>';
 				}else if($values[$lastIndex] === $row){
 					$data_container_h = '<tfoot>';
