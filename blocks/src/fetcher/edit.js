@@ -56,7 +56,7 @@ addFilter(
 						)}
 					>
 						<AdvancedColorPalleteControl
-							schemaName={"bgColor"}
+							schemaName={"thBgColor"}
 							{...props}
 						/>
 					</BaseControl>
@@ -70,8 +70,8 @@ addFilter(
 						)}
 					>
 						<AdvancedAlignControl
-							schemaName={"align"}
-							initial={props.attributes.align}
+							schemaName={"thAlign"}
+							initial={props.attributes.thAlign}
 							{...props}
 						/>
 					</BaseControl>

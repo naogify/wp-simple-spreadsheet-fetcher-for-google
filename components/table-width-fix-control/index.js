@@ -2,7 +2,7 @@ import { AdvancedToggleControl } from "../advanced-toggle-control";
 import { __ } from "@wordpress/i18n";
 
 export const TableWidthFixControl = props => {
-	props.initialFixedBackground = props.attributes.hasFixedBackground;
+	props.initialFixedTable = props.attributes.hasFixedTable;
 	props.label = __(
 		"Fixed width table cells",
 		"wp-simple-spreadsheet-fetcher-for-google"

@@ -12,21 +12,21 @@ export const TypographyControl = props => {
 	const render = (
 		<Fragment>
 			<AdvancedButtonGruopControl
-				schemaName={"fontUnit"}
-				initial={props.attributes.fontUnit}
+				schemaName={"thFontUnit"}
+				initial={props.attributes.thFontUnit}
 				data={["px", "em", "rem"]}
 				{...props}
 			/>
 			<AdvancedRangeControl
 				label={__("Size", "wp-simple-spreadsheet-fetcher-for-google")}
-				schemaName={"fontSize"}
-				initial={props.attributes.fontSize}
+				schemaName={"thFontSize"}
+				initial={props.attributes.thFontSize}
 				{...props}
 			/>
 			<AdvancedSelectControl
 				label={__("Weight", "wp-simple-spreadsheet-fetcher-for-google")}
-				schemaName={"fontWeight"}
-				initial={props.attributes.fontWeight}
+				schemaName={"thFontWeight"}
+				initial={props.attributes.thFontWeight}
 				data={fontWeights}
 				{...props}
 			/>
@@ -35,8 +35,8 @@ export const TypographyControl = props => {
 					"Line Height",
 					"wp-simple-spreadsheet-fetcher-for-google"
 				)}
-				schemaName={"lineHeight"}
-				initial={props.attributes.lineHeight}
+				schemaName={"thLineHeight"}
+				initial={props.attributes.thLineHeight}
 				{...props}
 			/>
 			<AdvancedRangeControl
@@ -44,8 +44,8 @@ export const TypographyControl = props => {
 					"Letter Spacing",
 					"wp-simple-spreadsheet-fetcher-for-google"
 				)}
-				schemaName={"letterSpace"}
-				initial={props.attributes.letterSpace}
+				schemaName={"thLetterSpace"}
+				initial={props.attributes.thLetterSpace}
 				{...props}
 			/>
 		</Fragment>

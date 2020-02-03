@@ -96,23 +96,23 @@ function wp2s2fg_fetcher_block_init() {
 				'type'    => 'string',
 				'default' => '',
 			],
-			'hasFixedBackground'=> [
+			'hasFixedTable'=> [
 				'type'    => 'boolean',
 				'default' => false
 			],
-			'fontSize'     => [
+			'thFontSize'     => [
 				'type'    => 'number',
 				'default' => 5,
 			],
-			'fontUnit'     => [
+			'thFontUnit'     => [
 				'type'    => 'string',
 				'default' => "px",
 			],
-			'lineHeight'     => [
+			'thLineHeight'     => [
 				'type'    => 'number',
 				'default' => 1,
 			],
-			'letterSpace'     => [
+			'thLetterSpace'     => [
 				'type'    => 'number',
 				'default' => 1,
 			],
@@ -120,33 +120,33 @@ function wp2s2fg_fetcher_block_init() {
 				'type'    => 'boolean',
 				'default' => false
 			],
-			'fontWeight'=> [
+			'thFontWeight'=> [
 				'type'    => 'string',
 				'default' => "normal"
 			],
-			'bgColor'=> [
+			'thBgColor'=> [
 				'type'    => 'string',
 			],
-			'align'=> [
+			'thAlign'=> [
 				'type'    => 'string',
 				'default' => "left"
 			],	
-			'borderStyle'=> [
+			'thBorderStyle'=> [
 				'type'    => 'string',
 				'default' => "solid"
 			],
-			'borderColor'=> [
+			'thBorderColor'=> [
 				'type'    => 'string',
 			],
-			'borderWidth'=> [
+			'thBorderWidth'=> [
 				'type'    => 'number',
 				'default' => 1
 			],
-			'borderUnit'=> [
+			'thBorderUnit'=> [
 				'type'    => 'string',
 				'default' => "px"
 			],
-			'borderPosition'=> [
+			'thBorderLayout'=> [
 				'type'    => 'string',
 				'default' => "full"
 			]

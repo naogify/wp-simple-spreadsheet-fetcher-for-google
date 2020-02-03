@@ -73,6 +73,20 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	$response = $service->spreadsheets_values->get( !empty($sheetId_deprecated) ? $sheetId_deprecated : $sheetId, $range );
 	$values   = $response->getValues();
 
+	$hasFixedTable     = $attributes['hasFixedTable'];
+	$thFontSize     = $attributes['thFontSize'];
+	$thFontUnit     = $attributes['thFontUnit'];
+	$thLineHeight     = $attributes['thLineHeight'];
+	$thLetterSpace     = $attributes['thLetterSpace'];
+	$thFontWeight     = $attributes['thFontWeight'];
+	$thBgColor     = $attributes['thBgColor'];
+	$thAlign     = $attributes['thAlign'];
+	$thBorderStyle     = $attributes['thBorderStyle'];
+	$thBorderColor     = $attributes['thBorderColor'];
+	$thBorderWidth     = $attributes['thBorderWidth'];
+	$thBorderUnit     = $attributes['thBorderUnit'];
+	$thBorderLayout     = $attributes['thBorderLayout'];
+	
 	$data = '';
 	if ( empty( $values ) ) {
 		$data .= __( 'No data found.', 'wp-simple-spreadsheet-fetcher-for-google' );

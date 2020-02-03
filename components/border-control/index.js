@@ -13,32 +13,32 @@ export const BorderControl = props => {
 		<Fragment>
 			<AdvancedSelectControl
 				label={__("Style", "wp-simple-spreadsheet-fetcher-for-google")}
-				schemaName={"borderStyle"}
-				initial={props.attributes.borderStyle}
+				schemaName={"thBorderStyle"}
+				initial={props.attributes.thBorderStyle}
 				data={borderStyle}
 				{...props}
 			/>
 			<h3>{__("Color", "wp-simple-spreadsheet-fetcher-for-google")}</h3>
 			<AdvancedColorPalleteControl
-				schemaName={"borderColor"}
+				schemaName={"thBorderColor"}
 				{...props}
 			/>
 			<AdvancedButtonGruopControl
-				schemaName={"borderUnit"}
-				initial={props.attributes.borderUnit}
+				schemaName={"thBorderUnit"}
+				initial={props.attributes.thBorderUnit}
 				data={["px", "em", "rem"]}
 				{...props}
 			/>
 			<AdvancedRangeControl
 				label={__("Width", "wp-simple-spreadsheet-fetcher-for-google")}
-				schemaName={"borderWidth"}
-				initial={props.attributes.borderWidth}
+				schemaName={"thBorderWidth"}
+				initial={props.attributes.thBorderWidth}
 				{...props}
 			/>
 			<h3>{__("Layout", "wp-simple-spreadsheet-fetcher-for-google")}</h3>
 			<AdvancedButtonGruopControl
-				schemaName={"borderPosition"}
-				initial={props.attributes.borderPosition}
+				schemaName={"thBorderUnit"}
+				initial={props.attributes.thBorderUnit}
 				data={["full", "vertical-line", "horizontal-line", "none"]}
 				{...props}
 			/>
