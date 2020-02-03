@@ -2,15 +2,15 @@ const { ColorPalette } =
 	wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 
 export const AdvancedColorPalleteControl = props => {
-	const { schemaName, setAttributes } = props;
+	const { schemaName, setAttributes, attributes } = props;
 
 	const saveValue = (key, value) => {
 		setAttributes({ [key]: value });
 	};
 
-	const onClick = event => {
-		saveValue.bind(null, schemaName, event.target.value)();
+	const onClick = color => {
+		saveValue.bind(null, schemaName, color)();
 	};
 
-	return <ColorPalette value={schemaName} onChange={onClick} />;
+	return <ColorPalette value={attributes[schemaName]} onChange={onClick} />;
 };
