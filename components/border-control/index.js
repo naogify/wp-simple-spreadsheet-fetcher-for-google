@@ -35,13 +35,6 @@ export const BorderControl = props => {
 				initial={props.attributes.thBorderWidth}
 				{...props}
 			/>
-			<h3>{__("Layout", "wp-simple-spreadsheet-fetcher-for-google")}</h3>
-			<AdvancedButtonGruopControl
-				schemaName={"thBorderUnit"}
-				initial={props.attributes.thBorderUnit}
-				data={["full", "vertical-line", "horizontal-line", "none"]}
-				{...props}
-			/>
 		</Fragment>
 	);
 	return (

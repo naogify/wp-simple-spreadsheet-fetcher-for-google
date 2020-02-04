@@ -9,6 +9,7 @@ import withTabbedInspector from "../../../higher-order/with-tabbed-inspector";
 import { TableWidthFixControl } from "../../../components/table-width-fix-control";
 import { TypographyControl } from "../../../components/typography-control";
 import { AdvancedColorPalleteControl } from "../../../components/advanced-color-pallete-control";
+import { AdvancedButtonGruopControl } from "../../../components/advanced-button-group-control";
 import { AdvancedAlignControl } from "../../../components/advanced-align-control";
 import { renderSettings } from "../../../components/fetcher-control";
 import { BorderControl } from "../../../components/border-control";
@@ -43,6 +44,23 @@ addFilter(
 					<TableWidthFixControl {...props} />
 					<BaseControl>
 						<BorderControl {...props} />
+						<h3>
+							{__(
+								"Layout",
+								"wp-simple-spreadsheet-fetcher-for-google"
+							)}
+						</h3>
+						<AdvancedButtonGruopControl
+							schemaName={"thBorderUnit"}
+							initial={props.attributes.thBorderUnit}
+							data={[
+								"full",
+								"vertical-line",
+								"horizontal-line",
+								"none"
+							]}
+							{...props}
+						/>
 					</BaseControl>
 				</PanelBody>
 				<PanelBody
