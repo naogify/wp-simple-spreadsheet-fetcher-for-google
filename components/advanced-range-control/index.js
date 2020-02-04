@@ -3,12 +3,17 @@ const { RangeControl } = wp.components;
 const { useState } = wp.element;
 
 export const AdvancedRangeControl = props => {
-	const { label, schemaName, initial, setAttributes } = props;
+	const { setAttributes, label, schemaName, initial, step } = props;
+	let { min, max } = props;
 	const [columns, setColumns] = useState(initial);
 
 	const onValueChange = (key, value) => {
 		setAttributes({ [key]: value });
 	};
+
+	//Set default value
+	min ? min : (min = 1);
+	max ? max : (max = 100);
 
 	return (
 		<RangeControl
@@ -18,8 +23,9 @@ export const AdvancedRangeControl = props => {
 				setColumns(columns);
 				onValueChange.bind(null, schemaName, columns)();
 			}}
-			min={1}
-			max={100}
+			min={min}
+			max={max}
+			step={step}
 			allowReset={true}
 		/>
 	);

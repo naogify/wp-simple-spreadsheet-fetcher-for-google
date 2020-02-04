@@ -57,7 +57,7 @@ registerBlockType("wp2s2fg/fetcher", {
 		},
 		thFontSize: {
 			type: "number",
-			default: 5
+			default: 16
 		},
 		thFontUnit: {
 			type: "string",
@@ -71,6 +71,10 @@ registerBlockType("wp2s2fg/fetcher", {
 			type: "number",
 			default: 1
 		},
+		thLetterSpaceUnit: {
+			type: "string",
+			default: "px"
+		},
 		isVisible: {
 			type: "boolean",
 			default: false
@@ -78,6 +82,10 @@ registerBlockType("wp2s2fg/fetcher", {
 		thFontWeight: {
 			type: "string",
 			default: "normal"
+		},
+		thFontColor: {
+			type: "string",
+			default: "inherit"
 		},
 		thBgColor: {
 			type: "string",

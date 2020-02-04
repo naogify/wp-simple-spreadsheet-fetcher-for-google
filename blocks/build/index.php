@@ -102,7 +102,11 @@ function wp2s2fg_fetcher_block_init() {
 			],
 			'thFontSize'     => [
 				'type'    => 'number',
-				'default' => 5,
+				'default' => 16,
+			],
+			'thFontColor'     => [
+				'type'    => 'string',
+				'default' => "inherit",
 			],
 			'thFontUnit'     => [
 				'type'    => 'string',
@@ -115,6 +119,10 @@ function wp2s2fg_fetcher_block_init() {
 			'thLetterSpace'     => [
 				'type'    => 'number',
 				'default' => 1,
+			],
+			'thLetterSpaceUnit'     => [
+				'type'    => 'string',
+				'default' => "px",
 			],
 			'isVisible'=> [
 				'type'    => 'boolean',

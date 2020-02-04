@@ -47,7 +47,7 @@ addFilter(
 				</PanelBody>
 				<PanelBody
 					title={__(
-						"Table Header",
+						"Header",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 				>
@@ -78,13 +78,7 @@ addFilter(
 				</PanelBody>
 				<PanelBody
 					title={__(
-						"Table Body",
-						"wp-simple-spreadsheet-fetcher-for-google"
-					)}
-				></PanelBody>
-				<PanelBody
-					title={__(
-						"Table Footer",
+						"Body",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 				></PanelBody>
