@@ -41,9 +41,8 @@ export const BorderControl = props => {
 		<AdvancedPopOverControl
 			label={__("Border", "wp-simple-spreadsheet-fetcher-for-google")}
 			schemaName={"isVisible"}
-			initial={props.attributes.isVisible}
-			render={render}
-			{...props}
+			renderComp={render}
+			setAttributes={props.setAttributes}
 		/>
 	);
 };

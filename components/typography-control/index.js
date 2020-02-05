@@ -74,9 +74,8 @@ export const TypographyControl = props => {
 		<AdvancedPopOverControl
 			label={__("Typography", "wp-simple-spreadsheet-fetcher-for-google")}
 			schemaName={"isVisible"}
-			initial={props.attributes.isVisible}
-			render={render}
-			{...props}
+			renderComp={render}
+			setAttributes={props.setAttributes}
 		/>
 	);
 };
