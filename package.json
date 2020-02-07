@@ -21,8 +21,7 @@
     "release-it": "^12.4.3"
   },
   "dependencies": {
-    "@wordpress/components": "^9.0.0",
-    "react-tiny-popover": "^4.0.0"
+    "@wordpress/components": "^9.0.0"
   },
   "release-it": {
     "hooks": {

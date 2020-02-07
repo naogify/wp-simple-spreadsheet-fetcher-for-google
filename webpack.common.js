@@ -4,7 +4,7 @@ module.exports = {
 		filename: "./blocks/build/build.js"
 	},
 	module: {
-		rules: [
+		rules: 
 			{
 				test: /\.js$/,
 				exclude: /(node_modules|bower_components)/,

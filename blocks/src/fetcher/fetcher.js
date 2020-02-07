@@ -75,10 +75,6 @@ registerBlockType("wp2s2fg/fetcher", {
 			type: "string",
 			default: "px"
 		},
-		isVisible: {
-			type: "boolean",
-			default: false
-		},
 		thFontWeight: {
 			type: "string",
 			default: "normal"
@@ -111,9 +107,9 @@ registerBlockType("wp2s2fg/fetcher", {
 			type: "string",
 			default: "px"
 		},
-		thBorderLayout: {
+		borderLayout: {
 			type: "string",
-			default: "full"
+			default: "table-full"
 		}
 	},
 	edit,

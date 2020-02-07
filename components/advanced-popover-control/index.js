@@ -1,91 +1,64 @@
-const { Button, Popover, Dashicon, BaseControl, IconButton } = wp.components;
-const { Fragment, useState, createRef, Component, setState } = wp.element;
+const { Button, Popover, IconButton } = wp.components;
+const { Fragment, createRef, Component } = wp.element;
+const { __ } = wp.i18n;
 
 export class AdvancedPopOverControl extends Component {
-	constructor() {
-		super(...arguments);
-		this.state = { visible: false };
+	constructor(props) {
+		super(props);
+		this.state = { open: false };
 		this.buttonRef = createRef();
 	}
+
 	render() {
 		const popverBtnClass = "apc-icon-btn";
 
-		const onValueChange = (key, value) => {
-			this.props.setAttributes({ [key]: !value });
+		const handleOpen = () => {
+			this.setState({ open: !this.state.open });
 		};
 
-		const popoverVisible = event => {
-			const isKeywordInString = (str, keyword) => {
-				return str.indexOf(keyword) !== -1;
-			};
+		const handleClose = () => {
+			this.setState({ open: false });
+		};
 
-			const getTarget = async event => {
-				if (
-					event.currentTarget !== null &&
-					event.currentTarget !== false &&
-					event.type !== undefined
-				) {
-					return {
-						type: event.type,
-						className: event.currentTarget.className
-					};
-				} else {
-					return false;
-				}
-			};
-
-			getTarget(event).then(target => {
-				let open =
-					target &&
-					target.type === "click" &&
-					isKeywordInString(target.className, popverBtnClass) &&
-					!isKeywordInString(target.className, "has-text");
-
-				if (open) {
-					console.log(
-						isKeywordInString(target.className, "has-text")
-					);
-					console.log(target.type);
-					console.log(target.className);
-					console.log(open);
-
-					this.setState(state => {
-						return { visible: !state.visible };
-					});
-					onValueChange.bind(
-						null,
-						this.schemaName,
-						!this.state.visible
-					)();
-				}
-			});
+		const handleOnClickOutside = event => {
+			if (
+				event.relatedTarget &&
+				!event.relatedTarget.closest(`.${popverBtnClass}`) &&
+				event.relatedTarget !== this.buttonRef.current
+			) {
+				handleClose();
+			}
 		};
 
 		return (
 			<Fragment>
-				<Button
-					isSecondary
-					className={popverBtnClass}
-					onClick={popoverVisible}
-				>
-					<h3>{this.props.label}</h3>
-				</Button>
-				<IconButton
-					className={popverBtnClass}
-					icon="edit"
-					label="More"
-					ref={this.buttonRef}
-					onClick={popoverVisible}
-				>
-					{this.state.visible && (
+				<div className={"wssffg-button-icon-control__wrapper"}>
+					<Button
+						isSecondary
+						className={popverBtnClass}
+						onClick={handleOpen}
+					>
+						<h3>{this.props.label}</h3>
+					</Button>
+					<IconButton
+						className={popverBtnClass}
+						icon="edit"
+						label={__(
+							"More",
+							"wp-simple-spreadsheet-fetcher-for-google"
+						)}
+						onClick={handleOpen}
+						id={`wssffg-button-icon-control__edit`}
+						ref={this.buttonRef}
+					/>
+					{this.state.open && this.buttonRef.current && (
 						<Popover
-							anchorRef={this.buttonRef.current}
-							onFocusOutside={popoverVisible}
-						>
-							{this.props.renderComp}
-						</Popover>
+							anchorRect={this.buttonRef.current.getBoundingClientRect()}
+							children={this.props.renderComp}
+							onFocusOutside={handleOnClickOutside}
+						></Popover>
 					)}
-				</IconButton>
+				</div>
 			</Fragment>
 		);
 	}

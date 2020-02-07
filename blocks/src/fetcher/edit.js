@@ -51,14 +51,15 @@ addFilter(
 							)}
 						</h3>
 						<AdvancedButtonGruopControl
-							schemaName={"thBorderUnit"}
-							initial={props.attributes.thBorderUnit}
+							schemaName={"thBorderLayout"}
+							initial={props.attributes.thBorderLayout}
 							data={[
-								"full",
-								"vertical-line",
-								"horizontal-line",
-								"none"
+								"table-full",
+								"table-horizontal",
+								"table-vertical",
+								"table-empty"
 							]}
+							icon={true}
 							{...props}
 						/>
 					</BaseControl>

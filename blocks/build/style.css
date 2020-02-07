@@ -112,3 +112,14 @@
 		flex-direction: column;
 	}
 } */
+/* svg{
+	width: 14px;
+	height: 14px;
+} */
+.wssffg-button-icon-control__wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+.wssffg-button-icon-control__wrapper span {
+	display: none;
+}

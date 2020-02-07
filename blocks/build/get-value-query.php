@@ -18,6 +18,51 @@
 include_once dirname( dirname( dirname( __FILE__ ) ) ) . '/vendor/autoload.php';
 include_once dirname( __FILE__ ) . '/base.php';
 
+class StyleControl {
+
+	public $style;
+	public $layout;
+
+	// public function __construct($style, $layout){
+    //     $this->$th_style = $style;
+	// 	$this->$layout = $layout;
+	// }
+	
+	public function init($style, $layout){
+        $this->$th_style = $style;
+		$this->$layout = $layout;
+    }
+
+	public function setBorderLayout($layout){
+		
+	}
+	public function create_inline_border_style(){
+		$semiColon = "; ";
+		return isset($this->$style["borderStyle"]) && isset($this->$style["borderColor"])&& isset($this->$style["brderWidth"]) && isset($this->$style["borderUnit"]) ? "border:" . esc_html($this->$style["brderWidth"]) . esc_html($this->$style["borderUnit"]) . " " . esc_html($this->$style["borderStyle"]) . " " . $this->$style["borderColor"] . $semiColon  : "";
+	}
+
+	public function create_inline_font_style(){
+		$semiColon = "; ";
+		$fontSize = is_numeric($this->$style["fontSize"]) && isset($this->$style["fontUnit"])  ? "font-size:". $this->$style["fontSize"] . esc_html($this->$style["fontUnit"]) . $semiColon : "";
+		$fontColor = isset($this->$style["fontUnit"])  ? "color:". $this->$style["fontColor"] . $semiColon : "";
+		$lineHeight = is_numeric($this->$style["lineHeight"]) ? "line-height:". $this->$style["lineHeight"] . $semiColon : "";
+		$letterSpace = is_numeric($this->$style["letterSpace"]) && isset($this->$style["thLetterSpaceUnit"]) ? "letter-spacing:".$this->$style["letterSpace"] . $this->$style["thLetterSpaceUnit"] . $semiColon : "";
+		$fontWeight = isset($this->$style["fontWeight"]) ? "font-weight:".esc_html($this->$style["fontWeight"]) . $semiColon : "";
+		return $fontSize . $fontColor . $lineHeight. $letterSpace . $fontWeight;
+	}
+
+	public function create_inline_th_bg_color(){
+		$semiColon = "; ";
+		return isset($this->$style["bgColor"]) ? "background-color:".esc_html($this->$style["bgColor"]) . $semiColon : "";
+	}
+
+	public function create_inline_th_align(){
+		$semiColon = "; ";
+		return isset($this->$style["align"]) ? "text-align:".esc_html($this->$style["align"]) . $semiColon : "";
+
+	}
+}
+
 
 function wp2s2fg_get_selected_value( $attributes ) {
 
@@ -87,7 +132,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	$thBorderColor     = $attributes['thBorderColor'];
 	$thBorderWidth     = $attributes['thBorderWidth'];
 	$thBorderUnit     = $attributes['thBorderUnit'];
-	$thBorderLayout     = $attributes['thBorderLayout'];
+	$borderLayout     = $attributes['borderLayout'];
 
 	$th_style = array(
 		'fontSize'=> $thFontSize,
@@ -103,34 +148,14 @@ function wp2s2fg_get_selected_value( $attributes ) {
 		'borderColor'=>$thBorderColor,
 		'brderWidth'=>$thBorderWidth,
 		'borderUnit'=>$thBorderUnit,
-		'borderLayout'=>$thBorderLayout,
 	);
 
-	function create_inline_border_style($style){
-		$semiColon = "; ";
-		return isset($style["borderStyle"]) && isset($style["borderColor"])&& isset($style["brderWidth"]) && isset($style["borderUnit"]) ? "border:" . esc_html($style["brderWidth"]) . esc_html($style["borderUnit"]) . " " . esc_html($style["borderStyle"]) . " " . $style["borderColor"] . $semiColon  : "";
-	}
+	$th_style_control = new StyleControl();
+	// $th_style_control = new StyleControl( $th_style, $borderLayout );
 
-	function create_inline_font_style($style){
-		$semiColon = "; ";
-		$fontSize = is_numeric($style["fontSize"]) && isset($style["fontUnit"])  ? "font-size:". $style["fontSize"] . esc_html($style["fontUnit"]) . $semiColon : "";
-		$fontColor = isset($style["fontUnit"])  ? "color:". $style["fontColor"] . $semiColon : "";
-		$lineHeight = is_numeric($style["lineHeight"]) ? "line-height:". $style["lineHeight"] . $semiColon : "";
-		$letterSpace = is_numeric($style["letterSpace"]) && isset($style["thLetterSpaceUnit"]) ? "letter-spacing:".$style["letterSpace"] . $style["thLetterSpaceUnit"] . $semiColon : "";
-		$fontWeight = isset($style["fontWeight"]) ? "font-weight:".esc_html($style["fontWeight"]) . $semiColon : "";
-		return $fontSize . $fontColor . $lineHeight. $letterSpace . $fontWeight;
-	}
+	return var_export($th_style_control->init($th_style, $borderLayout),true);
+	return "<div>hello</div>";
 
-	function create_inline_th_bg_color($style){
-		$semiColon = "; ";
-		return isset($style["bgColor"]) ? "background-color:".esc_html($style["bgColor"]) . $semiColon : "";
-	}
-
-	function create_inline_th_align($style){
-		$semiColon = "; ";
-		return isset($style["align"]) ? "text-align:".esc_html($style["align"]) . $semiColon : "";
-
-	}
 
 	
 	$data = '';
@@ -140,30 +165,45 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 		if($block === 'wp2s2fg/fetcher') {
 
+
 			$lastIndex = count($values) -1;
 			foreach ( $values as $row ) {
 
-				$data_h = '<td style="' . create_inline_border_style($th_style) . '">';
+				$data_h = '<td style="' . $th_style_control->create_inline_border_style() . '">';
 				$data_f = '</td>';
 				$data_container_h = '';
 				$data_container_f = '';
 
 				if(count($values) >= 3){
-				if($values[0] === $row){
-					$data_container_h = '<thead style="' . create_inline_th_bg_color($th_style) .'">';
-					$data_container_f = '</thead>';
-					$data_h = '<th style="' . create_inline_font_style($th_style) . create_inline_border_style($th_style) . create_inline_th_align($th_style) . '">';
-					$data_f = '</th>';
-				}else if($values[$lastIndex] === $row){
-					$data_container_h = '<tfoot>';
-					$data_container_f = '</tfoot>';
-				}else if($values[1] === $row){
-					$data_container_h = '<tbody>';
-					$data_container_f = '';
-				}else if($values[$lastIndex -1] === $row){
-					$data_container_h = '';
-					$data_container_f = '</tbody>';
-				}}
+					if($values[0] === $row){
+						$data_container_h = '<thead style="' . $th_style_control->create_inline_th_bg_color() .'">';
+						$data_container_f = '</thead>';
+						$data_h = '<th style="' . $th_style_control->create_inline_font_style() . $th_style_control->create_inline_border_style() . $th_style_control->create_inline_th_align() . '">';
+						$data_f = '</th>';
+					}else if($values[$lastIndex] === $row){
+						$data_container_h = '<tfoot>';
+						$data_container_f = '</tfoot>';
+					}else if($values[1] === $row){
+						$data_container_h = '<tbody>';
+						$data_container_f = '';
+					}else if($values[$lastIndex -1] === $row){
+						$data_container_h = '';
+						$data_container_f = '</tbody>';
+					}
+				}elseif(count($values) >= 2){
+					if($values[0] === $row){
+						$data_container_h = '<thead style="' . $th_style_control->create_inline_th_bg_color() .'">';
+						$data_container_f = '</thead>';
+						$data_h = '<th style="' . $th_style_control->create_inline_font_style() . $th_style_control->create_inline_border_style() . $th_style_control->create_inline_th_align() . '">';
+						$data_f = '</th>';
+					}else if($values[1] === $row){
+						$data_container_h = '<tbody>';
+						$data_container_f = '';
+					}else if($values[$lastIndex] === $row){
+						$data_container_h = '';
+						$data_container_f = '</tbody>';
+					}
+				}
 
 				$data .= $data_container_h .'<tr>';
 				for ( $i = 0; $i < count( $row ); $i ++ ) {

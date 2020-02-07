@@ -124,10 +124,6 @@ function wp2s2fg_fetcher_block_init() {
 				'type'    => 'string',
 				'default' => "px",
 			],
-			'isVisible'=> [
-				'type'    => 'boolean',
-				'default' => false
-			],
 			'thFontWeight'=> [
 				'type'    => 'string',
 				'default' => "normal"
@@ -156,9 +152,9 @@ function wp2s2fg_fetcher_block_init() {
 				'type'    => 'string',
 				'default' => "px"
 			],
-			'thBorderLayout'=> [
+			'borderLayout'=> [
 				'type'    => 'string',
-				'default' => "full"
+				'default' => "table-full"
 			]
 		],
 		'render_callback' => function ( $attributes ) {
