@@ -157,7 +157,15 @@ function wp2s2fg_get_selected_value( $attributes ) {
 		'brderWidth'=>$thBorderWidth,
 		'borderUnit'=>$thBorderUnit,
 	);
-	
+
+	function hasFixedTableClass($hasFixedTable){
+		if($hasFixedTable){
+			return "has-fixed-layout";
+		}else{
+			return "";
+		}
+	}
+
 	$data = '';
 	if ( empty( $values ) ) {
 		$data .= __( 'No data found.', 'wp-simple-spreadsheet-fetcher-for-google' );
@@ -168,7 +176,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 			$lastIndex = count($values) -1;
 			foreach ( $values as $row ) {
 
-				$data_h = '<td style="' . StyleControl::create_inline_border_style($th_style,$borderLayout) . '">';
+				$data_h = '<td class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_border_style($th_style,$borderLayout) . '">';
 				$data_f = '</td>';
 				$data_container_h = '';
 				$data_container_f = '';
@@ -211,9 +219,10 @@ function wp2s2fg_get_selected_value( $attributes ) {
 				$data .= $data_container_f . '</tr>';
 
 			}
+
 			$div_h   = '<div class="wp2s2fg_fetcher_table_container ' . esc_attr($className) .'">';
 			$div_f = '</div>';
-			$table_h = '<table class="wp2s2fg_fetcher_table" style="' . StyleControl::create_inline_table_border_style($th_style,$borderLayout) . '">';
+			$table_h = '<table class="wp2s2fg_fetcher_table ' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_table_border_style($th_style,$borderLayout) . '">';
 			$table_f = '</table>';
 
 			$data =  $div_h . $table_h . $data . $table_f . $div_f;
