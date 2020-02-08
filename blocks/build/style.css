@@ -123,7 +123,10 @@
 .wssffg-button-icon-control__wrapper span {
 	display: none;
 }
-
 .wssffg_sidebar_general_btn-align > svg {
 	pointer-events: none;
+}
+.wp2s2fg_fetcher_table_container table.wp2s2fg_fetcher_table {
+	border: none;
+	border-collapse: collapse;
 }

@@ -37,7 +37,16 @@ class StyleControl {
 	static public function create_inline_border_style($style,$layout){
 		$border = self::setBorder($layout);
 		$semiColon = "; ";
-		return isset($style["borderStyle"]) && isset($style["borderColor"])&& isset($style["brderWidth"]) && isset($style["borderUnit"]) ? $border . ": " . esc_html($style["brderWidth"]) . esc_html($style["borderUnit"]) . " " . esc_html($style["borderStyle"]) . " " . $style["borderColor"] . $semiColon  : "";
+		return isset($style["borderStyle"]) && isset($style["borderColor"])&& isset($style["brderWidth"]) && isset($style["borderUnit"]) ? "border:none; " . $border . ": " . esc_html($style["brderWidth"]) . esc_html($style["borderUnit"]) . " " . esc_html($style["borderStyle"]) . " " . $style["borderColor"] . $semiColon  : "";
+	}
+
+	static public function create_inline_table_border_style($style,$layout){
+		$semiColon = "; ";
+		if($layout === "table-vertical"){
+			return isset($style["borderStyle"]) && isset($style["borderColor"])&& isset($style["brderWidth"]) && isset($style["borderUnit"]) ? "border:none; " . "border-right: " . esc_html($style["brderWidth"]) . esc_html($style["borderUnit"]) . " " . esc_html($style["borderStyle"]) . " " . $style["borderColor"] . $semiColon  : "";
+		}else{
+			return "border: none;";
+		}
 	}
 
 	static public function create_inline_font_style($style){
@@ -133,8 +142,6 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	$thBorderUnit     = $attributes['thBorderUnit'];
 	$borderLayout     = $attributes['borderLayout'];
 
-	return $borderLayout;
-
 	$th_style = array(
 		'fontSize'=> $thFontSize,
 		'fontColor'=> $thFontColor,
@@ -206,7 +213,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 			}
 			$div_h   = '<div class="wp2s2fg_fetcher_table_container ' . esc_attr($className) .'">';
 			$div_f = '</div>';
-			$table_h = '<table class="wp2s2fg_fetcher_table">';
+			$table_h = '<table class="wp2s2fg_fetcher_table" style="' . StyleControl::create_inline_table_border_style($th_style,$borderLayout) . '">';
 			$table_f = '</table>';
 
 			$data =  $div_h . $table_h . $data . $table_f . $div_f;
