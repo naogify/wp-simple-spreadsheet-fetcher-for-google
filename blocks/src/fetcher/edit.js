@@ -51,8 +51,8 @@ addFilter(
 							)}
 						</h3>
 						<AdvancedButtonGruopControl
-							schemaName={"thBorderLayout"}
-							initial={props.attributes.thBorderLayout}
+							schemaName={"borderLayout"}
+							initial={props.attributes.borderLayout}
 							data={[
 								"table-full",
 								"table-horizontal",

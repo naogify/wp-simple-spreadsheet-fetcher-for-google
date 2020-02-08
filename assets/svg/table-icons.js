@@ -1,6 +1,8 @@
 export const TableEmptyIcon = () => {
 	return (
 		<svg
+			aria-hidden="true"
+			focusable="false"
 			xmlns="http://www.w3.org/2000/svg"
 			style={{ isolation: "isolate" }}
 			width="20"
@@ -42,6 +44,8 @@ export const TableEmptyIcon = () => {
 export const TableFullIcon = () => {
 	return (
 		<svg
+			aria-hidden="true"
+			focusable="false"
 			xmlns="http://www.w3.org/2000/svg"
 			style={{ isolation: "isolate" }}
 			width="20"
@@ -76,6 +80,8 @@ export const TableFullIcon = () => {
 export const TableHorizontalIcon = () => {
 	return (
 		<svg
+			aria-hidden="true"
+			focusable="false"
 			xmlns="http://www.w3.org/2000/svg"
 			style={{ isolation: "isolate" }}
 			width="20"
@@ -141,6 +147,8 @@ export const TableHorizontalIcon = () => {
 export const TableVerticalIcon = () => {
 	return (
 		<svg
+			aria-hidden="true"
+			focusable="false"
 			xmlns="http://www.w3.org/2000/svg"
 			style={{ isolation: "isolate" }}
 			width="20"

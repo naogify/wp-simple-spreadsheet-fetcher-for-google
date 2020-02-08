@@ -123,3 +123,7 @@
 .wssffg-button-icon-control__wrapper span {
 	display: none;
 }
+
+.wssffg_sidebar_general_btn-align > svg {
+	pointer-events: none;
+}

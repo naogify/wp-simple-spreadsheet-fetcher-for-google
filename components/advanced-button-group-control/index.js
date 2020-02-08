@@ -21,7 +21,11 @@ export const AdvancedButtonGruopControl = props => {
 			<Button
 				onClick={onClick}
 				value={label}
-				className={value === label ? "is_active" : ""}
+				className={
+					value === label
+						? "wssffg_sidebar_general_btn-align is_active"
+						: "wssffg_sidebar_general_btn-align"
+				}
 			>
 				{__(`${label}`, "wp-simple-spreadsheet-fetcher-for-google")}
 			</Button>
@@ -33,7 +37,11 @@ export const AdvancedButtonGruopControl = props => {
 			<Button
 				onClick={onClick}
 				value={label}
-				className={value === label ? "is_active" : ""}
+				className={
+					value === label
+						? "wssffg_sidebar_general_btn-align is_active"
+						: "wssffg_sidebar_general_btn-align"
+				}
 			>
 				<AdvancedIconControl icon={label} />
 			</Button>
