@@ -41,12 +41,6 @@ const withTabbedInspector = () =>
 											className:
 												"tab-style dashicons-before dashicons-admin-customizer"
 										}
-										// {
-										// 	name: "advanced",
-										// 	title: "Advanced",
-										// 	className:
-										// 		"tab-advanced dashicons-before dashicons-editor-insertmore"
-										// }
 									]}
 									initialTabName="setting"
 								>

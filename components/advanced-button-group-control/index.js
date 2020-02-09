@@ -20,7 +20,6 @@ export const AdvancedButtonGruopControl = props => {
 	};
 
 	const onClick = event => {
-		console.log(event.target.value);
 		setValue(event.target.value);
 		saveValue.bind(null, schemaName, event.target.value)();
 	};

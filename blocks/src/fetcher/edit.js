@@ -16,6 +16,7 @@ import { BorderControl } from "../../../components/border-control";
 import { AdvancedSelectControl } from "../../../components/advanced-select-control";
 import { AdvancedRangeControl } from "../../../components/advanced-range-control";
 import { borderStyle } from "../../../components/border-style";
+import { TableStyleControl } from "../../../components/table-style-control";
 
 addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.layout.before",
@@ -117,57 +118,18 @@ addFilter(
 					)}
 					initialOpen={false}
 				>
-					<TypographyControl {...props} />
-					<BaseControl className={"wssffg-lower-layer1"}>
-						<div className="components-base-control_outer">
-							<span className={"components-base-control__label"}>
-								{__(
-									"Size",
-									"wp-simple-spreadsheet-fetcher-for-google"
-								)}
-							</span>
-							<AdvancedButtonGruopControl
-								schemaName={"thFontUnit"}
-								initial={props.attributes.thFontUnit}
-								data={["px", "em", "rem"]}
-								customClassName={
-									"wssffg-advanced-button-group_unit"
-								}
-								{...props}
-							/>
-						</div>
-						<AdvancedRangeControl
-							schemaName={"thFontSize"}
-							initial={props.attributes.thFontSize}
-							min={1}
-							max={50}
-							step={0.1}
-							{...props}
-						/>
-					</BaseControl>
-					<BaseControl
-						label={__(
-							"Background Color",
-							"wp-simple-spreadsheet-fetcher-for-google"
-						)}
-					>
-						<AdvancedColorPalleteControl
-							schemaName={"thBgColor"}
-							{...props}
-						/>
-					</BaseControl>
-					<BaseControl
-						label={__(
-							"Align",
-							"wp-simple-spreadsheet-fetcher-for-google"
-						)}
-					>
-						<AdvancedAlignControl
-							schemaName={"thAlign"}
-							initial={props.attributes.thAlign}
-							{...props}
-						/>
-					</BaseControl>
+					<TableStyleControl
+						fontUnit={"thFontUnit"}
+						fontSize={"thFontSize"}
+						fontColor={"thFontColor"}
+						fontWeight={"thFontWeight"}
+						lineHeight={"thLineHeight"}
+						letterSpaceUnit={"thLetterSpaceUnit"}
+						letterSpace={"thLetterSpace"}
+						bgColor={"thBgColor"}
+						align={"thAlign"}
+						{...props}
+					/>
 				</PanelBody>
 				<PanelBody
 					title={__(

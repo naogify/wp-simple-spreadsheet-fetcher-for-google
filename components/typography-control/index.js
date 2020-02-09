@@ -11,6 +11,15 @@ const { Fragment } = wp.element;
 const { BaseControl } = wp.components;
 
 export const TypographyControl = props => {
+	const {
+		fontUnit,
+		fontSize,
+		fontColor,
+		fontWeight,
+		lineHeight,
+		letterSpaceUnit,
+		letterSpace
+	} = props;
 	const render = (
 		<Fragment>
 			<BaseControl>
@@ -19,16 +28,16 @@ export const TypographyControl = props => {
 						{__("Size", "wp-simple-spreadsheet-fetcher-for-google")}
 					</span>
 					<AdvancedButtonGruopControl
-						schemaName={"thFontUnit"}
-						initial={props.attributes.thFontUnit}
+						schemaName={fontUnit}
+						initial={props.attributes[fontUnit]}
 						data={["px", "em", "rem"]}
 						customClassName={"wssffg-advanced-button-group_unit"}
 						{...props}
 					/>
 				</div>
 				<AdvancedRangeControl
-					schemaName={"thFontSize"}
-					initial={props.attributes.thFontSize}
+					schemaName={fontSize}
+					initial={props.attributes[fontSize]}
 					min={1}
 					max={50}
 					step={0.1}
@@ -40,7 +49,7 @@ export const TypographyControl = props => {
 					{__("Color", "wp-simple-spreadsheet-fetcher-for-google")}
 				</span>
 				<AdvancedColorPalleteControl
-					schemaName={"thFontColor"}
+					schemaName={fontColor}
 					{...props}
 				/>
 			</BaseControl>
@@ -50,8 +59,8 @@ export const TypographyControl = props => {
 						"Weight",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
-					schemaName={"thFontWeight"}
-					initial={props.attributes.thFontWeight}
+					schemaName={fontWeight}
+					initial={props.attributes[fontWeight]}
 					data={fontWeights}
 					{...props}
 				/>
@@ -62,8 +71,8 @@ export const TypographyControl = props => {
 						"Line Height",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
-					schemaName={"thLineHeight"}
-					initial={props.attributes.thLineHeight}
+					schemaName={lineHeight}
+					initial={props.attributes[lineHeight]}
 					min={1}
 					max={10}
 					step={0.1}
@@ -79,16 +88,16 @@ export const TypographyControl = props => {
 						)}
 					</span>
 					<AdvancedButtonGruopControl
-						schemaName={"thLetterSpaceUnit"}
-						initial={props.attributes.thLetterSpaceUnit}
+						schemaName={letterSpaceUnit}
+						initial={props.attributes[letterSpaceUnit]}
 						data={["px", "em", "rem"]}
 						customClassName={"wssffg-advanced-button-group_unit"}
 						{...props}
 					/>
 				</div>
 				<AdvancedRangeControl
-					schemaName={"thLetterSpace"}
-					initial={props.attributes.thLetterSpace}
+					schemaName={letterSpace}
+					initial={props.attributes[letterSpace]}
 					min={1}
 					max={10}
 					step={0.1}
