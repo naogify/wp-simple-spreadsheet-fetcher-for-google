@@ -14,21 +14,6 @@ registerBlockType("wp2s2fg/fetcher", {
 		className: true,
 		html: false
 	},
-	// styles: [
-	// 	{
-	// 		name: "wp2s2fg-fetcher-default",
-	// 		label: __("Default", "wp-simple-spreadsheet-fetcher-for-google"),
-	// 		isDefault: true
-	// 	},
-	// 	{
-	// 		name: "wp2s2fg-fetcher-line",
-	// 		label: __("Line", "wp-simple-spreadsheet-fetcher-for-google")
-	// 	},
-	// 	{
-	// 		name: "wp2s2fg-fetcher-none",
-	// 		label: __("None", "wp-simple-spreadsheet-fetcher-for-google")
-	// 	}
-	// ],
 	attributes: {
 		className: {
 			type: "string",

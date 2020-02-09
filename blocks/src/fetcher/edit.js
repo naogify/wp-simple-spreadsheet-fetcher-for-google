@@ -16,7 +16,6 @@ import { TableStyleControl } from "../../../components/table-style-control";
 addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.layout.before",
 	"wp2s2fg/fetcher",
-	//NOTE:emptyはフックの引数の仕様上、第一引数を設定する必要がある。なので仮として渡している。
 	(empty, props) => {
 		return renderSettings(props);
 	}
