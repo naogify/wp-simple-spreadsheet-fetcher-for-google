@@ -192,7 +192,11 @@
 }
 
 /*---Front--*/
+.wp2s2fg_fetcher_table_container {
+	overflow-x: auto;
+}
 .wp2s2fg_fetcher_table_container table.wp2s2fg_fetcher_table {
+	width: 100%;
 	border: none;
 	border-collapse: collapse;
 }
