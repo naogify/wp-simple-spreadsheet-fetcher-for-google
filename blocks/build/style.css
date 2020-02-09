@@ -13,13 +13,21 @@
 	width: 100%;
 	border: none;
 	border-collapse: collapse;
+	border-spacing: 0;
 }
 table.wp2s2fg_fetcher_table.has-fixed-layout {
 	table-layout: fixed;
 	width: 100%;
 }
+table.wp2s2fg_fetcher_table th {
+	word-break: normal;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 table.wp2s2fg_fetcher_table td {
 	word-break: normal;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 table.wp2s2fg_fetcher_table td.has-fixed-layout {
 	word-break: break-word;
