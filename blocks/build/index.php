@@ -136,19 +136,55 @@ function wp2s2fg_fetcher_block_init() {
 				'type'    => 'string',
 				'default' => "left"
 			],	
-			'thBorderStyle'=> [
+			'tbFontSize'     => [
+				'type'    => 'number',
+				'default' => 16,
+			],
+			'tbFontColor'     => [
+				'type'    => 'string',
+				'default' => "inherit",
+			],
+			'tbFontUnit'     => [
+				'type'    => 'string',
+				'default' => "px",
+			],
+			'tbLineHeight'     => [
+				'type'    => 'number',
+				'default' => 1,
+			],
+			'tbLetterSpace'     => [
+				'type'    => 'number',
+				'default' => 1,
+			],
+			'tbLetterSpaceUnit'     => [
+				'type'    => 'string',
+				'default' => "px",
+			],
+			'tbFontWeight'=> [
+				'type'    => 'string',
+				'default' => "normal"
+			],
+			'tbBgColor'=> [
+				'type'    => 'string',
+				'default' => "#fff"
+			],
+			'tbAlign'=> [
+				'type'    => 'string',
+				'default' => "left"
+			],	
+			'borderStyle'=> [
 				'type'    => 'string',
 				'default' => "solid"
 			],
-			'thBorderColor'=> [
+			'borderColor'=> [
 				'type'    => 'string',
 				'default' => "#ccc"
 			],
-			'thBorderWidth'=> [
+			'borderWidth'=> [
 				'type'    => 'number',
 				'default' => 1
 			],
-			'thBorderUnit'=> [
+			'borderUnit'=> [
 				'type'    => 'string',
 				'default' => "px"
 			],

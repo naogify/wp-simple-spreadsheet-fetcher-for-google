@@ -1,5 +1,5 @@
 const { __ } = wp.i18n;
-export const borderStyle = [
+export const borderStyleTemplate = [
 	{
 		value: "solid",
 		label: __("solid", "wp-simple-spreadsheet-fetcher-for-google")

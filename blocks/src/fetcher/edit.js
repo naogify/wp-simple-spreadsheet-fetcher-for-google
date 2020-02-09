@@ -15,7 +15,7 @@ import { renderSettings } from "../../../components/fetcher-control";
 import { BorderControl } from "../../../components/border-control";
 import { AdvancedSelectControl } from "../../../components/advanced-select-control";
 import { AdvancedRangeControl } from "../../../components/advanced-range-control";
-import { borderStyle } from "../../../components/border-style";
+import { borderStyleTemplate } from "../../../components/border-style-template";
 import { TableStyleControl } from "../../../components/table-style-control";
 
 addFilter(
@@ -63,16 +63,22 @@ addFilter(
 							{...props}
 						/>
 					</BaseControl>
-					<BorderControl {...props} />
+					<BorderControl
+						borderStyle={"borderStyle"}
+						borderColor={"borderColor"}
+						borderUnit={"borderUnit"}
+						borderWidth={"borderWidth"}
+						{...props}
+					/>
 					<BaseControl className={"wssffg-lower-layer1"}>
 						<AdvancedSelectControl
 							label={__(
 								"Style",
 								"wp-simple-spreadsheet-fetcher-for-google"
 							)}
-							schemaName={"thBorderStyle"}
-							initial={props.attributes.thBorderStyle}
-							data={borderStyle}
+							schemaName={"borderStyle"}
+							initial={props.attributes.borderStyle}
+							data={borderStyleTemplate}
 							{...props}
 						/>
 						<div className="components-base-control_outer">
@@ -83,8 +89,8 @@ addFilter(
 								)}
 							</span>
 							<AdvancedButtonGruopControl
-								schemaName={"thBorderUnit"}
-								initial={props.attributes.thBorderUnit}
+								schemaName={"borderUnit"}
+								initial={props.attributes.borderUnit}
 								data={["px", "em", "rem"]}
 								customClassName={
 									"wssffg-advanced-button-group_unit"
@@ -93,7 +99,7 @@ addFilter(
 							/>
 						</div>
 						<AdvancedRangeControl
-							schemaName={"thBorderWidth"}
+							schemaName={"borderWidth"}
 							initial={props.attributes.thBorderWidth}
 							min={0}
 							max={10}
@@ -137,7 +143,20 @@ addFilter(
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					initialOpen={false}
-				></PanelBody>
+				>
+					<TableStyleControl
+						fontUnit={"tbFontUnit"}
+						fontSize={"tbFontSize"}
+						fontColor={"tbFontColor"}
+						fontWeight={"tbFontWeight"}
+						lineHeight={"tbLineHeight"}
+						letterSpaceUnit={"tbLetterSpaceUnit"}
+						letterSpace={"tbLetterSpace"}
+						bgColor={"tbBgColor"}
+						align={"tbAlign"}
+						{...props}
+					/>
+				</PanelBody>
 			</Fragment>
 		);
 	}

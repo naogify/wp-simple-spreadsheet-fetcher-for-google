@@ -91,19 +91,55 @@ registerBlockType("wp2s2fg/fetcher", {
 			type: "string",
 			default: "left"
 		},
-		thBorderStyle: {
-			type: "string",
-			default: "solid"
+		tbFontSize: {
+			type: "number",
+			default: 16
 		},
-		thBorderColor: {
+		tbFontUnit: {
 			type: "string",
-			default: "#ccc"
+			default: "px"
 		},
-		thBorderWidth: {
+		tbLineHeight: {
 			type: "number",
 			default: 1
 		},
-		thBorderUnit: {
+		tbLetterSpace: {
+			type: "number",
+			default: 1
+		},
+		tbLetterSpaceUnit: {
+			type: "string",
+			default: "px"
+		},
+		tbFontWeight: {
+			type: "string",
+			default: "normal"
+		},
+		tbFontColor: {
+			type: "string",
+			default: "inherit"
+		},
+		tbBgColor: {
+			type: "string",
+			default: "#fff"
+		},
+		tbAlign: {
+			type: "string",
+			default: "left"
+		},
+		borderStyle: {
+			type: "string",
+			default: "solid"
+		},
+		borderColor: {
+			type: "string",
+			default: "#ccc"
+		},
+		borderWidth: {
+			type: "number",
+			default: 1
+		},
+		borderUnit: {
 			type: "string",
 			default: "px"
 		},
