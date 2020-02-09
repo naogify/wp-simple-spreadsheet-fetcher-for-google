@@ -7,9 +7,11 @@
     "start": "npm install && composer install && wp-scripts start blocks/src/**/*.js --output-path=blocks/build",
     "watch": "wp-scripts start blocks/src/**/*.js --output-path=blocks/build",
     "build": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build",
+    "build-dev": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build",
+    "translate": "po2json languages/wp-simple-spreadsheet-fetcher-for-google-ja.po languages/wp-simple-spreadsheet-fetcher-for-google-ja-wp2s2fg-fetcher.json -f jed",
+    "make-pot": "wp i18n make-pot . languages/wp-simple-spreadsheet-fetcher-for-google.pot",
     "lint-js": "wp-scripts lint-js",
-    "readme": "npx grunt",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "readme": "npx grunt"
   },
   "keywords": [],
   "author": "naoki0h",
@@ -20,9 +22,17 @@
     "grunt-wp-readme-to-markdown": "^2.0.1"
   },
   "dependencies": {
-    "@wordpress/block-editor": "^3.4.0",
-    "@wordpress/blocks": "^6.9.0",
-    "@wordpress/element": "^2.10.0",
-    "@wordpress/i18n": "^3.7.0"
+    "@wordpress/components": "^9.0.0"
+  },
+  "release-it": {
+    "hooks": {
+      "before:bump": "bash ./bin/create-release.sh ${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    }
   }
 }

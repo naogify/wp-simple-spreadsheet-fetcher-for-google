@@ -1,155 +1,140 @@
-import { __ } from '@wordpress/i18n';
-import { registerBlockType } from '@wordpress/blocks';
-import {
-	TextControl,
-	PanelBody,
-	ServerSideRender,
-} from '@wordpress/components';
-import { Fragment } from '@wordpress/element';
-import { InspectorControls } from '@wordpress/block-editor';
+const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks;
+import edit from "./edit";
 
-registerBlockType( 'wp2s2fg/fetcher', {
-	title: __( 'Fetcher', 'wp-simple-spreadsheet-fetcher-for-google' ),
-	icon: 'smiley',
-	category: 'wp2s2fg-blocks-cat',
+registerBlockType("wp2s2fg/fetcher", {
+	title: __("Fetcher", "wp-simple-spreadsheet-fetcher-for-google"),
+	icon: "smiley",
+	category: "wp2s2fg-blocks-cat",
 	supports: {
 		className: true,
-		html: false,
+		html: false
 	},
-	styles: [
-		{
-			name: 'wp2s2fg-fetcher-default',
-			label: __( 'Default', 'wp-simple-spreadsheet-fetcher-for-google' ),
-			isDefault: true,
-		},
-		{
-			name: 'wp2s2fg-fetcher-line',
-			label: __( 'Line', 'wp-simple-spreadsheet-fetcher-for-google' ),
-		},
-		{
-			name: 'wp2s2fg-fetcher-none',
-			label: __( 'None', 'wp-simple-spreadsheet-fetcher-for-google' ),
-		},
-	],
 	attributes: {
 		className: {
-			type: 'string',
-			default: '',
+			type: "string",
+			default: ""
 		},
 		sheetId: {
-			type: 'string',
-			default: '',
+			type: "string",
+			default: ""
 		},
 		sheetName: {
-			type: 'string',
-			default: '',
+			type: "string",
+			default: ""
 		},
 		sheetRange: {
-			type: 'string',
-			default: '',
+			type: "string",
+			default: ""
 		},
 		//This attributes is deprecated since v0.2.8.
 		range: {
-			type: 'string',
-			default: '',
+			type: "string",
+			default: ""
 		},
+		hasFixedTable: {
+			type: "boolean",
+			default: false
+		},
+		thFontSize: {
+			type: "number",
+			default: 16
+		},
+		thFontUnit: {
+			type: "string",
+			default: "px"
+		},
+		thLineHeight: {
+			type: "number",
+			default: 1
+		},
+		thLetterSpace: {
+			type: "number",
+			default: 1
+		},
+		thLetterSpaceUnit: {
+			type: "string",
+			default: "px"
+		},
+		thFontWeight: {
+			type: "string",
+			default: "normal"
+		},
+		thFontColor: {
+			type: "string",
+			default: "inherit"
+		},
+		thBgColor: {
+			type: "string",
+			default: "#fff"
+		},
+		thAlign: {
+			type: "string",
+			default: "left"
+		},
+		tbFontSize: {
+			type: "number",
+			default: 16
+		},
+		tbFontUnit: {
+			type: "string",
+			default: "px"
+		},
+		tbLineHeight: {
+			type: "number",
+			default: 1
+		},
+		tbLetterSpace: {
+			type: "number",
+			default: 1
+		},
+		tbLetterSpaceUnit: {
+			type: "string",
+			default: "px"
+		},
+		tbFontWeight: {
+			type: "string",
+			default: "normal"
+		},
+		tbFontColor: {
+			type: "string",
+			default: "inherit"
+		},
+		tbBgColor: {
+			type: "string",
+			default: "#fff"
+		},
+		tbAlign: {
+			type: "string",
+			default: "left"
+		},
+		borderStyle: {
+			type: "string",
+			default: "solid"
+		},
+		borderColor: {
+			type: "string",
+			default: "#ccc"
+		},
+		borderWidth: {
+			type: "number",
+			default: 1
+		},
+		borderUnit: {
+			type: "string",
+			default: "px"
+		},
+		borderLayout: {
+			type: "string",
+			default: "table-full"
+		},
+		isPanelBodyOpen: {
+			type: "string",
+			default: "general"
+		}
 	},
-
-	edit( props ) {
-		const { attributes, setAttributes } = props;
-		const { range, sheetId, sheetName, sheetRange } = attributes;
-
-		const renderSettings = () => {
-			if ( ! range ) {
-				return (
-					<Fragment>
-						<TextControl
-							label={ __(
-								'Sheet URL',
-								'wp-simple-spreadsheet-fetcher-for-google'
-							) }
-							value={ sheetId }
-							onChange={ ( newUrl ) =>
-								setAttributes( {
-									sheetId:
-										newUrl === undefined ? 'none' : newUrl,
-								} )
-							}
-							initialOpen={ true }
-						/>
-						<TextControl
-							label={ __(
-								'Sheet Name',
-								'wp-simple-spreadsheet-fetcher-for-google'
-							) }
-							value={ sheetName }
-							onChange={ ( newName ) =>
-								setAttributes( {
-									sheetName:
-										newName === undefined ? 'none' : newName,
-								} )
-							}
-							initialOpen={ true }
-						/>
-						<TextControl
-							label={ __(
-								'Cell or Range',
-								'wp-simple-spreadsheet-fetcher-for-google'
-							) }
-							value={ sheetRange }
-							onChange={ ( newRange ) =>
-								setAttributes( {
-									sheetRange:
-										newRange === undefined ?
-											'none' :
-											newRange,
-								} )
-							}
-							initialOpen={ true }
-						/>
-					</Fragment>
-				);
-			}
-			return (
-				<TextControl
-					label={ __(
-						'Please set the cell or range to fetch data in A1 notation. Example : Sheets1!A1:E',
-						'wp-simple-spreadsheet-fetcher-for-google'
-					) }
-					value={ range }
-					onChange={ ( newRange ) =>
-						setAttributes( {
-							range:
-									newRange === undefined ? 'none' : newRange,
-						} )
-					}
-					initialOpen={ true }
-				/>
-			);
-		};
-
-		return (
-			<Fragment>
-				<InspectorControls>
-					<PanelBody
-						title={ __(
-							'Fetch Data Setting',
-							'wp-simple-spreadsheet-fetcher-for-google'
-						) }
-						initialOpen={ true }
-					>
-						{ renderSettings() }
-					</PanelBody>
-				</InspectorControls>
-				<ServerSideRender
-					block="wp2s2fg/fetcher"
-					attributes={ attributes }
-				/>
-			</Fragment>
-		);
-	},
-
+	edit,
 	save() {
 		return null;
-	},
-} );
+	}
+});
