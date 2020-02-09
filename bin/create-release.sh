@@ -10,10 +10,9 @@ fi
 version=$1
 
 if [ ! `echo $version | grep -e 'alpha' -e 'beta' -e 'RC' -e 'rc'` ] ; then
-  sed -i '' -e "s/^Stable tag: .*/Stable tag: ${version}/g" readme.txt;
+  sed -i readme.txt -e "s/^Stable tag: .*/Stable tag: ${version}/g";
 fi
 
-
-sed -i '' -e "s/^ \* Version: .*/ * Version: ${version}/g" wp-simple-spreadsheet-fetcher-for-google.php;
-sed -i '' -e "s/^ \* @version .*/ * @version ${version}/g" wp-simple-spreadsheet-fetcher-for-google.php;
-© 2020 GitHub, Inc.
+sed -i wp-simple-spreadsheet-fetcher-for-google.php -e "s/^ \* Version: .*/ * Version: ${version}/g";
+sed -i wp-simple-spreadsheet-fetcher-for-google.php -e "s/^ \* @version .*/ * @version ${version}/g";
+sed -i package.json -e "s/\"version\"\: \".....\"/\"version\"\: \"${version}\"/g";

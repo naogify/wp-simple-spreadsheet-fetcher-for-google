@@ -1,9 +1,5 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { TextControl, PanelBody, ServerSideRender } = wp.components;
-const { Fragment } = wp.element;
-const { RichText, InspectorControls } =
-	wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
 import edit from "./edit";
 
 registerBlockType("wp2s2fg/fetcher", {

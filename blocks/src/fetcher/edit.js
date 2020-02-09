@@ -8,9 +8,7 @@ import { TableWidthFixControl } from "../../../components/table-width-fix-contro
 import { AdvancedButtonGruopControl } from "../../../components/advanced-button-group-control";
 import { renderSettings } from "../../../components/fetcher-control";
 import { BorderControl } from "../../../components/border-control";
-import { AdvancedSelectControl } from "../../../components/advanced-select-control";
 import { AdvancedRangeControl } from "../../../components/advanced-range-control";
-import { borderStyleTemplate } from "../../../components/border-style-template";
 import { TableStyleControl } from "../../../components/table-style-control";
 
 addFilter(
