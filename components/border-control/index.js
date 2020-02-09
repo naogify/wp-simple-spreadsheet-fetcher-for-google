@@ -7,34 +7,56 @@ import { borderStyle } from "../border-style";
 
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
+const { BaseControl } = wp.components;
 
 export const BorderControl = props => {
 	const render = (
 		<Fragment>
-			<AdvancedSelectControl
-				label={__("Style", "wp-simple-spreadsheet-fetcher-for-google")}
-				schemaName={"thBorderStyle"}
-				initial={props.attributes.thBorderStyle}
-				data={borderStyle}
-				{...props}
-			/>
-			<h3>{__("Color", "wp-simple-spreadsheet-fetcher-for-google")}</h3>
-			<AdvancedColorPalleteControl
-				schemaName={"thBorderColor"}
-				{...props}
-			/>
-			<AdvancedButtonGruopControl
-				schemaName={"thBorderUnit"}
-				initial={props.attributes.thBorderUnit}
-				data={["px", "em", "rem"]}
-				{...props}
-			/>
-			<AdvancedRangeControl
-				label={__("Width", "wp-simple-spreadsheet-fetcher-for-google")}
-				schemaName={"thBorderWidth"}
-				initial={props.attributes.thBorderWidth}
-				{...props}
-			/>
+			<BaseControl>
+				<AdvancedSelectControl
+					label={__(
+						"Style",
+						"wp-simple-spreadsheet-fetcher-for-google"
+					)}
+					schemaName={"thBorderStyle"}
+					initial={props.attributes.thBorderStyle}
+					data={borderStyle}
+					{...props}
+				/>
+			</BaseControl>
+			<BaseControl>
+				<span className={"components-base-control__label"}>
+					{__("Color", "wp-simple-spreadsheet-fetcher-for-google")}
+				</span>
+				<AdvancedColorPalleteControl
+					schemaName={"thBorderColor"}
+					{...props}
+				/>
+			</BaseControl>
+			<BaseControl>
+				<div className="components-base-control_outer">
+					<span className={"components-base-control__label"}>
+						{__(
+							"Width",
+							"wp-simple-spreadsheet-fetcher-for-google"
+						)}
+					</span>
+					<AdvancedButtonGruopControl
+						schemaName={"thBorderUnit"}
+						initial={props.attributes.thBorderUnit}
+						customClassName={"wssffg-advanced-button-group_unit"}
+						data={["px", "em", "rem"]}
+						{...props}
+					/>
+				</div>
+				<AdvancedRangeControl
+					schemaName={"thBorderWidth"}
+					initial={props.attributes.thBorderWidth}
+					min={0}
+					max={10}
+					{...props}
+				/>
+			</BaseControl>
 		</Fragment>
 	);
 	return (

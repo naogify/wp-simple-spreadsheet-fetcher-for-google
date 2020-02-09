@@ -6,6 +6,7 @@ import { applyFilters } from "@wordpress/hooks";
 import { createHigherOrderComponent } from "@wordpress/compose";
 import { InspectorControls } from "@wordpress/block-editor";
 import { TabPanel } from "@wordpress/components";
+const { __ } = wp.i18n;
 
 const withTabbedInspector = () =>
 	createHigherOrderComponent(
@@ -13,32 +14,39 @@ const withTabbedInspector = () =>
 			class extends Component {
 				render() {
 					const { blockName } = this.props;
-					const onSelect = tabName => {
-						console.log("Helloooooooooo", tabName);
-					};
+					const onSelect = tabName => {};
 					return (
 						<Fragment>
 							<InspectorControls>
 								<TabPanel
-									className="my-tab-panel"
-									activeClass="active-tab"
+									className="wssffg-sidebar-tab-panel"
+									activeClass="is-active"
 									onSelect={onSelect}
 									tabs={[
 										{
 											name: "setting",
-											title: "Setting",
-											className: "tab-setting"
+											title: __(
+												`Setting`,
+												"wp-simple-spreadsheet-fetcher-for-google"
+											),
+											className:
+												"tab-setting dashicons-before dashicons-admin-tools"
 										},
 										{
 											name: "style",
-											title: "Style",
-											className: "tab-style"
-										},
-										{
-											name: "advanced",
-											title: "Advanced",
-											className: "tab-advanced"
+											title: __(
+												`Style`,
+												"wp-simple-spreadsheet-fetcher-for-google"
+											),
+											className:
+												"tab-style dashicons-before dashicons-admin-customizer"
 										}
+										// {
+										// 	name: "advanced",
+										// 	title: "Advanced",
+										// 	className:
+										// 		"tab-advanced dashicons-before dashicons-editor-insertmore"
+										// }
 									]}
 									initialTabName="setting"
 								>

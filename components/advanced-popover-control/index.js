@@ -32,32 +32,42 @@ export class AdvancedPopOverControl extends Component {
 
 		return (
 			<Fragment>
-				<div className={"wssffg-button-icon-control__wrapper"}>
-					<Button
-						isSecondary
-						className={popverBtnClass}
-						onClick={handleOpen}
+				<div className="components-base-control">
+					<div
+						className={
+							"wssffg-button-icon-control__wrapper components-base-control__field"
+						}
 					>
-						<h3>{this.props.label}</h3>
-					</Button>
-					<IconButton
-						className={popverBtnClass}
-						icon="edit"
-						label={__(
-							"More",
-							"wp-simple-spreadsheet-fetcher-for-google"
+						<Button
+							isSecondary
+							className={popverBtnClass}
+							onClick={handleOpen}
+						>
+							<span className="components-base-control__label">
+								{this.props.label}
+							</span>
+						</Button>
+						<IconButton
+							className={popverBtnClass}
+							icon="edit"
+							label={__(
+								"More",
+								"wp-simple-spreadsheet-fetcher-for-google"
+							)}
+							onClick={handleOpen}
+							id={`wssffg-button-icon-control__edit`}
+							ref={this.buttonRef}
+						/>
+						{this.state.open && this.buttonRef.current && (
+							<Popover
+								anchorRect={this.buttonRef.current.getBoundingClientRect()}
+								children={this.props.renderComp}
+								onFocusOutside={handleOnClickOutside}
+								focusOnMount={"container"}
+								className={"wssffg-advanced-popover-control"}
+							></Popover>
 						)}
-						onClick={handleOpen}
-						id={`wssffg-button-icon-control__edit`}
-						ref={this.buttonRef}
-					/>
-					{this.state.open && this.buttonRef.current && (
-						<Popover
-							anchorRect={this.buttonRef.current.getBoundingClientRect()}
-							children={this.props.renderComp}
-							onFocusOutside={handleOnClickOutside}
-						></Popover>
-					)}
+					</div>
 				</div>
 			</Fragment>
 		);

@@ -4,14 +4,23 @@ const { __ } = wp.i18n;
 const { useState } = wp.element;
 
 export const AdvancedButtonGruopControl = props => {
-	const { schemaName, data, setAttributes, initial, icon = false } = props;
+	const {
+		schemaName,
+		data,
+		setAttributes,
+		initial,
+		customClassName,
+		icon = false
+	} = props;
 	const [value, setValue] = useState(initial);
+	const btnClass = "components-icon-button components-toolbar__control";
 
 	const saveValue = (key, value) => {
 		setAttributes({ [key]: value });
 	};
 
 	const onClick = event => {
+		console.log(event.target.value);
 		setValue(event.target.value);
 		saveValue.bind(null, schemaName, event.target.value)();
 	};
@@ -22,9 +31,7 @@ export const AdvancedButtonGruopControl = props => {
 				onClick={onClick}
 				value={label}
 				className={
-					value === label
-						? "wssffg_sidebar_general_btn-align is_active"
-						: "wssffg_sidebar_general_btn-align"
+					value === label ? `${btnClass} is-active` : `${btnClass}`
 				}
 			>
 				{__(`${label}`, "wp-simple-spreadsheet-fetcher-for-google")}
@@ -38,9 +45,7 @@ export const AdvancedButtonGruopControl = props => {
 				onClick={onClick}
 				value={label}
 				className={
-					value === label
-						? "wssffg_sidebar_general_btn-align is_active"
-						: "wssffg_sidebar_general_btn-align"
+					value === label ? `${btnClass} is-active` : `${btnClass}`
 				}
 			>
 				<AdvancedIconControl icon={label} />
@@ -54,5 +59,7 @@ export const AdvancedButtonGruopControl = props => {
 	} else {
 		buttonControls = data.map(createButtons);
 	}
-	return <ButtonGroup>{buttonControls} </ButtonGroup>;
+	return (
+		<ButtonGroup className={customClassName}>{buttonControls}</ButtonGroup>
+	);
 };

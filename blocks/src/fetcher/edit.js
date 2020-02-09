@@ -13,6 +13,9 @@ import { AdvancedButtonGruopControl } from "../../../components/advanced-button-
 import { AdvancedAlignControl } from "../../../components/advanced-align-control";
 import { renderSettings } from "../../../components/fetcher-control";
 import { BorderControl } from "../../../components/border-control";
+import { AdvancedSelectControl } from "../../../components/advanced-select-control";
+import { AdvancedRangeControl } from "../../../components/advanced-range-control";
+import { borderStyle } from "../../../components/border-style";
 
 addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.layout.before",
@@ -34,22 +37,15 @@ addFilter(
 						"General",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
+					initialOpen={true}
 				>
-					<div>
-						{__(
-							"Fixed Table Width",
-							"wp-simple-spreadsheet-fetcher-for-google"
-						)}
-					</div>
-					<TableWidthFixControl {...props} />
 					<BaseControl>
-						<BorderControl {...props} />
-						<h3>
+						<span className={"components-base-control__label"}>
 							{__(
 								"Layout",
 								"wp-simple-spreadsheet-fetcher-for-google"
 							)}
-						</h3>
+						</span>
 						<AdvancedButtonGruopControl
 							schemaName={"borderLayout"}
 							initial={props.attributes.borderLayout}
@@ -59,18 +55,96 @@ addFilter(
 								"table-vertical",
 								"table-empty"
 							]}
+							customClassName={
+								"wssffg-advanced-button-group_align components-toolbar"
+							}
 							icon={true}
 							{...props}
 						/>
 					</BaseControl>
+					<BorderControl {...props} />
+					<BaseControl className={"wssffg-lower-layer1"}>
+						<AdvancedSelectControl
+							label={__(
+								"Style",
+								"wp-simple-spreadsheet-fetcher-for-google"
+							)}
+							schemaName={"thBorderStyle"}
+							initial={props.attributes.thBorderStyle}
+							data={borderStyle}
+							{...props}
+						/>
+						<div className="components-base-control_outer">
+							<span className={"components-base-control__label"}>
+								{__(
+									"Width",
+									"wp-simple-spreadsheet-fetcher-for-google"
+								)}
+							</span>
+							<AdvancedButtonGruopControl
+								schemaName={"thBorderUnit"}
+								initial={props.attributes.thBorderUnit}
+								data={["px", "em", "rem"]}
+								customClassName={
+									"wssffg-advanced-button-group_unit"
+								}
+								{...props}
+							/>
+						</div>
+						<AdvancedRangeControl
+							schemaName={"thBorderWidth"}
+							initial={props.attributes.thBorderWidth}
+							min={0}
+							max={10}
+							{...props}
+						/>
+					</BaseControl>
+
+					<BaseControl>
+						<span className={"components-base-control__label"}>
+							{__(
+								"Fixed Table Width",
+								"wp-simple-spreadsheet-fetcher-for-google"
+							)}
+						</span>
+						<TableWidthFixControl {...props} />
+					</BaseControl>
 				</PanelBody>
 				<PanelBody
 					title={__(
-						"Header",
+						"Table Header",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
+					initialOpen={false}
 				>
 					<TypographyControl {...props} />
+					<BaseControl className={"wssffg-lower-layer1"}>
+						<div className="components-base-control_outer">
+							<span className={"components-base-control__label"}>
+								{__(
+									"Size",
+									"wp-simple-spreadsheet-fetcher-for-google"
+								)}
+							</span>
+							<AdvancedButtonGruopControl
+								schemaName={"thFontUnit"}
+								initial={props.attributes.thFontUnit}
+								data={["px", "em", "rem"]}
+								customClassName={
+									"wssffg-advanced-button-group_unit"
+								}
+								{...props}
+							/>
+						</div>
+						<AdvancedRangeControl
+							schemaName={"thFontSize"}
+							initial={props.attributes.thFontSize}
+							min={1}
+							max={50}
+							step={0.1}
+							{...props}
+						/>
+					</BaseControl>
 					<BaseControl
 						label={__(
 							"Background Color",
@@ -97,9 +171,10 @@ addFilter(
 				</PanelBody>
 				<PanelBody
 					title={__(
-						"Body",
+						"Table Body",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
+					initialOpen={false}
 				></PanelBody>
 			</Fragment>
 		);
