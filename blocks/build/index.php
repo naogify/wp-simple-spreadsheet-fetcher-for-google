@@ -95,6 +95,106 @@ function wp2s2fg_fetcher_block_init() {
 			'range'     => [
 				'type'    => 'string',
 				'default' => '',
+			],
+			'hasFixedTable'=> [
+				'type'    => 'boolean',
+				'default' => false
+			],
+			'thFontSize'     => [
+				'type'    => 'number',
+				'default' => 16,
+			],
+			'thFontColor'     => [
+				'type'    => 'string',
+				'default' => "inherit",
+			],
+			'thFontUnit'     => [
+				'type'    => 'string',
+				'default' => "px",
+			],
+			'thLineHeight'     => [
+				'type'    => 'number',
+				'default' => 1,
+			],
+			'thLetterSpace'     => [
+				'type'    => 'number',
+				'default' => 1,
+			],
+			'thLetterSpaceUnit'     => [
+				'type'    => 'string',
+				'default' => "px",
+			],
+			'thFontWeight'=> [
+				'type'    => 'string',
+				'default' => "normal"
+			],
+			'thBgColor'=> [
+				'type'    => 'string',
+				'default' => "#fff"
+			],
+			'thAlign'=> [
+				'type'    => 'string',
+				'default' => "left"
+			],	
+			'tbFontSize'     => [
+				'type'    => 'number',
+				'default' => 16,
+			],
+			'tbFontColor'     => [
+				'type'    => 'string',
+				'default' => "inherit",
+			],
+			'tbFontUnit'     => [
+				'type'    => 'string',
+				'default' => "px",
+			],
+			'tbLineHeight'     => [
+				'type'    => 'number',
+				'default' => 1,
+			],
+			'tbLetterSpace'     => [
+				'type'    => 'number',
+				'default' => 1,
+			],
+			'tbLetterSpaceUnit'     => [
+				'type'    => 'string',
+				'default' => "px",
+			],
+			'tbFontWeight'=> [
+				'type'    => 'string',
+				'default' => "normal"
+			],
+			'tbBgColor'=> [
+				'type'    => 'string',
+				'default' => "#fff"
+			],
+			'tbAlign'=> [
+				'type'    => 'string',
+				'default' => "left"
+			],	
+			'borderStyle'=> [
+				'type'    => 'string',
+				'default' => "solid"
+			],
+			'borderColor'=> [
+				'type'    => 'string',
+				'default' => "#ccc"
+			],
+			'borderWidth'=> [
+				'type'    => 'number',
+				'default' => 1
+			],
+			'borderUnit'=> [
+				'type'    => 'string',
+				'default' => "px"
+			],
+			'borderLayout'=> [
+				'type'    => 'string',
+				'default' => "table-full"
+			],
+			'isPanelBodyOpen'=> [
+				'type'    => 'string',
+				'default' => "general"
 			]
 		],
 		'render_callback' => function ( $attributes ) {

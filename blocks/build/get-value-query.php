@@ -18,6 +18,59 @@
 include_once dirname( dirname( dirname( __FILE__ ) ) ) . '/vendor/autoload.php';
 include_once dirname( __FILE__ ) . '/base.php';
 
+class StyleControl {
+
+	static public function setBorder($borderLayout){
+		if($borderLayout === "table-full"){
+			return "border";
+		}else if($borderLayout === "table-horizontal"){
+			return "border-bottom";
+
+		}else if($borderLayout === "table-vertical"){
+			return "border-left";
+
+		}else if($borderLayout === "table-empty"){
+			return "";
+		}
+	}
+
+	static public function create_inline_border_style($style,$layout){
+		$border = self::setBorder($layout);
+		$semiColon = "; ";
+		return isset($style["borderStyle"]) && isset($style["borderColor"])&& isset($style["brderWidth"]) && isset($style["borderUnit"]) ? "border:none; " . $border . ": " . esc_html($style["brderWidth"]) . esc_html($style["borderUnit"]) . " " . esc_html($style["borderStyle"]) . " " . $style["borderColor"] . $semiColon  : "";
+	}
+
+	static public function create_inline_table_border_style($style,$layout){
+		$semiColon = "; ";
+		if($layout === "table-vertical"){
+			return isset($style["borderStyle"]) && isset($style["borderColor"])&& isset($style["brderWidth"]) && isset($style["borderUnit"]) ? "border:none; " . "border-right: " . esc_html($style["brderWidth"]) . esc_html($style["borderUnit"]) . " " . esc_html($style["borderStyle"]) . " " . $style["borderColor"] . $semiColon  : "";
+		}else{
+			return "border: none;";
+		}
+	}
+
+	static public function create_inline_font_style($style){
+		$semiColon = "; ";
+		$fontSize = is_numeric($style["fontSize"]) && isset($style["fontUnit"])  ? "font-size:". $style["fontSize"] . esc_html($style["fontUnit"]) . $semiColon : "";
+		$fontColor = isset($style["fontUnit"])  ? "color:". $style["fontColor"] . $semiColon : "";
+		$lineHeight = is_numeric($style["lineHeight"]) ? "line-height:". $style["lineHeight"] . $semiColon : "";
+		$letterSpace = is_numeric($style["letterSpace"]) && isset($style["thLetterSpaceUnit"]) ? "letter-spacing:".$style["letterSpace"] . $style["thLetterSpaceUnit"] . $semiColon : "";
+		$fontWeight = isset($style["fontWeight"]) ? "font-weight:".esc_html($style["fontWeight"]) . $semiColon : "";
+		return $fontSize . $fontColor . $lineHeight. $letterSpace . $fontWeight;
+	}
+
+	static public function create_inline_bg_color($style){
+		$semiColon = "; ";
+		return isset($style["bgColor"]) ? "background-color:".esc_html($style["bgColor"]) . $semiColon : "";
+	}
+
+	static public function create_inline_align($style){
+		$semiColon = "; ";
+		return isset($style["align"]) ? "text-align:".esc_html($style["align"]) . $semiColon : "";
+
+	}
+}
+
 
 function wp2s2fg_get_selected_value( $attributes ) {
 
@@ -73,6 +126,90 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	$response = $service->spreadsheets_values->get( !empty($sheetId_deprecated) ? $sheetId_deprecated : $sheetId, $range );
 	$values   = $response->getValues();
 
+	$borderStyle     = $attributes['borderStyle'];
+	$borderColor     = $attributes['borderColor'];
+	$borderWidth     = $attributes['borderWidth'];
+	$borderUnit     = $attributes['borderUnit'];
+	$borderLayout     = $attributes['borderLayout'];
+	$hasFixedTable     = $attributes['hasFixedTable'];
+
+	$thFontSize     = $attributes['thFontSize'];
+	$thFontColor     = $attributes['thFontColor'];
+	$thFontUnit     = $attributes['thFontUnit'];
+	$thLineHeight     = $attributes['thLineHeight'];
+	$thLetterSpace     = $attributes['thLetterSpace'];
+	$thLetterSpaceUnit     = $attributes['thLetterSpaceUnit'];
+	$thFontWeight     = $attributes['thFontWeight'];
+	$thBgColor     = $attributes['thBgColor'];
+	$thAlign     = $attributes['thAlign'];
+
+	$tbFontSize     = $attributes['tbFontSize'];
+	$tbFontColor     = $attributes['tbFontColor'];
+	$tbFontUnit     = $attributes['tbFontUnit'];
+	$tbLineHeight     = $attributes['tbLineHeight'];
+	$tbLetterSpace     = $attributes['tbLetterSpace'];
+	$tbLetterSpaceUnit     = $attributes['tbLetterSpaceUnit'];
+	$tbFontWeight     = $attributes['tbFontWeight'];
+	$tbBgColor     = $attributes['tbBgColor'];
+	$tbAlign     = $attributes['tbAlign'];
+
+	$border_style = array(
+		'borderStyle'=>$borderStyle,
+		'borderColor'=>$borderColor,
+		'brderWidth'=>$borderWidth,
+		'borderUnit'=>$borderUnit,
+	);
+
+	$th_style = array(
+		'fontSize'=> $thFontSize,
+		'fontColor'=> $thFontColor,
+		'fontUnit'=> $thFontUnit,
+		'lineHeight'=>$thLineHeight,
+		'letterSpace'=>$thLetterSpace,
+		'thLetterSpaceUnit'=>$thLetterSpaceUnit,
+		'fontWeight'=>$thFontWeight,
+		'bgColor'=>$thBgColor,
+		'align'=>$thAlign,
+	);
+
+	$tb_style = array(
+		'fontSize'=> $tbFontSize,
+		'fontColor'=> $tbFontColor,
+		'fontUnit'=> $tbFontUnit,
+		'lineHeight'=>$tbLineHeight,
+		'letterSpace'=>$tbLetterSpace,
+		'thLetterSpaceUnit'=>$tbLetterSpaceUnit,
+		'fontWeight'=>$tbFontWeight,
+		'bgColor'=>$tbBgColor,
+		'align'=>$tbAlign,
+	);
+
+	if(!function_exists("hasFixedTableClass")){
+		function hasFixedTableClass($hasFixedTable){
+			if($hasFixedTable){
+				return "has-fixed-layout";
+			}else{
+				return "";
+			}
+		}
+	}
+
+	if(!function_exists("createStyledCell")){
+		function createStyledCell($cellTag,$style,$hasFixedTable,$border_style,$borderLayout){
+			if($cellTag === "th"){
+				$data_h = '<th class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style,$borderLayout) . StyleControl::create_inline_align($style) . '">';
+				$data_f = '</th>';
+			}else if($cellTag === "td"){
+				$data_h = '<td class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style,$borderLayout) . StyleControl::create_inline_align($style) . '">';
+				$data_f = '</td>';
+			}
+			return array(
+				"data_h" => $data_h,
+				"data_f" => $data_f,
+			);
+		}
+	}
+
 	$data = '';
 	if ( empty( $values ) ) {
 		$data .= __( 'No data found.', 'wp-simple-spreadsheet-fetcher-for-google' );
@@ -80,16 +217,68 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 		if($block === 'wp2s2fg/fetcher') {
 
+			$lastIndex = count($values) -1;
 			foreach ( $values as $row ) {
-				$data .= '<tr>';
-				for ( $i = 0; $i < count( $row ); $i ++ ) {
-					$data .= '<td>' . esc_html( $row[ $i ] ) . '</td>';
+
+				$data_h = '<td class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_border_style($border_style,$borderLayout) . '">';
+				$data_f = '</td>';
+				$data_container_h = '';
+				$data_container_f = '';
+
+				if(count($values) >= 3){
+					if($values[0] === $row){
+						$data_container_h = '<thead style="' . StyleControl::create_inline_bg_color($th_style) .'">';
+						$data_container_f = '</thead>';
+						$result = createStyledCell("th",$th_style,$hasFixedTable,$border_style,$borderLayout);
+						$data_h = $result["data_h"];
+						$data_f = $result["data_f"];
+					}else{
+						if($values[$lastIndex] === $row){
+							$data_container_h = '<tfoot style="' . StyleControl::create_inline_bg_color($tb_style) .'">';
+							$data_container_f = '</tfoot>';
+						}else if($values[1] === $row){
+							$data_container_h = '<tbody style="' . StyleControl::create_inline_bg_color($tb_style) .'">';
+							$data_container_f = '';
+						}else if($values[$lastIndex -1] === $row){
+							$data_container_h = '';
+							$data_container_f = '</tbody>';
+						}
+						$result = createStyledCell("td",$tb_style,$hasFixedTable,$border_style,$borderLayout);
+						$data_h = $result["data_h"];
+						$data_f = $result["data_f"];
+					} 
+				}elseif(count($values) >= 2){
+					if($values[0] === $row){
+						$data_container_h = '<thead style="' . StyleControl::create_inline_bg_color($th_style) .'">';
+						$data_container_f = '</thead>';
+						$result = createStyledCell("th",$th_style,$hasFixedTable,$border_style,$borderLayout);
+						$data_h = $result["data_h"];
+						$data_f = $result["data_f"];
+					}else{
+						if($values[1] === $row){
+							$data_container_h = '<tbody style="' . StyleControl::create_inline_bg_color($tb_style) .'">';
+							$data_container_f = '';
+						}else if($values[$lastIndex] === $row){
+							$data_container_h = '';
+							$data_container_f = '</tbody>';
+						}
+						$result = createStyledCell("td",$tb_style,$hasFixedTable,$border_style,$borderLayout);
+						$data_h = $result["data_h"];
+						$data_f = $result["data_f"];
+					}
 				}
-				$data .= '</tr>';
+
+				$data .= $data_container_h .'<tr>';
+				for ( $i = 0; $i < count( $row ); $i ++ ) {
+					$data .= $data_h . esc_html( $row[ $i ] ) . $data_f;
+				}
+				$data .= $data_container_f . '</tr>';
+
 			}
+
 			$div_h   = '<div class="wp2s2fg_fetcher_table_container ' . esc_attr($className) .'">';
 			$div_f = '</div>';
-			$table_h = '<table class="wp2s2fg_fetcher_table">';
+			$table_h = '<table class="wp2s2fg_fetcher_table ' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_table_border_style($border_style,$borderLayout) . '">';
 			$table_f = '</table>';
 
 			$data =  $div_h . $table_h . $data . $table_f . $div_f;
