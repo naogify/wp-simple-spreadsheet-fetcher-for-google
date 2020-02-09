@@ -34,6 +34,10 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.6.0 =
+- Add sidebar settings to customize table style 
+- Deprecated css style.
+
 = 0.5.2 =
 - Fix version.
 
