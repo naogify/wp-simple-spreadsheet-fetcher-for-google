@@ -1,16 +1,11 @@
 const { __ } = wp.i18n;
-const { TextControl, PanelBody, ServerSideRender, BaseControl } = wp.components;
+const { PanelBody, ServerSideRender, BaseControl } = wp.components;
 const { Fragment } = wp.element;
-const { RichText, InspectorControls } =
-	wp.blockEditor && wp.blockEditor.BlockEdit ? wp.blockEditor : wp.editor;
-import { compose, withState, setState } from "@wordpress/compose";
+import { compose } from "@wordpress/compose";
 import { addFilter } from "@wordpress/hooks";
 import withTabbedInspector from "../../../higher-order/with-tabbed-inspector";
 import { TableWidthFixControl } from "../../../components/table-width-fix-control";
-import { TypographyControl } from "../../../components/typography-control";
-import { AdvancedColorPalleteControl } from "../../../components/advanced-color-pallete-control";
 import { AdvancedButtonGruopControl } from "../../../components/advanced-button-group-control";
-import { AdvancedAlignControl } from "../../../components/advanced-align-control";
 import { renderSettings } from "../../../components/fetcher-control";
 import { BorderControl } from "../../../components/border-control";
 import { AdvancedSelectControl } from "../../../components/advanced-select-control";
@@ -39,6 +34,9 @@ addFilter(
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					initialOpen={true}
+					onToggle={event => {
+						console.log(this);
+					}}
 				>
 					<BaseControl>
 						<span className={"components-base-control__label"}>
@@ -49,7 +47,6 @@ addFilter(
 						</span>
 						<AdvancedButtonGruopControl
 							schemaName={"borderLayout"}
-							initial={props.attributes.borderLayout}
 							data={[
 								"table-full",
 								"table-horizontal",
@@ -90,7 +87,6 @@ addFilter(
 							</span>
 							<AdvancedButtonGruopControl
 								schemaName={"borderUnit"}
-								initial={props.attributes.borderUnit}
 								data={["px", "em", "rem"]}
 								customClassName={
 									"wssffg-advanced-button-group_unit"
@@ -100,7 +96,6 @@ addFilter(
 						</div>
 						<AdvancedRangeControl
 							schemaName={"borderWidth"}
-							initial={props.attributes.thBorderWidth}
 							min={0}
 							max={10}
 							{...props}

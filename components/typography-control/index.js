@@ -29,7 +29,6 @@ export const TypographyControl = props => {
 					</span>
 					<AdvancedButtonGruopControl
 						schemaName={fontUnit}
-						initial={props.attributes[fontUnit]}
 						data={["px", "em", "rem"]}
 						customClassName={"wssffg-advanced-button-group_unit"}
 						{...props}
@@ -37,7 +36,6 @@ export const TypographyControl = props => {
 				</div>
 				<AdvancedRangeControl
 					schemaName={fontSize}
-					initial={props.attributes[fontSize]}
 					min={1}
 					max={50}
 					step={0.1}
@@ -72,7 +70,6 @@ export const TypographyControl = props => {
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					schemaName={lineHeight}
-					initial={props.attributes[lineHeight]}
 					min={1}
 					max={10}
 					step={0.1}
@@ -89,7 +86,6 @@ export const TypographyControl = props => {
 					</span>
 					<AdvancedButtonGruopControl
 						schemaName={letterSpaceUnit}
-						initial={props.attributes[letterSpaceUnit]}
 						data={["px", "em", "rem"]}
 						customClassName={"wssffg-advanced-button-group_unit"}
 						{...props}
@@ -97,7 +93,6 @@ export const TypographyControl = props => {
 				</div>
 				<AdvancedRangeControl
 					schemaName={letterSpace}
-					initial={props.attributes[letterSpace]}
 					min={1}
 					max={10}
 					step={0.1}

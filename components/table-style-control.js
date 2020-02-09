@@ -27,7 +27,6 @@ export const TableStyleControl = props => {
 				</div>
 				<AdvancedRangeControl
 					schemaName={fontSize}
-					initial={props.attributes[fontSize]}
 					min={1}
 					max={50}
 					step={0.1}

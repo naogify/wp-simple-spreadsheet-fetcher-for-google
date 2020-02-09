@@ -8,11 +8,11 @@ export const AdvancedButtonGruopControl = props => {
 		schemaName,
 		data,
 		setAttributes,
-		initial,
+		attributes,
 		customClassName,
 		icon = false
 	} = props;
-	const [value, setValue] = useState(initial);
+	const [value, setValue] = useState(attributes[schemaName]);
 	const btnClass = "components-icon-button components-toolbar__control";
 
 	const saveValue = (key, value) => {

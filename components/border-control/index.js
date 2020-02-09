@@ -52,7 +52,6 @@ export const BorderControl = props => {
 				</div>
 				<AdvancedRangeControl
 					schemaName={borderWidth}
-					initial={props.attributes[borderWidth]}
 					min={0}
 					max={10}
 					{...props}
