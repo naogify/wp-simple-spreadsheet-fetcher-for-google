@@ -184,26 +184,30 @@ function wp2s2fg_get_selected_value( $attributes ) {
 		'align'=>$tbAlign,
 	);
 
-	function hasFixedTableClass($hasFixedTable){
-		if($hasFixedTable){
-			return "has-fixed-layout";
-		}else{
-			return "";
+	if(!function_exists("hasFixedTableClass")){
+		function hasFixedTableClass($hasFixedTable){
+			if($hasFixedTable){
+				return "has-fixed-layout";
+			}else{
+				return "";
+			}
 		}
 	}
 
-	function createStyledCell($cellTag,$style,$hasFixedTable,$border_style,$borderLayout){
-		if($cellTag === "th"){
-			$data_h = '<th class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style,$borderLayout) . StyleControl::create_inline_align($style) . '">';
-			$data_f = '</th>';
-		}else if($cellTag === "td"){
-			$data_h = '<td class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style,$borderLayout) . StyleControl::create_inline_align($style) . '">';
-			$data_f = '</td>';
+	if(!function_exists("createStyledCell")){
+		function createStyledCell($cellTag,$style,$hasFixedTable,$border_style,$borderLayout){
+			if($cellTag === "th"){
+				$data_h = '<th class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style,$borderLayout) . StyleControl::create_inline_align($style) . '">';
+				$data_f = '</th>';
+			}else if($cellTag === "td"){
+				$data_h = '<td class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style,$borderLayout) . StyleControl::create_inline_align($style) . '">';
+				$data_f = '</td>';
+			}
+			return array(
+				"data_h" => $data_h,
+				"data_f" => $data_f,
+			);
 		}
-		return array(
-			"data_h" => $data_h,
-			"data_f" => $data_f,
-		);
 	}
 
 	$data = '';

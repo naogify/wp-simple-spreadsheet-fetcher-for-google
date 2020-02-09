@@ -7,6 +7,9 @@
 .wssffg-button-icon-control__wrapper span {
 	display: none;
 }
+.wssffg-button-icon-control__wrapper button.is-default {
+	padding: 0 4px;
+}
 .wssffg-advanced-button-group_align button > svg {
 	pointer-events: none;
 }

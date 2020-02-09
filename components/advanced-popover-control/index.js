@@ -40,7 +40,7 @@ export class AdvancedPopOverControl extends Component {
 					>
 						<Button
 							isSecondary
-							className={popverBtnClass}
+							className={`${popverBtnClass}`}
 							onClick={handleOpen}
 						>
 							<span className="components-base-control__label">
@@ -48,7 +48,7 @@ export class AdvancedPopOverControl extends Component {
 							</span>
 						</Button>
 						<IconButton
-							className={popverBtnClass}
+							className={`${popverBtnClass} components-button is-button is-default`}
 							icon="edit"
 							label={__(
 								"More",
