@@ -146,6 +146,10 @@ registerBlockType("wp2s2fg/fetcher", {
 		borderLayout: {
 			type: "string",
 			default: "table-full"
+		},
+		isPanelBodyOpen: {
+			type: "string",
+			default: "general"
 		}
 	},
 	edit,

@@ -26,6 +26,8 @@ addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.style.before",
 	"wp2s2fg/fetcher",
 	(empty, props) => {
+		const { setAttributes } = props;
+		const { isPanelBodyOpen } = props.attributes;
 		return (
 			<Fragment>
 				<PanelBody
@@ -34,8 +36,9 @@ addFilter(
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					initialOpen={true}
-					onToggle={event => {
-						console.log(this);
+					opened={isPanelBodyOpen === "general" ? true : false}
+					onToggle={() => {
+						setAttributes({ isPanelBodyOpen: "general" });
 					}}
 				>
 					<BaseControl>
@@ -118,6 +121,10 @@ addFilter(
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					initialOpen={false}
+					opened={isPanelBodyOpen === "table-header" ? true : false}
+					onToggle={() => {
+						setAttributes({ isPanelBodyOpen: "table-header" });
+					}}
 				>
 					<TableStyleControl
 						fontUnit={"thFontUnit"}
@@ -138,6 +145,10 @@ addFilter(
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					initialOpen={false}
+					opened={isPanelBodyOpen === "table-body" ? true : false}
+					onToggle={() => {
+						setAttributes({ isPanelBodyOpen: "table-body" });
+					}}
 				>
 					<TableStyleControl
 						fontUnit={"tbFontUnit"}

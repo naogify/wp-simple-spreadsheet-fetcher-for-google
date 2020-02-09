@@ -191,6 +191,10 @@ function wp2s2fg_fetcher_block_init() {
 			'borderLayout'=> [
 				'type'    => 'string',
 				'default' => "table-full"
+			],
+			'isPanelBodyOpen'=> [
+				'type'    => 'string',
+				'default' => "general"
 			]
 		],
 		'render_callback' => function ( $attributes ) {
