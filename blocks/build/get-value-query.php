@@ -197,10 +197,10 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	if(!function_exists("createStyledCell")){
 		function createStyledCell($cellTag,$style,$hasFixedTable,$border_style,$borderLayout){
 			if($cellTag === "th"){
-				$data_h = '<th class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style,$borderLayout) . StyleControl::create_inline_align($style) . '">';
+				$data_h = '<th class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style,$borderLayout) . StyleControl::create_inline_align($style) . StyleControl::create_inline_bg_color($style) . '">';
 				$data_f = '</th>';
 			}else if($cellTag === "td"){
-				$data_h = '<td class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style,$borderLayout) . StyleControl::create_inline_align($style) . '">';
+				$data_h = '<td class="' . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style,$borderLayout) . StyleControl::create_inline_align($style) . StyleControl::create_inline_bg_color($style) . '">';
 				$data_f = '</td>';
 			}
 			return array(
@@ -227,17 +227,17 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 				if(count($values) >= 3){
 					if($values[0] === $row){
-						$data_container_h = '<thead style="' . StyleControl::create_inline_bg_color($th_style) .'">';
+						$data_container_h = '<thead>';
 						$data_container_f = '</thead>';
 						$result = createStyledCell("th",$th_style,$hasFixedTable,$border_style,$borderLayout);
 						$data_h = $result["data_h"];
 						$data_f = $result["data_f"];
 					}else{
 						if($values[$lastIndex] === $row){
-							$data_container_h = '<tfoot style="' . StyleControl::create_inline_bg_color($tb_style) .'">';
+							$data_container_h = '<tfoot>';
 							$data_container_f = '</tfoot>';
 						}else if($values[1] === $row){
-							$data_container_h = '<tbody style="' . StyleControl::create_inline_bg_color($tb_style) .'">';
+							$data_container_h = '<tbody>';
 							$data_container_f = '';
 						}else if($values[$lastIndex -1] === $row){
 							$data_container_h = '';
@@ -249,14 +249,14 @@ function wp2s2fg_get_selected_value( $attributes ) {
 					} 
 				}elseif(count($values) >= 2){
 					if($values[0] === $row){
-						$data_container_h = '<thead style="' . StyleControl::create_inline_bg_color($th_style) .'">';
+						$data_container_h = '<thead>';
 						$data_container_f = '</thead>';
 						$result = createStyledCell("th",$th_style,$hasFixedTable,$border_style,$borderLayout);
 						$data_h = $result["data_h"];
 						$data_f = $result["data_f"];
 					}else{
 						if($values[1] === $row){
-							$data_container_h = '<tbody style="' . StyleControl::create_inline_bg_color($tb_style) .'">';
+							$data_container_h = '<tbody>';
 							$data_container_f = '';
 						}else if($values[$lastIndex] === $row){
 							$data_container_h = '';
