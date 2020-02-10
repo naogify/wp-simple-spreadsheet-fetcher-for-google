@@ -15,6 +15,10 @@ export const renderSettings = props => {
 						"Sheet URL",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
+					help={__(
+						"Ex. https://docs.google.com/spreadsh...",
+						"wp-simple-spreadsheet-fetcher-for-google"
+					)}
 					value={sheetId}
 					onChange={newUrl =>
 						setAttributes({
@@ -28,6 +32,10 @@ export const renderSettings = props => {
 						"Sheet Name",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
+					help={__(
+						"Ex. Sheet1",
+						"wp-simple-spreadsheet-fetcher-for-google"
+					)}
 					value={sheetName}
 					onChange={newName =>
 						setAttributes({
@@ -39,6 +47,10 @@ export const renderSettings = props => {
 				<TextControl
 					label={__(
 						"Cell or Range",
+						"wp-simple-spreadsheet-fetcher-for-google"
+					)}
+					help={__(
+						"Ex. A1:D12",
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					value={sheetRange}
