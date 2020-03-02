@@ -96,40 +96,6 @@ function wp2s2fg_get_selected_value( $attributes ) {
 		'bgColor'=>$attributes['tbBgColor'],
 		'align'=>$attributes['tbAlign'],
 	);
-
-	if(!function_exists("hasFixedTableClass")){
-		function hasFixedTableClass($hasFixedTable){
-			if($hasFixedTable){
-				return "has-fixed-layout";
-			}else{
-				return "";
-			}
-		}
-	}
-
-	if(!function_exists("createStyledCell")){
-		function createStyledCell($cellTag,$style,$hasFixedTable,$border_style){
-			if($cellTag === "th"){
-				$data_h = '<th class="' . createClass("th") . " " . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style) . StyleControl::create_inline_align($style) . StyleControl::create_inline_bg_color($style) . '">';
-				$data_f = '</th>';
-			}else if($cellTag === "td"){
-				$data_h = '<td class="' . createClass("td") . " " . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_font_style($style) . StyleControl::create_inline_border_style($border_style) . StyleControl::create_inline_align($style) . StyleControl::create_inline_bg_color($style) . '">';
-				$data_f = '</td>';
-			}
-			return array(
-				"data_h" => $data_h,
-				"data_f" => $data_f,
-			);
-		}
-	}
-
-	if(!function_exists("createClass")){
-		function createClass($tag){
-			$base_class = "wp2s2fg_fetcher_table_";
-			return $base_class . $tag;
-
-		}
-	}
 		
 	$data = '';
 	if ( empty( $values ) ) {
@@ -142,55 +108,55 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 			foreach ( $values as $row ) {
 
-				$data_h = '<td class="' . createClass("td") . " " . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_border_style($border_style) . '">';
+				$data_h = '<td class="' . StyleControl::createClass("td") . " " . StyleControl::hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_border_style($border_style) . '">';
 				$data_f = '</td>';
 				$data_container_h = '';
 				$data_container_f = '';
 
 				if(count($values) >= 3){
 					if($values[0] === $row){
-						$data_container_h = '<thead class="' . createClass("thead") .'" style="' . StyleControl::setBorderVertical($border_style) .'">';
+						$data_container_h = '<thead class="' . StyleControl::createClass("thead") .'" style="' . StyleControl::setBorderVertical($border_style) .'">';
 						$data_container_f = '</thead>';
-						$result = createStyledCell("th",$th_style,$hasFixedTable,$border_style);
+						$result = StyleControl::createStyledCell("th",$th_style,$hasFixedTable,$border_style);
 						$data_h = $result["data_h"];
 						$data_f = $result["data_f"];
 					}else{
 						if($values[$lastIndex] === $row){
-							$data_container_h = '<tfoot class="' . createClass("tfoot") .'">';
+							$data_container_h = '<tfoot class="' . StyleControl::createClass("tfoot") .'">';
 							$data_container_f = '</tfoot>';
 						}else if($values[1] === $row){
-							$data_container_h = '<tbody class="' . createClass("tbody") .'">';
+							$data_container_h = '<tbody class="' . StyleControl::createClass("tbody") .'">';
 							$data_container_f = '';
 						}else if($values[$lastIndex -1] === $row){
 							$data_container_h = '';
 							$data_container_f = '</tbody>';
 						}
-						$result = createStyledCell("td",$tb_style,$hasFixedTable,$border_style);
+						$result = StyleControl::createStyledCell("td",$tb_style,$hasFixedTable,$border_style);
 						$data_h = $result["data_h"];
 						$data_f = $result["data_f"];
 					} 
 				}elseif(count($values) >= 2){
 					if($values[0] === $row){
-						$data_container_h = '<thead class="' . createClass("thead") .'" style="' . StyleControl::setBorderVertical($border_style) .'">';
+						$data_container_h = '<thead class="' . StyleControl::createClass("thead") .'" style="' . StyleControl::setBorderVertical($border_style) .'">';
 						$data_container_f = '</thead>';
-						$result = createStyledCell("th",$th_style,$hasFixedTable,$border_style);
+						$result = StyleControl::createStyledCell("th",$th_style,$hasFixedTable,$border_style);
 						$data_h = $result["data_h"];
 						$data_f = $result["data_f"];
 					}else{
 						if($values[1] === $row){
-							$data_container_h = '<tbody class="' . createClass("tbody") .'">';
+							$data_container_h = '<tbody class="' . StyleControl::createClass("tbody") .'">';
 							$data_container_f = '';
 						}else if($values[$lastIndex] === $row){
 							$data_container_h = '';
 							$data_container_f = '</tbody>';
 						}
-						$result = createStyledCell("td",$tb_style,$hasFixedTable,$border_style);
+						$result = StyleControl::createStyledCell("td",$tb_style,$hasFixedTable,$border_style);
 						$data_h = $result["data_h"];
 						$data_f = $result["data_f"];
 					}
 				}
 
-				$data .= $data_container_h .'<tr class="' . createClass("tr") .'">';
+				$data .= $data_container_h .'<tr class="' . StyleControl::createClass("tr") .'">';
 				for ( $i = 0; $i < count( $row ); $i ++ ) {
 					$data .= $data_h . esc_html( $row[ $i ] ) . $data_f;
 				}
@@ -200,7 +166,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 
 			$div_h   = '<div class="wp2s2fg_fetcher_table_container ' . esc_attr($className) .'">';
 			$div_f = '</div>';
-			$table_h = '<table class="wp2s2fg_fetcher_table '. hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_table_border_style($border_style) . '">';
+			$table_h = '<table class="wp2s2fg_fetcher_table '. StyleControl::hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_table_border_style($border_style) . '">';
 			$table_f = '</table>';
 
 			$data =  $div_h . $table_h . $data . $table_f . $div_f;
