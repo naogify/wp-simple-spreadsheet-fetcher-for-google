@@ -1,6 +1,7 @@
 const { __ } = wp.i18n;
-const { BaseControl } = wp.components;
+const { TabPanel, BaseControl } = wp.components;
 const { Fragment } = wp.element;
+import { applyFilters, addFilter } from "@wordpress/hooks";
 import { TypographyControl } from "./typography-control";
 import { AdvancedColorPalleteControl } from "./advanced-color-pallete-control";
 import { AdvancedButtonGruopControl } from "./advanced-button-group-control";
@@ -8,7 +9,11 @@ import { AdvancedAlignControl } from "./advanced-align-control";
 import { AdvancedRangeControl } from "./advanced-range-control";
 
 export const TableStyleControl = props => {
-	const { fontUnit, fontSize, bgColor, align } = props;
+	const { fontUnit, fontSize, align, setAttributes } = props;
+	const blockName = "fetcher";
+	const onSelect = tabName => {
+		setAttributes({ tbStyle: tabName });
+	};
 	return (
 		<Fragment>
 			<TypographyControl {...props} />
@@ -39,7 +44,46 @@ export const TableStyleControl = props => {
 					"wp-simple-spreadsheet-fetcher-for-google"
 				)}
 			>
-				<AdvancedColorPalleteControl schemaName={bgColor} {...props} />
+				<TabPanel
+					className="wssffg-sidebar-tab-panel"
+					activeClass="is-active"
+					onSelect={onSelect}
+					tabs={[
+						{
+							name: "default",
+							title: __(
+								`Default`,
+								"wp-simple-spreadsheet-fetcher-for-google"
+							),
+							className: "tab-table-body-bgcolor-default"
+						},
+						{
+							name: "stripe",
+							title: __(
+								`Stripe`,
+								"wp-simple-spreadsheet-fetcher-for-google"
+							),
+							className: "tab-table-body-bgcolor-stripe"
+						}
+					]}
+					initialTabName="default"
+				>
+					{tab => {
+						if (tab.name === "default") {
+							return applyFilters(
+								`wp-simple-spreadsheet-fetcher-for-google.${blockName}.edit.inspector.style.table-body.background-color.default`,
+								null,
+								props
+							);
+						} else if (tab.name === "stripe") {
+							return applyFilters(
+								`wp-simple-spreadsheet-fetcher-for-google.${blockName}.edit.inspector.style.table-body.background-color.stripe`,
+								null,
+								props
+							);
+						}
+					}}
+				</TabPanel>
 			</BaseControl>
 			<BaseControl
 				label={__("Align", "wp-simple-spreadsheet-fetcher-for-google")}
@@ -53,3 +97,55 @@ export const TableStyleControl = props => {
 		</Fragment>
 	);
 };
+
+addFilter(
+	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.style.table-body.background-color.default",
+	"wp2s2fg/fetcher",
+	(empty, props) => {
+		return (
+			<div className="wssffg-sidebar-tab-panel-inner">
+				<AdvancedColorPalleteControl
+					schemaName={"tbBgColor"}
+					{...props}
+				/>
+			</div>
+		);
+	}
+);
+
+addFilter(
+	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.style.table-body.background-color.stripe",
+	"wp2s2fg/fetcher",
+	(empty, props) => {
+		return (
+			<Fragment>
+				<div className="wssffg-sidebar-tab-panel-inner">
+					<div className="components-base-control_outer">
+						<span className={"components-base-control__label"}>
+							{__(
+								`Color#1`,
+								"wp-simple-spreadsheet-fetcher-for-google"
+							)}
+						</span>
+						<AdvancedColorPalleteControl
+							schemaName={"tbBgColor"}
+							{...props}
+						/>
+					</div>
+					<div className="components-base-control_outer">
+						<span className={"components-base-control__label"}>
+							{__(
+								`Color#2`,
+								"wp-simple-spreadsheet-fetcher-for-google"
+							)}
+						</span>
+						<AdvancedColorPalleteControl
+							schemaName={"tbBgColor2"}
+							{...props}
+						/>
+					</div>
+				</div>
+			</Fragment>
+		);
+	}
+);

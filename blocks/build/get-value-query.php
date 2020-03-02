@@ -30,15 +30,14 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	$className    = $attributes['className'];
 	$client = new Google_Client();
 
-	if ( ! $api_key = sanitize_text_field(wp2s2fg_get_api_key()) ) {
-
+	if ( ! $api_key = sanitize_text_field(Wp2s2fgSheetsApi::get_api_key()) ) {
 		$url = admin_url( 'admin.php?page=wsgsf_settings' );
 		$url = '<a href="' . esc_url( $url ) . '">' . __( 'settings.' ) . '</a>';
 		return __( 'API-KEY is not set Please set it at the ', 'wp-simple-spreadsheet-fetcher-for-google' ) . $url;
 	}
 
 	if(!$sheetId){
-		if ( ! $sheetId_deprecated = sanitize_text_field(wp2s2fg_get_spread_sheet_id()) ) {
+		if ( ! $sheetId_deprecated = sanitize_text_field(Wp2s2fgSheetsApi::get_spread_sheet_id()) ) {
 			return __( 'Sheet URL is not set. Please set it from the sidebar.', 'wp-simple-spreadsheet-fetcher-for-google' );
 		}
 	}else{
@@ -50,6 +49,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 		if ( ! $range ) {
 			return __( 'Fetch data setting is not set. Please set it from the sidebar.', 'wp-simple-spreadsheet-fetcher-for-google' );
 		}
+
 	}else{
 
 		if(!$sheetName){
@@ -73,65 +73,38 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	$response = $service->spreadsheets_values->get( !empty($sheetId_deprecated) ? $sheetId_deprecated : $sheetId, $range );
 	$values   = $response->getValues();
 
-	
-
-	$borderStyle     = $attributes['borderStyle'];
-	$borderColor     = $attributes['borderColor'];
-	$borderWidth     = $attributes['borderWidth'];
-	$borderUnit     = $attributes['borderUnit'];
-	$borderLayout     = $attributes['borderLayout'];
 	$hasFixedTable     = $attributes['hasFixedTable'];
 
-	$thFontSize     = $attributes['thFontSize'];
-	$thFontColor     = $attributes['thFontColor'];
-	$thFontUnit     = $attributes['thFontUnit'];
-	$thLineHeight     = $attributes['thLineHeight'];
-	$thLetterSpace     = $attributes['thLetterSpace'];
-	$thLetterSpaceUnit     = $attributes['thLetterSpaceUnit'];
-	$thFontWeight     = $attributes['thFontWeight'];
-	$thBgColor     = $attributes['thBgColor'];
-	$thAlign     = $attributes['thAlign'];
-
-	$tbFontSize     = $attributes['tbFontSize'];
-	$tbFontColor     = $attributes['tbFontColor'];
-	$tbFontUnit     = $attributes['tbFontUnit'];
-	$tbLineHeight     = $attributes['tbLineHeight'];
-	$tbLetterSpace     = $attributes['tbLetterSpace'];
-	$tbLetterSpaceUnit     = $attributes['tbLetterSpaceUnit'];
-	$tbFontWeight     = $attributes['tbFontWeight'];
-	$tbBgColor     = $attributes['tbBgColor'];
-	$tbAlign     = $attributes['tbAlign'];
-
 	$border_style = array(
-		'borderStyle'=>$borderStyle,
-		'borderColor'=>$borderColor,
-		'brderWidth'=>$borderWidth,
-		'borderUnit'=>$borderUnit,
-		'borderLayout'=>$borderLayout,
+		'borderStyle'=>$attributes['borderStyle'],
+		'borderColor'=>$attributes['borderColor'],
+		'brderWidth'=>$attributes['borderWidth'],
+		'borderUnit'=>$attributes['borderUnit'],
+		'borderLayout'=>$attributes['borderLayout'],
 	);
 
 	$th_style = array(
-		'fontSize'=> $thFontSize,
-		'fontColor'=> $thFontColor,
-		'fontUnit'=> $thFontUnit,
-		'lineHeight'=>$thLineHeight,
-		'letterSpace'=>$thLetterSpace,
-		'thLetterSpaceUnit'=>$thLetterSpaceUnit,
-		'fontWeight'=>$thFontWeight,
-		'bgColor'=>$thBgColor,
-		'align'=>$thAlign,
+		'fontSize'=> $attributes['thFontSize'],
+		'fontColor'=> $attributes['thFontColor'],
+		'fontUnit'=> $attributes['thFontUnit'],
+		'lineHeight'=>$attributes['thLineHeight'],
+		'letterSpace'=>$attributes['thLetterSpace'],
+		'thLetterSpaceUnit'=>$attributes['thLetterSpaceUnit'],
+		'fontWeight'=>$attributes['thFontWeight'],
+		'bgColor'=>$attributes['thBgColor'],
+		'align'=>$attributes['thAlign'],
 	);
 
 	$tb_style = array(
-		'fontSize'=> $tbFontSize,
-		'fontColor'=> $tbFontColor,
-		'fontUnit'=> $tbFontUnit,
-		'lineHeight'=>$tbLineHeight,
-		'letterSpace'=>$tbLetterSpace,
-		'thLetterSpaceUnit'=>$tbLetterSpaceUnit,
-		'fontWeight'=>$tbFontWeight,
-		'bgColor'=>$tbBgColor,
-		'align'=>$tbAlign,
+		'fontSize'=> $attributes['tbFontSize'],
+		'fontColor'=> $attributes['tbFontColor'],
+		'fontUnit'=> $attributes['tbFontUnit'],
+		'lineHeight'=>$attributes['tbLineHeight'],
+		'letterSpace'=>$attributes['tbLetterSpace'],
+		'thLetterSpaceUnit'=>$attributes['tbLetterSpaceUnit'],
+		'fontWeight'=>$attributes['tbFontWeight'],
+		'bgColor'=>$attributes['tbBgColor'],
+		'align'=>$attributes['tbAlign'],
 	);
 
 	if(!function_exists("hasFixedTableClass")){
@@ -161,9 +134,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	}
 
 	if(!function_exists("createClass")){
-
 		function createClass($tag){
-
 			$base_class = "wp2s2fg_fetcher_table_";
 			return $base_class . $tag;
 
@@ -178,6 +149,7 @@ function wp2s2fg_get_selected_value( $attributes ) {
 		if($block === 'wp2s2fg/fetcher') {
 
 			$lastIndex = count($values) -1;
+
 			foreach ( $values as $row ) {
 
 				$data_h = '<td class="' . createClass("td") . " " . hasFixedTableClass($hasFixedTable) . '" style="' . StyleControl::create_inline_border_style($border_style) . '">';

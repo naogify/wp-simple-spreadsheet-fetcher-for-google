@@ -3,11 +3,7 @@
 class StyleControl {
 
 static public function setBorderStyle($border_style,$border){
-
-
-
     return self::isBorderPropertySet($border_style) ?  self::setBorderProperty($border_style,$border) : "";
-
 }
 
 static public function isBorderPropertySet($border_style){
