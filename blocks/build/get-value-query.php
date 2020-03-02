@@ -28,46 +28,36 @@ function wp2s2fg_get_selected_value( $attributes ) {
 	//This attributes is deprecated since v0.2.8.
 	$range = $attributes['range'];
 	$className    = $attributes['className'];
-	$client = new Google_Client();
 
-	if ( ! $api_key = sanitize_text_field(Wp2s2fgSheetsApi::get_api_key()) ) {
-		$url = admin_url( 'admin.php?page=wsgsf_settings' );
-		$url = '<a href="' . esc_url( $url ) . '">' . __( 'settings.' ) . '</a>';
-		return __( 'API-KEY is not set Please set it at the ', 'wp-simple-spreadsheet-fetcher-for-google' ) . $url;
+	//Get API-Key
+	$api_key = Wp2s2fgSheetsApi::get_api_key();
+	if(!$api_key){return Wp2s2fgSheetsApi::api_key_not_set();};
+
+	//Get SheetURL
+	if(Wp2s2fgSheetsApi::is_sheetId($sheetId)){
+		$sheetId = Wp2s2fgSheetsApi::sheetUrl_to_Id($sheetId);
+	}else{
+		return Wp2s2fgSheetsApi::print_sheetUrl_Not_set();
 	}
 
-	if(!$sheetId){
-		if ( ! $sheetId_deprecated = sanitize_text_field(Wp2s2fgSheetsApi::get_spread_sheet_id()) ) {
-			return __( 'Sheet URL is not set. Please set it from the sidebar.', 'wp-simple-spreadsheet-fetcher-for-google' );
+	//Get Range
+	if(!$sheetName && !$sheetRange){
+		if(!$range){
+			return Wp2s2fgSheetsApi::print_sheetName_sheetRange_range_Not_set();
 		}
 	}else{
-		$sheetId = preg_replace('/https\:\/\/docs\.google\.com\/spreadsheets\/d\//', '', esc_url($sheetId));
-		$sheetId = preg_replace('/\/.+$/', '', $sheetId);
-	}
-
-	if(!$sheetName && !$sheetRange) {
-		if ( ! $range ) {
-			return __( 'Fetch data setting is not set. Please set it from the sidebar.', 'wp-simple-spreadsheet-fetcher-for-google' );
-		}
-
-	}else{
-
 		if(!$sheetName){
-			return __( 'Sheet Name is not set. Please set it from the sidebar. Example : Sheet1', 'wp-simple-spreadsheet-fetcher-for-google' );
-
-		}else if(!$sheetRange){
-
-			if($block === 'wp2s2fg/fetcher'){
-				return __( 'Cell or Range is not set. Please set it from the sidebar. Example : A1:A5', 'wp-simple-spreadsheet-fetcher-for-google' );
-
-			}elseif($block === 'wp2s2fg/fetcher-item'){
-				return __( 'Cell is not set. Please set it from the sidebar. Example : A1', 'wp-simple-spreadsheet-fetcher-for-google' );
-				
-			}
+			return Wp2s2fgSheetsApi::print_sheetName_Not_set();
 		}
-		$range = esc_html($sheetName) . '!' . esc_html($sheetRange);
+		if(!$sheetRange){
+			return Wp2s2fgSheetsApi::print_sheetRange_Not_set($block);
+		}
+		if($sheetName && $sheetRange){
+			$range = esc_html($sheetName) . '!' . esc_html($sheetRange);
+		}
 	}
 
+	$client = new Google_Client();
 	$client->setDeveloperKey( $api_key );
 	$service = new Google_Service_Sheets( $client );
 	$response = $service->spreadsheets_values->get( !empty($sheetId_deprecated) ? $sheetId_deprecated : $sheetId, $range );
