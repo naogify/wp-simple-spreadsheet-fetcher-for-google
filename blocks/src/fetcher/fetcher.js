@@ -104,6 +104,14 @@ registerBlockType("wp2s2fg/fetcher", {
 			type: "string",
 			default: "#fff"
 		},
+		tbBgColor2: {
+			type: "string",
+			default: "#fff"
+		},
+		tbStyle: {
+			type: "string",
+			default: "default"
+		},
 		tbAlign: {
 			type: "string",
 			default: "left"

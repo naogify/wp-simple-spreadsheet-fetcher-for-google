@@ -168,6 +168,14 @@ function wp2s2fg_fetcher_block_init() {
 				'type'    => 'string',
 				'default' => "#fff"
 			],
+			'tbBgColor2'=> [
+				'type'    => 'string',
+				'default' => "#fff"
+			],
+			'tbStyle'=> [
+				'type'    => 'string',
+				'default' => "default"
+			],
 			'tbAlign'=> [
 				'type'    => 'string',
 				'default' => "left"

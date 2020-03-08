@@ -53,8 +53,8 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 
 	public function render_settings_page( $message ) {
 
-		if ( wp2s2fg_get_api_key() ) {
-			$api_key         = wp2s2fg_get_api_key();
+		if ( Wp2s2fgSheetsApi::get_api_key() ) {
+			$api_key         = Wp2s2fgSheetsApi::get_api_key();
 		} else {
 			$api_key         = '';
 		}
@@ -98,10 +98,10 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 	public function render_settings() {
 
 		if ( ! empty( $_POST['api_key'] ) && check_admin_referer( wp_create_nonce( __FILE__ ), 'wp-simple-spreadsheet-fetcher-for-google-nonce' ) ) {
-			wp2s2fg_set_api_key( sanitize_text_field( $_POST['api_key'] ) );
+			Wp2s2fgSheetsApi::set_api_key( sanitize_text_field( $_POST['api_key'] ) );
 		}
 
-		if ( ! wp2s2fg_get_api_key()) {
+		if ( ! Wp2s2fgSheetsApi::get_api_key()) {
 			echo $this->render_api_key_not_set();
 		}else{
 			echo $this->render_set_api_key();
@@ -123,8 +123,8 @@ class WPSimpleSpreadsheetFetcherForGoogle {
 	}
 
 	public function deactivation() {
-		wp2s2fg_delete_api_key();
-		wp2s2fg_delete_spread_sheet_id();
+		Wp2s2fgSheetsApi::delete_api_key();
+		Wp2s2fgSheetsApi::delete_spread_sheet_id();
 	}
 }
 

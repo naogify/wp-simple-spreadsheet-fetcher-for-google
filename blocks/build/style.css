@@ -135,3 +135,6 @@ table.wp2s2fg_fetcher_table td {
 table.wp2s2fg_fetcher_table td.has-fixed-layout {
 	word-break: break-word;
 }
+.wssffg-sidebar-tab-panel-inner {
+	padding: 40px 0;
+}
