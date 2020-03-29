@@ -4,7 +4,7 @@
   "description": "wp-simple-google-sheets-fetcher",
   "main": "blocks/build/index.js",
   "scripts": {
-    "start": "npm install && composer install && wp-scripts start blocks/src/**/*.js --output-path=blocks/build",
+    "start": "composer install && npx wp-env start",
     "watch": "wp-scripts start blocks/src/**/*.js --output-path=blocks/build",
     "build": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build",
     "build-dev": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build",
@@ -17,6 +17,7 @@
   "author": "naoki0h",
   "license": "GPL-3.0 or later",
   "devDependencies": {
+    "@wordpress/env": "^1.0.1",
     "@wordpress/scripts": "6.0.0",
     "grunt": "^1.0.4",
     "grunt-wp-readme-to-markdown": "^2.0.1"
