@@ -1,6 +1,8 @@
 <?php
 
-class StyleControl {
+namespace Fetcher\utils;
+
+class TableDesign {
 
 static public function setBorderStyle($border_style,$border){
     return self::isBorderPropertySet($border_style) ?  self::setBorderProperty($border_style,$border) : "";

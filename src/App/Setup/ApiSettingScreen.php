@@ -1,7 +1,13 @@
 <?php
 
-class WPSSFGDefaultSetup {
+namespace Fetcher\utils\setup;
+require(PLUGIN_ROOT_DIR .'vendor/autoload.php');
+use Fetcher\App\Seup\Utils\ApiKey;
+
+class ApiSettingScreen {
+
 public function __construct() {
+
 }
 
 public function init() {
@@ -30,8 +36,8 @@ public function render_api_key_not_set() {
 
 public function render_settings_page( $message ) {
 
-    if ( wp2s2fg_get_api_key() ) {
-        $api_key         = wp2s2fg_get_api_key();
+    if ( $this->get_api_key() ) {
+        $api_key         = $this->get_api_key();
     } else {
         $api_key         = '';
     }
@@ -75,10 +81,10 @@ public function add_sub_menu() {
 public function render_settings() {
 
     if ( ! empty( $_POST['api_key'] ) && check_admin_referer( wp_create_nonce( __FILE__ ), 'wp-simple-spreadsheet-fetcher-for-google-nonce' ) ) {
-        wp2s2fg_set_api_key( sanitize_text_field( $_POST['api_key'] ) );
+        $this->set_api_key( sanitize_text_field( $_POST['api_key'] ) );
     }
 
-    if ( ! wp2s2fg_get_api_key()) {
+    if ( ! $this->get_api_key()) {
         echo $this->render_api_key_not_set();
     }else{
         echo $this->render_set_api_key();
@@ -100,7 +106,7 @@ public function add_settings( $links ) {
 }
 
 public function deactivation() {
-    wp2s2fg_delete_api_key();
-    wp2s2fg_delete_spread_sheet_id();
+    $this->delete_api_key();
+    $this->delete_spread_sheet_id();
 }
 }

@@ -14,14 +14,16 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+require('vendor/autoload.php');
+use Fetcher\utils\setup\Settings;
+
 
 // define( "BUILD_DIR", '/blocks/build' );
-// define( "PLUGIN_DIR", plugin_dir_path(  __FILE__  ));
+define( "PLUGIN_ROOT_DIR", plugin_dir_path(  __FILE__  ));
 
-// include_once dirname( __FILE__ ) . '/vendor/autoload.php';
 // include_once dirname( __FILE__ ) . BUILD_DIR . '/base.php';
 // include_once dirname( __FILE__ ) . BUILD_DIR . '/index.php';
 // include_once dirname( __FILE__ ) . BUILD_DIR . '/get-value-query.php';
 
-// $WPSimpleSpreadsheetFetcherForGoogle = new WPSimpleSpreadsheetFetcherForGoogle();
-// $WPSimpleSpreadsheetFetcherForGoogle->init();
+$DefaultSetup = new Settings();
+$DefaultSetup->init();
