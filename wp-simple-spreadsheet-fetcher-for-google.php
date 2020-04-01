@@ -15,15 +15,14 @@
 
 defined( 'ABSPATH' ) || exit;
 require('vendor/autoload.php');
-use Fetcher\utils\setup\Settings;
+use Fetcher\App\Setup\ApiSettingScreen;
+use Fetcher\App\Setup\BlockRegistration;
 
-
-// define( "BUILD_DIR", '/blocks/build' );
 define( "PLUGIN_ROOT_DIR", plugin_dir_path(  __FILE__  ));
+define( "BUILD_DIR", PLUGIN_ROOT_DIR . 'build' );
 
-// include_once dirname( __FILE__ ) . BUILD_DIR . '/base.php';
-// include_once dirname( __FILE__ ) . BUILD_DIR . '/index.php';
-// include_once dirname( __FILE__ ) . BUILD_DIR . '/get-value-query.php';
+$ApiSettingScreen = new ApiSettingScreen();
+$ApiSettingScreen->init();
 
-$DefaultSetup = new Settings();
-$DefaultSetup->init();
+$BlockRegistration = new BlockRegistration();
+$BlockRegistration->init();

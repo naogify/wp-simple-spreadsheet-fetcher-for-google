@@ -1,6 +1,6 @@
 <?php
 
-namespace Fetcher\utils;
+namespace Fetcher\App\Utils;
 
 class ApiManipulation{
 	function get_api_key()

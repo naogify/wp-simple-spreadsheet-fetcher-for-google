@@ -1,10 +1,10 @@
 <?php
 
-namespace Fetcher\utils\setup;
+namespace Fetcher\App\Setup;
 require(PLUGIN_ROOT_DIR .'vendor/autoload.php');
-use Fetcher\App\Seup\Utils\ApiKey;
+use Fetcher\App\Utils\ApiManipulation;
 
-class ApiSettingScreen {
+class ApiSettingScreen extends ApiManipulation {
 
 public function __construct() {
 

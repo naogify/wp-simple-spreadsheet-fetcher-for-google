@@ -133,7 +133,9 @@ registerBlockType("wp2s2fg/fetcher", {
 			default: "general"
 		}
 	},
-	edit,
+	edit() {
+		return <div>fdsfs</div>;
+	},
 	save() {
 		return null;
 	}

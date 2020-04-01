@@ -5,9 +5,9 @@
   "main": "blocks/build/index.js",
   "scripts": {
     "start": "composer install && npx wp-env start",
-    "watch": "wp-scripts start blocks/src/**/*.js --output-path=blocks/build",
-    "build": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build",
-    "build-dev": "wp-scripts build blocks/src/**/*.js --output-path=blocks/build",
+    "watch": "wp-scripts start src/blocks/**/*.js --output-path=build",
+    "build": "wp-scripts build src/blocks/fetcher/index.js --output-path=build",
+    "build-dev": "wp-scripts build src/blocks/**/*.js --output-path=build",
     "translate": "po2json languages/wp-simple-spreadsheet-fetcher-for-google-ja.po languages/wp-simple-spreadsheet-fetcher-for-google-ja-wp2s2fg-fetcher.json -f jed",
     "make-pot": "wp i18n make-pot . languages/wp-simple-spreadsheet-fetcher-for-google.pot",
     "lint-js": "wp-scripts lint-js",
