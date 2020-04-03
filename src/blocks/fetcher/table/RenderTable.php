@@ -6,11 +6,14 @@ use Fetcher\App\Utils\ApiManipulation;
 use Fetcher\blocks\fetcher\table\TableDesign;
 
 
+//レンダーテーブルは関数で書く。他のclassは関数内でインスタンス化して使う。
+//他のclassは普通に読み込む。
+
 class RenderTable extends ApiManipulation {
 
 	use TableDesign;
 	
-	function get_selected_value( $attributes ) {
+	public function get_selected_value( $attributes ) {
 
 		$block     = $attributes['block'];
 		$sheetId     = $attributes['sheetId'];
@@ -19,8 +22,9 @@ class RenderTable extends ApiManipulation {
 		//This attributes is deprecated since v0.2.8.
 		$range = $attributes['range'];
 		$className    = $attributes['className'];
+
+		return "";
 		$client = new Google_Client();
-	
 		if ( ! $api_key = sanitize_text_field($this->get_api_key()) ) {
 	
 			$url = admin_url( 'admin.php?page=wsgsf_settings' );
