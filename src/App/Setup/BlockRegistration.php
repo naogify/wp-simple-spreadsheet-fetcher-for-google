@@ -13,9 +13,9 @@ Class BlockRegistration extends RenderTable{
 
 	public function register_blocks() {
 
-		// if ( ! function_exists( 'register_block_type' ) ) {
-		// 	return;
-		// }
+		if ( ! function_exists( 'register_block_type' ) ) {
+			return;
+		}
 
 		$plugin_folder = 'wp-simple-spreadsheet-fetcher-for-google/';
 		$build_dir = $plugin_folder.'build/';

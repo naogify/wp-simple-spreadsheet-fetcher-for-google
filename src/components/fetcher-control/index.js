@@ -25,7 +25,6 @@ export const renderSettings = props => {
 							sheetId: newUrl === undefined ? "none" : newUrl
 						})
 					}
-					initialOpen={true}
 				/>
 				<TextControl
 					label={__(
@@ -42,7 +41,6 @@ export const renderSettings = props => {
 							sheetName: newName === undefined ? "none" : newName
 						})
 					}
-					initialOpen={true}
 				/>
 				<TextControl
 					label={__(
@@ -60,7 +58,6 @@ export const renderSettings = props => {
 								newRange === undefined ? "none" : newRange
 						})
 					}
-					initialOpen={true}
 				/>
 			</Fragment>
 		);
@@ -77,7 +74,6 @@ export const renderSettings = props => {
 						range: newRange === undefined ? "none" : newRange
 					})
 				}
-				initialOpen={true}
 			/>
 		);
 	}
