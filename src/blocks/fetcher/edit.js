@@ -1,6 +1,7 @@
 const { __ } = wp.i18n;
-const { PanelBody, ServerSideRender, BaseControl } = wp.components;
+const { PanelBody, BaseControl } = wp.components;
 const { Fragment } = wp.element;
+import ServerSideRender from "@wordpress/server-side-render";
 import { compose } from "@wordpress/compose";
 import { addFilter } from "@wordpress/hooks";
 import withTabbedInspector from "../../higher-order/with-tabbed-inspector";
@@ -141,14 +142,13 @@ addFilter(
 	}
 );
 
-export default edit = props => {
+const edit = props => {
 	const { attributes } = props;
 	return (
-		<div>fdsfs</div>
-		// <Fragment>
-		// 	<ServerSideRender block="wp2s2fg/fetcher" attributes={attributes} />
-		// </Fragment>
+		<Fragment>
+			<ServerSideRender block="wp2s2fg/fetcher" attributes={attributes} />
+		</Fragment>
 	);
 };
 
-// export default compose(withTabbedInspector())(edit);
+export default compose(withTabbedInspector())(edit);

@@ -1,12 +1,16 @@
 <?php
 
-namespace Fetcher\utils;
-
+namespace Fetcher\blocks\fetcher\table;
 require(PLUGIN_ROOT_DIR .'vendor/autoload.php');
+use Fetcher\App\Utils\ApiManipulation;
+use Fetcher\blocks\fetcher\table\TableDesign;
 
-class RenderTable {
+
+class RenderTable extends ApiManipulation {
+
+	use TableDesign;
 	
-	function wp2s2fg_get_selected_value( $attributes ) {
+	function get_selected_value( $attributes ) {
 
 		$block     = $attributes['block'];
 		$sheetId     = $attributes['sheetId'];
@@ -17,7 +21,7 @@ class RenderTable {
 		$className    = $attributes['className'];
 		$client = new Google_Client();
 	
-		if ( ! $api_key = sanitize_text_field(wp2s2fg_get_api_key()) ) {
+		if ( ! $api_key = sanitize_text_field($this->get_api_key()) ) {
 	
 			$url = admin_url( 'admin.php?page=wsgsf_settings' );
 			$url = '<a href="' . esc_url( $url ) . '">' . __( 'settings.' ) . '</a>';
@@ -25,7 +29,7 @@ class RenderTable {
 		}
 	
 		if(!$sheetId){
-			if ( ! $sheetId_deprecated = sanitize_text_field(wp2s2fg_get_spread_sheet_id()) ) {
+			if ( ! $sheetId_deprecated = sanitize_text_field($this->get_spread_sheet_id()) ) {
 				return __( 'Sheet URL is not set. Please set it from the sidebar.', 'wp-simple-spreadsheet-fetcher-for-google' );
 			}
 		}else{

@@ -19,7 +19,9 @@ use Fetcher\App\Setup\ApiSettingScreen;
 use Fetcher\App\Setup\BlockRegistration;
 
 define( "PLUGIN_ROOT_DIR", plugin_dir_path(  __FILE__  ));
-define( "BUILD_DIR", PLUGIN_ROOT_DIR . 'build' );
+define( "BUILD_DIR", PLUGIN_ROOT_DIR . 'build/' );
+define( "ASSETS_DIR", PLUGIN_ROOT_DIR . 'src/assets/' );
+
 
 $ApiSettingScreen = new ApiSettingScreen();
 $ApiSettingScreen->init();
