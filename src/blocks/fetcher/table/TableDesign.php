@@ -74,4 +74,33 @@ trait TableDesign {
         $semiColon = "; ";
         return isset($style["align"]) ? "text-align:".esc_html($style["align"]) . $semiColon : "";
     }
+    
+    public function hasFixedTableClass($hasFixedTable){
+        if($hasFixedTable){
+            return "has-fixed-layout";
+        }else{
+            return "";
+        }
+    }
+
+    public function createStyledCell($cellTag,$style,$hasFixedTable,$border_style){
+        if($cellTag === "th"){
+            $data_h = '<th class="' . $this->createClass("th") . " " . $this->hasFixedTableClass($hasFixedTable) . '" style="' . $this->create_inline_font_style($style) . $this->create_inline_border_style($border_style) . $this->create_inline_align($style) . $this->create_inline_bg_color($style) . '">';
+            $data_f = '</th>';
+        }else if($cellTag === "td"){
+            $data_h = '<td class="' . $this->createClass("td") . " " . $this->hasFixedTableClass($hasFixedTable) . '" style="' . $this->create_inline_font_style($style) . $this->create_inline_border_style($border_style) . $this->create_inline_align($style) . $this->create_inline_bg_color($style) . '">';
+            $data_f = '</td>';
+        }
+        return array(
+            "data_h" => $data_h,
+            "data_f" => $data_f,
+        );
+    }
+
+    public function createClass($tag){
+	
+        $base_class = "wp2s2fg_fetcher_table_";
+        return $base_class . $tag;
+
+    }
 }

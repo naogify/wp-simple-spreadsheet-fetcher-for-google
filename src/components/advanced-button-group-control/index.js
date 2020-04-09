@@ -24,7 +24,7 @@ export const AdvancedButtonGruopControl = props => {
 		saveValue.bind(null, schemaName, event.target.value)();
 	};
 
-	const createButtons = label => {
+	const createButtons = (label, index) => {
 		return (
 			<Button
 				onClick={onClick}
@@ -32,13 +32,14 @@ export const AdvancedButtonGruopControl = props => {
 				className={
 					value === label ? `${btnClass} is-active` : `${btnClass}`
 				}
+				key={index}
 			>
 				{__(`${label}`, "wp-simple-spreadsheet-fetcher-for-google")}
 			</Button>
 		);
 	};
 
-	const createIconButtons = label => {
+	const createIconButtons = (label, index) => {
 		return (
 			<Button
 				onClick={onClick}
@@ -46,6 +47,7 @@ export const AdvancedButtonGruopControl = props => {
 				className={
 					value === label ? `${btnClass} is-active` : `${btnClass}`
 				}
+				key={index}
 			>
 				<AdvancedIconControl icon={label} />
 			</Button>

@@ -3,8 +3,14 @@ namespace Fetcher\App\Setup;
 require(PLUGIN_ROOT_DIR .'vendor/autoload.php');
 use Fetcher\blocks\fetcher\table\RenderTable;
 
-
 Class BlockRegistration extends RenderTable{
+
+	private $client;
+
+	public function __construct($service,$api_key){
+		$this->service = $service;
+		$this->api_key = $api_key;
+	}
 
 	public function init() {
 		add_action( 'block_categories', array( $this, 'register_block_categories' ),10,1 );
@@ -175,8 +181,8 @@ Class BlockRegistration extends RenderTable{
 			]
 		],
 		'render_callback' => function ( $attributes ) {
-			$attributes = array_merge($attributes,['block' => 'wp2s2fg/fetcher']);
-			return $this->get_selected_value( $attributes );
+			$attributes = array_merge($attributes,['block' => 'wp2s2fg/fetcher']);	
+			return $this->get_selected_value( $attributes,$this->service,$this->api_key );
 		},
 	) );
 

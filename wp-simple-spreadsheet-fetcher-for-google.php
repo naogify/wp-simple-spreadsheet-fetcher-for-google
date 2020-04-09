@@ -17,14 +17,23 @@ defined( 'ABSPATH' ) || exit;
 require('vendor/autoload.php');
 use Fetcher\App\Setup\ApiSettingScreen;
 use Fetcher\App\Setup\BlockRegistration;
+use Fetcher\App\Utils\ApiManipulation;
 
 define( "PLUGIN_ROOT_DIR", plugin_dir_path(  __FILE__  ));
 define( "BUILD_DIR", PLUGIN_ROOT_DIR . 'build/' );
 define( "ASSETS_DIR", PLUGIN_ROOT_DIR . 'src/assets/' );
 
-
 $ApiSettingScreen = new ApiSettingScreen();
 $ApiSettingScreen->init();
 
-$BlockRegistration = new BlockRegistration();
+$ApiManipulation = new ApiManipulation();
+$client = new Google_Client();
+$api_key = sanitize_text_field($ApiManipulation->get_api_key());
+$service="";
+if($api_key){
+    $client->setDeveloperKey( $api_key );
+    $service = new Google_Service_Sheets( $client );
+}
+
+$BlockRegistration = new BlockRegistration($service,$api_key);
 $BlockRegistration->init();

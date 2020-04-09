@@ -59,15 +59,38 @@
 	margin: 0 -16px -16px;
 	border-top: 1px solid #e2e4e7;
 }
-.wssffg-sidebar-tab-panel .components-tab-panel__tabs > button {
-	display: block;
-	padding: 10px 0;
-	width: 100%;
+.wssffg-sidebar-tab-panel button {
+	outline: none !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	padding: 0 !important;
+	flex: 1;
+	margin: 0 !important;
 }
-.wssffg-sidebar-tab-panel .components-tab-panel__tabs > button::before {
+
+.wssffg-sidebar-tab-panel button svg {
+	margin: 5px;
+	height: 20px;
+	color: #555d66;
+}
+.wssffg-sidebar-tab-panel .components-tab-panel__tabs > button {
+	/* outline: none !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	padding: 0 !important;
+	flex: 1;
+	margin: 0 !important; */
+}
+/* .wssffg-sidebar-tab-panel .components-tab-panel__tabs > button::before {
 	display: block;
 	margin: auto;
-}
+} */
 
 .wssffg-sidebar-tab-panel .components-tab-panel__tabs > button.is-active {
 	background: #fafafa;
