@@ -3,14 +3,14 @@ import { AdvancedIconControl } from "../advanced-icon-control";
 const { __ } = wp.i18n;
 const { useState } = wp.element;
 
-export const AdvancedButtonGruopControl = props => {
+export const AdvancedButtonGruopControl = (props) => {
 	const {
 		schemaName,
 		data,
 		setAttributes,
 		attributes,
 		customClassName,
-		icon = false
+		icon = false,
 	} = props;
 	const [value, setValue] = useState(attributes[schemaName]);
 	const btnClass = "components-icon-button components-toolbar__control";
@@ -19,12 +19,12 @@ export const AdvancedButtonGruopControl = props => {
 		setAttributes({ [key]: value });
 	};
 
-	const onClick = event => {
+	const onClick = (event) => {
 		setValue(event.target.value);
 		saveValue.bind(null, schemaName, event.target.value)();
 	};
 
-	const createButtons = label => {
+	const createButtons = (label, index) => {
 		return (
 			<Button
 				onClick={onClick}
@@ -32,13 +32,14 @@ export const AdvancedButtonGruopControl = props => {
 				className={
 					value === label ? `${btnClass} is-active` : `${btnClass}`
 				}
+				key={index}
 			>
 				{__(`${label}`, "wp-simple-spreadsheet-fetcher-for-google")}
 			</Button>
 		);
 	};
 
-	const createIconButtons = label => {
+	const createIconButtons = (label, index) => {
 		return (
 			<Button
 				onClick={onClick}
@@ -46,6 +47,7 @@ export const AdvancedButtonGruopControl = props => {
 				className={
 					value === label ? `${btnClass} is-active` : `${btnClass}`
 				}
+				key={index}
 			>
 				<AdvancedIconControl icon={label} />
 			</Button>

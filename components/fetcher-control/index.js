@@ -2,7 +2,7 @@ const { __ } = wp.i18n;
 const { TextControl, PanelBody } = wp.components;
 const { Fragment } = wp.element;
 
-export const renderSettings = props => {
+export const renderSettings = (props) => {
 	const { attributes, setAttributes } = props;
 	const { range, sheetId, sheetName, sheetRange } = attributes;
 
@@ -20,12 +20,11 @@ export const renderSettings = props => {
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					value={sheetId}
-					onChange={newUrl =>
+					onChange={(newUrl) =>
 						setAttributes({
-							sheetId: newUrl === undefined ? "none" : newUrl
+							sheetId: newUrl === undefined ? "none" : newUrl,
 						})
 					}
-					initialOpen={true}
 				/>
 				<TextControl
 					label={__(
@@ -37,12 +36,11 @@ export const renderSettings = props => {
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					value={sheetName}
-					onChange={newName =>
+					onChange={(newName) =>
 						setAttributes({
-							sheetName: newName === undefined ? "none" : newName
+							sheetName: newName === undefined ? "none" : newName,
 						})
 					}
-					initialOpen={true}
 				/>
 				<TextControl
 					label={__(
@@ -54,13 +52,12 @@ export const renderSettings = props => {
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					value={sheetRange}
-					onChange={newRange =>
+					onChange={(newRange) =>
 						setAttributes({
 							sheetRange:
-								newRange === undefined ? "none" : newRange
+								newRange === undefined ? "none" : newRange,
 						})
 					}
-					initialOpen={true}
 				/>
 			</Fragment>
 		);
@@ -72,12 +69,11 @@ export const renderSettings = props => {
 					"wp-simple-spreadsheet-fetcher-for-google"
 				)}
 				value={range}
-				onChange={newRange =>
+				onChange={(newRange) =>
 					setAttributes({
-						range: newRange === undefined ? "none" : newRange
+						range: newRange === undefined ? "none" : newRange,
 					})
 				}
-				initialOpen={true}
 			/>
 		);
 	}
