@@ -16,6 +16,7 @@
 .apc-icon-btn {
 	padding: 0;
 	color: inherit;
+	margin-left: 10px;
 }
 .wssffg-lower-layer1 {
 	margin-top: -12px;
@@ -56,13 +57,14 @@
 	display: flex;
 	justify-content: space-around;
 	min-height: 70px;
-	margin: 0 -16px -16px;
+	margin: 0;
 	border-top: 1px solid #e2e4e7;
 }
 .wssffg-sidebar-tab-panel .components-tab-panel__tabs > button {
 	display: block;
 	padding: 10px 0;
 	width: 100%;
+	height: auto;
 }
 .wssffg-sidebar-tab-panel .components-tab-panel__tabs > button::before {
 	display: block;
@@ -73,5 +75,5 @@
 	background: #fafafa;
 	background: linear-gradient(180deg, #fafafa, #fff 70%);
 	border-bottom: 0;
-	box-shadow: inset 0 -3px #0085ba;
+	box-shadow: inset 0 -3px #0085ba !important;
 }
