@@ -2,8 +2,8 @@
 Contributors: naoki0h
 Tags: fetcher, api, Google Sheets
 Requires at least: 5.0
-Tested up to: 5.3
-Stable tag: 0.6.3
+Tested up to: 5.4
+Stable tag: 0.6.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,6 +33,11 @@ If you have anything to tell me, please post it on the plugin's support forum or
 1. Fetch and display data from Google Sheets.
 
 == Changelog ==
+
+= 0.6.4 =
+- Fix sidebar css for WordPress5.4
+- Simplify sidebar UI.
+- Fix RangeControl bug in WordPress5.4.
 
 = 0.6.1 =
 - Fix css.
