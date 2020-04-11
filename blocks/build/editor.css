@@ -38,7 +38,7 @@
 	color: #abb8c3;
 	text-decoration: none;
 }
-.wssffg-advanced-button-group_unit .components-button.is-active {
+.wssffg-advanced-button-group_unit .components-button.is-pressed {
 	color: #333;
 	text-decoration: underline;
 }

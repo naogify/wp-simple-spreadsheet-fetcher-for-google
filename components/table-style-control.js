@@ -7,7 +7,7 @@ import { AdvancedButtonGruopControl } from "./advanced-button-group-control";
 import { AdvancedAlignControl } from "./advanced-align-control";
 import { AdvancedRangeControl } from "./advanced-range-control";
 
-export const TableStyleControl = props => {
+export const TableStyleControl = (props) => {
 	const { fontUnit, fontSize, bgColor, align } = props;
 	return (
 		<Fragment>
@@ -27,7 +27,7 @@ export const TableStyleControl = props => {
 				</div>
 				<AdvancedRangeControl
 					schemaName={fontSize}
-					min={1}
+					min={0}
 					max={50}
 					step={0.1}
 					{...props}

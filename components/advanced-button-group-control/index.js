@@ -15,13 +15,9 @@ export const AdvancedButtonGruopControl = (props) => {
 	const [value, setValue] = useState(attributes[schemaName]);
 	const btnClass = "components-icon-button components-toolbar__control";
 
-	const saveValue = (key, value) => {
-		setAttributes({ [key]: value });
-	};
-
 	const onClick = (event) => {
 		setValue(event.target.value);
-		saveValue.bind(null, schemaName, event.target.value)();
+		setAttributes({ [schemaName]: event.target.value });
 	};
 
 	const createButtons = (label, index) => {
@@ -30,7 +26,7 @@ export const AdvancedButtonGruopControl = (props) => {
 				onClick={onClick}
 				value={label}
 				className={
-					value === label ? `${btnClass} is-active` : `${btnClass}`
+					value === label ? `${btnClass} is-pressed` : `${btnClass}`
 				}
 				key={index}
 			>
@@ -45,7 +41,7 @@ export const AdvancedButtonGruopControl = (props) => {
 				onClick={onClick}
 				value={label}
 				className={
-					value === label ? `${btnClass} is-active` : `${btnClass}`
+					value === label ? `${btnClass} is-pressed` : `${btnClass}`
 				}
 				key={index}
 			>

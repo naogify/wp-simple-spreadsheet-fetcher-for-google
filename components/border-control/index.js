@@ -9,8 +9,8 @@ const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { BaseControl } = wp.components;
 
-export const BorderControl = props => {
-	const { borderStyle, borderColor, borderUnit, borderWidth } = props;
+export const BorderControl = (props) => {
+	const { borderStyle, borderColor } = props;
 	const render = (
 		<Fragment>
 			<BaseControl>
@@ -31,29 +31,6 @@ export const BorderControl = props => {
 				</span>
 				<AdvancedColorPalleteControl
 					schemaName={borderColor}
-					{...props}
-				/>
-			</BaseControl>
-			<BaseControl>
-				<div className="components-base-control_outer">
-					<span className={"components-base-control__label"}>
-						{__(
-							"Width",
-							"wp-simple-spreadsheet-fetcher-for-google"
-						)}
-					</span>
-					<AdvancedButtonGruopControl
-						schemaName={borderUnit}
-						initial={props.attributes[borderUnit]}
-						customClassName={"wssffg-advanced-button-group_unit"}
-						data={["px", "em", "rem"]}
-						{...props}
-					/>
-				</div>
-				<AdvancedRangeControl
-					schemaName={borderWidth}
-					min={0}
-					max={10}
 					{...props}
 				/>
 			</BaseControl>

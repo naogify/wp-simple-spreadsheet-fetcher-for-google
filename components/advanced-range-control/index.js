@@ -8,13 +8,13 @@ export const AdvancedRangeControl = (props) => {
 	const [columns, setColumns] = useState(attributes[schemaName]);
 
 	//Set default value
-	min ? min : (min = 1);
+	min ? min : (min = 0);
 	max ? max : (max = 100);
 
 	return (
 		<RangeControl
 			label={label}
-			value={columns || ""}
+			value={columns === undefined ? "" : columns}
 			onChange={(columns) => {
 				setColumns(columns);
 				setAttributes({ [schemaName]: columns });
@@ -23,7 +23,6 @@ export const AdvancedRangeControl = (props) => {
 			max={max}
 			step={step}
 			allowReset
-			placeholder={columns === undefined ? __("Auto") : undefined}
 		/>
 	);
 };

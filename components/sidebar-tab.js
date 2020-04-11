@@ -1,16 +1,11 @@
 import { TabPanel } from "@wordpress/components";
 
-const onSelect = (tabName) => {
-	console.log("Selecting tab", tabName);
-};
-
 export default (props) => {
 	const { render } = props.render;
 	return (
 		<TabPanel
 			className="my-tab-panel"
 			activeClass="active-tab"
-			onSelect={onSelect}
 			tabs={[
 				{
 					name: "tab1",
