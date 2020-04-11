@@ -45,7 +45,7 @@ addFilter(
 								"table-full",
 								"table-horizontal",
 								"table-vertical",
-								"table-empty"
+								"table-empty",
 							]}
 							customClassName={
 								"wssffg-advanced-button-group_align components-toolbar"
@@ -57,8 +57,6 @@ addFilter(
 					<BorderControl
 						borderStyle={"borderStyle"}
 						borderColor={"borderColor"}
-						borderUnit={"borderUnit"}
-						borderWidth={"borderWidth"}
 						{...props}
 					/>
 					<BaseControl className={"wssffg-lower-layer1"}>
@@ -82,6 +80,7 @@ addFilter(
 							schemaName={"borderWidth"}
 							min={0}
 							max={10}
+							step={0.1}
 							{...props}
 						/>
 					</BaseControl>
@@ -141,7 +140,7 @@ addFilter(
 	}
 );
 
-const edit = props => {
+const edit = (props) => {
 	const { attributes } = props;
 	return (
 		<Fragment>

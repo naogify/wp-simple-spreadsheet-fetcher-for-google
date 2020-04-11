@@ -10,11 +10,11 @@ const { __ } = wp.i18n;
 
 const withTabbedInspector = () =>
 	createHigherOrderComponent(
-		WrappedComponent =>
+		(WrappedComponent) =>
 			class extends Component {
 				render() {
 					const { blockName } = this.props;
-					const onSelect = tabName => {};
+					const onSelect = (tabName) => {};
 					return (
 						<Fragment>
 							<InspectorControls>
@@ -30,7 +30,7 @@ const withTabbedInspector = () =>
 												"wp-simple-spreadsheet-fetcher-for-google"
 											),
 											className:
-												"tab-setting dashicons-before dashicons-admin-tools"
+												"tab-setting dashicons-before dashicons-admin-tools",
 										},
 										{
 											name: "style",
@@ -39,12 +39,12 @@ const withTabbedInspector = () =>
 												"wp-simple-spreadsheet-fetcher-for-google"
 											),
 											className:
-												"tab-style dashicons-before dashicons-admin-customizer"
-										}
+												"tab-style dashicons-before dashicons-admin-customizer",
+										},
 									]}
 									initialTabName="setting"
 								>
-									{tab => {
+									{(tab) => {
 										const blockName = "fetcher";
 										let hooks;
 										if (tab.name === "setting") {

@@ -14,7 +14,7 @@ export const TableEmptyIcon = () => {
 					<path d="M0 0H20V20H0z"></path>
 				</clipPath>
 			</defs>
-			<g clip-path="url(#a)">
+			<g>
 				<path d="M0.015 0H2.9010000000000002V2.886H0.015z"></path>
 				<path d="M0.015 8.525H2.9010000000000002V11.411000000000001H0.015z"></path>
 				<path d="M0.015 4.277H2.9010000000000002V7.163H0.015z"></path>
@@ -55,7 +55,7 @@ export const TableFullIcon = () => {
 					<path d="M0 0H20V20H0z"></path>
 				</clipPath>
 			</defs>
-			<g clip-path="url(#a)">
+			<g>
 				<path
 					fillRule="evenodd"
 					d="M11.419 11.15v5.672l5.7.031.015-5.719-5.715.016zm0-8.414v5.672l5.7.031.015-5.719-5.715.016zm-8.511 0v5.672l5.7.031.015-5.719-5.715.016zM.066.036V19.9l19.943.108.054-20.026L.066.036zM2.908 11.15v5.672l5.7.031.015-5.719-5.715.016z"
@@ -81,7 +81,7 @@ export const TableHorizontalIcon = () => {
 					<path d="M0 0H20V20H0z"></path>
 				</clipPath>
 			</defs>
-			<g clip-path="url(#a)">
+			<g>
 				<path
 					d="M8.557 8.542H11.443000000000001V28.546H8.557z"
 					transform="rotate(-90 10 18.543)"
@@ -139,7 +139,7 @@ export const TableVerticalIcon = () => {
 					<path d="M0 0H20V20H0z"></path>
 				</clipPath>
 			</defs>
-			<g clip-path="url(#a)">
+			<g>
 				<path d="M0.015 0H2.9010000000000002V20.004H0.015z"></path>
 				<path d="M8.557 0H11.443000000000001V20.004H8.557z"></path>
 				<path d="M17.098 0H19.983999999999998V20.004H17.098z"></path>
