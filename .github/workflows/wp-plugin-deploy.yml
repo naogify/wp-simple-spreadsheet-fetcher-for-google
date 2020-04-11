@@ -16,8 +16,8 @@ jobs:
           npm run build
       - name: Get tag version
         run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
-      - name: Update plugin version
-        # run: ./bin/create-release.sh ${{ env.RELEASE_VERSION }}
+      # - name: Update plugin version
+      # run: ./bin/create-release.sh ${{ env.RELEASE_VERSION }}
       - name: Update README.md from readme.txt
         run: npx grunt
       - name: Push readme.txt etc to GitHub
