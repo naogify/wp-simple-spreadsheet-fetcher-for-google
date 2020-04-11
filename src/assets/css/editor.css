@@ -60,7 +60,7 @@
 	margin: 0;
 	border-top: 1px solid #e2e4e7;
 }
-.wssffg-sidebar-tab-panel button {
+.wssffg-sidebar-tab-panel .components-tab-panel__tabs > button {
 	outline: none !important;
 	display: flex;
 	flex-direction: column;
@@ -71,7 +71,7 @@
 	flex: 1;
 	margin: 0 !important;
 }
-.wssffg-sidebar-tab-panel button svg {
+.wssffg-sidebar-tab-panel .components-tab-panel__tabs > button svg {
 	margin: 5px;
 	height: 20px;
 	color: #555d66;
