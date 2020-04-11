@@ -31,6 +31,10 @@ jobs:
           git add .
           git commit -m"Update Version"
           git push origin master
+      - name: Remove unused composer library.
+        run: |
+          cd vendor/google/apiclient-services/src/Google/Service/
+          ls | grep -v -E 'Sheets|Sheets.php$' | xargs rm -r
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@master
         env:
