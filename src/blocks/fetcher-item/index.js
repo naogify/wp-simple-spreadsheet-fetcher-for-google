@@ -1,12 +1,9 @@
 import { __ } from "@wordpress/i18n";
 import { registerBlockType } from "@wordpress/blocks";
-import {
-	TextControl,
-	PanelBody,
-	ServerSideRender,
-} from "@wordpress/components";
+import { TextControl, PanelBody } from "@wordpress/components";
 import { Fragment } from "@wordpress/element";
 import { InspectorControls } from "@wordpress/block-editor";
+import ServerSideRender from "@wordpress/server-side-render";
 
 registerBlockType("wp2s2fg/fetcher-item", {
 	title: __("Fetcher Item", "wp-simple-spreadsheet-fetcher-for-google"),
@@ -16,30 +13,30 @@ registerBlockType("wp2s2fg/fetcher-item", {
 	supports: {
 		className: true,
 		html: false,
-		inserter: false,
+		inserter: false
 	},
 	attributes: {
 		className: {
 			type: "string",
-			default: "",
+			default: ""
 		},
 		sheetId: {
 			type: "string",
-			default: "",
+			default: ""
 		},
 		sheetName: {
 			type: "string",
-			default: "",
+			default: ""
 		},
 		sheetRange: {
 			type: "string",
-			default: "",
+			default: ""
 		},
 		//This attributes is deprecated since v0.2.8.
 		range: {
 			type: "string",
-			default: "",
-		},
+			default: ""
+		}
 	},
 
 	edit(props) {
@@ -56,12 +53,13 @@ registerBlockType("wp2s2fg/fetcher-item", {
 								"wp-simple-spreadsheet-fetcher-for-google"
 							)}
 							value={sheetId}
-							onChange={(newUrl) =>
+							onChange={newUrl =>
 								setAttributes({
 									sheetId:
-										newUrl === undefined ? "none" : newUrl,
+										newUrl === undefined ? "none" : newUrl
 								})
 							}
+							initialOpen={true}
 						/>
 						<TextControl
 							label={__(
@@ -69,14 +67,13 @@ registerBlockType("wp2s2fg/fetcher-item", {
 								"wp-simple-spreadsheet-fetcher-for-google"
 							)}
 							value={sheetName}
-							onChange={(newName) =>
+							onChange={newName =>
 								setAttributes({
 									sheetName:
-										newName === undefined
-											? "none"
-											: newName,
+										newName === undefined ? "none" : newName
 								})
 							}
+							initialOpen={true}
 						/>
 						<TextControl
 							label={__(
@@ -84,14 +81,15 @@ registerBlockType("wp2s2fg/fetcher-item", {
 								"wp-simple-spreadsheet-fetcher-for-google"
 							)}
 							value={sheetRange}
-							onChange={(newRange) =>
+							onChange={newRange =>
 								setAttributes({
 									sheetRange:
 										newRange === undefined
 											? "none"
-											: newRange,
+											: newRange
 								})
 							}
+							initialOpen={true}
 						/>
 					</Fragment>
 				);
@@ -103,11 +101,12 @@ registerBlockType("wp2s2fg/fetcher-item", {
 						"wp-simple-spreadsheet-fetcher-for-google"
 					)}
 					value={range}
-					onChange={(newRange) =>
+					onChange={newRange =>
 						setAttributes({
-							range: newRange === undefined ? "none" : newRange,
+							range: newRange === undefined ? "none" : newRange
 						})
 					}
+					initialOpen={true}
 				/>
 			);
 		};
@@ -134,5 +133,5 @@ registerBlockType("wp2s2fg/fetcher-item", {
 	},
 	save() {
 		return null;
-	},
+	}
 });

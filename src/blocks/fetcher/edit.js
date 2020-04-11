@@ -1,15 +1,16 @@
 const { __ } = wp.i18n;
-const { PanelBody, ServerSideRender, BaseControl } = wp.components;
+const { PanelBody, BaseControl } = wp.components;
 const { Fragment } = wp.element;
+import ServerSideRender from "@wordpress/server-side-render";
 import { compose } from "@wordpress/compose";
 import { addFilter } from "@wordpress/hooks";
-import withTabbedInspector from "../../../higher-order/with-tabbed-inspector";
-import { TableWidthFixControl } from "../../../components/table-width-fix-control";
-import { AdvancedButtonGruopControl } from "../../../components/advanced-button-group-control";
-import { renderSettings } from "../../../components/fetcher-control";
-import { BorderControl } from "../../../components/border-control";
-import { AdvancedRangeControl } from "../../../components/advanced-range-control";
-import { TableStyleControl } from "../../../components/table-style-control";
+import withTabbedInspector from "../../higher-order/with-tabbed-inspector";
+import { TableWidthFixControl } from "../../components/table-width-fix-control";
+import { AdvancedButtonGruopControl } from "../../components/advanced-button-group-control";
+import { renderSettings } from "../../components/fetcher-control";
+import { BorderControl } from "../../components/border-control";
+import { AdvancedRangeControl } from "../../components/advanced-range-control";
+import { TableStyleControl } from "../../components/table-style-control";
 
 addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.layout.before",
