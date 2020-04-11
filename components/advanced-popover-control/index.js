@@ -20,7 +20,7 @@ export class AdvancedPopOverControl extends Component {
 			this.setState({ open: false });
 		};
 
-		const handleOnClickOutside = event => {
+		const handleOnClickOutside = (event) => {
 			if (
 				event.relatedTarget &&
 				!event.relatedTarget.closest(`.${popverBtnClass}`) &&
@@ -39,7 +39,7 @@ export class AdvancedPopOverControl extends Component {
 						}
 					>
 						<Button
-							isSecondary
+							isTertiary
 							className={`${popverBtnClass}`}
 							onClick={handleOpen}
 						>
