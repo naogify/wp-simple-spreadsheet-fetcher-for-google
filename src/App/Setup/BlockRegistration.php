@@ -46,7 +46,7 @@ Class BlockRegistration extends RenderTable{
 		wp_register_style(
 			'wp2s2fg-fetcher-style-editor',
 			plugins_url( $editor_css ,PLUGIN_ROOT_DIR ),
-			array(),
+			array()
 		);
 
 		$style_css = $css_dir.'style.css';
@@ -231,7 +231,7 @@ Class BlockRegistration extends RenderTable{
 		'editor_style'  => 'wp2s2fg-fetcher-style-editor',
 		'style'         => 'wp2s2fg-fetcher-style',
 		'render_callback' => function ( $attributes,$content ) {
-			$js = file_get_contents(plugin_dir_path( __FILE__ ).'src/blocks/default/drawCharts.js');
+			$js = file_get_contents(PLUGIN_ROOT_DIR .'src/blocks/fetcher-chart/drawCharts.js');
 			$js = trim($js);
 			$js = ltrim($js, 'export const drawCharts = () => {');
 			$js = rtrim($js, '}; ');
