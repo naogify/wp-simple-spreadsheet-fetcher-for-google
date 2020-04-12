@@ -223,6 +223,19 @@ Class BlockRegistration extends RenderTable{
 			return $this->get_selected_value( $attributes );
 		},
 	) );
+	
+	register_block_type( 'wp2s2fg/fetcher-chart', array(
+		'editor_script' => 'wp2s2fg-fetcher',
+		'editor_style'  => 'wp2s2fg-fetcher-style-editor',
+		'style'         => 'wp2s2fg-fetcher-style',
+		'render_callback' => function ( $attributes,$content ) {
+			$js = file_get_contents(plugin_dir_path( __FILE__ ).'src/blocks/default/drawCharts.js');
+			$js = trim($js);
+			$js = ltrim($js, 'export const drawCharts = () => {');
+			$js = rtrim($js, '}; ');
+			return '<div id="chart_div">Loading Charts ...</div><script type="text/javascript">' . $js .'</script>';
+		})
+	);
 	}
 
 	public function register_block_categories( $categories ) {
