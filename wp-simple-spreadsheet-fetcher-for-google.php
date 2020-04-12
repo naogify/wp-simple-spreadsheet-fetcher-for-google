@@ -18,6 +18,7 @@ require('vendor/autoload.php');
 use Fetcher\App\Setup\ApiSettingScreen;
 use Fetcher\App\Setup\BlockRegistration;
 use Fetcher\App\Utils\ApiManipulation;
+use Fetcher\App\RestAPI\Sheets\EntryPoint;
 
 define( "PLUGIN_ROOT_DIR", plugin_dir_path(  __FILE__  ));
 define( "BUILD_DIR", PLUGIN_ROOT_DIR . 'build/' );
@@ -37,3 +38,4 @@ if($api_key){
 
 $BlockRegistration = new BlockRegistration($service,$api_key);
 $BlockRegistration->init();
+new EntryPoint();

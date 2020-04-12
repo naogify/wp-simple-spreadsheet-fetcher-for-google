@@ -1,4 +1,5 @@
 <?php
+namespace Fetcher\App\RestAPI\Sheets;
 
 class EntryPoint {
 

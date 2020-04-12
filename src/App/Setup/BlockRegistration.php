@@ -15,6 +15,8 @@ Class BlockRegistration extends RenderTable{
 	public function init() {
 		add_action( 'block_categories', array( $this, 'register_block_categories' ),10,1 );
 		add_action( 'init', array($this,'register_blocks') );
+		add_action( 'wp_enqueue_scripts', array($this,'register_block_scripts') );
+		add_action( 'admin_enqueue_scripts', array($this,'register_block_scripts') );
 	}
 
 	public function register_blocks() {
@@ -249,6 +251,10 @@ Class BlockRegistration extends RenderTable{
 				)
 			)
 		);
+	}
+
+	public function register_block_scripts() {
+		wp_enqueue_script( 'google-charts', 'https://www.gstatic.com/charts/loader.js', array(), '1.0.0', false );
 	}
 
 }
