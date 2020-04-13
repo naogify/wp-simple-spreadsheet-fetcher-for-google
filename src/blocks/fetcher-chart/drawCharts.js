@@ -1,5 +1,12 @@
-export const drawCharts = () => {
-	fetch("/wp-json/api-charts/v1/data-table/")
+export const drawCharts = (props) => {
+	let url = "/wp-json/api-charts/v1/data-table/";
+	fetch(url, {
+		method: "POST",
+		body: JSON.stringify(props),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
 		.then(function (response) {
 			return response.json();
 		})

@@ -235,7 +235,7 @@ Class BlockRegistration extends RenderTable{
 			$js = trim($js);
 			$js = ltrim($js, 'export const drawCharts = () => {');
 			$js = rtrim($js, '}; ');
-			return '<div id="chart_div">Loading Charts ...</div><script type="text/javascript">' . $js .'</script>';
+			return '<div id="chart_div">Loading Charts ...</div><script type="text/javascript">let props =' . json_encode($attributes) .';' . $js .'</script>';
 		})
 	);
 	}

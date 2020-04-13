@@ -2,7 +2,7 @@ const { __ } = wp.i18n;
 const { TextControl, PanelBody } = wp.components;
 const { Fragment } = wp.element;
 
-export const renderSettings = (props) => {
+export const RenderSettings = (props) => {
 	const { attributes, setAttributes } = props;
 	const { range, sheetId, sheetName, sheetRange } = attributes;
 

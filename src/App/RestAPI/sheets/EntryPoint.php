@@ -15,7 +15,7 @@ class EntryPoint {
 			self::REST_API_NAMESPACE,
 			self::REST_API_ROUTE,
 			[
-				'methods'  => 'GET',
+				'methods'  => 'POST',
 				'callback' => [ $this, '_callback' ],
 				// 'permission_callback' => function () {
 				// 	return current_user_can( 'edit_posts' );
@@ -24,7 +24,8 @@ class EntryPoint {
 		);
 	}
 
-	public function _callback() {
+	public function _callback($request) {
+		
 		return array(
 			"cols" => array(
 				array(
@@ -44,7 +45,7 @@ class EntryPoint {
 				array(
 					"c"=>array(
 						array(
-							"v"=>"Mushrooms",
+							"v"=>$request["sheetName"],
 							"f"=>null
 						),
 						array(
