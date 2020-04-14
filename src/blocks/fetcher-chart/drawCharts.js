@@ -1,33 +1,84 @@
+let props = "";
 export const drawCharts = (props) => {
-	let url = "/wp-json/api-charts/v1/data-table/";
-	fetch(url, {
-		method: "POST",
-		body: JSON.stringify(props),
-		headers: {
-			"Content-Type": "application/json",
-		},
-	})
+	let url =
+		"/wp-json/api-charts/v1/data-table/" +
+		sanitizeSheetId(props.sheetId) +
+		"/" +
+		encodeURI(props.sheetName) +
+		"/" +
+		encodeURI(props.sheetRange);
+	fetch(url)
 		.then(function (response) {
 			return response.json();
 		})
 		.then(function (jsonData) {
-			console.log(JSON.stringify(jsonData));
-			// Load the Visualization API and the piechart package.
 			google.charts.load("current", { packages: ["corechart"] });
-
-			// Set a callback to run when the Google Visualization API is loaded.
 			google.charts.setOnLoadCallback(drawChart);
-
 			function drawChart() {
-				// Create our data table out of JSON data loaded from server.
-				var data = new google.visualization.DataTable(jsonData);
+				let rawData = formatAPIReturnValue(jsonData);
+				// rawData = switchRowColumn(rawData);
+				let data = google.visualization.arrayToDataTable(rawData);
+				let view = new google.visualization.DataView(data);
 
-				// Instantiate and draw our chart, passing in some options.
-				var chart = new google.visualization.PieChart(
+				const columnNum = defineColumnLength(rawData[0].length);
+				view.setColumns(columnNum);
+
+				let options = {
+					width: 600,
+					height: 400,
+					// legend: { position: "top", maxLines: 3 },
+					bar: { groupWidth: "75%" },
+					isStacked: true,
+					//y軸ラベルを消す
+					vAxis: {
+						textPosition: "none",
+					},
+					//x軸ラベルを消す
+					hAxis: {
+						textPosition: "none",
+					},
+					//データ色名を消す
+					legend: {
+						position: "none",
+					},
+				};
+
+				let chart = new google.visualization.ColumnChart(
 					document.getElementById("chart_div")
 				);
-				console.log(chart);
-				chart.draw(data, { width: 400, height: 240 });
+				chart.draw(view, options);
 			}
 		});
+
+	function sanitizeSheetId(sheetUrl) {
+		const regex = /\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/;
+		let sheetId = sheetUrl.match(regex);
+		if (sheetId !== null) {
+			sheetId = sheetId[0].replace(/\/spreadsheets\/d\//, "");
+		}
+		return sheetId;
+	}
 };
+
+export const formatAPIReturnValue = (jsonData) => {
+	let result = jsonData.map((data) => {
+		return data.map((item) => {
+			if (Number(item)) {
+				return Number(item);
+			} else {
+				return item;
+			}
+		});
+	});
+	return result;
+};
+
+export const defineColumnLength = (length) => {
+	return [...Array(length).keys()];
+};
+
+export const switchRowColumn = (a) => a[0].map((_, c) => a.map((r) => r[c]));
+
+if (props) {
+	drawCharts(props);
+}

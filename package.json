@@ -10,7 +10,8 @@
     "translate": "po2json languages/wp-simple-spreadsheet-fetcher-for-google-ja.po languages/wp-simple-spreadsheet-fetcher-for-google-ja-wp2s2fg-fetcher.json -f jed",
     "make-pot": "wp i18n make-pot . languages/wp-simple-spreadsheet-fetcher-for-google.pot",
     "lint-js": "wp-scripts lint-js",
-    "readme": "npx grunt"
+    "readme": "npx grunt",
+    "test:unit": "wp-scripts test-unit-js"
   },
   "keywords": [],
   "author": "naoki0h",

@@ -38,4 +38,4 @@ if($api_key){
 
 $BlockRegistration = new BlockRegistration($service,$api_key);
 $BlockRegistration->init();
-new EntryPoint();
+new EntryPoint($service);

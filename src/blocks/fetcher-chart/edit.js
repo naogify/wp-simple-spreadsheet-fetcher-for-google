@@ -14,7 +14,7 @@ addFilter(
 
 export const edit = (props) => {
 	let blockName = props.name.replace(/wp2s2fg\//, "");
-	drawCharts(props);
+	drawCharts(props.attributes);
 	return (
 		<Fragment>
 			<InspectorControls>
