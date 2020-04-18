@@ -5,6 +5,7 @@ import {
 	formatAPIReturnValue,
 	defineColumnLength,
 	addBaseXAxis,
+	arrayItemsIsString,
 } from "../blocks/fetcher-chart/drawCharts";
 
 describe("Test api", () => {
@@ -21,7 +22,7 @@ describe("Test api", () => {
 		expect(sequenceNumberArray).toEqual([0, 1, 2]);
 	});
 
-	test("should create sequence number array", () => {
+	test("add '' to array.", () => {
 		const table = [
 			[0, 1, 2],
 			[0, 1, 2],
@@ -30,5 +31,20 @@ describe("Test api", () => {
 			["", 0, 1, 2],
 			["", 0, 1, 2],
 		]);
+	});
+
+	test("all items are string", () => {
+		const table = ["a", "b", "c"];
+		expect(arrayItemsIsString(table)).toBe(true);
+	});
+
+	test("all items are not string", () => {
+		const table = [1, "b", "c"];
+		expect(arrayItemsIsString(table)).toBe(false);
+	});
+
+	test("all items are not string", () => {
+		const table = [1, 2, 3];
+		expect(arrayItemsIsString(table)).toBe(false);
 	});
 });

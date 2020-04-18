@@ -17,33 +17,49 @@ export const drawCharts = (props) => {
 
 			function drawChart() {
 				let rawData = formatAPIReturnValue(jsonData);
-				rawData = addBaseXAxis(rawData);
-				rawData = switchRowColumn(rawData);
+
+				//Switch Rows / Columns
+				if (props.switchRowColumn) {
+					rawData = switchRowColumn(rawData);
+				}
+
+				//If label(first row) is not string, add base row.
+				if (!arrayItemsIsString(rawData[0])) {
+					rawData = addBaseXAxis(rawData);
+				}
+
 				let data = google.visualization.arrayToDataTable(rawData);
 				let view = new google.visualization.DataView(data);
 
+				//Set Colum length
 				const columnNum = defineColumnLength(rawData[0].length);
 				view.setColumns(columnNum);
 
 				let options = {
 					width: 600,
 					height: 400,
-					bar: { groupWidth: "75%" },
+					bar: {
+						groupWidth: "75%",
+					},
 					isStacked: true,
-					// hAxis: { ticks: [50, 3, 1, 13, 3, 1, 13, 3, 1, 13, 3] },
-					//y軸ラベルを消す
-					// vAxis: {
-					// 	textPosition: "none",
-					// },
-					//x軸ラベルを消す
-					// hAxis: {
-					// 	textPosition: "none",
-					// },
-					// //データ色名を消す
-					// legend: {
-					// 	position: "none",
-					// },
 				};
+
+				//Hide x-axis label
+				if (props.hideXAxisLabel) {
+					options = addItemToObject(options, {
+						hAxis: {
+							textPosition: "none",
+						},
+					});
+					//Hide y-axis label
+				}
+				if (props.hideYAxisLabel) {
+					options = addItemToObject(options, {
+						legend: {
+							position: "none",
+						},
+					});
+				}
 
 				let chart = new google.visualization.ColumnChart(
 					document.getElementById("chart_div")
@@ -86,6 +102,17 @@ export const addBaseXAxis = (table) => {
 		row.unshift("");
 		return row;
 	});
+};
+
+export const addItemToObject = (original, addItem = { someting: true }) => {
+	return {
+		...original,
+		...addItem,
+	};
+};
+
+export const arrayItemsIsString = (row) => {
+	return row.find((item) => typeof item !== "string") === undefined;
 };
 
 if (props) {

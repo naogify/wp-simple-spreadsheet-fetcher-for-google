@@ -234,8 +234,6 @@ Class BlockRegistration extends RenderTable{
 		'render_callback' => function ( $attributes,$content ) {
 			$js = file_get_contents(PLUGIN_ROOT_DIR .'src/blocks/fetcher-chart/drawCharts.js');
 			$js = trim($js);
-			// $js = ltrim($js, 'export const drawCharts = () => {');
-			// $js = rtrim($js, '}; ');
 			$js = ltrim($js, 'let props = "";');
 			$js = str_replace("export", "", $js);
 			return '<div id="chart_div">Loading Charts ...</div><script type="text/javascript">let props =' . json_encode($attributes) .';' . $js .'</script>';
