@@ -1,18 +1,18 @@
 const { ToggleControl } = wp.components;
 const { useState } = wp.element;
 
-export const AdvancedToggleControl = props => {
-	const { initialFixedTable, label, helpYes, helpNo, setAttributes } = props;
-	const [hasFixedTable, setHasFixedTable] = useState(initialFixedTable);
+export const AdvancedToggleControl = (props) => {
+	const { label, helpYes, helpNo, schema, setAttributes, attributes } = props;
+	const [value, setValue] = useState(attributes[schema]);
 
 	return (
 		<ToggleControl
 			label={label}
-			help={hasFixedTable ? helpYes : helpNo}
-			checked={hasFixedTable}
+			help={value ? helpYes : helpNo}
+			checked={value}
 			onChange={() => {
-				setAttributes({ hasFixedTable: !hasFixedTable });
-				setHasFixedTable(!hasFixedTable);
+				setAttributes({ [schema]: !value });
+				setValue(!value);
 			}}
 		/>
 	);

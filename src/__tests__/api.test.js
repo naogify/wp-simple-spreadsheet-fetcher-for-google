@@ -4,6 +4,7 @@
 import {
 	formatAPIReturnValue,
 	defineColumnLength,
+	addBaseXAxis,
 } from "../blocks/fetcher-chart/drawCharts";
 
 describe("Test api", () => {
@@ -18,5 +19,16 @@ describe("Test api", () => {
 		const length = 3;
 		const sequenceNumberArray = defineColumnLength(length);
 		expect(sequenceNumberArray).toEqual([0, 1, 2]);
+	});
+
+	test("should create sequence number array", () => {
+		const table = [
+			[0, 1, 2],
+			[0, 1, 2],
+		];
+		expect(addBaseXAxis(table)).toEqual([
+			["", 0, 1, 2],
+			["", 0, 1, 2],
+		]);
 	});
 });

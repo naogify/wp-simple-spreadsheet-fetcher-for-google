@@ -14,9 +14,11 @@ export const drawCharts = (props) => {
 		.then(function (jsonData) {
 			google.charts.load("current", { packages: ["corechart"] });
 			google.charts.setOnLoadCallback(drawChart);
+
 			function drawChart() {
 				let rawData = formatAPIReturnValue(jsonData);
-				// rawData = switchRowColumn(rawData);
+				rawData = addBaseXAxis(rawData);
+				rawData = switchRowColumn(rawData);
 				let data = google.visualization.arrayToDataTable(rawData);
 				let view = new google.visualization.DataView(data);
 
@@ -26,21 +28,21 @@ export const drawCharts = (props) => {
 				let options = {
 					width: 600,
 					height: 400,
-					// legend: { position: "top", maxLines: 3 },
 					bar: { groupWidth: "75%" },
 					isStacked: true,
+					// hAxis: { ticks: [50, 3, 1, 13, 3, 1, 13, 3, 1, 13, 3] },
 					//y軸ラベルを消す
-					vAxis: {
-						textPosition: "none",
-					},
+					// vAxis: {
+					// 	textPosition: "none",
+					// },
 					//x軸ラベルを消す
-					hAxis: {
-						textPosition: "none",
-					},
-					//データ色名を消す
-					legend: {
-						position: "none",
-					},
+					// hAxis: {
+					// 	textPosition: "none",
+					// },
+					// //データ色名を消す
+					// legend: {
+					// 	position: "none",
+					// },
 				};
 
 				let chart = new google.visualization.ColumnChart(
@@ -78,6 +80,13 @@ export const defineColumnLength = (length) => {
 };
 
 export const switchRowColumn = (a) => a[0].map((_, c) => a.map((r) => r[c]));
+
+export const addBaseXAxis = (table) => {
+	return table.map((row) => {
+		row.unshift("");
+		return row;
+	});
+};
 
 if (props) {
 	drawCharts(props);

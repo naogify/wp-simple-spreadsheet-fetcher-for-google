@@ -13,7 +13,7 @@ import { AdvancedRangeControl } from "../../components/advanced-range-control";
 import { TableStyleControl } from "../../components/table-style-control";
 
 addFilter(
-	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.layout.before",
+	"wp-simple-spreadsheet-fetcher-for-google.fetcher.edit.inspector.setting.before",
 	"wp2s2fg/fetcher",
 	(empty, props) => {
 		return <RenderSettings {...props} />;

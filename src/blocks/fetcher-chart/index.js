@@ -1,5 +1,5 @@
 import { registerBlockType } from "@wordpress/blocks";
-import { edit } from "./edit";
+import edit from "./edit";
 
 registerBlockType("wp2s2fg/fetcher-chart", {
 	title: "Fetcher Chart",
@@ -21,6 +21,26 @@ registerBlockType("wp2s2fg/fetcher-chart", {
 		sheetRange: {
 			type: "string",
 			default: "",
+		},
+		switchRowColumn: {
+			type: "boolean",
+			default: false,
+		},
+		hideXAxisLabel: {
+			type: "boolean",
+			default: false,
+		},
+		hideYAxisLabel: {
+			type: "boolean",
+			default: false,
+		},
+		chartType: {
+			type: "string",
+			default: "column",
+		},
+		chartOptions: {
+			type: "string",
+			default: "{}",
 		},
 	},
 	edit,

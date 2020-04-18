@@ -31,7 +31,6 @@ class EntryPoint {
 	}
 
 	public function _callback($request) {
-
 		$sheetId = esc_html($request["sheetId"]);
 		$range = esc_html($request["sheetName"]) . '!' . esc_html($request["sheetRange"]);
 
