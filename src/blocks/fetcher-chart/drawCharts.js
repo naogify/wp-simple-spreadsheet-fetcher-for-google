@@ -16,6 +16,10 @@ export const drawCharts = (props) => {
 			google.charts.setOnLoadCallback(drawChart);
 
 			function drawChart() {
+				if (jsonData.data && jsonData.data.status == 404) {
+					return;
+				}
+
 				let rawData = formatAPIReturnValue(jsonData);
 
 				//Switch Rows / Columns
