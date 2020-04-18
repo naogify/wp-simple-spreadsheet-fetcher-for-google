@@ -3,6 +3,7 @@
 namespace Fetcher\blocks\fetcher\table;
 require(PLUGIN_ROOT_DIR .'vendor/autoload.php');
 use Fetcher\App\Utils\ApiManipulation;
+use Fetcher\App\Utils\FetcherWarning;
 use Fetcher\blocks\fetcher\table\TableDesign;
 
 //レンダーテーブルは関数で書く。他のclassは関数内でインスタンス化して使う。
@@ -23,12 +24,12 @@ class RenderTable extends ApiManipulation {
 		$className    = $attributes['className'];
 
 		if ( !$api_key ) {
-			return $this->api_key_error_notice($api_key);
+			return FetcherWarning::api_key($api_key);
 		}
 		
 		if(!$sheetId){
 			if ( ! $sheetId_deprecated = sanitize_text_field($this->get_spread_sheet_id()) ) {
-				return __( 'Sheet URL is not set. Please set it from the sidebar.', 'wp-simple-spreadsheet-fetcher-for-google' );
+				return FetcherWarning::sheet_url();
 			}
 		}else{
 			$sheetId = preg_replace('/https\:\/\/docs\.google\.com\/spreadsheets\/d\//', '', esc_url($sheetId));
@@ -37,20 +38,20 @@ class RenderTable extends ApiManipulation {
 	
 		if(!$sheetName && !$sheetRange) {
 			if ( ! $range ) {
-				return __( 'Fetch data setting is not set. Please set it from the sidebar.', 'wp-simple-spreadsheet-fetcher-for-google' );
+				return FetcherWarning::sheet_name_range();
 			}
 		}else{
 	
 			if(!$sheetName){
-				return __( 'Sheet Name is not set. Please set it from the sidebar. Example : Sheet1', 'wp-simple-spreadsheet-fetcher-for-google' );
+				return FetcherWarning::sheet_name();
 	
 			}else if(!$sheetRange){
 	
 				if($block === 'wp2s2fg/fetcher'){
-					return __( 'Cell or Range is not set. Please set it from the sidebar. Example : A1:A5', 'wp-simple-spreadsheet-fetcher-for-google' );
+					return FetcherWarning::sheet_range_fetcher();
 	
 				}elseif($block === 'wp2s2fg/fetcher-item'){
-					return __( 'Cell is not set. Please set it from the sidebar. Example : A1', 'wp-simple-spreadsheet-fetcher-for-google' );
+					return FetcherWarning::sheet_cell_fetcher_item();
 					
 				}
 			}
@@ -175,13 +176,6 @@ class RenderTable extends ApiManipulation {
 			}
 		}
 		return $data;
-	}
-
-	public function api_key_error_notice($api_key){
-	
-			$url = admin_url( 'admin.php?page=wsgsf_settings' );
-			$url = '<a href="' . esc_url( $url ) . '">' . __( 'settings.' ) . '</a>';
-			return __( 'API-KEY is not set Please set it at the ', 'wp-simple-spreadsheet-fetcher-for-google' ) . $url;
 	}
 }
 ?>

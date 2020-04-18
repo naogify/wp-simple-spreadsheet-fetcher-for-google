@@ -3,138 +3,138 @@ const { registerBlockType } = wp.blocks;
 import edit from "./edit";
 
 registerBlockType("wp2s2fg/fetcher", {
-	title: __("Fetcher", "wp-simple-spreadsheet-fetcher-for-google"),
+	title: __("Table", "wp-simple-spreadsheet-fetcher-for-google"),
 	icon: "smiley",
 	category: "wp2s2fg-blocks-cat",
 	supports: {
 		className: true,
-		html: false
+		html: false,
 	},
 	attributes: {
 		className: {
 			type: "string",
-			default: ""
+			default: "",
 		},
 		sheetId: {
 			type: "string",
-			default: ""
+			default: "",
 		},
 		sheetName: {
 			type: "string",
-			default: ""
+			default: "",
 		},
 		sheetRange: {
 			type: "string",
-			default: ""
+			default: "",
 		},
 		//This attributes is deprecated since v0.2.8.
 		range: {
 			type: "string",
-			default: ""
+			default: "",
 		},
 		hasFixedTable: {
 			type: "boolean",
-			default: false
+			default: false,
 		},
 		thFontSize: {
 			type: "number",
-			default: 16
+			default: 16,
 		},
 		thFontUnit: {
 			type: "string",
-			default: "px"
+			default: "px",
 		},
 		thLineHeight: {
 			type: "number",
-			default: 1
+			default: 1,
 		},
 		thLetterSpace: {
 			type: "number",
-			default: 1
+			default: 1,
 		},
 		thLetterSpaceUnit: {
 			type: "string",
-			default: "px"
+			default: "px",
 		},
 		thFontWeight: {
 			type: "string",
-			default: "normal"
+			default: "normal",
 		},
 		thFontColor: {
 			type: "string",
-			default: "inherit"
+			default: "inherit",
 		},
 		thBgColor: {
 			type: "string",
-			default: "#fff"
+			default: "#fff",
 		},
 		thAlign: {
 			type: "string",
-			default: "left"
+			default: "left",
 		},
 		tbFontSize: {
 			type: "number",
-			default: 16
+			default: 16,
 		},
 		tbFontUnit: {
 			type: "string",
-			default: "px"
+			default: "px",
 		},
 		tbLineHeight: {
 			type: "number",
-			default: 1
+			default: 1,
 		},
 		tbLetterSpace: {
 			type: "number",
-			default: 1
+			default: 1,
 		},
 		tbLetterSpaceUnit: {
 			type: "string",
-			default: "px"
+			default: "px",
 		},
 		tbFontWeight: {
 			type: "string",
-			default: "normal"
+			default: "normal",
 		},
 		tbFontColor: {
 			type: "string",
-			default: "inherit"
+			default: "inherit",
 		},
 		tbBgColor: {
 			type: "string",
-			default: "#fff"
+			default: "#fff",
 		},
 		tbAlign: {
 			type: "string",
-			default: "left"
+			default: "left",
 		},
 		borderStyle: {
 			type: "string",
-			default: "solid"
+			default: "solid",
 		},
 		borderColor: {
 			type: "string",
-			default: "#ccc"
+			default: "#ccc",
 		},
 		borderWidth: {
 			type: "number",
-			default: 1
+			default: 1,
 		},
 		borderUnit: {
 			type: "string",
-			default: "px"
+			default: "px",
 		},
 		borderLayout: {
 			type: "string",
-			default: "table-full"
+			default: "table-full",
 		},
 		isPanelBodyOpen: {
 			type: "string",
-			default: "general"
-		}
+			default: "general",
+		},
 	},
 	edit,
 	save() {
 		return null;
-	}
+	},
 });
