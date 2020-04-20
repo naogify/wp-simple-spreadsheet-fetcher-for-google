@@ -64,7 +64,7 @@ addFilter(
 									className={"components-base-control__label"}
 								>
 									{__(
-										"Hide Y-Axis Label",
+										"Hide Data Category Label",
 										"wp-simple-spreadsheet-fetcher-for-google"
 									)}
 								</span>

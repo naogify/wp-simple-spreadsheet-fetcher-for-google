@@ -2,7 +2,7 @@
 
 namespace Fetcher\App\Utils;
 
-trait FetcherWarning{
+class FetcherWarning{
 
 	public static function api_key($api_key){
 	

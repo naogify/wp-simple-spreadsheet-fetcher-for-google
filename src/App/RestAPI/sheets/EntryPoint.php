@@ -1,5 +1,6 @@
 <?php
 namespace Fetcher\App\RestAPI\Sheets;
+use Fetcher\App\Utils\FetcherWarning;
 
 class EntryPoint {
 
@@ -23,19 +24,44 @@ class EntryPoint {
 			[
 				'methods'  => 'GET',
 				'callback' => [ $this, '_callback' ],
-				// 'permission_callback' => function () {
-				// 	return current_user_can( 'edit_posts' );
-				// },
 			]
 		);
 	}
 
 	public function _callback($request) {
+
 		$sheetId = esc_html($request["sheetId"]);
-		$range = esc_html($request["sheetName"]) . '!' . esc_html($request["sheetRange"]);
+		$sheetName = esc_html($request["sheetName"]);
+		$sheetRange = esc_html($request["sheetRange"]);
+		$warning = ["data"=>["status"=>404,"message"=>""]];
+
+		if($this->is_str_null($sheetId)){
+			$warning["data"]["message"] = FetcherWarning::sheet_url();
+			return $warning;
+		}
+
+		if($this->is_str_null($sheetName) && $this->is_str_null($sheetRange)) {
+			$warning["data"]["message"] = FetcherWarning::sheet_name_range();
+			return $warning;
+
+		}else{
+			if($this->is_str_null($sheetName)){
+				$warning["data"]["message"] = FetcherWarning::sheet_name();
+				return $warning;
+
+			}else if($this->is_str_null($sheetRange)){
+				$warning["data"]["message"] = FetcherWarning::sheet_range_fetcher();
+				return $warning;
+			}
+			$range = esc_html($sheetName) . '!' . esc_html($sheetRange);
+		}
 
 		$response = $this->service->spreadsheets_values->get($sheetId, $range );
 		$values   = $response->getValues();
 		return rest_ensure_response($values);
+	}
+
+	public function is_str_null($value){
+		return $value === "null";
 	}
 }

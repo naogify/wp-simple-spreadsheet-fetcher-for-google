@@ -4,9 +4,10 @@ export const drawCharts = (props) => {
 		"/wp-json/api-charts/v1/data-table/" +
 		sanitizeSheetId(props.sheetId) +
 		"/" +
-		encodeURI(props.sheetName) +
+		(encodeURI(props.sheetName) || null) +
 		"/" +
-		encodeURI(props.sheetRange);
+		(encodeURI(props.sheetRange) || null);
+
 	fetch(url)
 		.then(function (response) {
 			return response.json();
@@ -16,7 +17,10 @@ export const drawCharts = (props) => {
 			google.charts.setOnLoadCallback(drawChart);
 
 			function drawChart() {
+				console.log(jsonData);
 				if (jsonData.data && jsonData.data.status == 404) {
+					document.getElementById("chart_div").textContent =
+						jsonData.data.message;
 					return;
 				}
 
@@ -71,15 +75,15 @@ export const drawCharts = (props) => {
 				chart.draw(view, options);
 			}
 		});
+};
 
-	function sanitizeSheetId(sheetUrl) {
-		const regex = /\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/;
-		let sheetId = sheetUrl.match(regex);
-		if (sheetId !== null) {
-			sheetId = sheetId[0].replace(/\/spreadsheets\/d\//, "");
-		}
-		return sheetId;
+export const sanitizeSheetId = (sheetUrl) => {
+	const regex = /\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/;
+	let sheetId = sheetUrl.match(regex);
+	if (sheetId !== null) {
+		sheetId = sheetId[0].replace(/\/spreadsheets\/d\//, "");
 	}
+	return sheetId;
 };
 
 export const formatAPIReturnValue = (jsonData) => {

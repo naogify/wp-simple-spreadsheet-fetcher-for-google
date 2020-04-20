@@ -21,6 +21,7 @@ use Fetcher\App\Utils\ApiManipulation;
 use Fetcher\App\RestAPI\Sheets\EntryPoint;
 
 define( "PLUGIN_ROOT_DIR", plugin_dir_path(  __FILE__  ));
+define( "PLUGIN_URL", plugins_url( __FILE__));
 define( "BUILD_DIR", PLUGIN_ROOT_DIR . 'build/' );
 define( "ASSETS_DIR", PLUGIN_ROOT_DIR . 'src/assets/' );
 
