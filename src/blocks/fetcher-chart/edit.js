@@ -1,5 +1,5 @@
 const { __ } = wp.i18n;
-const { PanelBody, BaseControl } = wp.components;
+const { PanelBody, BaseControl, TextControl } = wp.components;
 import { drawCharts } from "./drawCharts";
 import { addFilter } from "@wordpress/hooks";
 import { RenderSettings } from "../../components/fetcher-control";
@@ -20,6 +20,7 @@ addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher-chart.edit.inspector.advanced.before",
 	"wp2s2fg/fetcher-chart",
 	(empty, props) => {
+		console.log(props);
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -71,6 +72,44 @@ addFilter(
 								<AdvancedToggleControl
 									schema={"hideYAxisLabel"}
 									{...props}
+								/>
+							</BaseControl>
+						</PanelBody>
+						<PanelBody
+							title={__(
+								"Size",
+								"wp-simple-spreadsheet-fetcher-for-google"
+							)}
+							initialOpen={true}
+						>
+							<BaseControl>
+								<span
+									className={"components-base-control__label"}
+								>
+									{__(
+										"Width",
+										"wp-simple-spreadsheet-fetcher-for-google"
+									)}
+								</span>
+								<TextControl
+									value={props.attributes.chartWidth}
+									onChange={(value) => props.setAttributes({ chartWidth: parseInt(value, 10) })}
+									type="number"
+								/>
+							</BaseControl>
+							<BaseControl>
+								<span
+									className={"components-base-control__label"}
+								>
+									{__(
+										"Height",
+										"wp-simple-spreadsheet-fetcher-for-google"
+									)}
+								</span>
+								<TextControl
+									value={props.attributes.chartHeight}
+									onChange={(value) => props.setAttributes({ chartHeight: parseInt(value, 10) })}
+									type="number"
 								/>
 							</BaseControl>
 						</PanelBody>

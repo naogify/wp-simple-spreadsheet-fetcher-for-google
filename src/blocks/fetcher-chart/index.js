@@ -42,6 +42,14 @@ registerBlockType("wp2s2fg/fetcher-chart", {
 			type: "string",
 			default: "{}",
 		},
+		chartWidth: {
+			type: "number",
+			default: null,
+		},
+		chartHeight: {
+			type: "number",
+			default: null,
+		}
 	},
 	edit,
 });

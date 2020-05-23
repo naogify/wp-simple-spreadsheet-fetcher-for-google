@@ -1,12 +1,17 @@
 let props = "";
 export const drawCharts = (props) => {
+
 	let url =
 		"/wp-json/api-charts/v1/data-table/" +
 		sanitizeSheetId(props.sheetId) +
 		"/" +
 		(encodeURI(props.sheetName) || null) +
 		"/" +
-		(encodeURI(props.sheetRange) || null);
+		(encodeURI(props.sheetRange) || null) +
+		"/" +
+		encodeURI(props.chartWidth) +
+		"/" +
+		encodeURI(props.chartHeight);
 
 	fetch(url)
 		.then(function (response) {
@@ -17,14 +22,13 @@ export const drawCharts = (props) => {
 			google.charts.setOnLoadCallback(drawChart);
 
 			function drawChart() {
-				console.log(jsonData);
 				if (jsonData.data && jsonData.data.status == 404) {
 					document.getElementById("chart_div").textContent =
 						jsonData.data.message;
 					return;
 				}
 
-				let rawData = formatAPIReturnValue(jsonData);
+				let rawData = formatAPIReturnValue(jsonData.chartData);
 
 				//Switch Rows / Columns
 				if (props.switchRowColumn) {
@@ -43,9 +47,11 @@ export const drawCharts = (props) => {
 				const columnNum = defineColumnLength(rawData[0].length);
 				view.setColumns(columnNum);
 
+				console.log(props);
+				//Set the property
 				let options = {
-					width: 600,
-					height: 400,
+					width: setValidValue("chartWidth", 600, props),
+					height: setValidValue("chartHeight", 400, props),
 					bar: {
 						groupWidth: "75%",
 					},
@@ -122,6 +128,24 @@ export const addItemToObject = (original, addItem = { someting: true }) => {
 export const arrayItemsIsString = (row) => {
 	return row.find((item) => typeof item !== "string") === undefined;
 };
+
+export const setValidValue = (schema, defaultValue, props) => {
+	if (props.hasOwnProperty('attributes') && props.attributes[schema]) {
+		console.log("------1--------");
+		console.log(props.attributes[schema]);
+		return props.attributes[schema];
+	} else if (props[schema]) {
+		console.log("------2--------");
+		console.log(props[schema]);
+		return props[schema];
+	} else {
+		console.log("------3--------");
+		console.log(props);
+		console.log(props[schema]);
+		console.log(defaultValue);
+		return defaultValue;
+	}
+}
 
 if (props) {
 	drawCharts(props);

@@ -6,11 +6,13 @@ class EntryPoint {
 
 	private $service;
 
-	const REST_API_NAMESPACE = 'api-charts/v1';
-	const REST_API_ROUTE = '/data-table';
-	const REST_API_PARAM_SHEETID = '/(?P<sheetId>.+)';
-	const REST_API_PARAM_SHEETNAME = '/(?P<sheetName>.+)';
-	const REST_API_PARAM_SHEETRANGE = '/(?P<sheetRange>.+)';
+	const NAMESPACE = 'api-charts/v1';
+	const ROUTE = '/data-table';
+	const PARAM_SHEETID = '/(?P<sheetId>.+)';
+	const PARAM_SHEETNAME = '/(?P<sheetName>.+)';
+	const PARAM_SHEETRANGE = '/(?P<sheetRange>.+)';
+	const PARAM_CHARTWIDTH = '/(?P<chartWidth>.+)';
+	const PARAM_CHARTHEIGHT = '/(?P<chartHeight>.+)';
 
 	public function __construct($service) {
 		$this->service = $service;
@@ -19,8 +21,8 @@ class EntryPoint {
 
 	public function _rest_api_init() {
 		register_rest_route(
-			self::REST_API_NAMESPACE,
-			self::REST_API_ROUTE . self::REST_API_PARAM_SHEETID . self::REST_API_PARAM_SHEETNAME . self::REST_API_PARAM_SHEETRANGE,
+			self::NAMESPACE,
+			self::ROUTE . self::PARAM_SHEETID . self::PARAM_SHEETNAME . self::PARAM_SHEETRANGE . self::PARAM_CHARTWIDTH . self::PARAM_CHARTHEIGHT,
 			[
 				'methods'  => 'GET',
 				'callback' => [ $this, '_callback' ],
@@ -33,6 +35,8 @@ class EntryPoint {
 		$sheetId = esc_html($request["sheetId"]);
 		$sheetName = esc_html($request["sheetName"]);
 		$sheetRange = esc_html($request["sheetRange"]);
+		$chartWidth = intval($request["chartWidth"]);
+		$chartHeight = intval($request["chartHeight"]);
 		$warning = ["data"=>["status"=>404,"message"=>""]];
 
 		if($this->is_str_null($sheetId)){
@@ -58,7 +62,7 @@ class EntryPoint {
 
 		$response = $this->service->spreadsheets_values->get($sheetId, $range );
 		$values   = $response->getValues();
-		return rest_ensure_response($values);
+		return rest_ensure_response(["attributes" => ["chartWidth" => $chartWidth, "chartHeight" => $chartHeight],"chartData"=>$values]);
 	}
 
 	public function is_str_null($value){

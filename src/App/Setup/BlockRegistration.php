@@ -255,7 +255,7 @@ Class BlockRegistration extends RenderTable{
 	}
 
 	public function register_block_scripts() {
-		wp_enqueue_script( 'google-charts', PLUGIN_URL .'src/blocks/fetcher-chart/googleChart.js', array(), '1.0.0', false );
+		wp_enqueue_script( 'google-charts', PLUGIN_URL .'/wp-simple-spreadsheet-fetcher-for-google/src/blocks/fetcher-chart/googleChart.js', array(), '1.0.0', false );
 	}
 
 }
