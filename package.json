@@ -4,7 +4,8 @@
   "description": "wp-simple-google-sheets-fetcher",
   "main": "blocks/build/index.js",
   "scripts": {
-    "start": "composer install && npx wp-env start",
+    "postinstall": "composer install",
+    "start": "npx wp-env start",
     "build": "wp-scripts build",
     "build:dev": "wp-scripts build --mode=development",
     "translate": "po2json languages/wp-simple-spreadsheet-fetcher-for-google-ja.po languages/wp-simple-spreadsheet-fetcher-for-google-ja-wp2s2fg-fetcher.json -f jed",
