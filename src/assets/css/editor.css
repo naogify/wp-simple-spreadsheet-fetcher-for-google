@@ -38,7 +38,8 @@
 	color: #abb8c3;
 	text-decoration: none;
 }
-.wssffg-advanced-button-group_unit .components-button.is-pressed {
+.wssffg-advanced-button-group_unit .components-button.is-pressed,
+.wssffg-advanced-button-group_align .components-button.is-pressed {
 	color: #333;
 	text-decoration: underline;
 }
@@ -81,4 +82,11 @@
 	background: linear-gradient(180deg, #fafafa, #fff 70%);
 	border-bottom: 0;
 	box-shadow: inset 0 -3px #0085ba !important;
+}
+/*Backward Comapitbility under 5.4*/
+.components-toolbar__control.components-button:not(:disabled).is-pressed > svg {
+	outline: none;
+	color: #fff;
+	box-shadow: none;
+	background: #555d66;
 }
