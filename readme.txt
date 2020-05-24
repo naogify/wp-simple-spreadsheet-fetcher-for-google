@@ -34,6 +34,13 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.6.9 =
+- Introduce Chart block.
+- Change minimum required version 5.0 to 5.3.
+
+= 0.6.8=
+- Add css backward compatibility.
+
 = 0.6.4 =
 - Fix sidebar css for WordPress5.4
 - Simplify sidebar UI.
