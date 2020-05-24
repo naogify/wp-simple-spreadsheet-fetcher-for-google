@@ -1,0 +1,13 @@
+#wp2s2fg_api_spreadsheetId_form {
+	display: flex;
+	flex-direction: column;
+	max-width: 410px;
+}
+
+#wp2s2fg_api_spreadsheetId_form input {
+	margin: 10px 0;
+}
+
+.wp2s2fg_api_spreadsheetId_form_label {
+	font-weight: 900;
+}

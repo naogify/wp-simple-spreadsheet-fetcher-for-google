@@ -1,9 +1,9 @@
 === WP Simple Spreadsheet Fetcher for Google ===
 Contributors: naoki0h
 Tags: fetcher, api, Google Sheets
-Requires at least: 5.0
+Requires at least: 5.3
 Tested up to: 5.4
-Stable tag: 0.6.8
+Stable tag: 0.6.7.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,9 +34,6 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
-= 0.6.8 =
-- Add css backward compatibility.
-
 = 0.6.4 =
 - Fix sidebar css for WordPress5.4
 - Simplify sidebar UI.
@@ -46,7 +43,7 @@ If you have anything to tell me, please post it on the plugin's support forum or
 - Fix css.
 
 = 0.6.0 =
-- Add sidebar settings to customize table style 
+- Add sidebar settings to customize table style
 - Deprecated css style.
 
 = 0.5.2 =
@@ -130,5 +127,3 @@ First commit.
 
 = 0.1.0 =
 First commit.
-
-This plugin has backward compatibility.
