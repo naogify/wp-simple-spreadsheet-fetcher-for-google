@@ -18,7 +18,7 @@ require('vendor/autoload.php');
 use Fetcher\App\Setup\ApiSettingScreen;
 use Fetcher\App\Setup\BlockRegistration;
 use Fetcher\App\Utils\ApiManipulation;
-use Fetcher\App\RestAPI\Sheets\EntryPoint;
+use Fetcher\App\RestAPI\sheets\EntryPoint;
 
 define( "PLUGIN_ROOT_DIR", plugin_dir_path(  __FILE__  ));
 define( "PLUGIN_URL", plugins_url());
