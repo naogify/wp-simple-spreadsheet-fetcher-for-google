@@ -34,7 +34,7 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
-= 0.7.0 =
+= 0.7.1 =
 - Introduce Chart block.
 - Change minimum required version 5.0 to 5.3.
 
