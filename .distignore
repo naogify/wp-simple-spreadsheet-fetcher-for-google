@@ -35,3 +35,6 @@ node_modules
 .github
 .github/workflows
 .wordpress-org
+tools
+src/__tests__
+.wp-env.json
