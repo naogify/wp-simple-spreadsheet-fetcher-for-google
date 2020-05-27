@@ -3,7 +3,7 @@
 **Tags:** fetcher, api, Google Sheets  
 **Requires at least:** 5.3  
 **Tested up to:** 5.4  
-**Stable tag:** 0.6.9  
+**Stable tag:** 0.7.0  
 **License:** GPLv3 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -34,7 +34,7 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 ## Changelog ##
 
-### 0.6.9 ###
+### 0.7.0 ###
 - Introduce Chart block.
 - Change minimum required version 5.0 to 5.3.
 
