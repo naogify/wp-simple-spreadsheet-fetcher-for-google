@@ -34,6 +34,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.7.3 =
+- Add notification for turning on sharing setting.
+
 = 0.7.2 =
 - Translate button text in api key setting page.
 
