@@ -5,14 +5,14 @@ namespace Fetcher\App\Utils;
 class FetcherWarning{
 
 	public static function api_key($api_key){
-	
+
 		$url = admin_url( 'admin.php?page=wsgsf_settings' );
 		$url = '<a href="' . esc_url( $url ) . '">' . __( 'settings.' ) . '</a>';
 		return __( 'API-KEY is not set Please set it at the ', 'wp-simple-spreadsheet-fetcher-for-google' ) . $url;
 	}
 
 	public static function sheet_url(){
-		return __( 'Sheet URL is not set. Please set it from the sidebar.', 'wp-simple-spreadsheet-fetcher-for-google' );
+		return __( 'Sheet URL is not set. Please set it from the sidebar.  IMPORTANT : Please change the sheet sharing settings to "Anyone with the link", this plugin dose not work with "Restricted" sheets.', 'wp-simple-spreadsheet-fetcher-for-google' );
 	}
 
 	public static function sheet_name_range(){
