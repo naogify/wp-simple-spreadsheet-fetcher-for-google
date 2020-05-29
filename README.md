@@ -3,7 +3,7 @@
 **Tags:** fetcher, api, Google Sheets  
 **Requires at least:** 5.3  
 **Tested up to:** 5.4  
-**Stable tag:** 0.7.2  
+**Stable tag:** 0.7.3  
 **License:** GPLv3 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -33,6 +33,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 1. Fetch and display data from Google Sheets.
 
 ## Changelog ##
+
+### 0.7.3 ###
+- Add notification for turning on sharing setting.
 
 ### 0.7.2 ###
 - Translate button text in api key setting page.
