@@ -50,7 +50,7 @@ public function render_settings_page( $message ) {
     $html .= '<form id="wp2s2fg_api_spreadsheetId_form" action="' . htmlspecialchars( $_SERVER["PHP_SELF"] . '?' . $_SERVER["QUERY_STRING"] ) . '" method="POST" >';
     $html .= '<div class="wp2s2fg_api_spreadsheetId_form_label">' . __( "API Key : ", 'wp-simple-spreadsheet-fetcher-for-google' ) .'</div><input type="text" name="api_key" placeholder="API-Key" value="' . esc_html( $api_key ) . '" required />';
     $html .= '<br>';
-    $html .= '<input type="submit" value="Set Configuration Info" />';
+    $html .= '<input type="submit" value="' . __( "Set Configuration Info", 'wp-simple-spreadsheet-fetcher-for-google' ) .'" />';
     $html .= wp_nonce_field( wp_create_nonce( __FILE__ ), 'wp-simple-spreadsheet-fetcher-for-google-nonce' );
     $html .= '</form >';
     $html .= '<br>';

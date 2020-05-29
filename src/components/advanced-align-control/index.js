@@ -13,7 +13,7 @@ export const AdvancedAlignControl = props => {
 	function createAlignControl(align) {
 		return {
 			icon: `editor-align${align}`,
-			title: __(`Align ${align}`, "vk-blocks"),
+			title: __(`Align ${align}`, "wp-simple-spreadsheet-fetcher-for-google"),
 			isActive: activeControl === align,
 			onClick: () => {
 				setActiveControl(align);
