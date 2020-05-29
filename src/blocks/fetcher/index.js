@@ -1,9 +1,9 @@
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 const { registerBlockType } = wp.blocks;
 import edit from "./edit";
 
 registerBlockType("wp2s2fg/fetcher", {
-	title: __("Table", "wp-simple-spreadsheet-fetcher-for-google"),
+	title: __("Table","wp-simple-spreadsheet-fetcher-for-google"),
 	icon: "smiley",
 	category: "wp2s2fg-blocks-cat",
 	supports: {

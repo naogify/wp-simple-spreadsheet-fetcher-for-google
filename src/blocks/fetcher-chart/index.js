@@ -1,8 +1,9 @@
 import { registerBlockType } from "@wordpress/blocks";
 import edit from "./edit";
+import { __ } from "@wordpress/i18n";
 
 registerBlockType("wp2s2fg/fetcher-chart", {
-	title: "Chart",
+	title: __("Chart","wp-simple-spreadsheet-fetcher-for-google"),
 	icon: "smiley",
 	category: "wp2s2fg-blocks-cat",
 	attributes: {
