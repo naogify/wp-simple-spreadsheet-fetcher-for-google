@@ -8,6 +8,7 @@ License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 This is the simple plugin to fetch data from Google Sheets and display it on your website.
+This plugin only works with Block Editor, doesn't support Classic Editor.
 
 == How to use ==
 
