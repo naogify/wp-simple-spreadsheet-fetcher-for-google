@@ -7,10 +7,10 @@
  * Author URI:      https://naoki-is-me
  * Text Domain:     wp-simple-spreadsheet-fetcher-for-google
  * Domain Path:     /languages
- * Version: 0.7.3
+ * Version: 0.7.5
  *
  * @package         Wp_Simple_Spreadsheet_Fetcher_for_Google
- * @version 0.7.3
+ * @version 0.7.5
  */
 
 defined( 'ABSPATH' ) || exit;

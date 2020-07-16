@@ -3,11 +3,12 @@
 **Tags:** fetcher, api, Google Sheets  
 **Requires at least:** 5.3  
 **Tested up to:** 5.4  
-**Stable tag:** 0.7.3  
+**Stable tag:** 0.7.5  
 **License:** GPLv3 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
 This is the simple plugin to fetch data from Google Sheets and display it on your website.
+This plugin only works with Block Editor, doesn't support Classic Editor.
 
 ## How to use ##
 
@@ -33,6 +34,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 1. Fetch and display data from Google Sheets.
 
 ## Changelog ##
+
+### 0.7.5 ###
+- Fix bug.
 
 ### 0.7.3 ###
 - Add notification for turning on sharing setting.
