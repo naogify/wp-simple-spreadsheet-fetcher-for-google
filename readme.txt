@@ -35,6 +35,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.7.4 =
+- Fix bug.
+
 = 0.7.3 =
 - Add notification for turning on sharing setting.
 
