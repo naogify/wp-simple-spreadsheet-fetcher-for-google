@@ -184,8 +184,8 @@ Class BlockRegistration extends RenderTable{
 			]
 		],
 		'render_callback' => function ( $attributes ) {
-			$attributes = array_merge($attributes,['block' => 'wp2s2fg/fetcher']);	
-			return $this->get_selected_value( $attributes,$this->service,$this->api_key );
+			$attributes = array_merge($attributes,['block' => 'wp2s2fg/fetcher']);
+			return $this->get_selected_value( $attributes, $this->service, $this->api_key );
 		},
 	) );
 
@@ -223,10 +223,10 @@ Class BlockRegistration extends RenderTable{
 		],
 		'render_callback' => function ( $attributes ) {
 			$attributes = array_merge($attributes,['block' => 'wp2s2fg/fetcher-item']);
-			return $this->get_selected_value( $attributes );
+			return $this->get_selected_value( $attributes, $this->service, $this->api_key );
 		},
 	) );
-	
+
 	register_block_type( 'wp2s2fg/fetcher-chart', array(
 		'editor_script' => 'wp2s2fg-fetcher',
 		'editor_style'  => 'wp2s2fg-fetcher-style-editor',
