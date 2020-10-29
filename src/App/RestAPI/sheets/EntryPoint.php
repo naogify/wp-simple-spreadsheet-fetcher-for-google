@@ -26,6 +26,7 @@ class EntryPoint {
 			[
 				'methods'  => 'GET',
 				'callback' => [ $this, '_callback' ],
+				'permission_callback' => '__return_true',
 			]
 		);
 	}
