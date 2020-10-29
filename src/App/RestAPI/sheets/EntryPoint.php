@@ -17,6 +17,8 @@ class EntryPoint {
 	public function __construct( $service ) {
 		$this->service = $service;
 		add_action( 'rest_api_init', [ $this, '_rest_api_init' ] );
+		add_action( 'wp_head', [ $this, 'print_rest_url' ] );
+		add_action( 'admin_head', [ $this, 'print_rest_url' ] );
 	}
 
 	public function _rest_api_init() {
@@ -68,5 +70,12 @@ class EntryPoint {
 
 	public function is_str_null($value){
 		return $value === "null";
+	}
+
+	public function print_rest_url(){
+
+		echo '<script>',
+			'var wssffg_rest_url = "' . esc_url(get_rest_url()) . '";',
+		'</script>';
 	}
 }

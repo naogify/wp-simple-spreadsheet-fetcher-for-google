@@ -1,7 +1,7 @@
 let props = "";
 export const drawCharts = (props) => {
 	let url =
-		"/wp-json/api-charts/v1/data-table/" +
+		window.wssffg_rest_url + "api-charts/v1/data-table/" +
 		sanitizeSheetId(props.sheetId) +
 		"/" +
 		(encodeURI(props.sheetName) || null) +
@@ -46,7 +46,6 @@ export const drawCharts = (props) => {
 				const columnNum = defineColumnLength(rawData[0].length);
 				view.setColumns(columnNum);
 
-				console.log(props);
 				//Set the property
 				let options = {
 					width: setValidValue("chartWidth", 600, props),
