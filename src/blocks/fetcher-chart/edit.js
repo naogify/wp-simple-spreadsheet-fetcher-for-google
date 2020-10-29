@@ -20,7 +20,6 @@ addFilter(
 	"wp-simple-spreadsheet-fetcher-for-google.fetcher-chart.edit.inspector.advanced.before",
 	"wp2s2fg/fetcher-chart",
 	(empty, props) => {
-		console.log(props);
 		return (
 			<Fragment>
 				<InspectorControls>

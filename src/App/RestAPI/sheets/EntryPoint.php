@@ -14,7 +14,7 @@ class EntryPoint {
 	const PARAM_CHARTWIDTH = '/(?P<chartWidth>.+)';
 	const PARAM_CHARTHEIGHT = '/(?P<chartHeight>.+)';
 
-	public function __construct($service) {
+	public function __construct( $service ) {
 		$this->service = $service;
 		add_action( 'rest_api_init', [ $this, '_rest_api_init' ] );
 	}
@@ -31,7 +31,7 @@ class EntryPoint {
 		);
 	}
 
-	public function _callback($request) {
+	public function _callback( $request ) {
 
 		$sheetId = esc_html($request["sheetId"]);
 		$sheetName = esc_html($request["sheetName"]);
@@ -63,7 +63,7 @@ class EntryPoint {
 
 		$response = $this->service->spreadsheets_values->get($sheetId, $range );
 		$values   = $response->getValues();
-		return rest_ensure_response(["attributes" => ["chartWidth" => $chartWidth, "chartHeight" => $chartHeight],"chartData"=>$values]);
+		return rest_ensure_response( [ "attributes" => [ "chartWidth" => $chartWidth, "chartHeight" => $chartHeight ],"chartData"=>$values ] );
 	}
 
 	public function is_str_null($value){
