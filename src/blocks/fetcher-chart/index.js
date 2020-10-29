@@ -45,11 +45,11 @@ registerBlockType("wp2s2fg/fetcher-chart", {
 		},
 		chartWidth: {
 			type: "number",
-			default: null,
+			default: 600,
 		},
 		chartHeight: {
 			type: "number",
-			default: null,
+			default: 400,
 		}
 	},
 	edit,

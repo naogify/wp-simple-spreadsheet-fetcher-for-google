@@ -1,8 +1,7 @@
 let props = "";
 export const drawCharts = (props) => {
-
 	let url =
-		"/wp-json/api-charts/v1/data-table/" +
+		window.wssffg_rest_url + "api-charts/v1/data-table/" +
 		sanitizeSheetId(props.sheetId) +
 		"/" +
 		(encodeURI(props.sheetName) || null) +
@@ -47,7 +46,6 @@ export const drawCharts = (props) => {
 				const columnNum = defineColumnLength(rawData[0].length);
 				view.setColumns(columnNum);
 
-				console.log(props);
 				//Set the property
 				let options = {
 					width: setValidValue("chartWidth", 600, props),
@@ -131,18 +129,10 @@ export const arrayItemsIsString = (row) => {
 
 export const setValidValue = (schema, defaultValue, props) => {
 	if (props.hasOwnProperty('attributes') && props.attributes[schema]) {
-		console.log("------1--------");
-		console.log(props.attributes[schema]);
 		return props.attributes[schema];
 	} else if (props[schema]) {
-		console.log("------2--------");
-		console.log(props[schema]);
 		return props[schema];
 	} else {
-		console.log("------3--------");
-		console.log(props);
-		console.log(props[schema]);
-		console.log(defaultValue);
 		return defaultValue;
 	}
 }

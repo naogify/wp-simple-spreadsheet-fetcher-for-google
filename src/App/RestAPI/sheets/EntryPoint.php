@@ -14,9 +14,11 @@ class EntryPoint {
 	const PARAM_CHARTWIDTH = '/(?P<chartWidth>.+)';
 	const PARAM_CHARTHEIGHT = '/(?P<chartHeight>.+)';
 
-	public function __construct($service) {
+	public function __construct( $service ) {
 		$this->service = $service;
 		add_action( 'rest_api_init', [ $this, '_rest_api_init' ] );
+		add_action( 'wp_head', [ $this, 'print_rest_url' ] );
+		add_action( 'admin_head', [ $this, 'print_rest_url' ] );
 	}
 
 	public function _rest_api_init() {
@@ -26,11 +28,12 @@ class EntryPoint {
 			[
 				'methods'  => 'GET',
 				'callback' => [ $this, '_callback' ],
+				'permission_callback' => '__return_true',
 			]
 		);
 	}
 
-	public function _callback($request) {
+	public function _callback( $request ) {
 
 		$sheetId = esc_html($request["sheetId"]);
 		$sheetName = esc_html($request["sheetName"]);
@@ -62,10 +65,17 @@ class EntryPoint {
 
 		$response = $this->service->spreadsheets_values->get($sheetId, $range );
 		$values   = $response->getValues();
-		return rest_ensure_response(["attributes" => ["chartWidth" => $chartWidth, "chartHeight" => $chartHeight],"chartData"=>$values]);
+		return rest_ensure_response( [ "attributes" => [ "chartWidth" => $chartWidth, "chartHeight" => $chartHeight ],"chartData"=>$values ] );
 	}
 
 	public function is_str_null($value){
 		return $value === "null";
+	}
+
+	public function print_rest_url(){
+
+		echo '<script>',
+			'var wssffg_rest_url = "' . esc_url(get_rest_url()) . '";',
+		'</script>';
 	}
 }

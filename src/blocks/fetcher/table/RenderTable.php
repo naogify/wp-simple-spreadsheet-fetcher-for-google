@@ -12,7 +12,11 @@ use Fetcher\blocks\fetcher\table\TableDesign;
 class RenderTable extends ApiManipulation {
 
 	use TableDesign;
-	
+
+	public function get_attributes_value( $key, $array, $default = "" ) {
+		return array_key_exists( $key, $array ) ? $array[$key] : $default;
+	}
+
 	public function get_selected_value( $attributes, $service, $api_key ) {
 
 		$block     = $attributes['block'];
@@ -26,7 +30,7 @@ class RenderTable extends ApiManipulation {
 		if ( !$api_key ) {
 			return FetcherWarning::api_key($api_key);
 		}
-		
+
 		if(!$sheetId){
 			if ( ! $sheetId_deprecated = sanitize_text_field($this->get_spread_sheet_id()) ) {
 				return FetcherWarning::sheet_url();
@@ -35,24 +39,24 @@ class RenderTable extends ApiManipulation {
 			$sheetId = preg_replace('/https\:\/\/docs\.google\.com\/spreadsheets\/d\//', '', esc_url($sheetId));
 			$sheetId = preg_replace('/\/.+$/', '', $sheetId);
 		}
-	
+
 		if(!$sheetName && !$sheetRange) {
 			if ( ! $range ) {
 				return FetcherWarning::sheet_name_range();
 			}
 		}else{
-	
+
 			if(!$sheetName){
 				return FetcherWarning::sheet_name();
-	
+
 			}else if(!$sheetRange){
-	
+
 				if($block === 'wp2s2fg/fetcher'){
 					return FetcherWarning::sheet_range_fetcher();
-	
+
 				}elseif($block === 'wp2s2fg/fetcher-item'){
 					return FetcherWarning::sheet_cell_fetcher_item();
-					
+
 				}
 			}
 			$range = esc_html($sheetName) . '!' . esc_html($sheetRange);
@@ -61,56 +65,56 @@ class RenderTable extends ApiManipulation {
 		$response = $service->spreadsheets_values->get( !empty($sheetId_deprecated) ? $sheetId_deprecated : $sheetId, $range );
 		$values   = $response->getValues();
 
-		$hasFixedTable     = $attributes['hasFixedTable'];
+		$hasFixedTable = $this->get_attributes_value( 'hasFixedTable', $attributes, false );
 
 		$border_style = array(
-			'borderStyle'=>$attributes['borderStyle'],
-			'borderColor'=>$attributes['borderColor'],
-			'brderWidth'=>$attributes['borderWidth'],
-			'borderUnit'=>$attributes['borderUnit'],
-			'borderLayout'=>$attributes['borderLayout'],
+			'borderStyle' => $this->get_attributes_value( 'borderStyle', $attributes, 'solid' ),
+			'borderColor' => $this->get_attributes_value( 'borderColor', $attributes, '#ccc' ),
+			'brderWidth' => $this->get_attributes_value( 'borderWidth', $attributes, 1 ),
+			'borderUnit' => $this->get_attributes_value( 'borderUnit', $attributes, 'px' ),
+			'borderLayout' => $this->get_attributes_value( 'borderLayout', $attributes, 'table-full' ),
 		);
-	
+
 		$th_style = array(
-			'fontSize'=> $attributes['thFontSize'],
-			'fontColor'=> $attributes['thFontColor'],
-			'fontUnit'=> $attributes['thFontUnit'],
-			'lineHeight'=>$attributes['thLineHeight'],
-			'letterSpace'=>$attributes['thLetterSpace'],
-			'thLetterSpaceUnit'=>$attributes['thLetterSpaceUnit'],
-			'fontWeight'=>$attributes['thFontWeight'],
-			'bgColor'=>$attributes['thBgColor'],
-			'align'=>$attributes['thAlign'],
+			'fontSize' => $this->get_attributes_value( 'thFontSize', $attributes, 16 ),
+			'fontColor' => $this->get_attributes_value( 'thFontColor', $attributes, 'inherit' ),
+			'fontUnit' => $this->get_attributes_value( 'thFontUnit', $attributes, 'px' ),
+			'lineHeight' => $this->get_attributes_value( 'thLineHeight', $attributes, 1 ),
+			'letterSpace' => $this->get_attributes_value( 'thLetterSpace', $attributes, 1 ),
+			'thLetterSpaceUnit' => $this->get_attributes_value( 'thLetterSpaceUnit', $attributes, 'px' ),
+			'fontWeight' => $this->get_attributes_value( 'thFontWeight', $attributes, 'normal' ),
+			'bgColor' => $this->get_attributes_value( 'thBgColor', $attributes, '#fff' ),
+			'align' => $this->get_attributes_value( 'thBgColor', $attributes, '#left' ),
 		);
-	
+
 		$tb_style = array(
-			'fontSize'=> $attributes['tbFontSize'],
-			'fontColor'=> $attributes['tbFontColor'],
-			'fontUnit'=> $attributes['tbFontUnit'],
-			'lineHeight'=>$attributes['tbLineHeight'],
-			'letterSpace'=>$attributes['tbLetterSpace'],
-			'thLetterSpaceUnit'=>$attributes['tbLetterSpaceUnit'],
-			'fontWeight'=>$attributes['tbFontWeight'],
-			'bgColor'=>$attributes['tbBgColor'],
-			'align'=>$attributes['tbAlign'],
+			'fontSize' => $this->get_attributes_value( 'tbFontSize', $attributes, 16 ),
+			'fontColor' => $this->get_attributes_value( 'tbFontColor', $attributes, 'inherit' ),
+			'fontUnit' => $this->get_attributes_value( 'tbFontUnit', $attributes, 'px' ),
+			'lineHeight' => $this->get_attributes_value( 'tbLineHeight', $attributes, 1 ),
+			'letterSpace' => $this->get_attributes_value( 'tbLetterSpace', $attributes, 1 ),
+			'thLetterSpaceUnit' => $this->get_attributes_value( 'tbLetterSpaceUnit', $attributes, 'px' ),
+			'fontWeight' => $this->get_attributes_value( 'tbFontWeight', $attributes, 'normal' ),
+			'bgColor' => $this->get_attributes_value( 'tbBgColor', $attributes, '#fff' ),
+			'align' => $this->get_attributes_value( 'tbAlign', $attributes, 'left' ),
 		);
 
 		$data = '';
 		if ( empty( $values ) ) {
 			$data .= __( 'No data found.', 'wp-simple-spreadsheet-fetcher-for-google' );
 		} else {
-	
+
 			if($block === 'wp2s2fg/fetcher') {
-	
+
 				$lastIndex = count($values) -1;
 
 				foreach ( $values as $row ) {
-	
+
 					$data_h = '<td class="' . $this->createClass("td") . " " . $this->hasFixedTableClass($hasFixedTable) . '" style="' . $this->create_inline_border_style($border_style) . '">';
 					$data_f = '</td>';
 					$data_container_h = '';
 					$data_container_f = '';
-					
+
 					if(count($values) >= 3){
 
 						if($values[0] === $row){
@@ -134,7 +138,7 @@ class RenderTable extends ApiManipulation {
 							$result = $this->createStyledCell("td",$tb_style,$hasFixedTable,$border_style);
 							$data_h = $result["data_h"];
 							$data_f = $result["data_f"];
-						} 
+						}
 					}elseif(count($values) >= 2){
 
 						if($values[0] === $row){
@@ -156,21 +160,21 @@ class RenderTable extends ApiManipulation {
 							$data_f = $result["data_f"];
 						}
 					}
-					
+
 					$data .= $data_container_h .'<tr class="' . $this->createClass("tr") .'">';
 					for ( $i = 0; $i < count( $row ); $i ++ ) {
 						$data .= $data_h . esc_html( $row[ $i ] ) . $data_f;
 					}
 					$data .= $data_container_f . '</tr>';
-	
+
 				}
-	
+
 				$div_h   = '<div class="wp2s2fg_fetcher_table_container ' . esc_attr($className) .'">';
 				$div_f = '</div>';
 				$table_h = '<table class="wp2s2fg_fetcher_table '. $this->hasFixedTableClass($hasFixedTable) . '" style="' . $this->create_inline_table_border_style($border_style) . '">';
 				$table_f = '</table>';
 				$data =  $div_h . $table_h . $data . $table_f . $div_f;
-	
+
 			}elseif($block === 'wp2s2fg/fetcher-item'){
 				$data = '<p class="wp2s2fg_fetcher-advanced_number">' . esc_html( $values[0][0] ) . '</p>';
 			}
