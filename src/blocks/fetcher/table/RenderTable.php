@@ -6,9 +6,6 @@ use Fetcher\App\Utils\ApiManipulation;
 use Fetcher\App\Utils\FetcherWarning;
 use Fetcher\blocks\fetcher\table\TableDesign;
 
-//レンダーテーブルは関数で書く。他のclassは関数内でインスタンス化して使う。
-//他のclassは普通に読み込む。
-
 class RenderTable extends ApiManipulation {
 
 	use TableDesign;
@@ -27,10 +24,12 @@ class RenderTable extends ApiManipulation {
 		$range = $attributes['range'];
 		$className    = $attributes['className'];
 
+		// Check API Key is set.
 		if ( !$api_key ) {
 			return FetcherWarning::api_key($api_key);
 		}
 
+		// Check SheetId is set.
 		if(!$sheetId){
 			if ( ! $sheetId_deprecated = sanitize_text_field($this->get_spread_sheet_id()) ) {
 				return FetcherWarning::sheet_url();
@@ -40,12 +39,12 @@ class RenderTable extends ApiManipulation {
 			$sheetId = preg_replace('/\/.+$/', '', $sheetId);
 		}
 
+		// Check SheetName and SheetRange are set.
 		if(!$sheetName && !$sheetRange) {
 			if ( ! $range ) {
 				return FetcherWarning::sheet_name_range();
 			}
 		}else{
-
 			if(!$sheetName){
 				return FetcherWarning::sheet_name();
 
@@ -62,6 +61,17 @@ class RenderTable extends ApiManipulation {
 			$range = esc_html($sheetName) . '!' . esc_html($sheetRange);
 		}
 
+		// Get All Sheets in the file.
+		$response = $service->spreadsheets->get(!empty($sheetId_deprecated) ? $sheetId_deprecated : $sheetId);
+		$all_sheets = $response->getSheets();
+
+		// Check Sheet Name is existed.
+		if ( !$this->is_sheet_name_exist($all_sheets, $sheetName) ) {
+			// Add Warning
+			return FetcherWarning::sheet_name_warning($sheetName);
+		}
+
+		// Get selected Sheet's value.
 		$response = $service->spreadsheets_values->get( !empty($sheetId_deprecated) ? $sheetId_deprecated : $sheetId, $range );
 		$values   = $response->getValues();
 

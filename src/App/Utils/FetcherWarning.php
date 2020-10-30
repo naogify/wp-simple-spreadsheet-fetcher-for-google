@@ -30,4 +30,8 @@ class FetcherWarning{
 	public static function sheet_cell_fetcher_item(){
 		return __( 'Cell is not set. Please set it from the sidebar. Example : A1', 'wp-simple-spreadsheet-fetcher-for-google' );
 	}
+
+	public static function sheet_name_warning( $sheet_name ){
+		return __( 'Sheet Name: ','wp-simple-spreadsheet-fetcher-for-google' ) . esc_html($sheet_name) . __( ' is not existed.','wp-simple-spreadsheet-fetcher-for-google' );
+	}
 }
