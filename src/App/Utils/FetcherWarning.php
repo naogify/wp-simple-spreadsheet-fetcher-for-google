@@ -34,4 +34,8 @@ class FetcherWarning{
 	public static function sheet_name_warning( $sheet_name ){
 		return __( 'Sheet Name: ','wp-simple-spreadsheet-fetcher-for-google' ) . esc_html($sheet_name) . __( ' is not existed.','wp-simple-spreadsheet-fetcher-for-google' );
 	}
+
+	public static function sheet_range_is_incorrect(){
+		return __( 'Sheet Range is invalid.','wp-simple-spreadsheet-fetcher-for-google' );
+	}
 }

@@ -3,7 +3,6 @@
 namespace Fetcher\blocks\fetcher\table;
 require(PLUGIN_ROOT_DIR .'vendor/autoload.php');
 use Fetcher\App\Utils\ApiManipulation;
-use Fetcher\App\Utils\FetcherWarning;
 use Fetcher\blocks\fetcher\table\TableDesign;
 
 class RenderTable extends ApiManipulation {
@@ -14,66 +13,24 @@ class RenderTable extends ApiManipulation {
 		return array_key_exists( $key, $array ) ? $array[$key] : $default;
 	}
 
-	public function get_selected_value( $attributes, $service, $api_key ) {
+	public function get_selected_value($attributes, $service, $api_key) {
 
 		$block     = $attributes['block'];
+		$className    = $attributes['className'];
 		$sheetId     = $attributes['sheetId'];
 		$sheetName     = $attributes['sheetName'];
 		$sheetRange     = $attributes['sheetRange'];
 		//This attributes is deprecated since v0.2.8.
 		$range = $attributes['range'];
-		$className    = $attributes['className'];
 
-		// Check API Key is set.
-		if ( !$api_key ) {
-			return FetcherWarning::api_key($api_key);
+		$result = $this->get_google_sheet_value($api_key, $sheetId, $sheetName, $sheetRange, $service, $range, $block);
+		$values = '';
+		if($result['status']){
+			$values = $result['values'];
+		} else {
+			// return Error message.
+			return $result["values"];
 		}
-
-		// Check SheetId is set.
-		if(!$sheetId){
-			if ( ! $sheetId_deprecated = sanitize_text_field($this->get_spread_sheet_id()) ) {
-				return FetcherWarning::sheet_url();
-			}
-		}else{
-			$sheetId = preg_replace('/https\:\/\/docs\.google\.com\/spreadsheets\/d\//', '', esc_url($sheetId));
-			$sheetId = preg_replace('/\/.+$/', '', $sheetId);
-		}
-
-		// Check SheetName and SheetRange are set.
-		if(!$sheetName && !$sheetRange) {
-			if ( ! $range ) {
-				return FetcherWarning::sheet_name_range();
-			}
-		}else{
-			if(!$sheetName){
-				return FetcherWarning::sheet_name();
-
-			}else if(!$sheetRange){
-
-				if($block === 'wp2s2fg/fetcher'){
-					return FetcherWarning::sheet_range_fetcher();
-
-				}elseif($block === 'wp2s2fg/fetcher-item'){
-					return FetcherWarning::sheet_cell_fetcher_item();
-
-				}
-			}
-			$range = esc_html($sheetName) . '!' . esc_html($sheetRange);
-		}
-
-		// Get All Sheets in the file.
-		$response = $service->spreadsheets->get(!empty($sheetId_deprecated) ? $sheetId_deprecated : $sheetId);
-		$all_sheets = $response->getSheets();
-
-		// Check Sheet Name is existed.
-		if ( !$this->is_sheet_name_exist($all_sheets, $sheetName) ) {
-			// Add Warning
-			return FetcherWarning::sheet_name_warning($sheetName);
-		}
-
-		// Get selected Sheet's value.
-		$response = $service->spreadsheets_values->get( !empty($sheetId_deprecated) ? $sheetId_deprecated : $sheetId, $range );
-		$values   = $response->getValues();
 
 		$hasFixedTable = $this->get_attributes_value( 'hasFixedTable', $attributes, false );
 
