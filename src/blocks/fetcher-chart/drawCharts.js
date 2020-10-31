@@ -17,6 +17,7 @@ export const drawCharts = (props) => {
 			return response.json();
 		})
 		.then(function (jsonData) {
+
 			google.charts.load("current", { packages: ["corechart"] });
 			google.charts.setOnLoadCallback(drawChart);
 
