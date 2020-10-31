@@ -1,8 +1,9 @@
 <?php
 namespace Fetcher\App\RestAPI\Sheets;
 use Fetcher\App\Utils\FetcherWarning;
+use Fetcher\App\Utils\ApiManipulation;
 
-class EntryPoint {
+class EntryPoint extends ApiManipulation {
 
 	private $service;
 
@@ -35,41 +36,23 @@ class EntryPoint {
 
 	public function _callback( $request ) {
 
-		$sheetId = esc_html($request["sheetId"]);
+		$sheetUrl = esc_html($request["sheetId"]);
 		$sheetName = esc_html($request["sheetName"]);
 		$sheetRange = esc_html($request["sheetRange"]);
 		$chartWidth = intval($request["chartWidth"]);
 		$chartHeight = intval($request["chartHeight"]);
+		$api_key = $this->get_api_key();
 		$warning = ["data"=>["status"=>404,"message"=>""]];
 
-		if($this->is_str_null($sheetId)){
-			$warning["data"]["message"] = FetcherWarning::sheet_url();
+		$result = $this->get_google_sheet_value( $api_key, $sheetUrl, $sheetName, $sheetRange, $this->service, "", 'wp2s2fg/fetcher-chart' );
+
+		// Return error message.
+		if(!$result['status']){
+			$warning["data"]["message"] = $result['values'];
 			return $warning;
 		}
 
-		if($this->is_str_null($sheetName) && $this->is_str_null($sheetRange)) {
-			$warning["data"]["message"] = FetcherWarning::sheet_name_range();
-			return $warning;
-
-		}else{
-			if($this->is_str_null($sheetName)){
-				$warning["data"]["message"] = FetcherWarning::sheet_name();
-				return $warning;
-
-			}else if($this->is_str_null($sheetRange)){
-				$warning["data"]["message"] = FetcherWarning::sheet_range_fetcher();
-				return $warning;
-			}
-			$range = esc_html($sheetName) . '!' . esc_html($sheetRange);
-		}
-
-		$response = $this->service->spreadsheets_values->get($sheetId, $range );
-		$values   = $response->getValues();
-		return rest_ensure_response( [ "attributes" => [ "chartWidth" => $chartWidth, "chartHeight" => $chartHeight ],"chartData"=>$values ] );
-	}
-
-	public function is_str_null($value){
-		return $value === "null";
+		return rest_ensure_response( [ "attributes" => [ "chartWidth" => $chartWidth, "chartHeight" => $chartHeight ],"chartData" => $result['values']] );
 	}
 
 	public function print_rest_url(){

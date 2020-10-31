@@ -7,8 +7,14 @@ class ApiManipulation{
 
 	function get_google_sheet_value($api_key, $sheetUrl, $sheetName, $sheetRange, $service, $range="", $block=""){
 
-		//Get SheetId from URL.
-		$sheetId = $this->get_sheet_id_from_url($sheetUrl);
+		// If SheetId is url, get sheetId from url.
+		if(strpos($sheetUrl,'http') !== false){
+			//Get SheetId from URL.
+			$sheetId = $this->get_sheet_id_from_url($sheetUrl);
+		} else {
+			$sheetId = $sheetUrl;
+		}
+
 		$message = $this->is_all_api_argument_is_correct($api_key, $sheetId, $sheetName, $sheetRange, $service, $range, $block);
 		if ("success" === $message){
 			// Get selected Sheet's value.
@@ -28,30 +34,30 @@ class ApiManipulation{
 
 		// Check API Key is set.
 		if ( !$api_key ) {
-			return FetcherWarning::api_key($api_key);
+			return FetcherWarning::api_key( $api_key );
 		}
 
 		// Check SheetId is set.
-		if(!$sheetId){
+		if( !$sheetId || $this->is_str_null( $sheetId ) ){
 			if ( ! $sheetId_deprecated = sanitize_text_field($this->get_spread_sheet_id()) ) {
 				return FetcherWarning::sheet_url();
 			}
 		}
 
 		// Check SheetName and SheetRange are set.
-		if(!$sheetName && !$sheetRange) {
+		if( !$sheetName && !$sheetRange || $this->is_str_null( $sheetName ) && $this->is_str_null( $sheetRange ) ) {
 			if ( ! $range ) {
 				return FetcherWarning::sheet_name_range();
 			}
 		}
 
 		// Check SheetName is set.
-		if(!$sheetName){
+		if( !$sheetName || $this->is_str_null( $sheetName ) ){
 			return FetcherWarning::sheet_name();
 		}
 
 		// Check SheetRange is set.
-		if(!$sheetRange){
+		if( !$sheetRange || $this->is_str_null( $sheetRange ) ){
 			if($block === 'wp2s2fg/fetcher'){
 				return FetcherWarning::sheet_range_fetcher();
 
@@ -129,6 +135,10 @@ class ApiManipulation{
 		}else{
 			return false;
 		}
+	}
+
+	public function is_str_null($value){
+		return $value === "null";
 	}
 }
 
