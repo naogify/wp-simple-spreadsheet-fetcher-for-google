@@ -6,7 +6,7 @@ import {
 	defineColumnLength,
 	addBaseXAxis,
 	arrayItemsIsString,
-} from "../blocks/fetcher-chart/drawCharts";
+} from "../../src/blocks/fetcher-chart/drawCharts";
 
 describe("Test api", () => {
 	test("should convert string to number", () => {
