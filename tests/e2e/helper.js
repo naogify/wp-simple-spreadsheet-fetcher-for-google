@@ -4,8 +4,6 @@ import {
 	selectBlockByClientId,
 	getPageError
 } from '@wordpress/e2e-test-utils';
-// import { dispatch } from '@wordpress/data';
-// import { createBlock } from '@wordpress/blocks';
 
 export const selectBlockByName = async ( name ) => {
 	await selectBlockByClientId(
@@ -93,13 +91,3 @@ export const checkForBlockErrors = async ( blockName ) => {
 	expect( await page.$( `[data-type="${blockName}"]` ) ).not.toBeNull();
 	expect( await getPageError() ).toBeNull();
 };
-
-// /**
-//  * Insert Block by slug, e.g 'core/image' or 'coblocks/accordion'.
-//  *
-//  * @param {string} name
-//  */
-// export const insertBlocksBySlug = ( name ) => {
-// 	insertedBlock = createBlock( name, {}) ;
-// 	dispatch( 'core/editor' ).insertBlocks( insertedBlock );
-// }
