@@ -22,8 +22,6 @@
   "author": "naoki0h",
   "license": "GPL-3.0 or later",
   "devDependencies": {
-    "@wordpress/blocks": "^6.24.1",
-    "@wordpress/data": "^4.25.0",
     "@wordpress/e2e-test-utils": "^4.15.0",
     "@wordpress/env": "^1.0.1",
     "@wordpress/scripts": "^6.0.0",
