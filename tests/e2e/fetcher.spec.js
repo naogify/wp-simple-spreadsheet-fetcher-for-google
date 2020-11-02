@@ -6,7 +6,6 @@ import {
 import * as helper from './helper';
 
 const name = "wp2s2fg/fetcher";
-const timeout =  8000;
 const insertTableFetcher = async () => {
 	await page.click('button[aria-label="Add block"]');
 	await page.type('input[placeholder="Search for a block"]', 'Table');
@@ -31,7 +30,7 @@ describe( 'Table', () => {
 
 		// Take Screenshot for debug.
 		// await page.screenshot({path: './tests/e2e/screenshot/fetcher1.png'});
-	}, timeout );
+	}, 8000 );
 
 	it( 'Test PHP Error', async () => {
 		// Insert Table Block.
@@ -62,5 +61,5 @@ describe( 'Table', () => {
 
 		// For debugging.
 		// await page.screenshot({path: './tests/e2e/screenshot/fetcher1.png'});
-	}, timeout );
+	}, 8000 );
 } );
