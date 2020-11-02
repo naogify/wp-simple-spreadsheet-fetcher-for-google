@@ -83,6 +83,9 @@ export const drawCharts = (props) => {
 };
 
 export const sanitizeSheetId = (sheetUrl) => {
+	if ( !sheetUrl ) {
+		return
+	};
 	const regex = /\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/;
 	let sheetId = sheetUrl.match(regex);
 	if (sheetId !== null) {

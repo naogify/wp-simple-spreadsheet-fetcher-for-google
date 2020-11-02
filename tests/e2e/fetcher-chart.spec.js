@@ -2,16 +2,11 @@ import {
 	createNewPost,
 	enablePageDialogAccept,
 	publishPost,
+	insertBlock
 } from '@wordpress/e2e-test-utils';
 import * as helper from './helper';
 
-const name = "wp2s2fg/fetcher";
-
-const insertTableFetcher = async () => {
-	await page.click('button[aria-label="Add block"]');
-	await page.type('input[placeholder="Search for a block"]', 'Table');
-	await page.click('.editor-block-list-item-wp2s2fg-fetcher');
-}
+const name = "wp2s2fg/fetcher-chart";
 
 describe( 'Table', () => {
 	beforeAll( async () => {
@@ -24,18 +19,18 @@ describe( 'Table', () => {
 	it( 'Test Javascript Error', async () => {
 
 		// Insert Table Block.
-		await insertTableFetcher();
+		await insertBlock( 'Chart' );
 
 		// Check if block was inserted and no error.
-		await helper.checkForBlockErrors( name );
+		await helper.checkForBlockErrors(name);
 
 		// Take Screenshot for debug.
-		// await page.screenshot({path: './tests/e2e/screenshot/fetcher1.png'});
+		// await page.screenshot({path: './tests/e2e/screenshot/fetcher-chart.png'});
 	} );
 
 	it( 'Test PHP Error', async () => {
 		// Insert Table Block.
-		await insertTableFetcher();
+		await insertBlock( 'Chart' );
 
 		await publishPost();
 
@@ -61,6 +56,6 @@ describe( 'Table', () => {
 		expect( contents.match(/Fatal/) ).toBeNull();
 
 		// For debugging.
-		// await page.screenshot({path: './tests/e2e/screenshot/fetcher1.png'});
+		// await page.screenshot({path: './tests/e2e/screenshot/fetcher-chart1.png'});
 	});
 } );
