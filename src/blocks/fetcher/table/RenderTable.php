@@ -14,7 +14,6 @@ class RenderTable extends ApiManipulation {
 	}
 
 	public function get_selected_value($attributes, $service, $api_key) {
-
 		$block     = $attributes['block'];
 		$className    = $attributes['className'];
 		$sheetId     = $attributes['sheetId'];

@@ -5,10 +5,7 @@ namespace Fetcher\App\Utils;
 class FetcherWarning{
 
 	public static function api_key($api_key){
-
-		$url = admin_url( 'admin.php?page=wsgsf_settings' );
-		$url = '<a href="' . esc_url( $url ) . '">' . __( 'settings.' ) . '</a>';
-		return __( 'API-KEY is not set Please set it at the ', 'wp-simple-spreadsheet-fetcher-for-google' ) . $url;
+		return __( 'API-KEY is not set Please set it from the admin. [ Plugins ]  > [ WP Simple Spreadsheet Fetcher for Google ] > [ Setting API key ]', 'wp-simple-spreadsheet-fetcher-for-google' );
 	}
 
 	public static function sheet_url(){

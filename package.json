@@ -15,14 +15,16 @@
     "make-pot": "wp i18n make-pot . languages/wp-simple-spreadsheet-fetcher-for-google.pot",
     "lint-js": "wp-scripts lint-js",
     "readme": "npx grunt",
-    "test:unit": "wp-scripts test-unit-js"
+    "test:unit": "wp-scripts test-unit-js",
+    "test:e2e": "wp-scripts test-e2e"
   },
   "keywords": [],
   "author": "naoki0h",
   "license": "GPL-3.0 or later",
   "devDependencies": {
+    "@wordpress/e2e-test-utils": "^4.15.0",
     "@wordpress/env": "^1.0.1",
-    "@wordpress/scripts": "6.0.0",
+    "@wordpress/scripts": "^6.0.0",
     "grunt": "^1.0.4",
     "grunt-wp-readme-to-markdown": "^2.0.1",
     "nodemon": "^2.0.4",
