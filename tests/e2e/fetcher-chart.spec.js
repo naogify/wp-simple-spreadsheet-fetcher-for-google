@@ -7,6 +7,7 @@ import {
 import * as helper from './helper';
 
 const name = "wp2s2fg/fetcher-chart";
+const timeout =  8000;
 
 describe( 'Table', () => {
 	beforeAll( async () => {
@@ -26,7 +27,7 @@ describe( 'Table', () => {
 
 		// Take Screenshot for debug.
 		// await page.screenshot({path: './tests/e2e/screenshot/fetcher-chart.png'});
-	} );
+	}, timeout );
 
 	it( 'Test PHP Error', async () => {
 		// Insert Table Block.
@@ -57,5 +58,5 @@ describe( 'Table', () => {
 
 		// For debugging.
 		// await page.screenshot({path: './tests/e2e/screenshot/fetcher-chart1.png'});
-	});
+	}, timeout );
 } );
