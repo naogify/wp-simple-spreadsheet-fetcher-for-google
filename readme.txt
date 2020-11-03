@@ -35,6 +35,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.7.6 =
+- Fix bug, and add validation message.
+
 = 0.7.5 =
 - Fix bug.
 
