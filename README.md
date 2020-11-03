@@ -2,7 +2,7 @@
 **Contributors:** [naoki0h](https://profiles.wordpress.org/naoki0h)  
 **Tags:** fetcher, api, Google Sheets  
 **Requires at least:** 5.3  
-**Tested up to:** 5.5.3
+**Tested up to:** 5.5.3  
 **Stable tag:** 0.7.6  
 **License:** GPLv3 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
