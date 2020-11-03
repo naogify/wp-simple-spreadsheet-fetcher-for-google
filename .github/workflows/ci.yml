@@ -1,4 +1,5 @@
 name: CI
+
 on:
   push:
     branches:
@@ -6,22 +7,33 @@ on:
   pull_request:
     branches:
       - master
+
 jobs:
-  tag:
-    name: Build
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Build
         run: |
-          npm install
+          npm ci
           composer install
           npm run build
+
       - name: Remove unused composer library.
         run: |
           cd vendor/google/apiclient-services/src/Google/Service/
           ls | grep -v -E 'Sheets|Sheets.php$' | xargs rm -r
+
       - name: Run unit test
-        run: npm run test:unit
+        run: |
+          npm run test:unit
+
+      # run the wp-env setup command (wp-env start)
+      - name: setup wp env
+        run: |
+          npx wp-env start
+
       - name: Run E2E test
-        run: npm run test:e2e
+        run: |
+          npm run test:e2e

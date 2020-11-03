@@ -8,7 +8,7 @@ import * as helper from './helper';
 
 const name = "wp2s2fg/fetcher-chart";
 
-describe( 'Table', () => {
+describe( 'Chart', () => {
 	beforeAll( async () => {
 		await enablePageDialogAccept();
 	} );
@@ -16,7 +16,9 @@ describe( 'Table', () => {
 		await createNewPost();
 	} );
 
-	it( 'Test Javascript Error', async () => {
+	jest.setTimeout(10000);
+
+	it( 'Check Javascript Error', async () => {
 
 		// Insert Table Block.
 		await insertBlock( 'Chart' );
@@ -26,9 +28,9 @@ describe( 'Table', () => {
 
 		// Take Screenshot for debug.
 		// await page.screenshot({path: './tests/e2e/screenshot/fetcher-chart.png'});
-	} );
+	});
 
-	it( 'Test PHP Error', async () => {
+	it( 'Check PHP Error', async () => {
 		// Insert Table Block.
 		await insertBlock( 'Chart' );
 
