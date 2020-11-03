@@ -13,9 +13,10 @@ describe( 'Chart', () => {
 		await enablePageDialogAccept();
 	} );
 	beforeEach( async () => {
-		jest.setTimeout(10000);
 		await createNewPost();
 	} );
+
+	jest.setTimeout(10000);
 
 	it( 'Check Javascript Error', async () => {
 

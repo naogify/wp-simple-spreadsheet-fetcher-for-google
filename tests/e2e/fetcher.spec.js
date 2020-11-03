@@ -14,12 +14,13 @@ const insertTableFetcher = async () => {
 
 describe( 'Table', () => {
 	beforeAll( async () => {
-		await enablePageDialogAccept();
+		enablePageDialogAccept();
 	} );
 	beforeEach( async () => {
-		jest.setTimeout(10000);
 		await createNewPost();
 	} );
+
+	jest.setTimeout(10000);
 
 	it( 'Check Javascript Error', async () => {
 
