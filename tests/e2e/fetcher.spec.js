@@ -31,7 +31,7 @@ describe( 'Table', () => {
 		await helper.checkForBlockErrors( name );
 
 		// Take Screenshot for debug.
-		await page.screenshot({path: './tests/e2e/screenshot/fetcher1.png'});
+		// await page.screenshot({path: './tests/e2e/screenshot/fetcher1.png'});
 	});
 
 	it( 'Check PHP Error', async () => {
