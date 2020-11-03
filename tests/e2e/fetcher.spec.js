@@ -17,6 +17,7 @@ describe( 'Table', () => {
 		await enablePageDialogAccept();
 	} );
 	beforeEach( async () => {
+		jest.setTimeout(10000);
 		await createNewPost();
 	} );
 
@@ -30,7 +31,7 @@ describe( 'Table', () => {
 
 		// Take Screenshot for debug.
 		await page.screenshot({path: './tests/e2e/screenshot/fetcher1.png'});
-	}, 8000 );
+	});
 
 	it( 'Check PHP Error', async () => {
 		// Insert Table Block.
@@ -61,5 +62,5 @@ describe( 'Table', () => {
 
 		// For debugging.
 		// await page.screenshot({path: './tests/e2e/screenshot/fetcher1.png'});
-	}, 8000 );
+	});
 } );

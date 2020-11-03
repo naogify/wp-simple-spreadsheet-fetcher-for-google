@@ -13,6 +13,7 @@ describe( 'Chart', () => {
 		await enablePageDialogAccept();
 	} );
 	beforeEach( async () => {
+		jest.setTimeout(10000);
 		await createNewPost();
 	} );
 
@@ -26,7 +27,7 @@ describe( 'Chart', () => {
 
 		// Take Screenshot for debug.
 		// await page.screenshot({path: './tests/e2e/screenshot/fetcher-chart.png'});
-	}, 8000 );
+	});
 
 	it( 'Check PHP Error', async () => {
 		// Insert Table Block.
@@ -57,5 +58,5 @@ describe( 'Chart', () => {
 
 		// For debugging.
 		// await page.screenshot({path: './tests/e2e/screenshot/fetcher-chart1.png'});
-	}, 8000 );
+	});
 } );
