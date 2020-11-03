@@ -20,7 +20,7 @@ describe( 'Table', () => {
 		await createNewPost();
 	} );
 
-	it( 'Test Javascript Error', async () => {
+	it( 'Check Javascript Error', async () => {
 
 		// Insert Table Block.
 		await insertTableFetcher();
@@ -32,7 +32,7 @@ describe( 'Table', () => {
 		await page.screenshot({path: './tests/e2e/screenshot/fetcher1.png'});
 	}, 8000 );
 
-	it( 'Test PHP Error', async () => {
+	it( 'Check PHP Error', async () => {
 		// Insert Table Block.
 		await insertTableFetcher();
 
