@@ -7,7 +7,6 @@
     "start": "npx wp-env start && composer install && npm run build:dev",
     "stop": "npx wp-env stop",
     "destroy": "npx wp-env destroy",
-    "watch": "npx nodemon -w ./src -e js -x npm run build:dev",
     "build": "wp-scripts build",
     "build:dev": "wp-scripts build --mode=development",
     "translate": "po2json languages/wp-simple-spreadsheet-fetcher-for-google-ja.po languages/wp-simple-spreadsheet-fetcher-for-google-ja-wp2s2fg-fetcher.json -f jed",
@@ -26,7 +25,6 @@
     "@wordpress/scripts": "^6.0.0",
     "grunt": "^1.0.4",
     "grunt-wp-readme-to-markdown": "^2.0.1",
-    "nodemon": "^2.0.4",
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
