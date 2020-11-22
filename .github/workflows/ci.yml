@@ -13,6 +13,12 @@ jobs:
         node-version: [14.x]
     steps:
       - uses: actions/checkout@v2
+
+      - name: Composer Install
+        uses: php-actions/composer@v1
+        with:
+          args: install
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -20,9 +26,7 @@ jobs:
 
       - name: Build
         run: |
-          npm install -g npm
           npm ci
-          composer install
           npm run build
 
       - name: Remove unused composer library.

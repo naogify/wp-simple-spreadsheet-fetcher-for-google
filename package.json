@@ -4,8 +4,7 @@
   "description": "wp-simple-google-sheets-fetcher",
   "main": "blocks/build/index.js",
   "scripts": {
-    "postinstall": "composer install",
-    "start": "npx wp-env start",
+    "start": "npx wp-env start && composer install && npm run build:dev",
     "stop": "npx wp-env stop",
     "destroy": "npx wp-env destroy",
     "watch": "npx nodemon -w ./src -e js -x npm run build:dev",
