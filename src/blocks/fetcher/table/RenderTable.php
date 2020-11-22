@@ -129,7 +129,7 @@ class RenderTable extends ApiManipulation {
 
 					$data .= $data_container_h .'<tr class="' . $this->createClass("tr") .'">';
 					for ( $i = 0; $i < count( $row ); $i ++ ) {
-						$data .= $data_h . esc_html( $row[ $i ] ) . $data_f;
+						$data .= $data_h . $row[ $i ] . $data_f;
 					}
 					$data .= $data_container_f . '</tr>';
 
@@ -145,8 +145,6 @@ class RenderTable extends ApiManipulation {
 				$data = '<p class="wp2s2fg_fetcher-advanced_number">' . esc_html( $values[0][0] ) . '</p>';
 			}
 		}
-
-		var_dump($data);
 
 		return $data;
 	}
