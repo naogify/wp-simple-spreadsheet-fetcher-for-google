@@ -6,7 +6,7 @@ import { AdvancedColorPalleteControl } from "../advanced-color-pallete-control";
 
 import { fontWeights } from "../font-weight";
 
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 const { Fragment } = wp.element;
 const { BaseControl } = wp.components;
 

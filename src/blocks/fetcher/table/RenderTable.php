@@ -145,6 +145,9 @@ class RenderTable extends ApiManipulation {
 				$data = '<p class="wp2s2fg_fetcher-advanced_number">' . esc_html( $values[0][0] ) . '</p>';
 			}
 		}
+
+		var_dump($data);
+
 		return $data;
 	}
 }
