@@ -7,10 +7,9 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: '14'
+
     steps:
       - uses: actions/checkout@v2
 
@@ -19,10 +18,10 @@ jobs:
         with:
           args: install
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 14
         uses: actions/checkout@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '14'
 
       - name: Build
         run: |
