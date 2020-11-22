@@ -19,6 +19,7 @@ jobs:
 
       - name: Build
         run: |
+          npm install -g npm
           npm install
           composer install
           npm run build
