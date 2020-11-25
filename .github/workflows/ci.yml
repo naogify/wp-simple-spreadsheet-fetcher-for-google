@@ -7,54 +7,26 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
-      - name: Composer Install
-        uses: php-actions/composer@v1
-        with:
-          args: install
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
 
       - name: Build
         run: |
           npm ci
+          composer install
           npm run build
-
       - name: Remove unused composer library.
         run: |
-          cd vendor/google/apiclient-services/src/Google/Service/c
+          cd vendor/google/apiclient-services/src/Google/Service/
           ls | grep -v -E 'Sheets|Sheets.php$' | xargs rm -r
-
       - name: Run unit test
         run: |
           npm run test:unit
-
       # run the wp-env setup command (wp-env start)
       - name: setup wp env
         run: |
           npx wp-env start
-
       - name: Run E2E test
         run: |
           npm run test:e2e
