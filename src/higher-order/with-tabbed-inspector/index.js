@@ -6,7 +6,7 @@ import { applyFilters } from "@wordpress/hooks";
 import { createHigherOrderComponent } from "@wordpress/compose";
 import { InspectorControls } from "@wordpress/block-editor";
 import { TabPanel } from "@wordpress/components";
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 
 const tabOptions = (blockName) => {
 	if (blockName === "fetcher") {

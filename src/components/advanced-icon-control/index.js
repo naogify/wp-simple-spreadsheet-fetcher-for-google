@@ -4,7 +4,7 @@ import {
 	TableHorizontalIcon,
 	TableVerticalIcon
 } from "../../assets/svg/table-icons";
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 
 export const AdvancedIconControl = props => {
 	const { icon } = props;

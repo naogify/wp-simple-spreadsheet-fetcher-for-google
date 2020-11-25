@@ -1,6 +1,6 @@
 import { Button, ButtonGroup } from "@wordpress/components";
 import { AdvancedIconControl } from "../advanced-icon-control";
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 const { useState } = wp.element;
 
 export const AdvancedButtonGruopControl = (props) => {

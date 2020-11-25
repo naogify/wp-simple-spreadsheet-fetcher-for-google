@@ -9,6 +9,20 @@ class RenderTable extends ApiManipulation {
 
 	use TableDesign;
 
+	/**
+	 * @param string $body
+	 * @param string|null $link_title link text
+	 * @return string
+	 */
+	public function url_to_link( $body, $link_title = null ) {
+		$pattern = '/(?<!href=")https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+/';
+		$body = preg_replace_callback($pattern, function($matches) use ($link_title) {
+			$link_title = $link_title ?: $matches[0];
+			return "<a href=\"{$matches[0]}\">$link_title</a>";
+		}, $body);
+		return $body;
+	}
+
 	public function get_attributes_value( $key, $array, $default = "" ) {
 		return array_key_exists( $key, $array ) ? $array[$key] : $default;
 	}
@@ -129,10 +143,14 @@ class RenderTable extends ApiManipulation {
 
 					$data .= $data_container_h .'<tr class="' . $this->createClass("tr") .'">';
 					for ( $i = 0; $i < count( $row ); $i ++ ) {
-						$data .= $data_h . esc_html( $row[ $i ] ) . $data_f;
-					}
-					$data .= $data_container_f . '</tr>';
 
+						// Replace url to link
+						$html = $this->url_to_link($row[ $i ]);
+
+						$data .= $data_h . $html . $data_f;
+					}
+
+					$data .= $data_container_f . '</tr>';
 				}
 
 				$div_h   = '<div class="wp2s2fg_fetcher_table_container ' . esc_attr($className) .'">';
@@ -145,6 +163,7 @@ class RenderTable extends ApiManipulation {
 				$data = '<p class="wp2s2fg_fetcher-advanced_number">' . esc_html( $values[0][0] ) . '</p>';
 			}
 		}
+
 		return $data;
 	}
 }

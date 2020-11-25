@@ -1,4 +1,4 @@
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 const { PanelBody, BaseControl, TextControl } = wp.components;
 import { drawCharts } from "./drawCharts";
 import { addFilter } from "@wordpress/hooks";
