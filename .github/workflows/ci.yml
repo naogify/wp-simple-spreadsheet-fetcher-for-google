@@ -13,7 +13,7 @@ jobs:
 
       - name: Build
         run: |
-          npm ci
+          npm install
           composer install
           npm run build
       - name: Remove unused composer library.
