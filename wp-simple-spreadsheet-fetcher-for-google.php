@@ -6,10 +6,10 @@
  * Author:          Naoki Ohashi
  * Author URI:      https://naoki-is-me
  * Text Domain:     wp-simple-spreadsheet-fetcher-for-google
- * Version: 0.7.6
+ * Version: 0.7.7
  *
  * @package         Wp_Simple_Spreadsheet_Fetcher_for_Google
- * @version 0.7.6
+ * @version 0.7.7
  */
 
 defined( 'ABSPATH' ) || exit;
