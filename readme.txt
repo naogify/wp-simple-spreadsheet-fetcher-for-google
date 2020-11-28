@@ -35,6 +35,9 @@ If you have anything to tell me, please post it on the plugin's support forum or
 
 == Changelog ==
 
+= 0.7.8 =
+- [Feature][Table] remove auto convert url to link feature.
+
 = 0.7.7 =
 - [Feature][Table] enable to fetch HTML from Google Sheets.
 
